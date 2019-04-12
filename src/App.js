@@ -12,9 +12,6 @@ class App extends Component {
         <Jumbotron id = "title">The Home Project</Jumbotron>
         <React.Fragment>
           <style>{'body {background-color: #fafaed;}'}</style>
-          <style>
-          @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600');}
-          </style>
           <div className="container">
           <button id = "orgButton">
             <Link style={{textDecoration:'none'}} to="/organization">Organization?</Link>

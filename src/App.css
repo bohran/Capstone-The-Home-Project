@@ -1,6 +1,5 @@
-@font-face{
-  font-family: Nunito
-}
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600');
+
 #title{
   text-align: center;
   font-size: 100px;
