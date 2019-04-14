@@ -43,7 +43,6 @@ export class AddEvent extends Component {
                 />
               </Form.Group>
 
-              
               <Form.Group controlId="formGridCategory">
                 <h5>Event Category</h5>
                 <Form.Control as="select">
