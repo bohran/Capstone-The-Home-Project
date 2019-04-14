@@ -3,7 +3,29 @@ import { Form, Col, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
-export class Organization extends Component {
+export class AddEvent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      eventName: "",
+      eventDescr: "",
+      eventType: "",
+      date: "",
+      startTime: "",
+      endTime: "",
+      eventAddress: "",
+      eventCity: "",
+      eventCount: "",
+      eventZip: "",
+      creatorFName: "",
+      creatorLName: "",
+      creatorEmail: "",
+      contactFName: "",
+      contactLName: "",
+      contactEmail: ""
+    };
+  }
   render() {
     return (
       <div>
@@ -11,7 +33,7 @@ export class Organization extends Component {
 
         <div className="addEvent">
           <Form>
-          <h5>Organization Information:</h5>
+            <h5>Organization Information:</h5>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridName">
                 <Form.Label>Organization Name</Form.Label>
