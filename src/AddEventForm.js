@@ -7,23 +7,9 @@ export class Organization extends Component {
   render() {
     return (
       <div>
-        <h2 className="orgPageTitle">SELECT AN ORGANIZATION</h2>
+        <h2 className="orgPageTitle">ADD AN EVENT</h2>
 
-        <div className="selectOrg">
-        <Form>
-          <Form.Group controlId="formGridName">
-            <h5>Organization Name</h5>
-            <Form.Control as="select">
-              <option>Choose...</option>
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </Form.Control>
-          </Form.Group>
-          </Form>
-        </div>
-        <subtitle className="newOrgButton">Don't see your Organization listed? Click Here.</subtitle>
-        <div className="addOrg">
+        <div className="addEvent">
           <Form>
           <h5>Organization Information:</h5>
             <Form.Row>
@@ -51,7 +37,7 @@ export class Organization extends Component {
               />
             </Form.Group>
 
-            <h5>Organization Contact:</h5>
+            <h5>Event Contact:</h5>
 
             <Form.Row>
               <Form.Group as={Col} controlId="formGridCName">
@@ -90,7 +76,7 @@ export class Organization extends Component {
             </Form.Row>
 
             <Form.Group controlId="formGridZip">
-              <Form.Label>Organization Website</Form.Label>
+              <Form.Label>Event Link</Form.Label>
               <Form.Control
                 type="orgSite"
                 placeholder="Enter Organization Website"
