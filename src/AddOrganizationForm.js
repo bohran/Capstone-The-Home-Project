@@ -10,22 +10,24 @@ export class Organization extends Component {
         <h2 className="orgPageTitle">SELECT AN ORGANIZATION</h2>
 
         <div className="selectOrg">
-        <Form>
-          <Form.Group controlId="formGridName">
-            <h5>Organization Name</h5>
-            <Form.Control as="select">
-              <option>Choose...</option>
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </Form.Control>
-          </Form.Group>
+          <Form>
+            <Form.Group controlId="formGridName">
+              <h5>Organization Name</h5>
+              <Form.Control as="select">
+                <option>Choose...</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </Form.Control>
+            </Form.Group>
           </Form>
         </div>
-        <subtitle className="newOrgButton">Don't see your Organization listed? Click Here.</subtitle>
+        <subtitle className="newOrgButton">
+          Don't see your Organization listed? Click Here.
+        </subtitle>
         <div className="addOrg">
           <Form>
-          <h5>Organization Information:</h5>
+            <h5>Organization Information:</h5>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridName">
                 <Form.Label>Organization Name</Form.Label>
@@ -34,13 +36,14 @@ export class Organization extends Component {
                   placeholder="Enter Organization Name"
                 />
               </Form.Group>
-
-              <Form.Group as={Col} controlId="formGridCategory">
-                <Form.Label>Organization Category</Form.Label>
-                <Form.Control
-                  type="orgCategory"
-                  placeholder="Select Organization Category"
-                />
+              <Form.Group controlId="formGridCategory">
+                <h5>Organization Category</h5>
+                <Form.Control as="select">
+                  <option>Choose...</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </Form.Control>
               </Form.Group>
             </Form.Row>
             <Form.Group controlId="formGridMission">
@@ -103,7 +106,7 @@ export class Organization extends Component {
               </Button>
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick="./AddEventForm">
               Next
             </Button>
           </Form>

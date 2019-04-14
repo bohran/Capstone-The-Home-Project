@@ -33,75 +33,133 @@ export class AddEvent extends Component {
 
         <div className="addEvent">
           <Form>
-            <h5>Organization Information:</h5>
+            <h5>Event Information:</h5>
             <Form.Row>
-              <Form.Group as={Col} controlId="formGridName">
-                <Form.Label>Organization Name</Form.Label>
+              <Form.Group as={Col} controlId="formGridTitle">
+                <Form.Label>Event Title</Form.Label>
                 <Form.Control
-                  type="orgName"
-                  placeholder="Enter Organization Name"
+                  type="eventTitle"
+                  placeholder="Enter Event Title"
                 />
               </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridCategory">
-                <Form.Label>Organization Category</Form.Label>
-                <Form.Control
-                  type="orgCategory"
-                  placeholder="Select Organization Category"
-                />
+              <Form.Group controlId="formGridCategory">
+                <h5>Event Category</h5>
+                <Form.Control as="select">
+                  <option>Choose...</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </Form.Control>
               </Form.Group>
             </Form.Row>
-            <Form.Group controlId="formGridMission">
-              <Form.Label>Organization Mission Statement</Form.Label>
+
+            <Form.Group controlId="formGridDescr">
+              <Form.Label>Event Description</Form.Label>
               <Form.Control
-                type="orgMissStatement"
-                placeholder="Enter Mission Statement"
+                type="eventDescr"
+                placeholder="Enter Event Description"
               />
             </Form.Group>
 
-            <h5>Event Contact:</h5>
-
             <Form.Row>
-              <Form.Group as={Col} controlId="formGridCName">
-                <Form.Label>Name</Form.Label>
+              <Form.Group as={Col} controlId="formGridDate">
+                <Form.Label>Event Date</Form.Label>
+                <Form.Control type="eventDate" placeholder="Enter Event Date" />
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGriStartTime">
+                <Form.Label>Start Time</Form.Label>
                 <Form.Control
-                  type="contactName"
-                  placeholder="Enter Contact Name"
+                  type="startTime"
+                  placeholder="Enter Event Start Time"
                 />
               </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridCRole">
-                <Form.Label>Role</Form.Label>
+              <Form.Group as={Col} controlId="formGriEndTime">
+                <Form.Label>End Time</Form.Label>
                 <Form.Control
-                  type="contactRole"
-                  placeholder="Enter Contact Role"
+                  type="endTime"
+                  placeholder="Enter Event End Time"
                 />
               </Form.Group>
             </Form.Row>
 
+            <Form.Group as={Col} controlId="formGriStartTime">
+              <Form.Label>Address</Form.Label>
+              <Form.Control type="startTime" placeholder="e.g. 1234 Main St." />
+            </Form.Group>
+
             <Form.Row>
-              <Form.Group as={Col} controlId="formGridCPhone">
-                <Form.Label>Phone</Form.Label>
+              <Form.Group as={Col} controlId="formGridCity">
+                <Form.Label>Event City</Form.Label>
+                <Form.Control type="eventCity" placeholder="e.g. Seattle" />
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGriCounty">
+                <Form.Label>Event County</Form.Label>
+                <Form.Control type="eventCounty" placeholder="e.g. King" />
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGriZip">
+                <Form.Label>Event Zip Code</Form.Label>
+                <Form.Control type="endTime" placeholder="e.g. 98105" />
+              </Form.Group>
+            </Form.Row>
+
+            <h5>Event Contact Information:</h5>
+
+            <Form.Row>
+              <Form.Group as={Col} controlId="formGridFName">
+                <Form.Label>First Name</Form.Label>
                 <Form.Control
-                  type="contactPhone"
-                  placeholder="Enter Contact Phone"
+                  type="contactFName"
+                  placeholder="Enter First Name"
                 />
               </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridCEmail">
-                <Form.Label>Email</Form.Label>
+              <Form.Group as={Col} controlId="formGridLName">
+                <Form.Label>Last Name</Form.Label>
                 <Form.Control
-                  type="contactPhone"
-                  placeholder="Enter Contact Email"
+                  type="contactLName"
+                  placeholder="Enter Last Name"
                 />
               </Form.Group>
             </Form.Row>
 
-            <Form.Group controlId="formGridZip">
-              <Form.Label>Event Link</Form.Label>
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label>Email</Form.Label>
               <Form.Control
-                type="orgSite"
-                placeholder="Enter Organization Website"
+                type="contactEmail"
+                placeholder="Enter Contact Email"
+              />
+            </Form.Group>
+
+            <h5>Event Coordinator Information:</h5>
+
+            <Form.Row>
+              <Form.Group as={Col} controlId="formGridCoordFName">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                  type="coordinateFName"
+                  placeholder="Enter First Name"
+                />
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGridCoordLName">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control
+                  type="coordinateLName"
+                  placeholder="Enter Last Name"
+                />
+              </Form.Group>
+            </Form.Row>
+
+            <Form.Group as={Col} controlId="formGridCoordEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="coordinateEmail"
+                placeholder="Enter Contact Email"
               />
             </Form.Group>
 
