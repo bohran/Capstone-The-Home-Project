@@ -8,7 +8,7 @@ import './Home.css';
 
 export class Home extends Component {
     render() {
-        return (<div>
+        return (<div className = "homeBody">
             <h1>#SeattleForAll</h1>
         </div>)
     }
