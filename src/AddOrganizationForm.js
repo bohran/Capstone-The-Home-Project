@@ -34,14 +34,15 @@ export class Organization extends Component {
                   placeholder="Enter Organization Name"
                 />
               </Form.Group>
-
-              <Form.Group as={Col} controlId="formGridCategory">
-                <Form.Label>Organization Category</Form.Label>
-                <Form.Control
-                  type="orgCategory"
-                  placeholder="Select Organization Category"
-                />
-              </Form.Group>
+              <Form.Group controlId="formGridCategory">
+            <h5>Organization Category</h5>
+            <Form.Control as="select">
+              <option>Choose...</option>
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </Form.Control>
+          </Form.Group>
             </Form.Row>
             <Form.Group controlId="formGridMission">
               <Form.Label>Organization Mission Statement</Form.Label>
