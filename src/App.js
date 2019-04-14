@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Organization } from './Organization';
-import { Jumbotron } from 'reactstrap';
+import{ Home } from './Home';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Jumbotron } from 'reactstrap';
 
 import './App.css';
 
@@ -9,20 +10,16 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Jumbotron id = "title">The Home Project</Jumbotron>
-        <React.Fragment>
-          <style>{'body {background-color: #fafaed;}'}</style>
-          <style>
-          @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600');}
-          </style>
-          <div className="container">
-          <button id = "orgButton">
-            <Link style={{textDecoration:'none'}} to="/organization">Organization?</Link>
-            {' '}
-          </button>
-            <Route path="/organization" component={ Organization } />
-          </div>
-        </React.Fragment>
+        <div>
+          <Navbar className='nav-wrapper' dark expand="lg">
+                <NavbarBrand style={{color:"black", fontSize:"50px", padding:"40px"}}href = "/">The Home Project</NavbarBrand>
+                 <Link to="/Organization">Organization?</Link>
+          </Navbar>
+          <Switch>
+            <Route exact path = "/" component = { Home } />
+            <Route path="/Organization" component = { Organization } />
+          </Switch>
+        </div>
       </Router>
     );
   }

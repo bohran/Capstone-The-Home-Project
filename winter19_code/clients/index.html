@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Home Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel=icon type="image/png" href="https://img.icons8.com/plasticine/100/000000/home-page.png">
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+    <header class="d-flex jumbotron jumbotron-fluid bg-dark text-warning">
+        <div class="row">
+            <!-- <div class="col-sm-8 col-lg-4"> -->
+            <div class="col-md-7">
+                <h1>The Home Project</h1>
+                <div>
+                    <p class='tagline1'>An Engagement and Advocacy Initiative with One Goal:</p>
+                </div>
+                <div>
+                    <p class='tagline2'>A Home for Everyone in King County</p>
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <!-- <div class="col-sm-8 col-lg-4"> -->
+            <div class="col-md-5">
+                <div class="row justify-content-end" id="header_row">
+                    <p class="lead">You Are Viewing <br> Activism Events</p>
+                </div>
+                <div class="row justify-content-end">
+                    <button class="orgButton"> <a class="orgLink" href="./pages/org.html">
+                            Organization?
+                        </a> </button>
+                </div>
+            </div>
+            <!-- </div> -->
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-left">
+        <a class="navbar-brand" href>Categories</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="exampleRadios1"
+                                value="option1">
+                            <label class="form-check-label">
+                                Give
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="exampleRadios2"
+                                value="option2">
+                            <label class="form-check-label">
+                                Learn
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="exampleRadios3"
+                                value="option3">
+                            <label class="form-check-label">
+                                Volunteer
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="exampleRadios4"
+                                value="option4" checked>
+                            <label class="form-check-label">
+                                Activism
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="exampleRadios5"
+                                value="option5">
+                            <label class="form-check-label">
+                                All
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href>Filters</a>
+                </li>
+                <div class="btn-group">
+                    <div class="form-group">
+                        <label for="usr">City:</label>
+                        <button class="btn btn-warning btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span id="city-selected">Choose option</span><span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu where">
+                            <li><a class="dropdown-item" href="#">All</a></li>
+                            <li><a class="dropdown-item" href="#">Seattle</a></li>
+                            <li><a class="dropdown-item" href="#">Bellevue</a></li>
+                            <li><a class="dropdown-item" href="#">Everett</a></li>
+                            <li><a class="dropdown-item" href="#">Burien</a></li>
+                            <li><a class="dropdown-item" href="#">Lakewood</a></li>
+                            <li><a class="dropdown-item" href="#">Tacoma</a></li>
+                            <li><a class="dropdown-item" href="#">Olympia</a></li>
+                            <li><a class="dropdown-item" href="#">Bothell</a></li>
+                            <li><a class="dropdown-item" href="#">Kirkland</a></li>
+                            <li><a class="dropdown-item" href="#">Renton</a></li>
+                            <li><a class="dropdown-item" href="#">Kent</a></li>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <div class="form-group">
+                        <label for="usr">Date:</label>
+                        <button class="btn btn-warning btn-sm dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span id="date-selected">Choose option</span><span class="caret"></span>
+                        </button>
+                        <div class="dropdown-menu when">
+                            <a class="dropdown-item" href="#">All</a>
+                            <a class="dropdown-item" href="#">Today</a>
+                            <a class="dropdown-item" href="#">Tomorrow</a>
+                            <a class="dropdown-item" href="#">This Weekend</a>
+                            <a class="dropdown-item" href="#">This Week</a>
+                            <a class="dropdown-item" href="#">Next Weekend</a>
+                            <a class="dropdown-item" href="#">This Month</a>
+                            <a class="dropdown-item" href="#">Next Weekend</a>
+                        </div>
+                    </div>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <a class="navbar-brand" href>Services</a>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Housing/Shelter
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Legal/Employment
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Day Centers
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Basic Needs
+                            </label>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Health & Wellness
+                            </label>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <main class="d-flex flex-wrap">
+        <div class="container">
+            <div class="row">
+
+                <!-- Card 1 -->
+                <div class="col col-lg-6 d-flex">
+                    <div class="card mb-4 h-100">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-auto">
+                                    <img class="pb-3" src="img/bill.jpg" alt="bill signing">
+                                </div>
+
+                                <div class="col-sm">
+                                    <div class="cardTitle">
+                                        <h2 class="card-title text-truncate">Bill Signing in City Hall</h2>
+                                    </div>
+                                    <div class="description">
+                                        <p class="card-text">We need representation for a bill ensuring temporary
+                                            housing for veterans experiencing homelessness.</p>
+                                    </div>
+                                    <div class="cardBtn">
+                                        <button id="learnMoreButton" type="button" class="btn btn-dark"
+                                            data-toggle="modal" data-target="#myModalLong">
+                                            Learn More
+                                        </button>
+                                    </div>
+                                    <div class="modal fade" id="myModalLong" tabindex="-1" role="dialog"
+                                        aria-labelledby="myModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="myModalLongTitle">Event Information
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span class="close" aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        <div><span class="modalMark">Organization: </span><span
+                                                                class="modalOrg"><a href="">City of
+                                                                    Seattle</a></span><span
+                                                                class="modalDescription"></span></div>
+                                                        <span class="modalMark">Description: </span><span
+                                                            class="modalDescription">Join us at City Hall to sign a bill
+                                                            for more affordable housing in Seattle! We need you to
+                                                            represent your community in action to our lawmakers!</span>
+                                                    </div>
+                                                    <div><span class="modalMark">People Needed: </span><span
+                                                            class="modalDescription">7</span></div>
+                                                    <div><span class="modalMark">Date and Time: </span><span
+                                                            class="modalDescription">04/22/2019 at 6:00pm</span></div>
+                                                    <div><span class="modalMark">Location: </span><span
+                                                            class="modalDescription">Seattle City Hall</span></div>
+                                                    <div><span class="modalMark">Contact: </span>
+                                                        <span class="modalDescription">Erica Admassar-(330)
+                                                            555-4217</span></div>
+                                                    <!-- <div><span class="modalInfoLink"><a href="">Click for more
+                                                                information</a></span></div> -->
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col col-lg-6 d-flex">
+                    <div class="card mb-4 h-100">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-auto">
+                                    <img class="pb-3" src="img/catholics.jpg" alt="catholics for the common good logo">
+                                </div>
+                                <div class="col-sm">
+                                    <div class="cardTitle">
+                                        <h2 class="card-title text-truncate">Catholic Advocacy Day</h2>
+                                    </div>
+                                    <div class="description">
+                                        <p class="card-text">Meet with your legislators to advocate for just and
+                                            equitable policies. Its time for you to use your voice for the ultimate
+                                            power!</p>
+                                    </div>
+                                    <div class=cardBtn>
+                                        <a class="btn btn-dark" href="#" role="button" data-toggle="modal"
+                                            data-target="#myModalLong2">Learn More</a>
+                                    </div>
+                                    <div class="modal fade" id="myModalLong2" tabindex="-1" role="dialog"
+                                        aria-labelledby="myModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="myModalLongTitle">Event Information
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span class="close" aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        <div><span class="modalMark">Organization: </span><span
+                                                                class="modalOrg"><a href="">Washington State Catholic
+                                                                    Conference</a></span><span
+                                                                class="modalDescription"></span></div>
+                                                        <span class="modalMark">Description: </span><span
+                                                            class="modalDescription">Catholic Advocacy Day is an
+                                                            opportunity to meet with your legislators to advocate for
+                                                            just and equitable policies. Issues we will address may
+                                                            include life, economic justice, housing and education,
+                                                            access to health care, environment, and restorative/criminal
+                                                            justice. Priority issues have the potential to change
+                                                            depending on timely developments and bills up for
+                                                            consideration. Even if you are not comfortable speaking to
+                                                            an issue, your presence is a great witness of your concern
+                                                            and commitment. </span>
+                                                    </div>
+                                                    <div><span class="modalMark">People Needed: </span><span
+                                                            class="modalDescription">25</span></div>
+                                                    <div><span class="modalMark">Date and Time: </span><span
+                                                            class="modalDescription">Thursday February 7, 2019 All
+                                                            Day</span></div>
+                                                    <div><span class="modalMark">Location: </span><span
+                                                            class="modalDescription">Washington State Capitol</span>
+                                                    </div>
+                                                    <div><span class="modalMark">Contact: </span>
+                                                        <span class="modalDescription">
+                                                            Register via phone at 206.223.1138
+                                                            catholicadvocacyday@ipjc.org.</span></div>
+                                                    <div><span class="modalInfoLink"><a
+                                                                href="https://wacatholics.org/stay-informed/cad2019-1?fbclid=IwAR2O435LNAh1hGvg0dXmKqlkXwMXTx7Qzj0L5XQjvx9WKxDJDB0YsCfQvho"
+                                                                target="_blank">Click for more
+                                                                information</a></span></div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col col-lg-6 d-flex">
+                    <div class="card mb-4 h-100">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-auto">
+                                    <img class="pb-3" src="img/march.jpg" alt="march for immigrant families">
+                                </div>
+                                <div class="col-sm">
+                                    <div class="cardTitle">
+                                        <h2 class="card-title text-truncate">Walking + Witnessing for Immigrant Families
+                                        </h2>
+                                    </div>
+                                    <div class="description">
+                                        <p class="card-text">Join people from parishes across Western Washington in a
+                                            prayerful walk showing solidarity with immigrant families.</p>
+                                    </div>
+                                    <div class=cardBtn>
+                                        <a class="btn btn-dark" href="#" role="button" data-toggle="modal"
+                                            data-target="#myModalLong3">Learn More</a>
+                                    </div>
+                                    <div class="modal fade" id="myModalLong3" tabindex="-1" role="dialog"
+                                        aria-labelledby="myModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="myModalLongTitle">Event Information
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span class="close" aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        <div><span class="modalMark">Organization: </span><span
+                                                                class="modalOrg"><a href="">Washington State Catholic
+                                                                    Conference</a></span><span
+                                                                class="modalDescription"></span></div>
+                                                        <span class="modalMark">Description: </span><span
+                                                            class="modalDescription">Parish communities are encouraged
+                                                            to make the pilgrimage over the course of two weeks to the
+                                                            Northwest Detention Center.
+                                                            Whether you're able to participate in a short leg, the full
+                                                            two weeks, or only in prayer... all are welcome. The walk
+                                                            will conclude with a Mass at the Northwest Detention Center
+                                                            on May 11th.</span>
+                                                    </div>
+                                                    <div><span class="modalMark">People Needed: </span><span
+                                                            class="modalDescription">250</span></div>
+                                                    <div><span class="modalMark">Date and Time: </span><span
+                                                            class="modalDescription">04/22/2019 at 6:00pm</span></div>
+                                                    <div><span class="modalMark">Location: </span><span
+                                                            class="modalDescription">From local Parishes to
+                                                            NW Detention Center
+                                                            1623 East J Street
+                                                            Tacoma, Wa 98421</span></div>
+                                                    <div><span class="modalMark">Contact: </span>
+                                                        <span class="modalDescription">Erin Maguire
+                                                            Catholic Community Services
+                                                            (206) 327-2474</span></div>
+                                                    <div><span class="modalInfoLink"><a
+                                                                href="https://wacatholics.org/PrayerWalk2019?fbclid=IwAR3G5MpQv49Zu6w_lHf9upOQnuydRLnDKW1eYvcAogbiKTdVTTjgJvNgY7w"
+                                                                target="_blank">Click for more
+                                                                information</a></span></div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Save
+                                                        changes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Card 4 -->
+                <div class="col col-lg-6 d-flex">
+                    <div class="card mb-4 h-100">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-auto">
+                                    <img class="pb-3" src="img/advocacy.jpg" alt="advocacy protest">
+                                </div>
+                                <div class="col-sm">
+                                    <div class="cardTitle">
+                                        <h2 class="card-title text-truncate">Housing and Homeless Advocacy Day</h2>
+                                    </div>
+                                    <div class="description">
+                                        <p class="card-text">Let your lawmakers know that you care about finding
+                                            solutions to the affordable housing and homelessness crisis in
+                                            Washington.
+                                        </p>
+                                    </div>
+                                    <div class=cardBtn>
+                                        <a class="btn btn-dark" href="#" role="button" data-toggle="modal"
+                                            data-target="#myModalLong4">Learn More</a>
+                                    </div>
+                                    <div class="modal fade" id="myModalLong4" tabindex="-1" role="dialog"
+                                        aria-labelledby="myModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="myModalLongTitle">Event Information
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span class="close" aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        <div><span class="modalMark">Organization: </span><span
+                                                                class="modalOrg"><a href="">Washington Low Income
+                                                                    Housing Alliance</a></span><span
+                                                                class="modalDescription"></span></div>
+                                                        <span class="modalMark">Description: </span><span
+                                                            class="modalDescription">At Advocacy Day you will:
+                                                            Gain inside information on housing policies;
+                                                            Attend workshops to build your advocacy skills;
+                                                            Meet your lawmakers alongside experienced advocates in
+                                                            pre-scheduled meetings;
+                                                            Stand with the growing movement fighting for safe, healthy,
+                                                            affordable homes for everyone in Washington!</span>
+                                                    </div>
+                                                    <div><span class="modalMark">People Needed: </span><span
+                                                            class="modalDescription">100</span></div>
+                                                    <div><span class="modalMark">Date and Time: </span><span
+                                                            class="modalDescription">Thursday, February 28, 2019 at
+                                                            8am</span></div>
+                                                    <div><span class="modalMark">Location: </span><span
+                                                            class="modalDescription">United Churches of Olympia</span>
+                                                    </div>
+                                                    <div><span class="modalMark">Contact: </span>
+                                                        <span class="modalDescription">hhad@wliha.org</span></div>
+                                                    <div><span class="modalInfoLink"><a
+                                                                href="https://www.wliha.org/housing-and-homelessness-advocacy-day"
+                                                                target="_blank">Click for more
+                                                                information</a></span></div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </main>
+</body>
+
+<!-- js scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="js/index.js"></script>
+
+</body>
+
+</html>
