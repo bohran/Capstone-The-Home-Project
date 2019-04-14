@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { AddEvent } from './AddEventForm';
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Navbar} from "react-bootstrap";
-import './css/Home.css';
-
-
+import './css/Events.css';
 
 export class Events extends Component{
     render(){

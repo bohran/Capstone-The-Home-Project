@@ -3,7 +3,7 @@
 
 @font-face{
     font-family: 'Nunito Sans 400', sans-serif;
-    src:url(../fonts/Nunito_Sans/NunitoSans-BlackItalic.ttf)
+    src:url(../fonts/Nunito_Sans/NunitoSans-Bold.ttf)
 }
 
 @font-face{
@@ -11,5 +11,5 @@
     src:url(../fonts/Nunito_Sans/NunitoSans-ExtraBold.ttf)
 }
 .homeBody{
-    font-family: 'Nunito Sans 400';
+    font-family: 'Nunito Sans 400' sans-serif;
 }

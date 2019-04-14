@@ -11,12 +11,12 @@
     src:url(../fonts/Nunito_Sans/NunitoSans-BlackItalic.ttf)
 }
 
-#bootstrap-overrides .title{
-    font-family: 'Nunito Sans 600';
+.title{
+    font-family: 'Nunito Sans 600', sans-serif;
 }
-#bootstrap-overrides .links{
-    font-family: 'Nunito Sans 600';
-    font-size:"25px";
-    padding-left:"40px"
+.links{
+    font-family: 'Nunito Sans 600', sans-serif;
+    font-size:"40px";
+    padding:"60px";
 }
 
