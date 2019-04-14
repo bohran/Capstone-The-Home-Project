@@ -11,9 +11,12 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar className='nav-wrapper' dark expand="lg">
-                <NavbarBrand style={{color:"black", fontSize:"50px", padding:"40px"}}href = "/">The Home Project</NavbarBrand>
-                 <Link to="/Organization">Organization?</Link>
+          <Navbar className='nav-wrapper' dark expand="lg"style={{outerHeight:"100px"}}>
+                <NavbarBrand className = "title" style={{color:"black", fontSize:"50px", paddingRight:"250px", paddingLeft:"25px"}}href = "/">The Home Project</NavbarBrand>
+                 <Link to="/Events" style={{fontSize:"25px", paddingLeft:"200px"}}>Events</Link>
+                 <Link to="/About" style={{fontSize:"25px",paddingLeft:"40px"}}>About Us</Link>
+                 <Link to="/Contact" style={{fontSize:"25px",paddingLeft:"40px"}}>Contact Us</Link>
+             
           </Navbar>
           <Switch>
             <Route exact path = "/" component = { Home } />
