@@ -1,9 +1,19 @@
 import React, { Component } from "react";
+import { AddEvent } from './AddEventForm';
+import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Navbar} from "react-bootstrap";
+import './css/Home.css';
+
+
 
 export class Events extends Component{
     render(){
         return(
-            <div>events page</div>
+            <div>
+                <button className = "button">
+                <Link className = "buttonText" to="/AddEvent">+Add Event</Link>
+                </button>
+            </div>
         )
     }
 }
