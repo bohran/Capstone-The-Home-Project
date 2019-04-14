@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>The Home Project</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/org.css" />
+  </head>
+
+  <body>
+      <div class="formContainer">
+    <h2>ADD AN EVENT</h2>
+      </br>
+    <h3>Select Your Organization:</h3>
+
+    <form action="events.html" id="storedOrgs" style="display: block;">
+      <div class="orgForm">
+          <label for="exampleFormControlSelect1" class="title">Organization Name</label>
+          <select class="form-control" placeholder="Select Organization">
+            <option>Africatown</option>
+            <option>Africatown Community Land Trust</option>
+            <option>A Way Home Washington</option>
+            <option>Abstinence Housing and Human Services</option>
+            <option>Accelerator YMCA</option>
+            <option>Adra P. Berry Food Bank</option>
+            <option>Alcoholics and Addicts Helping Alcoholics and Addicts</option>
+            <option>All Home</option>
+            <option>Arcadia House</option>
+            <option>Atlantic Street Center</option>
+            <option>Attain Housing</option>
+            <option>Auburn Food Bank</option>
+            <option>Backpack Brigade</option>
+            <option>Ballard Food Bank</option>
+            <option>Bellwether Housing</option>
+            <option>Bethany Community Church</option>
+            <option>Black Diamong Community Center</option>
+            <option>Blessed Sacrament Church</option>
+            <option>Bothell Community Kitchen</option>
+            <option>Bread of Life Mission</option>
+            <option>Bridge Care Center</option>
+            <option>Broadview</option>
+            <option>Building Changes</option>
+            <option>Capitol Hill Housing Foundation</option>
+            <option>Carnation Public Food Bank</option>
+            <option>Catholic Community Services of Western Washington</option>
+            <option>Chief Seattle Club</option>
+            <option>Child Care Resources</option>
+            <option>Childhaven</option>
+            <option>Christ Community Free Clinic</option>
+            <option>Community Caregiving Network</option>
+            <option>Community Psychiatric Clinic</option>
+            <option>Compass Housing Alliance</option>
+            <option>Corporation for Supportive Housing</option>
+            <option>Congregations for the Homeless</option>
+          </select>
+        </div>
+        <input type="submit" class="submitOrgButton" value="Next">
+      </form>
+          
+      <subtitle class="newOrgLink" onclick="openOrgForm()"> Organization not listed? </subtitle>
+      
+      <form action="events.html" id="addNewOrg" style="display: none;">
+        <div class="orgForm">
+          <label for="inputName" class="title">Organization Name</label>
+          <input
+            type="name"
+            class="form-control"
+            id="exampleInputName1"
+            aria-describedby="nameHelp"
+            placeholder="Enter Name"
+            required
+          />
+        </div>
+        <div class="orgForm">
+          <label for="exampleFormControlSelect1" class="title">Organization Category</label>
+          <select class="form-control" id="exampleFormControlSelect1" required>
+            <option>Government</option>
+            <option>Philantropy</option>
+            <option>Housing</option>
+            <option>Shelter</option>
+            <option>Rapid Re-Housing</option>
+            <option>Transitional Housing</option>
+            <option>Urban Encampments</option>
+            <option>Housing Search</option>
+            <option>Diversion</option>
+            <option>Safe Parking</option>
+            <option>Women's/Family Drop-In</option>
+            <option>YYA Drop-In</option>
+            <option>Men's Drop-In</option>
+            <option>General Population Drop-In</option>
+            <option>Legal Services/Eviction</option>
+            <option>Case Management</option>
+            <option>Employment Search</option>
+            <option>Clothing</option>
+            <option>Food</option>
+            <option>Shower/Laundry</option>
+            <option>Toiletries</option>
+            <option>Storage</option>
+            <option>Medical/Health</option>
+            <option>Social/Emotional</option>
+            <option>Dental Care</option>
+            <option>Addiction Recovery</option>
+            <option>Domestic Violence Support</option>
+            <option>Emergency/Crisis Hotline</option>
+          </select>
+        </div>
+        <div class="orgForm">
+          <label for="OrganizationDescription" class="title">
+            Organization Mission Statment</label
+          >
+          <input class="form-control" type="text" placeholder="Enter Mission Statement"/>
+        </div>
+        <div class="orgForm">
+          <label for="media" class="title">Add Media</label>
+          <input
+            type="file"
+            class="form-control-file"
+            id="exampleFormControlFile1"
+          />
+        </div>
+        <div class="orgForm">
+          <label for="OrganizationContact" class="title"> Organization Contact</label> </br>
+          <p class="subtitle"> This contact information will be displayed for the public </p>
+          <label for="OrganizationContactName" class="subSection"> Name or Role </label> <label class="subtitle">(e.g. Esha More, Main Office)</label>
+          <input class="form-control" type="text" placeholder="Enter Name"/>
+          <label for="OrganizationContactPhone" class="subSection"> Phone </label> 
+          <input class="form-control" type="text" placeholder="Enter Phone"/>
+          <label for="OrganizationContactEmail" class="subSection"> Email </label>
+          <input class="form-control" type="text" placeholder="Enter Email"/>
+        </div>
+        <div class="orgForm">
+          <label for="OrganizationContact" class="title"> Organization Website (Optional)</label>
+          <input class="form-control" type="text" placeholder="Enter Site"/>
+        </div>
+        <input type="submit" class="submitOrgButton" value="Next">
+      </form>
+    </br>
+      <!-- <button id="oldSubmitButton" class="submitOrgButton"> <a class="eventLink" href="./events.html"> Next </a> </button> -->
+  </div>
+  </body>
+  <script src="../js/org.js"></script>
+</html>
