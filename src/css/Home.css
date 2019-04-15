@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:600');
+
+@font-face{
+    font-family: 'Nunito Sans 400', sans-serif;
+    src:url(../fonts/Nunito_Sans/NunitoSans-Bold.ttf)
+}
+
+@font-face{
+    font-family: 'Nunito Sans 600', sans-serif;
+    src:url(../fonts/Nunito_Sans/NunitoSans-ExtraBold.ttf)
+}
+.homeBody{
+    font-family: 'Nunito Sans 400' sans-serif;
+}

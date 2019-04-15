@@ -1,26 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400');
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:600');
 
-
-
 @font-face{
     font-family: 'Nunito Sans 400';
-    src:url()
+    src:url(../fonts/Nunito_Sans/NunitoSans-Regular.ttf)
 }
 
 @font-face{
     font-family: 'Nunito Sans 600', sans-serif;
-    src: url('https://fonts.googleapis.com/css?family=Nunito+Sans:600');
+    src:url(../fonts/Nunito_Sans/NunitoSans-BlackItalic.ttf)
 }
 
 .title{
     font-family: 'Nunito Sans 600', sans-serif;
 }
-
 .links{
     font-family: 'Nunito Sans 600', sans-serif;
+    font-size:"40px";
+    padding:"60px";
 }
 
-.homeBody{
-    font-family: 'Nunito Sans 400', sans-serif;
-}

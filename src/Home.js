@@ -4,7 +4,7 @@ import 'mdbreact/dist/css/mdb.css';
 import 'mdbreact/dist/css/style.css';
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Organization } from './AddOrganizationForm';
-import './Home.css';
+import './css/Home.css';
 
 export class Home extends Component {
     render() {
