@@ -1,7 +1,75 @@
-.button{
-    display: inline;
+body{
+    font-family: 'Nunito Sans', sans-serif;
+    color: #6e6e70;
+}
+.sidebar{
+    float: left;
+    margin-top: 15px; 
+    padding-left: 20px;
+}
+.add{
+    float: right;
+}
+.btn-secondary{
+    background-color: #cf0f2e !important;
+    overflow: visible;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-.buttonText{
-    font-size: "60px";
+.card{
+    width: 400px;
+    height: 475px;
+    margin-left: 40px;
+    margin-right: 40px; 
+    margin: 20px; 
+    /* display: flex;
+    flex-direction: row; */
+}
+/* .card-img {
+    order: 1;
+} */
+
+.card-body {
+    order: 1;
+}
+/* .eventCards{
+    padding-top: 20px;
+    max-height: 100px;
+} */
+
+/* .col-sm-6{
+    margin-top: 10px; 
+    margin-bottom: 10px;
+}
+.row{
+    margin-left: 10px; 
+    margin-right: 10px;
+} */
+.card-img{
+    width: auto;
+    max-width: 400px;
+    height:auto;
+    max-height: 275px;
+    min-height: 275px;
+}
+.card-body{
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 18px;
+}
+
+.card-title{
+    font-size: 22px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.card-subtitle{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

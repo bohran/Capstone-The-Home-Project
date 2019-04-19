@@ -1,22 +1,29 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400');
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:600');
-
-@font-face{
-    font-family: 'Nunito Sans 400';
-    src:url(../fonts/Nunito_Sans/NunitoSans-Regular.ttf)
+body{
+    font-family: 'Nunito Sans', sans-serif;
+    background-color:#fafaed;
 }
-
-@font-face{
-    font-family: 'Nunito Sans 600', sans-serif;
-    src:url(../fonts/Nunito_Sans/NunitoSans-BlackItalic.ttf)
-}
-
 .title{
-    font-family: 'Nunito Sans 600', sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+    color: #fafaed;
+    padding-right:60px;
 }
 .links{
-    font-family: 'Nunito Sans 600', sans-serif;
-    font-size:"40px";
-    padding:"60px";
+    font-weight: 600;
+    font-size:20px;
+    padding: 30px;
+    color: #fafaed;
+}
+.nav-wrapper{
+    background-color:#177283;
+    width:100%;
 }
 
+.navtitle{
+    width: 50%; 
+    text-align: left;
+}
+.tabs{
+    width:50%;
+    text-align: right;
+}
