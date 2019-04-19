@@ -5,6 +5,8 @@ import "./css/Organization.css";
 
 export class Organization extends Component {
   render() {
+    console.log(this.props.form);
+    
     return (
       <div>
         <h2 className="orgPageTitle">SELECT AN ORGANIZATION</h2>

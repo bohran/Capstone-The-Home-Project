@@ -5,11 +5,14 @@
     font-family: 'Nunito Sans 400', sans-serif;
     src:url(../fonts/Nunito_Sans/NunitoSans-Bold.ttf)
 }
-
 @font-face{
     font-family: 'Nunito Sans 600', sans-serif;
     src:url(../fonts/Nunito_Sans/NunitoSans-ExtraBold.ttf)
 }
+body{
+    color: #6e6e70;
+}
 .homeBody{
     font-family: 'Nunito Sans 400' sans-serif;
+    text-align: center;
 }
