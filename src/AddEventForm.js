@@ -1,31 +1,9 @@
 import React, { Component } from "react";
-import { Form, Col, Button } from "react-bootstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
-export class AddEvent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      eventName: "",
-      eventDescr: "",
-      eventType: "",
-      date: "",
-      startTime: "",
-      endTime: "",
-      eventAddress: "",
-      eventCity: "",
-      eventCount: "",
-      eventZip: "",
-      creatorFName: "",
-      creatorLName: "",
-      creatorEmail: "",
-      contactFName: "",
-      contactLName: "",
-      contactEmail: ""
-    };
-  }
+export default class NewEvent extends Component {
   render() {
     return (
       <div>
@@ -34,146 +12,196 @@ export class AddEvent extends Component {
         <div className="addEvent">
           <Form>
             <h5>Event Information:</h5>
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridTitle">
-                <Form.Label>Event Title</Form.Label>
-                <Form.Control
-                  type="eventTitle"
-                  placeholder="Enter Event Title"
-                />
-              </Form.Group>
-
-              <Form.Group controlId="formGridCategory">
-                <h5>Event Category</h5>
-                <Form.Control as="select">
-                  <option>Choose...</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                </Form.Control>
-              </Form.Group>
-            </Form.Row>
-
-            <Form.Group controlId="formGridDescr">
-              <Form.Label>Event Description</Form.Label>
-              <Form.Control
-                type="eventDescr"
-                placeholder="Enter Event Description"
+            <FormGroup>
+              <Label>Event Title</Label>
+              <Input
+                type="text"
+                name="title"
+                placeholder="Enter Event Title"
+                value={this.props.form.title}
+                onChange={this.props.onChange}
               />
-            </Form.Group>
+            </FormGroup>
 
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridDate">
-                <Form.Label>Event Date</Form.Label>
-                <Form.Control type="eventDate" placeholder="Enter Event Date" />
-              </Form.Group>
+            <FormGroup>
+              <h5>Event Category</h5>
+              <Input
+                type="select"
+                name="eventType"
+                value={this.props.form.eventType}
+                onChange={this.props.onChange}
+              >
+                <option>Choose...</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </Input>
+            </FormGroup>
 
-              <Form.Group as={Col} controlId="formGriStartTime">
-                <Form.Label>Start Time</Form.Label>
-                <Form.Control
-                  type="startTime"
-                  placeholder="Enter Event Start Time"
-                />
-              </Form.Group>
+            <FormGroup>
+              <Label>Event Description</Label>
+              <Input
+                type="text"
+                name="eventDescr"
+                placeholder="Enter Event Description"
+                value={this.props.form.eventDescr}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
 
-              <Form.Group as={Col} controlId="formGriEndTime">
-                <Form.Label>End Time</Form.Label>
-                <Form.Control
-                  type="endTime"
-                  placeholder="Enter Event End Time"
-                />
-              </Form.Group>
-            </Form.Row>
+            <FormGroup>
+              <Label>Event Date</Label>
+              <Input
+                type="text"
+                name="date"
+                placeholder="Enter Event Date"
+                value={this.props.form.date}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
 
-            <Form.Group as={Col} controlId="formGriStartTime">
-              <Form.Label>Address</Form.Label>
-              <Form.Control type="startTime" placeholder="e.g. 1234 Main St." />
-            </Form.Group>
+            <FormGroup>
+              <Label>Start Time</Label>
+              <Input
+                type="text"
+                name="startTime"
+                placeholder="Enter Event Start Time"
+                value={this.props.form.startTime}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
 
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridCity">
-                <Form.Label>Event City</Form.Label>
-                <Form.Control type="eventCity" placeholder="e.g. Seattle" />
-              </Form.Group>
+            <FormGroup>
+              <Label>End Time</Label>
+              <Input
+                type="text"
+                name="endTime"
+                placeholder="Enter Event End Time"
+                value={this.props.form.endTime}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
 
-              <Form.Group as={Col} controlId="formGriCounty">
-                <Form.Label>Event County</Form.Label>
-                <Form.Control type="eventCounty" placeholder="e.g. King" />
-              </Form.Group>
+            <FormGroup>
+              <Label>Address</Label>
+              <Input
+                type="text"
+                name="eventAddress"
+                placeholder="e.g. 1234 Main St."
+                value={this.props.form.eventAddress}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
 
-              <Form.Group as={Col} controlId="formGriZip">
-                <Form.Label>Event Zip Code</Form.Label>
-                <Form.Control type="endTime" placeholder="e.g. 98105" />
-              </Form.Group>
-            </Form.Row>
+            <FormGroup>
+              <Label>Event City</Label>
+              <Input
+                type="text"
+                name="eventCity"
+                placeholder="e.g. Seattle"
+                value={this.props.form.eventCity}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Event County</Label>
+              <Input
+                type="text"
+                name="eventCounty"
+                placeholder="e.g. King"
+                value={this.props.form.eventCounty}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Event Zip Code</Label>
+              <Input
+                type="text"
+                name="eventZip"
+                placeholder="e.g. 98105"
+                value={this.props.form.eventZip}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
 
             <h5>Event Contact Information:</h5>
 
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridFName">
-                <Form.Label>First Name</Form.Label>
-                <Form.Control
-                  type="contactFName"
-                  placeholder="Enter First Name"
-                />
-              </Form.Group>
-
-              <Form.Group as={Col} controlId="formGridLName">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control
-                  type="contactLName"
-                  placeholder="Enter Last Name"
-                />
-              </Form.Group>
-            </Form.Row>
-
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="contactEmail"
-                placeholder="Enter Contact Email"
+            <FormGroup>
+              <Label>First Name</Label>
+              <Input
+                type="text"
+                name="creatorFName"
+                placeholder="Enter First Name"
+                value={this.props.form.creatorFName}
+                onChange={this.props.onChange}
               />
-            </Form.Group>
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Last Name</Label>
+              <Input
+                type="text"
+                name="creatorLName"
+                placeholder="Enter Last Name"
+                value={this.props.form.creatorLName}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Email</Label>
+              <Input
+                type="text"
+                name="creatorEmail"
+                placeholder="Enter Contact Email"
+                value={this.props.form.creatorEmail}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
 
             <h5>Event Coordinator Information:</h5>
 
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridCoordFName">
-                <Form.Label>First Name</Form.Label>
-                <Form.Control
-                  type="coordinateFName"
-                  placeholder="Enter First Name"
-                />
-              </Form.Group>
-
-              <Form.Group as={Col} controlId="formGridCoordLName">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control
-                  type="coordinateLName"
-                  placeholder="Enter Last Name"
-                />
-              </Form.Group>
-            </Form.Row>
-
-            <Form.Group as={Col} controlId="formGridCoordEmail">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="coordinateEmail"
-                placeholder="Enter Contact Email"
+            <FormGroup>
+              <Label>First Name</Label>
+              <Input
+                type="text"
+                name="coordinatorFNmae"
+                placeholder="Enter First Name"
+                value={this.props.form.coordinatorFName}
+                onChange={this.props.onChange}
               />
-            </Form.Group>
+            </FormGroup>
 
-            <Form.Group controlId="formGridMedia">
+            <FormGroup>
+              <Label>Last Name</Label>
+              <Input
+                type="text"
+                name="coordinatorLName"
+                placeholder="Enter Last Name"
+                value={this.props.form.coordinatorLName}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Email</Label>
+              <Input
+                type="text"
+                name="coordinatorEmail"
+                placeholder="Enter Contact Email"
+                value={this.props.form.coordinatorEmail}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
+
+            <FormGroup>
               <Button variant="" type="addMedia">
                 Add Media
               </Button>
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
+            </FormGroup>
           </Form>
-          ;
         </div>
       </div>
     );

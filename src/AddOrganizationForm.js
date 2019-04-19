@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Form, Col, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
-export class Organization extends Component {
+class AddOrganizationForm extends Component {
   render() {
     console.log(this.props.form);
     
@@ -11,110 +12,137 @@ export class Organization extends Component {
       <div>
         <h2 className="orgPageTitle">SELECT AN ORGANIZATION</h2>
 
-        <div className="selectOrg">
+        {/* <div className="selectOrg">
           <Form>
-            <Form.Group controlId="formGridName">
+            <FormGroup controlId="formGridName">
               <h5>Organization Name</h5>
-              <Form.Control as="select">
+              <Input
+                type="select"
+                mame="name"
+                onChange={this.handleChange}
+                value={this.props.form.name}
+              >
                 <option>Choose...</option>
                 <option>Option 1</option>
                 <option>Option 2</option>
                 <option>Option 3</option>
-              </Form.Control>
-            </Form.Group>
+              </Input>
+            </FormGroup>
           </Form>
-        </div>
-        <subtitle className="newOrgButton">
+        </div> */}
+
+        <h6 className="newOrgButton">
           Don't see your Organization listed? Click Here.
-        </subtitle>
+        </h6>
+
+        {/* Adding a new Form */}
         <div className="addOrg">
           <Form>
             <h5>Organization Information:</h5>
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridName">
-                <Form.Label>Organization Name</Form.Label>
-                <Form.Control
-                  type="orgName"
+              <FormGroup>
+                <Label>Organization Name</Label>
+                <Input
+                  type="text"
+                  name="name"
                   placeholder="Enter Organization Name"
+                  value={this.props.form.name}
+                  onChange={this.props.onChange}
                 />
-              </Form.Group>
-              <Form.Group controlId="formGridCategory">
-                <h5>Organization Category</h5>
-                <Form.Control as="select">
+              </FormGroup>
+              <FormGroup >
+                <Label for="exampleSelect">Organization Category</Label>
+                <Input type="select" name="category"
+                value={this.props.form.category}
+                onChange={this.props.onChange}>
                   <option>Choose...</option>
                   <option>Option 1</option>
                   <option>Option 2</option>
                   <option>Option 3</option>
-                </Form.Control>
-              </Form.Group>
-            </Form.Row>
-            <Form.Group controlId="formGridMission">
-              <Form.Label>Organization Mission Statement</Form.Label>
-              <Form.Control
-                type="orgMissStatement"
+                </Input>
+              </FormGroup>
+            <FormGroup>
+              <Label>Organization Mission Statement</Label>
+              <Input
+                type="text"
+                name="mission"
                 placeholder="Enter Mission Statement"
+                value={this.props.form.mission}
+                onChange={this.props.onChange}
               />
-            </Form.Group>
+            </FormGroup>
 
             <h5>Organization Contact:</h5>
 
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridCName">
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type="contactName"
+              <FormGroup>
+                <Label>Name</Label>
+                <Input
+                  type="text"
+                  name="contactName"
                   placeholder="Enter Contact Name"
+                  value={this.props.form.contactName}
+                onChange={this.props.onChange}
                 />
-              </Form.Group>
+              </FormGroup>
 
-              <Form.Group as={Col} controlId="formGridCRole">
-                <Form.Label>Role</Form.Label>
-                <Form.Control
-                  type="contactRole"
+              <FormGroup>
+                <Label>Role</Label>
+                <Input
+                  type="text"
+                  name="contactRole"
                   placeholder="Enter Contact Role"
+                  value={this.props.form.role}
+                  onChange={this.props.onChange}
                 />
-              </Form.Group>
-            </Form.Row>
+              </FormGroup>
 
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridCPhone">
-                <Form.Label>Phone</Form.Label>
-                <Form.Control
-                  type="contactPhone"
+              <FormGroup>
+                <Label>Phone</Label>
+                <Input
+                  type="text"
+                  name="contactPhone"
                   placeholder="Enter Contact Phone"
+                  value={this.props.form.contactPhone}
+                  onChange={this.props.onChange}
                 />
-              </Form.Group>
+              </FormGroup>
 
-              <Form.Group as={Col} controlId="formGridCEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="contactPhone"
+              <FormGroup>
+                <Label>Email</Label>
+                <Input
+                  type="email"
+                  name="contactEmail"
                   placeholder="Enter Contact Email"
+                  value={this.props.form.contactEmail}
+                  onChange={this.props.onChange}
                 />
-              </Form.Group>
-            </Form.Row>
+              </FormGroup>
 
-            <Form.Group controlId="formGridZip">
-              <Form.Label>Organization Website</Form.Label>
-              <Form.Control
-                type="orgSite"
+            <FormGroup>
+              <Label>Organization Website</Label>
+              <Input
+                type="text"
+                name="link"
                 placeholder="Enter Organization Website"
+                value={this.props.form.link}
+                onChange={this.props.onChange}
               />
-            </Form.Group>
+            </FormGroup>
 
-            <Form.Group controlId="formGridMedia">
+            <FormGroup>
               <Button variant="" type="addMedia">
                 Add Media
               </Button>
-            </Form.Group>
-
-            <Button variant="primary" type="submit" onClick="./AddEventForm">
-              Next
-            </Button>
+            </FormGroup>
           </Form>
-          ;
         </div>
       </div>
     );
   }
 }
+
+AddOrganizationForm.propTypes = {
+  form: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+export default AddOrganizationForm;
