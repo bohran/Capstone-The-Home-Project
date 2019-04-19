@@ -90,7 +90,7 @@ class AddOrganizationForm extends Component {
                   type="text"
                   name="contactRole"
                   placeholder="Enter Contact Role"
-                  value={this.props.form.role}
+                  value={this.props.form.contactRole}
                   onChange={this.props.onChange}
                 />
               </FormGroup>
@@ -121,9 +121,9 @@ class AddOrganizationForm extends Component {
               <Label>Organization Website</Label>
               <Input
                 type="text"
-                name="link"
+                name="website"
                 placeholder="Enter Organization Website"
-                value={this.props.form.link}
+                value={this.props.form.website}
                 onChange={this.props.onChange}
               />
             </FormGroup>

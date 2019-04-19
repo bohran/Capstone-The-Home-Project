@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 import { Organization } from './AddOrganizationForm';
 import './css/App.css';
 
 class Confirmation extends Component {
   render() {
+    console.log(this.props.orgForm);
+    console.log(this.props.eventForm);
     return (
       <section>
         <h2 className="orgPageTitle">Almost there.</h2>
@@ -92,5 +95,6 @@ class Confirmation extends Component {
 Confirmation.propTypes = {
   form: PropTypes.object.isRequired
 };
+
 export default Confirmation;
 
