@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
-import { Organization } from './Organization';
 import { Jumbotron } from 'reactstrap';
 
-import './App.css';
+import './css/App.css';
 
 class Confirmation extends Component {
   render() {
