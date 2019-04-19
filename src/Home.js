@@ -18,14 +18,14 @@ export class Home extends Component {
                 blur={7}
                 bgImage={require('./img/Seattle-WA.jpg')}
                 strength={1000}>
-                <h1 style={{ color: "white" , marginTop: "100px", fontSize: "150px", color: "#fafaed"}}>#SeattleForAll</h1>
+                <h1 style={{ color: "white" , marginTop: "100px", fontSize: "150px", color: "#6e6e70", backgroundColor:'#fafaed', opacity:'0.55git '}}>#SeattleForAll</h1>
                 <div style={{ height: '300px' }} />
             </Parallax>
-            <h1>The Home Project</h1>
-            <h2>An Engagement and Advocacy Initative with One Goal:</h2>
+            <h1 style ={{fontSize: '100px', fontWeight:'bold'}}>The Home Project</h1>
+            <h2>An Engagement and Advocacy Initiative with One Goal:</h2>
             <h2>A Home for Everyone in King County</h2>
             <br/>
-            <h1 style = {{textTransform:"uppercase"}}>Through the Home Shows, we came together as a one community to fight homelessness.</h1>
+            {/* <h1 style = {{textTransform:"uppercase"}}>Through the Home Shows, we came together as a one community to fight homelessness.</h1> */}
             <Parallax
                 blur={{ min: -15, max: 15 }}
                 bgImage={require('./img/tent.jpg')}
