@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
-export default class NewEvent extends Component {
+class NewEvent extends Component {
   render() {
     return (
       <div>
@@ -167,7 +168,7 @@ export default class NewEvent extends Component {
               <Label>First Name</Label>
               <Input
                 type="text"
-                name="coordinatorFNmae"
+                name="coordinatorFName"
                 placeholder="Enter First Name"
                 value={this.props.form.coordinatorFName}
                 onChange={this.props.onChange}
@@ -197,7 +198,7 @@ export default class NewEvent extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Button variant="" type="addMedia">
+              <Button variant="" type="file" name="file" id="addMedia">
                 Add Media
               </Button>
             </FormGroup>
@@ -207,3 +208,10 @@ export default class NewEvent extends Component {
     );
   }
 }
+
+NewEvent.propTypes = {
+  form: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+export default NewEvent;
