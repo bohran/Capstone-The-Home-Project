@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from "react-router-dom";
-import { Jumbotron } from 'reactstrap';
-
 import './App.css';
 
 class Submission extends Component {
   render() {
     return (
+      <section>
         <div class="formContainer">
         <div>
         <h1 >Your event has been submitted for approval!</h1>
@@ -19,6 +17,7 @@ class Submission extends Component {
             <button class="submitButton"><a class="eventLink" href="./events.html"> Submit Another Event</a> </button>
             </div>
         </div>
+        </section>
     );
   }
 }
