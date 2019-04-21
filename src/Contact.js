@@ -24,28 +24,26 @@ export class Contact extends Component {
         <div class="membersContainer">
             <div class="row mx-auto">
                 <div class="col-lg-3 col-sm-6 text-center mb-4">
-                    <img class="rounded-circle img-fluid d-block mx-auto w-75" src="/img/shannon.jpg" alt="Portrait of Shannon Gatta"/>
+                    <img class="rounded-circle img-fluid d-block mx-auto w-75" src="./img/shannon.jpg" alt="Portrait of Shannon Gatta"/>
                     <h3>Shannon Gatta </h3>
                     <h3><small>Data Scientist</small></h3>
                     <p id="email">sgatta@uw.edu</p>
                 </div>
                 </div>
             <div class="col-lg-3 col-sm-6 text-center mb-4">
-                <img class="rounded-circle img-fluid d-block mx-auto w-75" src="/img/esha.jpg"/>
-                    alt="Portrait of Esha More">
+                <img class="rounded-circle img-fluid d-block mx-auto w-75" src="./img/esha.jpg"/>
                 <h3>Esha More</h3>
                 <h3><small>UX Designer</small></h3>
                 <p id="email">moree@uw.edu </p> 
             </div>
             <div class="col-lg-3 col-sm-6 text-center mb-4">
-                    <img class="rounded-circle img-fluid d-block mx-auto w-75" src="/img/emma.jpg" alt="Portrait of Emma Ropes"/>
+                    <img class="rounded-circle img-fluid d-block mx-auto w-75" src="./img/emma.jpeg" alt="Portrait of Emma Ropes"/>
                     <h3>Emma Ropes</h3>
                     <h3><small>Web Developer</small></h3>
-                    <p id="email">eropes@uw.edu </p> >
+                    <p id="email">eropes@uw.edu </p> 
                 </div>
             <div class="col-lg-3 col-sm-6 text-center mb-4">
-                    <img class="rounded-circle img-fluid d-block mx-auto w-75" src="/img/nicole.jpg"/>
-                        alt="Portrait of Nicole Bohra">
+                    <img class="rounded-circle img-fluid d-block mx-auto w-75" src="./img/nicole.jpg"/>
                     <h3>Nicole Bohra</h3>
                     <h3><small>Data Scientist</small></h3>
                     <p id="email">bohran@uw.edu</p>

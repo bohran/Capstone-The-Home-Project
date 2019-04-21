@@ -18,7 +18,7 @@ export class Home extends Component {
                 blur={7}
                 bgImage={require('./img/Seattle-WA.jpg')}
                 strength={1000}>
-                <h1 style={{ color: "white" , marginTop: "100px", fontSize: "150px", color: "#6e6e70", backgroundColor:'#fafaed', opacity:'0.55git '}}>#SeattleForAll</h1>
+                <h1 style={{ color: "white" , marginTop: "100px", fontSize: "150px", color: "#fafaed"}}>#SeattleForAll</h1>
                 <div style={{ height: '300px' }} />
             </Parallax>
             <h1 style ={{fontSize: '100px', fontWeight:'bold'}}>The Home Project</h1>
