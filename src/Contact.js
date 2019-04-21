@@ -20,6 +20,7 @@ export class Contact extends Component {
             1932 First Avenue Suite 507, Seattle, WA 98101  
             </div>
         </div>
+        <br/>
         <h2 className="contactPageTitle">Our Creators</h2>
         <div class="membersContainer">
             <Row>
