@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Home } from './Home';
 import { Events } from './Events';
-import AddEvent from './AddEvent'
+import AddEvent from './AddEvent';
+import  {Contact}  from './Contact';
+
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Jumbotron } from 'reactstrap';
 
 import './css/App.css';
@@ -26,6 +28,7 @@ class App extends Component {
             <Route exact path = "/" component = { Home } />
             <Route path = "/Events" component = { Events } />
             <Route path = "/AddEvent" component = { AddEvent } />
+            <Route path = "/Contact" component = { Contact } />
           </Switch>
       </Router>
     );
