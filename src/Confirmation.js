@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import { Organization } from './AddOrganizationForm';
+import { Form, FormGroup, Label} from "reactstrap";
 import './css/App.css';
 
 class Confirmation extends Component {
   render() {
-    console.log(this.props.orgForm);
-    console.log(this.props.eventForm);
+    console.log(this.props.eventForm)
     return (
       <section>
         <h2 className="orgPageTitle">Almost there.</h2>
@@ -16,71 +14,71 @@ class Confirmation extends Component {
           <Form>
             <h5>Please confirm your information before submitting.</h5>
             <FormGroup>
-              <Label>Event Title: {this.props.form.title}</Label>
+              <Label>Event Title: {this.props.eventForm.title}</Label>
             </FormGroup>
 
             <FormGroup>
-              <h5>Event Category: {this.props.form.eventType}</h5>
+              <h5>Event Category: {this.props.eventForm.eventType}</h5>
             </FormGroup>
 
             <FormGroup>
-              <Label>Event Description: {this.props.form.eventDescr}</Label>
+              <Label>Event Description: {this.props.eventForm.eventDescr}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Event Date: {this.props.form.date}</Label>
+              <Label>Event Date: {this.props.eventForm.date}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Start Time: {this.props.form.startTime}</Label>
+              <Label>Start Time: {this.props.eventForm.startTime}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>End Time: {this.props.form.endTime}</Label>
+              <Label>End Time: {this.props.eventForm.endTime}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Address: {this.props.form.eventAddress}</Label>
+              <Label>Address: {this.props.eventForm.eventAddress}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Event City: {this.props.form.eventCity}</Label>
+              <Label>Event City: {this.props.eventForm.eventCity}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Event County: {this.props.form.eventCounty}</Label>
+              <Label>Event County: {this.props.eventForm.eventCounty}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Event Zip Code: {this.props.form.eventZip}</Label>
+              <Label>Event Zip Code: {this.props.eventForm.eventZip}</Label>
             </FormGroup>
 
             <h5>Event Contact Information:</h5>
 
             <FormGroup>
-              <Label>First Name: {this.props.form.creatorFName}</Label>
+              <Label>First Name: {this.props.eventForm.creatorFName}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Last Name: {this.props.form.creatorLName}</Label>
+              <Label>Last Name: {this.props.eventForm.creatorLName}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Email: {this.props.form.creatorEmail}</Label>
+              <Label>Email: {this.props.eventForm.creatorEmail}</Label>
             </FormGroup>
 
             <h5>Event Coordinator Information:</h5>
 
             <FormGroup>
-              <Label>First Name: {this.props.form.coordinatorFName}</Label>
+              <Label>First Name: {this.props.eventForm.coordinatorFName}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Last Name: {this.props.form.coordinatorLName}</Label>
+              <Label>Last Name: {this.props.eventForm.coordinatorLName}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Email: {this.props.form.coordinatorEmail}</Label>
+              <Label>Email: {this.props.eventForm.coordinatorEmail}</Label>
             </FormGroup>
 
             <FormGroup>
@@ -94,7 +92,8 @@ class Confirmation extends Component {
 }
 
 Confirmation.propTypes = {
-  form: PropTypes.object.isRequired
+  orgForm: PropTypes.object.isRequired,
+  eventForm: PropTypes.object.isRequired,
 };
 
 export default Confirmation;
