@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Container, Row, Col } from 'reactstrap';
 
 export class Contact extends Component {
   render() {
     return (<div>
-      <section>
         <h2 className="contactPageTitle">Contact Us</h2>
         <div class="formContainer">
             <div class="contactName">
@@ -22,13 +22,12 @@ export class Contact extends Component {
         </div>
         <h2 className="contactPageTitle">Our Creators</h2>
         <div class="membersContainer">
-            <div class="row mx-auto">
+            <Row>
                 <div class="col-lg-3 col-sm-6 text-center mb-4">
                     <img class="rounded-circle img-fluid d-block mx-auto w-75" src="./img/shannon.jpg" alt="Portrait of Shannon Gatta"/>
                     <h3>Shannon Gatta </h3>
                     <h3><small>Data Scientist</small></h3>
                     <p id="email">sgatta@uw.edu</p>
-                </div>
                 </div>
             <div class="col-lg-3 col-sm-6 text-center mb-4">
                 <img class="rounded-circle img-fluid d-block mx-auto w-75" src="./img/esha.jpg"/>
@@ -48,8 +47,8 @@ export class Contact extends Component {
                     <h3><small>Data Scientist</small></h3>
                     <p id="email">bohran@uw.edu</p>
                 </div>
-            </div>
-        </section>
+            </Row>
+        </div>
         </div>
     );
   }
