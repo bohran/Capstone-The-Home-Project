@@ -11,7 +11,7 @@ export class Contact extends Component {
             Pyramid Communications
             </div>
             <div class="contactInfo">
-            info@pyramidcommunications.com
+            marketing@pyramidcommunications.com
             </div>
             <div class="contactInfo">
             206.374.7788
