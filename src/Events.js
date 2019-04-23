@@ -2,12 +2,6 @@ import React, { Component } from "react";
 import { AddEvent } from "./AddEventForm";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
 import { Nav, NavItem, NavLink } from "reactstrap";
 import {
   Card,
@@ -16,6 +10,7 @@ import {
   CardBody,
   CardTitle,
   CardSubtitle,
+  CardGroup,
   Row,
   CardDeck,
   Col
@@ -29,6 +24,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { NationalGeographicAPI } from "national-geographic-api";
+import LoadingScreen from "react-loading-screen";
 
 import DatePicker from "react-datepicker";
 
@@ -39,6 +35,7 @@ export class Events extends Component {
     super(props);
     this.state = {
       modal: false,
+      isLoading: false,
       data: [],
       value: 0,
       previous: 0,
@@ -59,10 +56,10 @@ export class Events extends Component {
     this.setState({
       modal: !this.state.modal
     });
-    console.log(this.state.modal);
   };
   // API from NewsAPI (headlines from National Geog)
   componentDidMount() {
+    this.setState({ isLoading: true });
     let url =
       "https://newsapi.org/v2/everything?" +
       "sources=national-geographic&" +
@@ -73,15 +70,15 @@ export class Events extends Component {
         return response.json();
       })
       .then(results => {
-        this.setState({ data: results.articles });
-        console.log(results.articles);
-        console.log(this.state.data);
+        this.setState({
+          data: results.articles,
+          isLoading: false
+        });
       });
   }
   render() {
     const content = this.state.data.map((d, i) => {
       let imageSrc = d.urlToImage;
-      console.log(imageSrc);
       if (d.urlToImage == null) {
         imageSrc = <br />;
       } else {
@@ -98,6 +95,7 @@ export class Events extends Component {
       }
       return (
         <div className="events" key={"event" + i}>
+        <CardGroup>
           <Card>
             <div className="image">
               <CardImg src={d.urlToImage} style={{ width: "100%" }} />
@@ -110,17 +108,19 @@ export class Events extends Component {
                   <FontAwesomeIcon icon={faClock} /> 6:00-8:30PM
                 </CardSubtitle>
                 <CardSubtitle>
-                  <FontAwesomeIcon icon={faCalendar} />{d.publishedAt}
+                  <FontAwesomeIcon icon={faCalendar} />
+                  {d.publishedAt}
                 </CardSubtitle>
                 <Button
                   className="learn"
                   onClick={this.handleCardClick.bind(null, i)}
                 >
-                  Learn More
+                  learn more
                 </Button>
               </CardBody>
             </div>
           </Card>
+          </CardGroup>
         </div>
       );
     });
@@ -158,7 +158,7 @@ export class Events extends Component {
               </Label>
             </FormGroup>
           </div>
-          <br/>
+          <br />
           <div className="filters">
             <h4>Select Area of Service:</h4>
             <FormGroup check>
@@ -186,70 +186,74 @@ export class Events extends Component {
                 <Input type="checkbox" name="check1" /> Health/Wellness
               </Label>
             </FormGroup>
-            <br/>
+            <br />
             <div className="location">
               <h4>Select Location:</h4>
               <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Seattle
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Bellevue
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Everett
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Burien
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Kirkland
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Bothell
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Renton
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Redmond
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Tacoma
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Olympia
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" /> Lakewood
-              </Label>
-            </FormGroup>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Seattle
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Bellevue
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Everett
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Burien
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Kirkland
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Bothell
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Renton
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Redmond
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Tacoma
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Olympia
+                </Label>
+              </FormGroup>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> Lakewood
+                </Label>
+              </FormGroup>
             </div>
-            <br/>
+            <br />
             <div className="date">
               <h4>Select Date:</h4>
               <FormGroup>
-                <Input style = {{width:'50%'}}type="select" id="exampleSelect">
+                <Input
+                  style={{ width: "50%" }}
+                  type="select"
+                  id="exampleSelect"
+                >
                   <option>All</option>
                   <option>Today</option>
                   <option>Tomorrow</option>
@@ -268,12 +272,29 @@ export class Events extends Component {
             flexWrap: "wrap",
             flexBasis: 1,
             marginLeft: "50px"
-          }}>
-          {content}
+          }}
+        >
+          {/* <LoadingScreen
+            loading={this.state.isLoading}
+            bgColor="#f1f1f1"
+            spinnerColor="#9ee5f8"
+            textColor="#676767"
+            text="loading..."> */}
+            {content}
+          {/* </LoadingScreen> */}
+
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.title}.</ModalHeader>
             <ModalBody> {this.state.description}</ModalBody>
-            <Button style={{backgroundColor: ' #cf0f2e', width:'80px', float:'right', marginLeft:'80%' }} onClick={this.toggle}>
+            <Button
+              style={{
+                backgroundColor: " #cf0f2e",
+                width: "80px",
+                float: "right",
+                marginLeft: "80%"
+              }}
+              onClick={this.toggle}
+            >
               Close
             </Button>
           </Modal>

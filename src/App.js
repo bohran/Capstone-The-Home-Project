@@ -4,6 +4,7 @@ import { Home } from './Home';
 import { Events } from './Events';
 import AddEvent from './AddEvent';
 import  {Contact}  from './Contact';
+// import{Calendar} from './Calendar';
 
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Jumbotron } from 'reactstrap';
 
@@ -22,6 +23,7 @@ class App extends Component {
                  <Link className = "links" to="/Events">Events</Link>
                  <Link className = "links" to="/About">About Us</Link>
                  <Link className = "links" to="/Contact">Contact Us</Link> 
+                 {/* <Link className = "links" to="/Calendar">Calendar View</Link> */}
                  </div>
           </Navbar>
           <Switch>
@@ -29,6 +31,7 @@ class App extends Component {
             <Route path = "/Events" component = { Events } />
             <Route path = "/AddEvent" component = { AddEvent } />
             <Route path = "/Contact" component = { Contact } />
+            {/* <Route path = "/Calendar" component = { Calendar } /> */}
           </Switch>
       </Router>
     );
