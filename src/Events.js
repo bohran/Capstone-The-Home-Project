@@ -109,7 +109,7 @@ export class Events extends Component {
                 </CardSubtitle>
                 <CardSubtitle>
                   <FontAwesomeIcon icon={faCalendar} />
-                  {d.publishedAt}
+                   {" " + d.publishedAt}
                 </CardSubtitle>
                 <Button
                   className="learn"
