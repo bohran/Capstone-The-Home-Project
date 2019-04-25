@@ -11,8 +11,8 @@ body{
 .links{
     font-weight: 600;
     font-size:20px;
-    padding: 30px;
-    color: #fafaed;
+    padding: 10px;
+    color: #f1faed;
 }
 .nav-wrapper{
     background-color:#177283;
@@ -24,6 +24,10 @@ body{
     text-align: left;
 }
 .tabs{
-    width:50%;
+    widows: 100%;
     text-align: right;
+}
+
+.menuItems {
+    align-content: right;
 }

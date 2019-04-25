@@ -42,20 +42,26 @@ class App extends Component {
           </div>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav>
+            {/* <Nav> */}
               <div className="tabs">
+              <NavItem className="menuItems">
                 <Link className="links" to="/Events">
                   Events
                 </Link>
+                </NavItem>
+                <NavItem className="menuItems">
                 <Link className="links" to="/About">
                   About Us
                 </Link>
+                </NavItem>
+                <NavItem className="menuItems">
                 <Link className="links" to="/Contact">
                   Contact Us
                 </Link>
+                </NavItem>
                 {/* <Link className = "links" to="/Calendar">Calendar View</Link> */}
               </div> 
-            </Nav>
+            {/* </Nav> */}
           </Collapse>
         </Navbar>
         <Switch>
