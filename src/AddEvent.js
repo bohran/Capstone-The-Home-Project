@@ -25,7 +25,10 @@ export default class AddEvent extends Component {
         contactRole: "",
         contactPhone: "",
         contactEmail: "",
-        website: ""
+        website: "",
+        twitter: "",
+        facebook: "",
+        instagram: ""
       },
       eventFormEntries: {
         title: "",
@@ -35,6 +38,7 @@ export default class AddEvent extends Component {
         startTime: "",
         endTime: "",
         eventAddress: "",
+        eventRoom: "",
         eventCity: "",
         eventCounty: "",
         eventZip: "",
@@ -43,7 +47,11 @@ export default class AddEvent extends Component {
         creatorEmail: "",
         coordinatorFName: "",
         coordinatorLName: "",
-        coordinatorEmail: ""
+        coordinatorEmail: "",
+        website: "",
+        twitter: "",
+        facebook: "",
+        instagram: ""
       }
   };
 

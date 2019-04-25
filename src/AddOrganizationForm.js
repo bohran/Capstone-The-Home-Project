@@ -159,7 +159,7 @@ class AddOrganizationForm extends Component {
                     type="text"
                     name="website"
                     placeholder="Enter handle"
-                    value={this.props.form.website}
+                    value={this.props.form.twitter}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
@@ -171,7 +171,7 @@ class AddOrganizationForm extends Component {
                     type="text"
                     name="website"
                     placeholder="Enter URL"
-                    value={this.props.form.website}
+                    value={this.props.form.facebook}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
@@ -183,7 +183,7 @@ class AddOrganizationForm extends Component {
                     type="text"
                     name="website"
                     placeholder="Enter username"
-                    value={this.props.form.website}
+                    value={this.props.form.instagram}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>

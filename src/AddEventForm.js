@@ -92,16 +92,32 @@ class NewEvent extends Component {
               </Col>
             </Row>
 
-            <FormGroup>
-              <Label>Address</Label>
-              <Input
-                type="text"
-                name="eventAddress"
-                placeholder="e.g. 1234 Main St."
-                value={this.props.form.eventAddress}
-                onChange={this.props.onChange}
-              />
-            </FormGroup>
+            <Row form>
+              <Col md={8}>
+                <FormGroup>
+                  <Label>Address</Label>
+                  <Input
+                    type="text"
+                    name="eventAddress"
+                    placeholder="e.g. 1234 Main St."
+                    value={this.props.form.eventAddress}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={4}>
+                <FormGroup>
+                  <Label>Room</Label>
+                  <Input
+                    type="text"
+                    name="eventAddress"
+                    placeholder="e.g. 101"
+                    value={this.props.form.eventRoom}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
 
             <Row form>
               <Col md={4}>
@@ -143,8 +159,10 @@ class NewEvent extends Component {
             </Row>
 
             <h5>Event Contact Information:</h5>
-            <h3 className="subtitle">This information is used to update on any changes with the event</h3>
-            
+            <h3 className="subtitle">
+              This information is used to confirm any changes in the event details
+            </h3>
+
             <Row form>
               <Col md={4}>
                 <FormGroup>
@@ -185,7 +203,10 @@ class NewEvent extends Component {
             </Row>
 
             <h5>Event Coordinator Information:</h5>
-            <h3 className="subtitle">This information will be used by interested volunteers and participants who want to get invovled</h3>
+            <h3 className="subtitle">
+              This information will be used by interested volunteers and
+              participants who want to get invovled
+            </h3>
 
             <Row form>
               <Col md={4}>
@@ -228,6 +249,18 @@ class NewEvent extends Component {
 
             <h5>Event Social Media:</h5>
             <Row form>
+            <Col md={4}>
+                <FormGroup>
+                  <Label>Website</Label>
+                  <Input
+                    type="text"
+                    name="website"
+                    placeholder="Enter URL"
+                    value={this.props.form.website}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
               <Col md={4}>
                 <FormGroup>
                   <Label>Twitter</Label>
@@ -235,7 +268,7 @@ class NewEvent extends Component {
                     type="text"
                     name="website"
                     placeholder="Enter URL"
-                    value={this.props.form.website}
+                    value={this.props.form.twitter}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
@@ -247,7 +280,7 @@ class NewEvent extends Component {
                     type="text"
                     name="website"
                     placeholder="Enter URL"
-                    value={this.props.form.website}
+                    value={this.props.form.facebook}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
@@ -259,7 +292,7 @@ class NewEvent extends Component {
                     type="text"
                     name="website"
                     placeholder="Enter URL"
-                    value={this.props.form.website}
+                    value={this.props.form.instagram}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
