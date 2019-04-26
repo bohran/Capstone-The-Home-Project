@@ -44,21 +44,21 @@ class App extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             {/* <Nav> */}
               <div className="tabs">
-              <NavItem className="menuItems">
+              {/* <NavItem className="menuItems"> */}
                 <Link className="links" to="/Events">
                   Events
                 </Link>
-                </NavItem>
-                <NavItem className="menuItems">
+                {/* </NavItem> */}
+                {/* <NavItem className="menuItems"> */}
                 <Link className="links" to="/About">
                   About Us
                 </Link>
-                </NavItem>
-                <NavItem className="menuItems">
+                {/* </NavItem> */}
+                {/* <NavItem className="menuItems"> */}
                 <Link className="links" to="/Contact">
                   Contact Us
                 </Link>
-                </NavItem>
+                {/* </NavItem> */}
                 {/* <Link className = "links" to="/Calendar">Calendar View</Link> */}
               </div> 
             {/* </Nav> */}

@@ -31,3 +31,7 @@ body{
 .menuItems {
     align-content: right;
 }
+
+.navbar-expand-lg {
+    align-content: right;
+}
