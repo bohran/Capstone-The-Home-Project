@@ -1,12 +1,20 @@
 Form, .newOrgButton {
-    padding: 30px;
+    margin: 20px 100px 20px 100px;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 3px 3px 10px -5px #6e6e70;
 }
 
-.orgPageTitle {
+.pageTitle {
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Segoe UI', sans-serif;
+    margin-top: 20px;
 }
 
 .newOrgButton {
     text-emphasis: bold;
+}
+
+.subtitle {
+    font-size: 12px;
 }

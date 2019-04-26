@@ -30,10 +30,10 @@ body{
 } */
 .card{
     width: 400px;
-    height: 475px;
+    height: 500px;
     margin-left: 40px;
     margin-right: 40px; 
-    margin: 20px; 
+    margin: 20px;
     /* display: flex;
     flex-direction: row; */
 }
@@ -45,7 +45,7 @@ body{
     min-height: 275px;
 }
 .card-body{
-    text-align: center;
+    align-content: left;
     overflow: hidden;
     white-space: nowrap;
     font-size: 18px;
@@ -64,4 +64,5 @@ body{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    padding: 3px;
 }
