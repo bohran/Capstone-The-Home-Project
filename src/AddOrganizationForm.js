@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Row, Col, CustomInput } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
@@ -83,7 +83,10 @@ class AddOrganizationForm extends Component {
             </FormGroup>
 
             <h5>Organization Contact:</h5>
-            <h3 className="subtitle">This information will be used to confirm any changes in the organizaiton details</h3>
+            <h3 className="subtitle">
+              This information will be used to confirm any changes in the
+              organizaiton details
+            </h3>
 
             <Row form>
               <Col md={6}>
@@ -191,9 +194,14 @@ class AddOrganizationForm extends Component {
             </Row>
 
             <FormGroup>
-              <Button className="mediaButton" variant="" type="addMedia">
-                Add Media
-              </Button>
+              <Label>Add Media</Label>
+              <CustomInput
+                id="mediaButton"
+                type="file"
+                name="media"
+                value={this.props.form.media}
+                onChange={this.props.onChange}
+              />
             </FormGroup>
           </Form>
         </div>

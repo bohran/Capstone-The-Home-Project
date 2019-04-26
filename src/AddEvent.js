@@ -30,7 +30,8 @@ export default class AddEvent extends Component {
         website: "",
         twitter: "",
         facebook: "",
-        instagram: ""
+        instagram: "",
+        media: ""
       },
       eventFormEntries: {
         title: "",
@@ -53,7 +54,8 @@ export default class AddEvent extends Component {
         website: "",
         twitter: "",
         facebook: "",
-        instagram: ""
+        instagram: "",
+        media: ""
       }
   };
 

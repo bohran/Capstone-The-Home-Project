@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Row, Col, CustomInput } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
@@ -160,7 +160,8 @@ class NewEvent extends Component {
 
             <h5>Event Contact Information:</h5>
             <h3 className="subtitle">
-              This information is used to confirm any changes in the event details
+              This information is used to confirm any changes in the event
+              details
             </h3>
 
             <Row form>
@@ -249,7 +250,7 @@ class NewEvent extends Component {
 
             <h5>Event Social Media:</h5>
             <Row form>
-            <Col md={4}>
+              <Col md={4}>
                 <FormGroup>
                   <Label>Website</Label>
                   <Input
@@ -299,10 +300,15 @@ class NewEvent extends Component {
               </Col>
             </Row>
 
-            <FormGroup>
-              <Button variant="" type="file" name="file" id="addMedia">
-                Add Media
-              </Button>
+            <FormGroup className="mediaButton">
+              <Label>Add Media</Label>
+              <CustomInput
+                className="mediaButton"
+                type="file"
+                name="media"
+                value={this.props.form.media}
+                onChange={this.props.onChange}
+              />
             </FormGroup>
           </Form>
         </div>
