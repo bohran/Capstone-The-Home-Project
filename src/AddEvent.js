@@ -21,8 +21,13 @@ export default class AddEvent extends Component {
       // ONLY place where the data exists
       orgFormEntries: {
         name: "",
-        category: "",
+        type: "",
         mission: "",
+        address: "",
+        city: "",
+        county: "",
+        zip: "",
+        state: "",
         contactName: "",
         contactRole: "",
         contactPhone: "",
@@ -31,31 +36,32 @@ export default class AddEvent extends Component {
         twitter: "",
         facebook: "",
         instagram: "",
-        media: ""
+        img: ""
       },
       eventFormEntries: {
         title: "",
-        eventType: "",
-        eventDescr: "",
+        category: "",
+        services: "",
+        descr: "",
         date: "",
         startTime: "",
         endTime: "",
-        eventAddress: "",
-        eventRoom: "",
-        eventCity: "",
-        eventCounty: "",
-        eventZip: "",
+        address: "",
+        room: "",
+        city: "",
+        county: "",
+        zip: "",
+        state: "",
         creatorFName: "",
         creatorLName: "",
         creatorEmail: "",
+        creatorPhone: "",
         coordinatorFName: "",
         coordinatorLName: "",
         coordinatorEmail: "",
+        coordinatorPhone: "",
         website: "",
-        twitter: "",
-        facebook: "",
-        instagram: "",
-        media: ""
+        img: ""
       }
   };
 
