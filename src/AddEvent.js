@@ -6,11 +6,13 @@ import { Button } from "reactstrap";
 import AddOrganizationForm from "./AddOrganizationForm";
 import NewEvent from "./AddEventForm";
 import Confirmation from "./Confirmation";
+import Submission from "./Submission";
 
 const Stage = {
   ORGANIZATION: 0,
   EVENT_DETAILS: 1,
-  CONFIRMATION: 2
+  CONFIRMATION: 2,
+  SUBMISSION: 3
 };
 
 export default class AddEvent extends Component {
@@ -103,6 +105,10 @@ export default class AddEvent extends Component {
           eventForm={this.state.eventFormEntries}
         />
       );
+    } else if (this.state.currentStage === Stage.SUBMISSION) {
+      content = (
+        <Submission/>
+      )
     }
     return (
       <div>
