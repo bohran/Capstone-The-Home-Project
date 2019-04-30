@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
-  Button,
   Form,
   FormGroup,
   Label,
@@ -160,7 +159,7 @@ class AddOrganizationForm extends Component {
             <h5>Organization Contact</h5>
             <h3 className="subtitle">
               This information will be used to confirm any changes in the
-              organizaiton details
+              organization details
             </h3>
 
             <Row form>
