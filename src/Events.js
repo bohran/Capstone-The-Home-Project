@@ -45,11 +45,11 @@ export class Events extends Component {
     };
   }
   handleCardClick = index => {
-    const title = this.state.data[index].title;
-    const description = this.state.data[index].description;
+    const eventName = this.state.data[index].eventName;
+    const eventDescription = this.state.data[index].eventDescription;
     this.setState({
-      title: title,
-      description: description,
+      eventName: eventName,
+      eventDescription: eventDescription,
       modal: true
     });
   };
@@ -105,14 +105,14 @@ export class Events extends Component {
               <CardBody>
                 <CardTitle>{d.eventName}</CardTitle>
                 <CardSubtitle>
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.description}
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
                 </CardSubtitle>
                 <CardSubtitle>
-                  <FontAwesomeIcon icon={faClock} /> 6:00-8:30PM
+                  <FontAwesomeIcon icon={faClock} /> {d.startTime} - {d.endTime}
                 </CardSubtitle>
                 <CardSubtitle>
                   <FontAwesomeIcon icon={faCalendar} />
-                   {" " + d.publishedAt}
+                   {" " + d.date}
                 </CardSubtitle>
                 <Button
                   className="learn"
@@ -142,11 +142,6 @@ export class Events extends Component {
             + Add Event
           </Button>
         </div>
-        {/* <div className="add">
-          <Button tag={Link} to="/AddEvent">
-            + Add Event
-          </Button>
-        </div> */}
         <Nav vertical className="sidebar">
           <div className="categories">
             <h4>Select an Action:</h4>
@@ -292,18 +287,10 @@ export class Events extends Component {
             marginLeft: "50px"
           }}
         >
-          {/* <LoadingScreen
-            loading={this.state.isLoading}
-            bgColor="#f1f1f1"
-            spinnerColor="#9ee5f8"
-            textColor="#676767"
-            text="loading..."> */}
             {content}
-          {/* </LoadingScreen> */}
-
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
-            <ModalHeader>{this.state.title}.</ModalHeader>
-            <ModalBody> {this.state.description}</ModalBody>
+            <ModalHeader>{this.state.eventName}.</ModalHeader>
+            <ModalBody> {this.state.eventDescription}</ModalBody>
             <Button
               style={{
                 backgroundColor: " #cf0f2e",
