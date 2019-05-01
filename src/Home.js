@@ -25,7 +25,6 @@ export class Home extends Component {
             <h2>An Engagement and Advocacy Initiative with One Goal:</h2>
             <h2>A Home for Everyone in King County</h2>
             <br/>
-            {/* <h1 style = {{textTransform:"uppercase"}}>Through the Home Shows, we came together as a one community to fight homelessness.</h1> */}
             <Parallax
                 blur={{ min: -15, max: 15 }}
                 bgImage={require('./img/tent.jpg')}

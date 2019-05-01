@@ -8,9 +8,20 @@ body{
     padding-left: 20px;
 }
 
+.navbar-wrapper{
+    position: fixed; 
+}
+.footer{
+    margin-top:0;
+}
+
+.newOrg{
+    float:right;
+}
 .add{
     float: right;
-    margin-right: 25px;
+    position: relative;
+    margin-right: 3%
 }
 .btn-secondary{
     background-color: #cf0f2e !important;
@@ -28,6 +39,7 @@ body{
     border-color: #cf0f2e !important;
     color: #cf0f2e;
 } */
+
 .card{
     width: 400px;
     height: 500px;

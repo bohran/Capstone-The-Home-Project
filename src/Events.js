@@ -25,6 +25,7 @@ import {
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { NationalGeographicAPI } from "national-geographic-api";
 import LoadingScreen from "react-loading-screen";
+// import Sticky from 'react-sticky';
 
 import DatePicker from "react-datepicker";
 
@@ -60,47 +61,49 @@ export class Events extends Component {
   // API from NewsAPI (headlines from National Geog)
   componentDidMount() {
     this.setState({ isLoading: true });
-    let url =
-      "https://newsapi.org/v2/everything?" +
-      "sources=national-geographic&" +
-      "apiKey=de4895b190034f1897ca47779c016325";
+    let url = "https://api.emmaropes.me/events";
+      // "https://newsapi.org/v2/everything?" +
+      // "sources=national-geographic&" +
+      // "apiKey=de4895b190034f1897ca47779c016325";
+      
     let req = new Request(url);
     fetch(req)
       .then(response => {
-        return response.json();
+        return response.json();  
       })
       .then(results => {
         this.setState({
-          data: results.articles,
+          data: results,
           isLoading: false
         });
       });
+
   }
   render() {
     const content = this.state.data.map((d, i) => {
-      let imageSrc = d.urlToImage;
-      if (d.urlToImage == null) {
-        imageSrc = <br />;
-      } else {
-        imageSrc = (
-          <div className="image">
-            <CardImg
-              size="cover"
-              src={imageSrc}
-              display="block"
-              alt={d.title}
-            />
-          </div>
-        );
-      }
+      // let imageSrc = d.eventName;
+      // if (d.urlToImage == null) {
+      //   imageSrc = <br />;
+      // } else {
+      //   imageSrc = (
+      //     <div className="image">
+      //       <CardImg
+      //         size="cover"
+      //         src={imageSrc}
+      //         display="block"
+      //         alt={d.title}
+      //       />
+      //     </div>
+      //   );
+      // }
       return (
         <div className="events" key={"event" + i}>
         <CardGroup>
           <Card>
             <div className="image">
-              <CardImg src={d.urlToImage} style={{ width: "100%" }} />
+              <CardImg src='https://i.imgur.com/YY7BUx2.jpg'  style={{ width: "100%" }} />
               <CardBody>
-                <CardTitle>{d.title}</CardTitle>
+                <CardTitle>{d.eventName}</CardTitle>
                 <CardSubtitle>
                   <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.description}
                 </CardSubtitle>
@@ -129,14 +132,29 @@ export class Events extends Component {
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
-        <div className="add">
+        <div className = "add">
+        <h4>New Organization?</h4>
+          <Button tag={Link} to="/AddOrganization">
+            + Add Organization
+          </Button> 
+          <br/>
           <Button tag={Link} to="/AddEvent">
             + Add Event
           </Button>
         </div>
+        {/* <div className="add">
+          <Button tag={Link} to="/AddEvent">
+            + Add Event
+          </Button>
+        </div> */}
         <Nav vertical className="sidebar">
           <div className="categories">
             <h4>Select an Action:</h4>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> All
+              </Label>
+            </FormGroup>
             <FormGroup check>
               <Label check>
                 <Input type="radio" name="radio1" /> Give
