@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Row,
+  Col,
+  CustomInput
+} from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
@@ -38,7 +46,7 @@ class AddOrganizationForm extends Component {
         {/* Adding a new Form */}
         <div className="addOrg">
           <Form>
-            <h5>Organization Information:</h5>
+            <h5>Organization Information</h5>
 
             <Row form>
               <Col md={6}>
@@ -58,8 +66,8 @@ class AddOrganizationForm extends Component {
                   <Label for="exampleSelect">Category</Label>
                   <Input
                     type="select"
-                    name="category"
-                    value={this.props.form.category}
+                    name="type"
+                    value={this.props.form.type}
                     onChange={this.props.onChange}
                   >
                     <option>Choose...</option>
@@ -81,14 +89,83 @@ class AddOrganizationForm extends Component {
                 onChange={this.props.onChange}
               />
             </FormGroup>
+            <Row form>
+              <Col md={10}>
+                <FormGroup>
+                  <Label>Address</Label>
+                  <Input
+                    type="text"
+                    name="address"
+                    placeholder="e.g. 1234 Main St."
+                    value={this.props.form.address}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
 
-            <h5>Organization Contact:</h5>
-            <h3 className="subtitle">This information will be used to confirm any changes in the organizaiton details</h3>
+              <Col md={2}>
+                <FormGroup>
+                  <Label>State</Label>
+                  <Input
+                    type="text"
+                    name="state"
+                    placeholder="e.g. WA"
+                    value={this.props.form.state}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
 
             <Row form>
-              <Col md={6}>
+              <Col md={4}>
                 <FormGroup>
-                  <Label>Name</Label>
+                  <Label>City</Label>
+                  <Input
+                    type="text"
+                    name="city"
+                    placeholder="e.g. Seattle"
+                    value={this.props.form.city}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={4}>
+                <FormGroup>
+                  <Label>Zip Code</Label>
+                  <Input
+                    type="text"
+                    name="zip"
+                    placeholder="e.g. 98105"
+                    value={this.props.form.zip}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={4}>
+                <FormGroup>
+                  <Label>County</Label>
+                  <Input
+                    type="text"
+                    name="county"
+                    placeholder="e.g. King"
+                    value={this.props.form.county}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+
+            <h5>Organization Contact</h5>
+            <h3 className="subtitle">
+              This information will be used to confirm any changes in the
+              organization details
+            </h3>
+
+            <Row form>
+              <Col md={4}>
+                <FormGroup>
+                  <Label>First Name</Label>
                   <Input
                     type="text"
                     name="contactName"
@@ -98,7 +175,19 @@ class AddOrganizationForm extends Component {
                   />
                 </FormGroup>
               </Col>
-              <Col md={6}>
+              <Col md={4}>
+                <FormGroup>
+                  <Label>Last Name</Label>
+                  <Input
+                    type="text"
+                    name="contactName"
+                    placeholder="Enter text"
+                    value={this.props.form.contactName}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={4}>
                 <FormGroup>
                   <Label>Role</Label>
                   <Input
@@ -139,6 +228,7 @@ class AddOrganizationForm extends Component {
               </Col>
             </Row>
 
+            <h5>Additional Information</h5>
             <FormGroup>
               <Label>Website</Label>
               <Input
@@ -150,14 +240,13 @@ class AddOrganizationForm extends Component {
               />
             </FormGroup>
 
-            <h5>Organization Social Media:</h5>
             <Row form>
               <Col md={4}>
                 <FormGroup>
                   <Label>Twitter</Label>
                   <Input
                     type="text"
-                    name="website"
+                    name="twitter"
                     placeholder="Enter handle"
                     value={this.props.form.twitter}
                     onChange={this.props.onChange}
@@ -169,7 +258,7 @@ class AddOrganizationForm extends Component {
                   <Label>Facebook</Label>
                   <Input
                     type="text"
-                    name="website"
+                    name="facebook"
                     placeholder="Enter URL"
                     value={this.props.form.facebook}
                     onChange={this.props.onChange}
@@ -181,7 +270,7 @@ class AddOrganizationForm extends Component {
                   <Label>Instagram</Label>
                   <Input
                     type="text"
-                    name="website"
+                    name="instagram"
                     placeholder="Enter username"
                     value={this.props.form.instagram}
                     onChange={this.props.onChange}
@@ -191,9 +280,14 @@ class AddOrganizationForm extends Component {
             </Row>
 
             <FormGroup>
-              <Button className="mediaButton" variant="" type="addMedia">
-                Add Media
-              </Button>
+              <Label>Add Cover Photo</Label>
+              <CustomInput
+                id="mediaButton"
+                type="file"
+                name="img"
+                value={this.props.form.media}
+                onChange={this.props.onChange}
+              />
             </FormGroup>
           </Form>
         </div>

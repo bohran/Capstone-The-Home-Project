@@ -6,11 +6,13 @@ import { Button } from "reactstrap";
 import AddOrganizationForm from "./AddOrganizationForm";
 import NewEvent from "./AddEventForm";
 import Confirmation from "./Confirmation";
+import Submission from "./Submission";
 
 const Stage = {
   ORGANIZATION: 0,
   EVENT_DETAILS: 1,
-  CONFIRMATION: 2
+  CONFIRMATION: 2,
+  SUBMISSION: 3
 };
 
 export default class AddEvent extends Component {
@@ -19,8 +21,13 @@ export default class AddEvent extends Component {
       // ONLY place where the data exists
       orgFormEntries: {
         name: "",
-        category: "",
+        type: "",
         mission: "",
+        address: "",
+        city: "",
+        county: "",
+        zip: "",
+        state: "",
         contactName: "",
         contactRole: "",
         contactPhone: "",
@@ -28,30 +35,33 @@ export default class AddEvent extends Component {
         website: "",
         twitter: "",
         facebook: "",
-        instagram: ""
+        instagram: "",
+        img: ""
       },
       eventFormEntries: {
         title: "",
-        eventType: "",
-        eventDescr: "",
+        category: "",
+        services: "",
+        descr: "",
         date: "",
         startTime: "",
         endTime: "",
-        eventAddress: "",
-        eventRoom: "",
-        eventCity: "",
-        eventCounty: "",
-        eventZip: "",
+        address: "",
+        room: "",
+        city: "",
+        county: "",
+        zip: "",
+        state: "",
         creatorFName: "",
         creatorLName: "",
         creatorEmail: "",
+        creatorPhone: "",
         coordinatorFName: "",
         coordinatorLName: "",
         coordinatorEmail: "",
+        coordinatorPhone: "",
         website: "",
-        twitter: "",
-        facebook: "",
-        instagram: ""
+        img: ""
       }
   };
 
@@ -111,6 +121,10 @@ export default class AddEvent extends Component {
           eventForm={this.state.eventFormEntries}
         />
       );
+    } else if (this.state.currentStage === Stage.SUBMISSION) {
+      content = (
+        <Submission/>
+      )
     }
     return (
       <div>

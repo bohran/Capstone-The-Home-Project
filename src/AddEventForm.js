@@ -1,6 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Row,
+  Col,
+  CustomInput
+} from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
@@ -12,7 +21,7 @@ class NewEvent extends Component {
 
         <div className="addEvent">
           <Form>
-            <h5>Event Information:</h5>
+            <h5>Event Information</h5>
 
             <Row form>
               <Col md={6}>
@@ -27,13 +36,32 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
-              <Col md={6}>
+              <Col md={3}>
                 <FormGroup>
-                  <Label>Event Category</Label>
+                  <Label>Event Type</Label>
                   <Input
                     type="select"
-                    name="eventType"
-                    value={this.props.form.eventType}
+                    name="category"
+                    value={this.props.form.category}
+                    onChange={this.props.onChange}
+                  >
+                    <option>Choose...</option>
+                    <option>Give</option>
+                    <option>Learn</option>
+                    <option>Volunteer</option>
+                    <option>Activism</option>
+                  </Input>
+                </FormGroup>
+              </Col>
+
+              {/* Add functionality to be able to select multiple service areas */}
+              <Col md={3}>
+                <FormGroup>
+                  <Label>Area of Service</Label>
+                  <Input
+                    type="select"
+                    name="services"
+                    value={this.props.form.services}
                     onChange={this.props.onChange}
                   >
                     <option>Choose...</option>
@@ -49,9 +77,9 @@ class NewEvent extends Component {
               <Label>Event Description</Label>
               <Input
                 type="text"
-                name="eventDescr"
+                name="descr"
                 placeholder="Enter text"
-                value={this.props.form.eventDescr}
+                value={this.props.form.descr}
                 onChange={this.props.onChange}
               />
             </FormGroup>
@@ -98,9 +126,9 @@ class NewEvent extends Component {
                   <Label>Address</Label>
                   <Input
                     type="text"
-                    name="eventAddress"
+                    name="address"
                     placeholder="e.g. 1234 Main St."
-                    value={this.props.form.eventAddress}
+                    value={this.props.form.address}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
@@ -110,9 +138,9 @@ class NewEvent extends Component {
                   <Label>Room</Label>
                   <Input
                     type="text"
-                    name="eventAddress"
+                    name="room"
                     placeholder="e.g. 101"
-                    value={this.props.form.eventRoom}
+                    value={this.props.form.room}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
@@ -125,9 +153,9 @@ class NewEvent extends Component {
                   <Label>Event City</Label>
                   <Input
                     type="text"
-                    name="eventCity"
+                    name="city"
                     placeholder="e.g. Seattle"
-                    value={this.props.form.eventCity}
+                    value={this.props.form.city}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
@@ -137,34 +165,47 @@ class NewEvent extends Component {
                   <Label>Event County</Label>
                   <Input
                     type="text"
-                    name="eventCounty"
+                    name="county"
                     placeholder="e.g. King"
-                    value={this.props.form.eventCounty}
+                    value={this.props.form.county}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
               </Col>
-              <Col md={4}>
+              <Col md={2}>
                 <FormGroup>
                   <Label>Event Zip Code</Label>
                   <Input
                     type="text"
-                    name="eventZip"
+                    name="zip"
                     placeholder="e.g. 98105"
-                    value={this.props.form.eventZip}
+                    value={this.props.form.zip}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={2}>
+                <FormGroup>
+                  <Label>State</Label>
+                  <Input
+                    type="text"
+                    name="state"
+                    placeholder="e.g. WA"
+                    value={this.props.form.state}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
               </Col>
             </Row>
 
-            <h5>Event Contact Information:</h5>
+            <h5>Event Contact Information</h5>
             <h3 className="subtitle">
-              This information is used to confirm any changes in the event details
+              This information is used to confirm any changes in the event
+              details
             </h3>
 
             <Row form>
-              <Col md={4}>
+              <Col md={3}>
                 <FormGroup>
                   <Label>First Name</Label>
                   <Input
@@ -176,7 +217,7 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
-              <Col md={4}>
+              <Col md={3}>
                 <FormGroup>
                   <Label>Last Name</Label>
                   <Input
@@ -188,7 +229,7 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
-              <Col md={4}>
+              <Col md={3}>
                 <FormGroup>
                   <Label>Email</Label>
                   <Input
@@ -200,16 +241,29 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
+
+              <Col md={3}>
+                <FormGroup>
+                  <Label>Phone</Label>
+                  <Input
+                    type="text"
+                    name="creatorPhone"
+                    placeholder="Enter phone"
+                    value={this.props.form.creatorPhone}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
             </Row>
 
-            <h5>Event Coordinator Information:</h5>
+            <h5>Event Coordinator Information</h5>
             <h3 className="subtitle">
               This information will be used by interested volunteers and
               participants who want to get invovled
             </h3>
 
             <Row form>
-              <Col md={4}>
+              <Col md={3}>
                 <FormGroup>
                   <Label>First Name</Label>
                   <Input
@@ -221,7 +275,7 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
-              <Col md={4}>
+              <Col md={3}>
                 <FormGroup>
                   <Label>Last Name</Label>
                   <Input
@@ -233,7 +287,7 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
-              <Col md={4}>
+              <Col md={3}>
                 <FormGroup>
                   <Label>Email</Label>
                   <Input
@@ -245,64 +299,42 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>Phone</Label>
+                  <Input
+                    type="text"
+                    name="coordinatorPhone"
+                    placeholder="Enter phone"
+                    value={this.props.form.coordinatorPhone}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
             </Row>
 
-            <h5>Event Social Media:</h5>
-            <Row form>
-            <Col md={4}>
-                <FormGroup>
-                  <Label>Website</Label>
-                  <Input
-                    type="text"
-                    name="website"
-                    placeholder="Enter URL"
-                    value={this.props.form.website}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={4}>
-                <FormGroup>
-                  <Label>Twitter</Label>
-                  <Input
-                    type="text"
-                    name="website"
-                    placeholder="Enter URL"
-                    value={this.props.form.twitter}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={4}>
-                <FormGroup>
-                  <Label>Facebook</Label>
-                  <Input
-                    type="text"
-                    name="website"
-                    placeholder="Enter URL"
-                    value={this.props.form.facebook}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={4}>
-                <FormGroup>
-                  <Label>Instagram</Label>
-                  <Input
-                    type="text"
-                    name="website"
-                    placeholder="Enter URL"
-                    value={this.props.form.instagram}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
+            <h5>Additional Event Information</h5>
 
             <FormGroup>
-              <Button variant="" type="file" name="file" id="addMedia">
-                Add Media
-              </Button>
+              <Label>Website</Label>
+              <Input
+                type="text"
+                name="website"
+                placeholder="Enter URL"
+                value={this.props.form.website}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
+
+            <FormGroup className="mediaButton">
+              <Label>Add Cover Photo</Label>
+              <CustomInput
+                className="mediaButton"
+                type="file"
+                name="img"
+                value={this.props.form.media}
+                onChange={this.props.onChange}
+              />
             </FormGroup>
           </Form>
         </div>
