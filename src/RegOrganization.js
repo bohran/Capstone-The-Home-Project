@@ -1,60 +1,53 @@
-// AddEvent route takes you here
 import React, { Component } from "react";
 import _ from "lodash";
 import { Button } from "reactstrap";
 
-import NewEvent from "./EventForm";
-import Confirmation from "./EventConfirmation";
+import NewOrg from "./OrgForm";
+import Confirmation from "./OrgConfirmation";
 import Submission from "./Submission";
 
 const Stage = {
-  EVENT: 0,
+  ORGANIZATION: 0,
   CONFIRMATION: 1,
   SUBMISSION: 2
 };
 
 export default class AddEvent extends Component {
   state = {
-    currentStage: Stage.EVENT,
+    currentStage: Stage.ORGANIZATION,
       // ONLY place where the data exists
-      eventFormEntries: {
-        title: "",
-        category: "",
-        services: "",
-        descr: "",
-        date: "",
-        startTime: "",
-        endTime: "",
+      orgFormEntries: {
+        name: "",
+        type: "",
+        mission: "",
         address: "",
-        room: "",
         city: "",
         county: "",
         zip: "",
         state: "",
-        creatorFName: "",
-        creatorLName: "",
-        creatorEmail: "",
-        creatorPhone: "",
-        coordinatorFName: "",
-        coordinatorLName: "",
-        coordinatorEmail: "",
-        coordinatorPhone: "",
+        contactName: "",
+        contactRole: "",
+        contactPhone: "",
+        contactEmail: "",
         website: "",
+        twitter: "",
+        facebook: "",
+        instagram: "",
         img: ""
       }
   };
 
-  // change eventForms
-  handleChangeEvent = event => {
-    // Copy of eventFormEntries
-    let updateEventForm = _.cloneDeep(this.state.eventFormEntries);
-    // Check for each field
-    updateEventForm[event.target.name] = event.target.value;
-    // Set state to new form
+  // change orgForms
+  handleChangeOrg = event => {
+    // Copy orgFormEntries
+    let updateOrgForm = _.cloneDeep(this.state.orgFormEntries);
+    // Update every field
+    updateOrgForm[event.target.name] = event.target.value;
+    // Set state og orgFormEntires with new copy
     this.setState({
-      eventFormEntries: updateEventForm
+      orgFormEntries: updateOrgForm
     });
-  }
+  };
 
   //change eventForms
   handleNext = () => {
@@ -66,17 +59,17 @@ export default class AddEvent extends Component {
 
   render() {
     let content = "";
-    if (this.state.currentStage === Stage.EVENT) {
+    if (this.state.currentStage === Stage.ORGANIZATION) {
       content = (
-        <NewEvent
-          form={this.state.eventFormEntries}
-          onChange={this.handleChangeEvent}
+        <NewOrg
+          form={this.state.orgFormEntries}
+          onChange={this.handleChangeOrg}
         />
       );
     } else if (this.state.currentStage === Stage.CONFIRMATION) {
       content = (
         <Confirmation 
-          eventForm={this.state.eventFormEntries}
+          orgForm={this.state.orgFormEntries}
         />
       );
     } else if (this.state.currentStage === Stage.SUBMISSION) {

@@ -11,8 +11,6 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } f
 
 import "./css/App.css";
 import "typeface-nunito-sans";
-import { Footer } from "mdbreact";
-import StickyFooter from 'react-sticky-footer';
 
 
 class App extends Component {

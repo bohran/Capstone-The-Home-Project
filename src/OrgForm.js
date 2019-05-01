@@ -12,7 +12,7 @@ import {
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
-class AddOrganizationForm extends Component {
+class NewOrg extends Component {
   render() {
     console.log(this.props.form);
 
@@ -170,7 +170,7 @@ class AddOrganizationForm extends Component {
                     type="text"
                     name="contactName"
                     placeholder="Enter text"
-                    value={this.props.form.contactName}
+                    value={this.props.form.contactFName}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
@@ -182,7 +182,7 @@ class AddOrganizationForm extends Component {
                     type="text"
                     name="contactName"
                     placeholder="Enter text"
-                    value={this.props.form.contactName}
+                    value={this.props.form.contactLName}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
@@ -296,9 +296,9 @@ class AddOrganizationForm extends Component {
   }
 }
 
-AddOrganizationForm.propTypes = {
+NewOrg.propTypes = {
   form: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired
 };
 
-export default AddOrganizationForm;
+export default NewOrg;

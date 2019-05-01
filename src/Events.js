@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AddEvent } from "./AddEventForm";
+import { AddEvent } from "./EventForm";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { Nav, NavItem, NavLink } from "reactstrap";
@@ -134,7 +134,7 @@ export class Events extends Component {
         </h2>
         <div className = "add">
         <h4>New Organization?</h4>
-          <Button tag={Link} to="/AddOrganization">
+          <Button tag={Link} to="/RegOrganization">
             + Add Organization
           </Button> 
           <br/>
@@ -142,11 +142,7 @@ export class Events extends Component {
             + Add Event
           </Button>
         </div>
-        {/* <div className="add">
-          <Button tag={Link} to="/AddEvent">
-            + Add Event
-          </Button>
-        </div> */}
+
         <Nav vertical className="sidebar">
           <div className="categories">
             <h4>Select an Action:</h4>
