@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { AddEvent } from "./AddEventForm";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { Nav, NavItem, NavLink } from "reactstrap";
@@ -134,7 +133,7 @@ export class Events extends Component {
         </h2>
         <div className = "add">
         <h4>New Organization?</h4>
-          <Button tag={Link} to="/AddOrganization">
+          <Button tag={Link} to="/RegOrganization">
             + Add Organization
           </Button> 
           <br/>
@@ -288,6 +287,9 @@ export class Events extends Component {
           }}
         >
             {content}
+
+          {/* </LoadingScreen> */}
+
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.eventName}.</ModalHeader>
             <ModalBody> {this.state.eventDescription}</ModalBody>

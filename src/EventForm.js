@@ -329,6 +329,7 @@ class NewEvent extends Component {
             <FormGroup className="mediaButton">
               <Label>Add Cover Photo</Label>
               <CustomInput
+                id="media"
                 className="mediaButton"
                 type="file"
                 name="img"

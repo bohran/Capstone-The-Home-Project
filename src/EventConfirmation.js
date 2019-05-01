@@ -12,13 +12,18 @@ class Confirmation extends Component {
 
         <div className="addEvent">
           <Form>
-            <h5>Please confirm your information before submitting.</h5>
+            <h6>Please confirm your information before submitting.</h6>
+            <h5>Event Information</h5>
             <FormGroup>
               <Label>Event Title: {this.props.eventForm.title}</Label>
             </FormGroup>
 
             <FormGroup>
-              <h5>Event Category: {this.props.eventForm.eventType}</h5>
+              <Label>Event Type: {this.props.eventForm.category}</Label>
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Area of Services: {this.props.eventForm.services}</Label>
             </FormGroup>
 
             <FormGroup>
@@ -38,22 +43,22 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Address: {this.props.eventForm.eventAddress}</Label>
+              <Label>Address: {this.props.eventForm.address}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Event City: {this.props.eventForm.eventCity}</Label>
+              <Label>Event City: {this.props.eventForm.city}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Event County: {this.props.eventForm.eventCounty}</Label>
+              <Label>Event County: {this.props.eventForm.county}</Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Event Zip Code: {this.props.eventForm.eventZip}</Label>
+              <Label>Event Zip Code: {this.props.eventForm.zip}</Label>
             </FormGroup>
 
-            <h5>Event Contact Information:</h5>
+            <h5>Event Contact Information</h5>
 
             <FormGroup>
               <Label>First Name: {this.props.eventForm.creatorFName}</Label>
@@ -67,7 +72,11 @@ class Confirmation extends Component {
               <Label>Email: {this.props.eventForm.creatorEmail}</Label>
             </FormGroup>
 
-            <h5>Event Coordinator Information:</h5>
+            <FormGroup>
+              <Label>Phone: {this.props.eventForm.creatorPhone}</Label>
+            </FormGroup>
+
+            <h5>Event Coordinator Information</h5>
 
             <FormGroup>
               <Label>First Name: {this.props.eventForm.coordinatorFName}</Label>
@@ -82,6 +91,16 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
+              <Label>Phone: {this.props.eventForm.coordinatorPhone}</Label>
+            </FormGroup>
+
+            <h5>Additional Event Information</h5>
+
+            <FormGroup>
+              <Label>Website: {this.props.eventForm.website}</Label>
+            </FormGroup>
+
+            <FormGroup>
             <Label>Media: </Label>
             </FormGroup>
           </Form>
@@ -92,7 +111,6 @@ class Confirmation extends Component {
 }
 
 Confirmation.propTypes = {
-  orgForm: PropTypes.object.isRequired,
   eventForm: PropTypes.object.isRequired,
 };
 

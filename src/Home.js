@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, NavbarBrand } from "mdbreact";
 import 'mdbreact/dist/css/mdb.css';
 import 'mdbreact/dist/css/style.css';
-import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Organization } from './AddOrganizationForm';
 // import { Parallax, ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax';
-import { Parallax, Background } from 'react-parallax';
+import { Parallax } from 'react-parallax';
 
 import './css/Home.css';
 
