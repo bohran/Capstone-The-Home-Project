@@ -11,6 +11,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } f
 
 import "./css/App.css";
 import "typeface-nunito-sans";
+import RegOrganization from "./RegOrganization";
 
 
 class App extends Component {
@@ -68,6 +69,7 @@ class App extends Component {
           <Route path = "/About" component={About}/>
           <Route path="/Events" component={Events} />
           <Route path="/AddEvent" component={AddEvent} />
+          <Route path="/RegOrganization" component={RegOrganization}/>
           <Route path="/Contact" component={Contact} />
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>

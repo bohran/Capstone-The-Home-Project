@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import _ from "lodash";
 import { Button } from "reactstrap";
@@ -12,7 +13,7 @@ const Stage = {
   SUBMISSION: 2
 };
 
-export default class AddEvent extends Component {
+export default class RegOrganization extends Component {
   state = {
     currentStage: Stage.ORGANIZATION,
       // ONLY place where the data exists
@@ -21,11 +22,12 @@ export default class AddEvent extends Component {
         type: "",
         mission: "",
         address: "",
+        state: "",
         city: "",
         county: "",
         zip: "",
-        state: "",
-        contactName: "",
+        contactFName: "",
+        contactLName: "",
         contactRole: "",
         contactPhone: "",
         contactEmail: "",

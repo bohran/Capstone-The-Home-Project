@@ -14,34 +14,9 @@ import "./css/Organization.css";
 
 class NewOrg extends Component {
   render() {
-    console.log(this.props.form);
-
     return (
       <div>
         <h2 className="pageTitle">Add Your Organization</h2>
-
-        {/* <div className="selectOrg">
-          <Form>
-            <FormGroup controlId="formGridName">
-              <h5>Organization Name</h5>
-              <Input
-                type="select"
-                mame="name"
-                onChange={this.handleChange}
-                value={this.props.form.name}
-              >
-                <option>Choose...</option>
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-              </Input>
-            </FormGroup>
-          </Form>
-        </div> */}
-
-        {/* <h6 className="newOrgButton">
-          Don't see your Organization listed? Click Here.
-        </h6> */}
 
         {/* Adding a new Form */}
         <div className="addOrg">
@@ -168,7 +143,7 @@ class NewOrg extends Component {
                   <Label>First Name</Label>
                   <Input
                     type="text"
-                    name="contactName"
+                    name="contactFName"
                     placeholder="Enter text"
                     value={this.props.form.contactFName}
                     onChange={this.props.onChange}
@@ -180,7 +155,7 @@ class NewOrg extends Component {
                   <Label>Last Name</Label>
                   <Input
                     type="text"
-                    name="contactName"
+                    name="contactLName"
                     placeholder="Enter text"
                     value={this.props.form.contactLName}
                     onChange={this.props.onChange}

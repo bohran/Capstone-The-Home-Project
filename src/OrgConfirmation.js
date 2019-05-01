@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Form, FormGroup, Label} from "reactstrap";
-import './css/App.css';
+import { Form, FormGroup, Label } from "reactstrap";
+import "./css/App.css";
 
 class Confirmation extends Component {
   render() {
@@ -11,13 +11,14 @@ class Confirmation extends Component {
 
         <div className="addOrg">
           <Form>
-            <h5>Please confirm your information before submitting.</h5>
+            <h6>Please confirm your information before submitting.</h6>
+            <h5>Organization Information</h5>
             <FormGroup>
               <Label>Organization Name: {this.props.orgForm.name}</Label>
             </FormGroup>
 
             <FormGroup>
-              <h5>Organization Type: {this.props.orgForm.type}</h5>
+              <Label>Organization Type: {this.props.orgForm.type}</Label>
             </FormGroup>
 
             <FormGroup>
@@ -26,6 +27,10 @@ class Confirmation extends Component {
 
             <FormGroup>
               <Label>Organization Address: {this.props.orgForm.address}</Label>
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Organization State: {this.props.orgForm.state}</Label>
             </FormGroup>
 
             <FormGroup>
@@ -40,7 +45,7 @@ class Confirmation extends Component {
               <Label>Organization Zip Code: {this.props.orgForm.zip}</Label>
             </FormGroup>
 
-            <h5>Organization Contact Information:</h5>
+            <h5>Organization Contact</h5>
 
             <FormGroup>
               <Label>First Name: {this.props.orgForm.contactFName}</Label>
@@ -59,10 +64,27 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Phone: {this.props.orgForm.phone}</Label>
+              <Label>Phone: {this.props.orgForm.contactPhone}</Label>
             </FormGroup>
-            </Form>
-      </div>
+
+            <h5>Additional Information</h5>
+            <FormGroup>
+              <Label>Website: {this.props.orgForm.website}</Label>
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Twitter: {this.props.orgForm.twitter}</Label>
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Facebook: {this.props.orgForm.facebook}</Label>
+            </FormGroup>
+
+            <FormGroup>
+              <Label>Instagram: {this.props.orgForm.instgram}</Label>
+            </FormGroup>
+          </Form>
+        </div>
       </section>
     );
   }

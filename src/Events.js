@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { AddEvent } from "./EventForm";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import { Nav, NavItem, NavLink } from "reactstrap";

@@ -1,4 +1,4 @@
-// AddEvent route takes you here
+// Add Event route takes you here
 import React, { Component } from "react";
 import _ from "lodash";
 import { Button } from "reactstrap";
