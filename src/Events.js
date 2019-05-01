@@ -64,6 +64,7 @@ export class Events extends Component {
       "https://newsapi.org/v2/everything?" +
       "sources=national-geographic&" +
       "apiKey=de4895b190034f1897ca47779c016325";
+    // let url = "https://api.emmaropes.me/events";
     let req = new Request(url);
     fetch(req)
       .then(response => {
@@ -71,10 +72,12 @@ export class Events extends Component {
       })
       .then(results => {
         this.setState({
-          data: results.articles,
+          data: results,
           isLoading: false
         });
       });
+
+      // console.log(this.state.data);
   }
   render() {
     const content = this.state.data.map((d, i) => {
@@ -281,6 +284,7 @@ export class Events extends Component {
             textColor="#676767"
             text="loading..."> */}
             {content}
+
           {/* </LoadingScreen> */}
 
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
