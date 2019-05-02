@@ -54,17 +54,16 @@ class NewEvent extends Component {
                 </FormGroup>
               </Col>
 
-              {/* Add functionality to be able to select multiple service areas */}
               <Col md={3}>
                 <FormGroup>
                   <Label>Area of Service</Label>
                   <Input
+                    multiple={true}
                     type="select"
                     name="services"
                     value={this.props.form.services}
-                    onChange={this.props.onChange}
+                    onChange={this.props.onUpdate}
                   >
-                    <option>Choose...</option>
                     <option>Option 1</option>
                     <option>Option 2</option>
                     <option>Option 3</option>
@@ -327,7 +326,7 @@ class NewEvent extends Component {
             </FormGroup>
 
             <FormGroup className="mediaButton">
-              <Label>Add Cover Photo</Label>
+              <Label>Select Cover Photo</Label>
               <CustomInput
                 id="media"
                 className="mediaButton"
@@ -346,7 +345,8 @@ class NewEvent extends Component {
 
 NewEvent.propTypes = {
   form: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired
 };
 
 export default NewEvent;

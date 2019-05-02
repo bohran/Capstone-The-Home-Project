@@ -17,8 +17,6 @@ class NewOrg extends Component {
     return (
       <div>
         <h2 className="pageTitle">Add Your Organization</h2>
-
-        {/* Adding a new Form */}
         <div className="addOrg">
           <Form>
             <h5>Organization Information</h5>
@@ -40,12 +38,12 @@ class NewOrg extends Component {
                 <FormGroup>
                   <Label for="exampleSelect">Category</Label>
                   <Input
+                    multiple={true}
                     type="select"
                     name="type"
                     value={this.props.form.type}
-                    onChange={this.props.onChange}
+                    onChange={this.props.onUpdate}
                   >
-                    <option>Choose...</option>
                     <option>Option 1</option>
                     <option>Option 2</option>
                     <option>Option 3</option>
@@ -255,7 +253,7 @@ class NewOrg extends Component {
             </Row>
 
             <FormGroup>
-              <Label>Add Cover Photo</Label>
+              <Label>Select Cover Photo</Label>
               <CustomInput
                 id="mediaButton"
                 type="file"
@@ -273,7 +271,8 @@ class NewOrg extends Component {
 
 NewOrg.propTypes = {
   form: PropTypes.object.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired
 };
 
 export default NewOrg;

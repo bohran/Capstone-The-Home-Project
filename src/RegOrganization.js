@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import _ from "lodash";
 import { Button } from "reactstrap";
@@ -16,29 +15,63 @@ const Stage = {
 export default class RegOrganization extends Component {
   state = {
     currentStage: Stage.ORGANIZATION,
-      // ONLY place where the data exists
-      orgFormEntries: {
-        name: "",
-        type: "",
-        mission: "",
-        address: "",
-        state: "",
-        city: "",
-        county: "",
-        zip: "",
-        contactFName: "",
-        contactLName: "",
-        contactRole: "",
-        contactPhone: "",
-        contactEmail: "",
-        website: "",
-        twitter: "",
-        facebook: "",
-        instagram: "",
-        img: ""
-      }
+    // ONLY place where the data exists
+    orgFormEntries: {
+      name: "",
+      type: [],
+      mission: "",
+      address: "",
+      state: "",
+      city: "",
+      county: "",
+      zip: "",
+      contactFName: "",
+      contactLName: "",
+      contactRole: "",
+      contactPhone: "",
+      contactEmail: "",
+      website: "",
+      twitter: "",
+      facebook: "",
+      instagram: "",
+      img: ""
+    }
   };
 
+  componentDidMount() {
+    let url = "https://api.emmaropes.me/organizations";
+    // let req = new Request(url);
+    fetch(url, {
+      method: 'post',
+      body: JSON.stringify({
+        organizationName: this.state.orgFormEntries.name,
+        organizationDescription: this.state.orgFormEntries.mission,
+        address: this.state.orgFormEntries.address,
+        city: this.state.orgFormEntries.city,
+        state: this.state.orgFormEntries.state,
+        zipcode: this.state.orgFormEntries.zip,
+        county: this.state.orgFormEntries.county,
+        organizationType: this.state.orgFormEntries.type,
+        url: this.state.orgFormEntries.website,
+        email: this.state.orgFormEntries.contactEmail,
+        phone: this.state.orgFormEntries.ContactPhone,
+        firstName: this.state.orgFormEntries.contactFName,
+        lastName: this.state.orgFormEntries.contactLName,
+        role: this.state.orgFormEntries.contactRole,
+        twitter: this.state.orgFormEntries.twitter,
+        instagram: this.state.orgFormEntries.instagram,
+        facebook: this.state.orgFormEntries.facebook
+      }),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+        // 'Accept': 'application/json'
+      })
+    }).then(response => {
+        return response.json();
+      }).then(function(data) {
+        console.log(data);
+      });
+  }
   // change orgForms
   handleChangeOrg = event => {
     // Copy orgFormEntries
@@ -49,6 +82,23 @@ export default class RegOrganization extends Component {
     this.setState({
       orgFormEntries: updateOrgForm
     });
+  };
+
+  handleChangeType = event => {
+      var options = event.target.options;
+      var types = this.state.orgFormEntries.type;
+      for (var i = 0, l = options.length; i < l; i++) {
+        if (options[i].selected) {
+          types.push(options[i].value);
+        }
+      }
+      this.setState({
+        orgFormEntries: {
+          type: types
+        }
+      });
+      console.log(this.state.orgFormEntries.type);
+      // this.props.someCallback(types);
   };
 
   //change eventForms
@@ -66,18 +116,13 @@ export default class RegOrganization extends Component {
         <NewOrg
           form={this.state.orgFormEntries}
           onChange={this.handleChangeOrg}
+          onUpdate={this.handleChangeType}
         />
       );
     } else if (this.state.currentStage === Stage.CONFIRMATION) {
-      content = (
-        <Confirmation 
-          orgForm={this.state.orgFormEntries}
-        />
-      );
+      content = <Confirmation orgForm={this.state.orgFormEntries} />;
     } else if (this.state.currentStage === Stage.SUBMISSION) {
-      content = (
-        <Submission/>
-      )
+      content = <Submission />;
     }
     return (
       <div>
