@@ -124,15 +124,15 @@ export class Events extends Component {
     });
   };
 
-  handleCardClick = index => {
-    const eventName = this.state.data[index].eventName;
-    const eventDescription = this.state.data[index].eventDescription;
-    this.setState({
-      eventName: eventName,
-      eventDescription: eventDescription,
-      modal: true
-    });
-  };
+  // handleCardClick = index => {
+  //   const eventName = this.state.data[index].eventName;
+  //   const eventDescription = this.state.data[index].eventDescription;
+  //   this.setState({
+  //     eventName: eventName,
+  //     eventDescription: eventDescription,
+  //     modal: true
+  //   });
+  // };
   toggle = () => {
     this.setState({
       modal: !this.state.modal
