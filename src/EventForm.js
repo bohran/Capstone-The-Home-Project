@@ -64,9 +64,11 @@ class NewEvent extends Component {
                     value={this.props.form.services}
                     onChange={this.props.onUpdate}
                   >
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
+                    <option>Housing/Shelter</option>
+                    <option>Legal/Employment</option>
+                    <option>Day Centers</option>
+                    <option>Basic Needs</option>
+                    <option>{"Health & Wellness"}</option>
                   </Input>
                 </FormGroup>
               </Col>
