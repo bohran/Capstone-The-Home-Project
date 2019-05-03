@@ -17,25 +17,25 @@ export default class AddEvent extends Component {
     currentStage: Stage.EVENT,
     // ONLY place where the data exists
     eventFormEntries: {
-      title: "",
-      category: "",
-      orgs: [],
-      services: [""],
-      descr: "",
-      date: "",
-      startTime: "",
-      endTime: "",
-      address: "",
+      title: "21 Mile Marathon",
+      category: "Give",
+      orgs: ["All Home"],
+      services: ["Housing/Shelter"],
+      descr: "Run a marathon while raising money for the homeless shelter around the King County area.",
+      date: "10/22/2019",
+      startTime: "10:00:00",
+      endTime: "17:00:00",
+      address: "3rd Ave Main St.",
       room: "",
-      city: "",
-      capacity: 0,
-      county: "",
-      zip: "",
-      state: "",
-      creatorFName: "",
-      creatorLName: "",
-      creatorEmail: "",
-      creatorPhone: "",
+      city: "Bellevue",
+      capacity: 1000,
+      county: "King",
+      zip: "98007",
+      state: "WA",
+      creatorFName: "Emily",
+      creatorLName: "Lao",
+      creatorEmail: "EmLao@gmail.com",
+      creatorPhone: "425-332-1910",
       coordinatorFName: "",
       coordinatorLName: "",
       coordinatorEmail: "",
@@ -48,7 +48,6 @@ export default class AddEvent extends Component {
   handleSaveEvent = () => {
     var capacityAsInt = parseInt(this.state.eventFormEntries.capacity, 10)
     let url = "https://api.emmaropes.me/events";
-    // let req = new Request(url)
     fetch(url, {
       method: "post",
       body: JSON.stringify({
@@ -75,7 +74,6 @@ export default class AddEvent extends Component {
       }),
       headers: new Headers({
         "Content-Type": "application/json"
-        // 'Accept': 'application/json'
       })
     })
       .then(response => {

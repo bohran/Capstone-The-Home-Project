@@ -16,19 +16,19 @@ export default class RegOrganization extends Component {
     currentStage: Stage.ORGANIZATION,
     // ONLY place where the data exists
     orgFormEntries: {
-      name: "",
-      type: [],
-      mission: "",
-      address: "",
-      state: "",
-      city: "",
-      county: "",
-      zip: "",
-      contactFName: "",
-      contactLName: "",
-      contactRole: "",
+      name: "Tent Cities",
+      type: ["Housing (Permanent)"],
+      mission: "Providing immediate shelter for various people experiencing homelessness.",
+      address: "223rd Main St.",
+      state: "WA",
+      city: "Kirkland",
+      county: "King",
+      zip: "98032",
+      contactFName: "Ash",
+      contactLName: "Renner",
+      contactRole: "Media Manager",
       contactPhone: "",
-      contactEmail: "",
+      contactEmail: "aRenner@live.com",
       website: "",
       twitter: "",
       facebook: "",
@@ -39,7 +39,6 @@ export default class RegOrganization extends Component {
 
   handleSaveOrg = () => {
     let url = "https://api.emmaropes.me/organizations";
-    // let req = new Request(url);
     fetch(url, {
       method: "post",
       body: JSON.stringify({

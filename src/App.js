@@ -8,12 +8,19 @@ import { Contact } from "./Contact";
 import { HashLink as PageLink } from 'react-router-hash-link';
 // import{Calendar} from './Calendar';
 
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from "reactstrap";
 
 import "./css/App.css";
 import "typeface-nunito-sans";
 import RegOrganization from "./RegOrganization";
-
 
 class App extends Component {
   constructor(props) {
@@ -59,31 +66,23 @@ class App extends Component {
               </div> 
           </Collapse>
         </Navbar>
-        {/* <div className="footer">
-        Contact Us: Pyramid Communications
-        marketing@pyramidcommunications.com
-        206.374.7788
-       1932 First Avenue Suite 507, Seattle, WA 98101
-        </div> */}
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path = "#aboutus" component={About}/>
           <Route path="/Events" component={Events} />
           <Route path="/AddEvent" component={AddEvent} />
-          <Route path="/RegOrganization" component={RegOrganization}/>
+          <Route path="/RegOrganization" component={RegOrganization} />
           <Route path="/Contact" component={Contact} />
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
-        <div className="footer" style={{position:"sticky"}}>
-        Contact Us: Pyramid Communications <br/>
-        marketing@pyramidcommunications.com <br/>
-        206.374.7788 <br/>
-       1932 First Avenue Suite 507, Seattle, WA 98101
+        <div className="footer" style={{ position: "sticky" }}>
+          Contact Us: Pyramid Communications <br />
+          marketing@pyramidcommunications.com <br />
+          206.374.7788 <br />
+          1932 First Avenue Suite 507, Seattle, WA 98101
         </div>
-
       </Router>
     );
-  
   }
 }
 export default App;

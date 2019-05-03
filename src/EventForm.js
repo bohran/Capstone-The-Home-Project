@@ -45,7 +45,6 @@ class NewEvent extends Component {
                     value={this.props.form.category}
                     onChange={this.props.onChange}
                   >
-                    <option>Choose...</option>
                     <option>Give</option>
                     <option>Learn</option>
                     <option>Volunteer</option>
@@ -73,7 +72,20 @@ class NewEvent extends Component {
                 </FormGroup>
               </Col>
             </Row>
-
+            {/* <FormGroup>
+              <Label>Select Your Organization</Label>
+              <Input
+                type="select"
+                name="orgs"
+                value={this.props.form.orgs}
+                onChange={this.props.onChange}
+              >
+                <option>Give</option>
+                <option>Learn</option>
+                <option>Volunteer</option>
+                <option>Activism</option>
+              </Input>
+            </FormGroup> */}
             <FormGroup>
               <Label>Description</Label>
               <Input

@@ -40,9 +40,11 @@ export class Events extends Component {
       value: 0,
       previous: 0,
       title: "",
-      description: ""
+      description: "",
+      category: "Give"
     };
   }
+  
   handleCardClick = index => {
     const eventName = this.state.data[index].eventName;
     const eventDescription = this.state.data[index].eventDescription;
@@ -103,7 +105,7 @@ export class Events extends Component {
     let req = new Request(url);
     fetch(req)
       .then(response => {
-        return response.json();  
+        return response.json();
       })
       .then(results => {
         this.setState({
@@ -111,8 +113,33 @@ export class Events extends Component {
           isLoading: false
         });
       });
-
   }
+
+  handleCategory = event => {
+    // Update every field
+    let newCategory = event.target.value;
+    console.log(event.target.value);
+    // Set state og orgFormEntires with new copy
+    this.setState({
+      category: newCategory
+    });
+  };
+
+  handleCardClick = index => {
+    const eventName = this.state.data[index].eventName;
+    const eventDescription = this.state.data[index].eventDescription;
+    this.setState({
+      eventName: eventName,
+      eventDescription: eventDescription,
+      modal: true
+    });
+  };
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
+
   render() {
     const content = this.state.data.map((d, i) => {
     //   let dates = this.state.data.map((d) => {
@@ -169,12 +196,12 @@ export class Events extends Component {
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
-        <div className = "add">
-        <h4>New Organization?</h4>
+        <div className="add">
+          <h4>New Organization?</h4>
           <Button tag={Link} to="/RegOrganization">
             + Add Organization
-          </Button> 
-          <br/>
+          </Button>
+          <br />
           <Button tag={Link} to="/AddEvent">
             + Add Event
           </Button>
@@ -184,27 +211,57 @@ export class Events extends Component {
             <h4>Select an Action:</h4>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> All
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={["Give", "Learn", "Volunteer", "Activism"]}
+                  onChange={this.handleCategory}
+                />{" "}
+                All
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> Give
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Give"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Give
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> Learn
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Learn"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Learn
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> Volunteer
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Volunteer"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Volunteer
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> Activism
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Activism"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Activism
               </Label>
             </FormGroup>
           </div>
@@ -336,7 +393,7 @@ export class Events extends Component {
             marginLeft: "50px"
           }}
         >
-            {content}
+          {content}
 
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.eventName}.</ModalHeader>
