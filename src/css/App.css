@@ -1,6 +1,5 @@
 body{
     font-family: 'Nunito Sans', sans-serif;
-    background-color:#fafaed;
     color: #6e6e70;
 }
 .title{
@@ -44,5 +43,5 @@ body{
     background-color: #177283;
     color:white;
     width: 100%;
-    margin-top: 40%;
+    margin-top: 50%;
 }
