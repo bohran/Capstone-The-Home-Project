@@ -46,6 +46,7 @@ export class Events extends Component {
   handleCardClick = index => {
     const eventName = this.state.data[index].eventName;
     const eventDescription = this.state.data[index].eventDescription;
+    const organizationName = this.state.data[index].organizations[0];
     const address = this.state.data[index].address;
     const city = this.state.data[index].city;
     const state = this.state.data[index].state; 
@@ -69,6 +70,7 @@ export class Events extends Component {
     this.setState({
       eventName: eventName,
       eventDescription: eventDescription,
+      organizationName: organizationName,
       address:address, 
       city: city, 
       state: state, 
@@ -211,6 +213,11 @@ export class Events extends Component {
           <div className="filters">
             <h4>Select Area of Service:</h4>
             <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> All
+                </Label>
+              </FormGroup>
+            <FormGroup check>
               <Label check>
                 <Input type="checkbox" name="check1" /> Housing/Shelter
               </Label>
@@ -238,6 +245,11 @@ export class Events extends Component {
             <br />
             <div className="location">
               <h4>Select Location:</h4>
+              <FormGroup check>
+                <Label check>
+                  <Input type="checkbox" name="check1" /> All
+                </Label>
+              </FormGroup>
               <FormGroup check>
                 <Label check>
                   <Input type="checkbox" name="check1" /> Seattle
@@ -330,32 +342,37 @@ export class Events extends Component {
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.eventName}.</ModalHeader>
             <ModalBody> 
+            Organization: 
+            <span onClick={this.handleOrgClick}>
+            {" " + this.state.organizationName}
+            </span>
+            <br/>
             Description:
-            {this.state.eventDescription}
+            {" " + this.state.eventDescription}
             <br/>
             Address:
-            {this.state.address},{this.state.city}, {this.state.zipcode},
+            {" " + this.state.address},{" " + this.state.city}, {" " + this.state.zipcode},
             <br/>
             Date:
-            {this.state.date}
+            {" " + this.state.date}
             <br/>
             Time:
-            {this.state.startTime} - {this.state.endTime}
+            {" " + this.state.startTime} - {" " + this.state.endTime}
             <br/>
             Event Website:
-            {this.state.url}
+            {" " + this.state.url}
             <br/>
             Capacity:
-            {this.state.capacity}
+            {" " + this.state.capacity}
             <br/>
             Event Coordinator Contact Information:
-            {this.state.coordinatorFirstName}
+            {" " + this.state.coordinatorFirstName}
             <br/>
-            {this.state.coordinatorLastName}
+            {" " + this.state.coordinatorLastName}
             <br/>
-            {this.state.coordinatorEmail}
+            {" " + this.state.coordinatorEmail}
             <br/>
-            {this.state.coordinatorPhone}
+            {" " + this.state.coordinatorPhone}
             </ModalBody>
 
             <Button
