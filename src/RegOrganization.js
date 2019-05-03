@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import { Button } from "reactstrap";
 
 import NewOrg from "./OrgForm";
 import Confirmation from "./OrgConfirmation";
@@ -17,20 +16,20 @@ export default class RegOrganization extends Component {
     currentStage: Stage.ORGANIZATION,
     // ONLY place where the data exists
     orgFormEntries: {
-      name: "All Home",
-      type: ["Philantropy"],
-      mission: "Provide a shelter for all.",
+      name: "",
+      type: [],
+      mission: "",
       address: "",
-      state: "WA",
-      city: "Seattle",
-      county: "King",
-      zip: "98015",
-      contactFName: "Jenson",
-      contactLName: "Ackles",
-      contactRole: "Supervisor",
-      contactPhone: "1234567890",
-      contactEmail: "jackles@yahoo.com",
-      website: "allhome.com",
+      state: "",
+      city: "",
+      county: "",
+      zip: "",
+      contactFName: "",
+      contactLName: "",
+      contactRole: "",
+      contactPhone: "",
+      contactEmail: "",
+      website: "",
       twitter: "",
       facebook: "",
       instagram: "",
