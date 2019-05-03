@@ -342,7 +342,7 @@ export class Events extends Component {
             <ModalHeader>{this.state.eventName}.</ModalHeader>
             <ModalBody> 
             Organization:
-            {this.state.organizations}
+            {this.state.organizationName}
             <br/>
             Description:
             {" " + this.state.eventDescription}
@@ -356,8 +356,8 @@ export class Events extends Component {
             Time:
             {" " + this.state.startTime} - {" " + this.state.endTime}
             <br/>
-            Event Website:
-            {" " + this.state.url}
+            Event Website: {" "}
+            <a href={" " + this.state.url + " "}>Visit Site</a>
             <br/>
             Capacity:
             {" " + this.state.capacity}

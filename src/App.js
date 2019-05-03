@@ -74,7 +74,7 @@ class App extends Component {
           <Route path="/Contact" component={Contact} />
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
-        <div className="footer">
+        <div className="footer" style={{position:"sticky"}}>
         Contact Us: Pyramid Communications <br/>
         marketing@pyramidcommunications.com <br/>
         206.374.7788 <br/>

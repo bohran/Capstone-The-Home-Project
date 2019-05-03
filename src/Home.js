@@ -7,6 +7,8 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 
 import './css/Home.css';
+import { Contact } from './Contact';
+import { About } from './About';
 
 
 
@@ -40,6 +42,9 @@ export class Home extends Component {
     <div>
         <h3>Learn more about how you can help via our Messaging Toolkits:</h3>
         <Button href = 'https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0'>Toolkits</Button>
+    </div>
+    <div>
+        {About}
     </div>
 </div>)
     }

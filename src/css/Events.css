@@ -24,7 +24,7 @@ body{
 .add{
     float: right;
     position: relative;
-    margin-right: 3%
+    margin-right: 3%;
 }
 .btn-secondary{
     background-color: #cf0f2e !important;
