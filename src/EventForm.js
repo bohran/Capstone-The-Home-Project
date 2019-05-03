@@ -351,14 +351,13 @@ class NewEvent extends Component {
               />
             </FormGroup>
 
-            <FormGroup className="mediaButton">
+            <FormGroup>
               <Label>Select Cover Photo</Label>
-              <CustomInput
-                id="media"
-                className="mediaButton"
-                type="file"
+              <Input
+                type="test"
                 name="img"
-                value={this.props.form.media}
+                placeholder="Enter URL"
+                value={this.props.form.img}
                 onChange={this.props.onChange}
               />
             </FormGroup>
