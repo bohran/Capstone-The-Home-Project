@@ -46,9 +46,47 @@ export class Events extends Component {
   handleCardClick = index => {
     const eventName = this.state.data[index].eventName;
     const eventDescription = this.state.data[index].eventDescription;
+    const address = this.state.data[index].address;
+    const city = this.state.data[index].city;
+    const state = this.state.data[index].state; 
+    const zipcode = this.state.data[index].zipcode;
+    const date = this.state.data[index].date; 
+    const startTime = this.state.data[index].startTime;
+    const endTime = this.state.data[index].endTime;
+    const url = this.state.data[index].url;
+    const capacity = this.state.data[index].capacity;
+    const room = this.state.data[index].room; 
+    const contactFirstName = this.state.data[index].contactFirstName;
+    const contactLastName = this.state.data[index].contactLastName;
+    const contactEmail = this.state.data[index].contactEmail;
+    const contactPhone = this.state.data[index].contactPhone;
+    const coordinatorFirstName = this.state.data[index].coordinatorFirstName;
+    const coordinatorLastName = this.state.data[index].coordinatorLastName;
+    const coordinatorEmail = this.state.data[index].coordinatorEmail; 
+    const coordinatorPhone = this.state.data[index].coordinatorPhone;
+
+     
     this.setState({
       eventName: eventName,
       eventDescription: eventDescription,
+      address:address, 
+      city: city, 
+      state: state, 
+      zipcode: zipcode, 
+      date:date, 
+      startTime:startTime, 
+      endTime: endTime, 
+      url: url, 
+      capacity:capacity, 
+      room:room, 
+      contactFirstName:contactFirstName,
+      contactLastName:contactLastName, 
+      contactEmail:contactEmail, 
+      contactPhone:contactPhone, 
+      coordinatorFirstName:coordinatorFirstName, 
+      coordinatorLastName:coordinatorLastName,
+      coordinatorEmail:coordinatorEmail, 
+      coordinatorPhone:coordinatorPhone, 
       modal: true
     });
   };
@@ -61,10 +99,6 @@ export class Events extends Component {
   componentDidMount() {
     this.setState({ isLoading: true });
     let url = "https://api.emmaropes.me/events";
-      // "https://newsapi.org/v2/everything?" +
-      // "sources=national-geographic&" +
-      // "apiKey=de4895b190034f1897ca47779c016325";
-      
     let req = new Request(url);
     fetch(req)
       .then(response => {
@@ -80,6 +114,9 @@ export class Events extends Component {
   }
   render() {
     const content = this.state.data.map((d, i) => {
+    //   let dates = this.state.data.map((d) => {
+    //     return new Date((d.date)).toString();
+    // })
       // let imageSrc = d.eventName;
       // if (d.urlToImage == null) {
       //   imageSrc = <br />;
@@ -100,7 +137,7 @@ export class Events extends Component {
         <CardGroup>
           <Card>
             <div className="image">
-              <CardImg src='https://i.imgur.com/YY7BUx2.jpg'  style={{ width: "100%" }} />
+              <CardImg src={d.room} style={{ width: "100%" }} />
               <CardBody>
                 <CardTitle>{d.eventName}</CardTitle>
                 <CardSubtitle>
@@ -265,7 +302,7 @@ export class Events extends Component {
                   style={{ width: "50%" }}
                   type="select"
                   id="exampleSelect"
-                >
+               >
                   <option>All</option>
                   <option>Today</option>
                   <option>Tomorrow</option>
@@ -277,9 +314,11 @@ export class Events extends Component {
             </div>
           </div>
         </Nav>
+        
         <div
           style={{
             display: "flex",
+            alignItems: "align-self",
             flexDirection: "row",
             flexWrap: "wrap",
             flexBasis: 1,
@@ -288,11 +327,37 @@ export class Events extends Component {
         >
             {content}
 
-          {/* </LoadingScreen> */}
-
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.eventName}.</ModalHeader>
-            <ModalBody> {this.state.eventDescription}</ModalBody>
+            <ModalBody> 
+            Description:
+            {this.state.eventDescription}
+            <br/>
+            Address:
+            {this.state.address},{this.state.city}, {this.state.zipcode},
+            <br/>
+            Date:
+            {this.state.date}
+            <br/>
+            Time:
+            {this.state.startTime} - {this.state.endTime}
+            <br/>
+            Event Website:
+            {this.state.url}
+            <br/>
+            Capacity:
+            {this.state.capacity}
+            <br/>
+            Event Coordinator Contact Information:
+            {this.state.coordinatorFirstName}
+            <br/>
+            {this.state.coordinatorLastName}
+            <br/>
+            {this.state.coordinatorEmail}
+            <br/>
+            {this.state.coordinatorPhone}
+            </ModalBody>
+
             <Button
               style={{
                 backgroundColor: " #cf0f2e",
