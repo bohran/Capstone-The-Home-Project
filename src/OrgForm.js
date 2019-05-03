@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
+  Button,
   Form,
   FormGroup,
   Label,
@@ -264,6 +265,9 @@ class NewOrg extends Component {
             </FormGroup>
           </Form>
         </div>
+        <Button variant="primary" type="submit" onClick={this.props.onNext}>
+          Continue
+        </Button>
       </div>
     );
   }
@@ -272,7 +276,8 @@ class NewOrg extends Component {
 NewOrg.propTypes = {
   form: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  onUpdate: PropTypes.func.isRequired
+  onUpdate: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired
 };
 
 export default NewOrg;

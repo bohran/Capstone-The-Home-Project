@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
+import { Button } from "reactstrap";
+
 import './css/App.css';
 
 class Submission extends Component {
+  handleNext = () => {
+    let newStage = this.state.currentStage + 1;
+    this.setState({
+      currentStage: newStage
+    });
+  };
+
   render() {
     return (
       <section>
@@ -13,8 +23,10 @@ class Submission extends Component {
             any other inquiries related to your event.</p>
         </div>
         <div className="buttonContainer">
-            <button className="submitButton" ><a className="eventLink" href="../index.html"> Return to Calendar </a> </button>
-            <button className="submitButton"><a className="eventLink" href="./events.html"> Submit Another Event</a> </button>
+        <Button variant="primary" type="submit" onClick={this.handleNext}>
+          Confirm
+        </Button>
+            {/* <button className="submitButton"><a className="eventLink" href="./events.html"> Submit Another Event</a> </button> */}
             </div>
         </div>
         </section>

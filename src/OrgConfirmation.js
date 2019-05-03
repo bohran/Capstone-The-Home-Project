@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Form, FormGroup, Label } from "reactstrap";
+import { Button, Form, FormGroup, Label } from "reactstrap";
+
 import "./css/App.css";
 
 class Confirmation extends Component {
@@ -85,13 +86,17 @@ class Confirmation extends Component {
             </FormGroup>
           </Form>
         </div>
+        <Button variant="primary" type="submit" onClick={this.props.onConfirm}>
+          Confirm
+        </Button>
       </section>
     );
   }
 }
 
 Confirmation.propTypes = {
-  orgForm: PropTypes.object.isRequired
+  orgForm: PropTypes.object.isRequired,
+  onConfirm: PropTypes.func.isRequired
 };
 
 export default Confirmation;
