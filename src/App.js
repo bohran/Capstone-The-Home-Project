@@ -5,6 +5,7 @@ import { About } from "./About";
 import { Events } from "./Events";
 import AddEvent from "./AddEvent";
 import { Contact } from "./Contact";
+import { HashLink as PageLink } from 'react-router-hash-link';
 // import{Calendar} from './Calendar';
 
 import {
@@ -52,22 +53,22 @@ class App extends Component {
           </div>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <div className="tabs">
-              <Link className="links" to="/Events">
-                Events
-              </Link>
-              <Link className="links" to="/Contact">
-                ToolKits
-              </Link>
-              <Link className="links" to="/About">
-                About Us
-              </Link>
-            </div>
+              <div className="tabs">
+                <Link className="links" to="/Events">
+                  Events
+                </Link>               
+                <Link className="links" to="/Contact">
+                  ToolKits
+                </Link>
+                <PageLink className="links" to="#aboutus">
+                  About Us
+                </PageLink>              
+              </div> 
           </Collapse>
         </Navbar>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/About" component={About} />
+          <Route path = "#aboutus" component={About}/>
           <Route path="/Events" component={Events} />
           <Route path="/AddEvent" component={AddEvent} />
           <Route path="/RegOrganization" component={RegOrganization} />
