@@ -45,9 +45,11 @@ class NewOrg extends Component {
                     value={this.props.form.type}
                     onChange={this.props.onUpdate}
                   >
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
+                    <option>Housing (Permanent)</option>
+                    <option>Shelter (Not Permanent)</option>
+                    <option>Rapid Re-housing</option>
+                    <option>Transitional Housing</option>
+                    <option>Urban Encampments</option>
                   </Input>
                 </FormGroup>
               </Col>

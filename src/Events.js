@@ -40,9 +40,42 @@ export class Events extends Component {
       value: 0,
       previous: 0,
       title: "",
-      description: ""
+      description: "",
+      category: "Give"
     };
   }
+
+  // API from NewsAPI (headlines from National Geog)
+  componentDidMount() {
+    this.setState({ isLoading: true });
+    let url = "https://api.emmaropes.me/events";
+    // "https://newsapi.org/v2/everything?" +
+    // "sources=national-geographic&" +
+    // "apiKey=de4895b190034f1897ca47779c016325";
+
+    let req = new Request(url);
+    fetch(req)
+      .then(response => {
+        return response.json();
+      })
+      .then(results => {
+        this.setState({
+          data: results,
+          isLoading: false
+        });
+      });
+  }
+
+  handleCategory = event => {
+    // Update every field
+    let newCategory = event.target.value;
+    console.log(event.target.value);
+    // Set state og orgFormEntires with new copy
+    this.setState({
+      category: newCategory
+    });
+  };
+
   handleCardClick = index => {
     const eventName = this.state.data[index].eventName;
     const eventDescription = this.state.data[index].eventDescription;
@@ -57,27 +90,7 @@ export class Events extends Component {
       modal: !this.state.modal
     });
   };
-  // API from NewsAPI (headlines from National Geog)
-  componentDidMount() {
-    this.setState({ isLoading: true });
-    let url = "https://api.emmaropes.me/events";
-      // "https://newsapi.org/v2/everything?" +
-      // "sources=national-geographic&" +
-      // "apiKey=de4895b190034f1897ca47779c016325";
-      
-    let req = new Request(url);
-    fetch(req)
-      .then(response => {
-        return response.json();  
-      })
-      .then(results => {
-        this.setState({
-          data: results,
-          isLoading: false
-        });
-      });
 
-  }
   render() {
     const content = this.state.data.map((d, i) => {
       // let imageSrc = d.eventName;
@@ -95,48 +108,54 @@ export class Events extends Component {
       //     </div>
       //   );
       // }
-      return (
-        <div className="events" key={"event" + i}>
-        <CardGroup>
-          <Card>
-            <div className="image">
-              <CardImg src='https://i.imgur.com/YY7BUx2.jpg'  style={{ width: "100%" }} />
-              <CardBody>
-                <CardTitle>{d.eventName}</CardTitle>
-                <CardSubtitle>
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
-                </CardSubtitle>
-                <CardSubtitle>
-                  <FontAwesomeIcon icon={faClock} /> {d.startTime} - {d.endTime}
-                </CardSubtitle>
-                <CardSubtitle>
-                  <FontAwesomeIcon icon={faCalendar} />
-                   {" " + d.date}
-                </CardSubtitle>
-                <Button
-                  className="learn"
-                  onClick={this.handleCardClick.bind(null, i)}
-                >
-                  learn more
-                </Button>
-              </CardBody>
-            </div>
-          </Card>
-          </CardGroup>
-        </div>
-      );
+      if (d.categoryName === this.state.category) {
+        return (
+          <div className="events" key={"event" + i}>
+            <CardGroup>
+              <Card>
+                <div className="image">
+                  <CardImg
+                    src="https://i.imgur.com/YY7BUx2.jpg"
+                    style={{ width: "100%" }}
+                  />
+                  <CardBody>
+                    <CardTitle>{d.eventName}</CardTitle>
+                    <CardSubtitle>
+                      <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
+                    </CardSubtitle>
+                    <CardSubtitle>
+                      <FontAwesomeIcon icon={faClock} /> {d.startTime} -{" "}
+                      {d.endTime}
+                    </CardSubtitle>
+                    <CardSubtitle>
+                      <FontAwesomeIcon icon={faCalendar} />
+                      {" " + d.date}
+                    </CardSubtitle>
+                    <Button
+                      className="learn"
+                      onClick={this.handleCardClick.bind(null, i)}
+                    >
+                      learn more
+                    </Button>
+                  </CardBody>
+                </div>
+              </Card>
+            </CardGroup>
+          </div>
+        );
+      }
     });
     return (
       <div>
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
-        <div className = "add">
-        <h4>New Organization?</h4>
+        <div className="add">
+          <h4>New Organization?</h4>
           <Button tag={Link} to="/RegOrganization">
             + Add Organization
-          </Button> 
-          <br/>
+          </Button>
+          <br />
           <Button tag={Link} to="/AddEvent">
             + Add Event
           </Button>
@@ -146,27 +165,57 @@ export class Events extends Component {
             <h4>Select an Action:</h4>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> All
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={["Give", "Learn", "Volunteer", "Activism"]}
+                  onChange={this.handleCategory}
+                />{" "}
+                All
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> Give
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Give"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Give
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> Learn
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Learn"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Learn
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> Volunteer
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Volunteer"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Volunteer
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> Activism
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Activism"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Activism
               </Label>
             </FormGroup>
           </div>
@@ -286,7 +335,7 @@ export class Events extends Component {
             marginLeft: "50px"
           }}
         >
-            {content}
+          {content}
 
           {/* </LoadingScreen> */}
 
