@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import { Form, FormGroup, Label} from "reactstrap";
+import { Button, Form, FormGroup, Label} from "reactstrap";
+
 import './css/App.css';
 
 class Confirmation extends Component {
@@ -27,7 +28,7 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Event Description: {this.props.eventForm.eventDescr}</Label>
+              <Label>Event Description: {this.props.eventForm.descr}</Label>
             </FormGroup>
 
             <FormGroup>
@@ -44,6 +45,12 @@ class Confirmation extends Component {
 
             <FormGroup>
               <Label>Address: {this.props.eventForm.address}</Label>
+            </FormGroup>
+            <FormGroup>
+              <Label>Room: {this.props.eventForm.room}</Label>
+            </FormGroup>
+            <FormGroup>
+              <Label>Event Capacity: {this.props.eventForm.capacity}</Label>
             </FormGroup>
 
             <FormGroup>
@@ -105,6 +112,11 @@ class Confirmation extends Component {
             </FormGroup>
           </Form>
       </div>
+      <div>
+      <Button variant="primary" type="submit" onClick={this.props.onConfirm}>
+          Confirm
+        </Button>
+      </div>
       </section>
     );
   }
@@ -112,6 +124,7 @@ class Confirmation extends Component {
 
 Confirmation.propTypes = {
   eventForm: PropTypes.object.isRequired,
+  onConfirm: PropTypes.func.isRequired
 };
 
 export default Confirmation;

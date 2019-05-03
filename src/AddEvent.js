@@ -1,7 +1,6 @@
 // Add Event route takes you here
 import React, { Component } from "react";
 import _ from "lodash";
-import { Button } from "reactstrap";
 
 import NewEvent from "./EventForm";
 import Confirmation from "./EventConfirmation";
@@ -21,7 +20,7 @@ export default class AddEvent extends Component {
       title: "",
       category: "",
       orgs: [],
-      services: [],
+      services: [""],
       descr: "",
       date: "",
       startTime: "",
@@ -47,6 +46,7 @@ export default class AddEvent extends Component {
   };
 
   handleSaveEvent = () => {
+    var capacityAsInt = parseInt(this.state.eventFormEntries.capacity, 10)
     let url = "https://api.emmaropes.me/events";
     // let req = new Request(url)
     fetch(url, {
@@ -64,12 +64,12 @@ export default class AddEvent extends Component {
         endTime: this.state.eventFormEntries.endTime,
         county: this.state.eventFormEntries.county,
         url: this.state.eventFormEntries.website,
-        capacity: this.state.eventFormEntries.capacity,
+        capacity: capacityAsInt,
         room: this.state.eventFormEntries.room,
-        contactEmail: this.state.eventFormEntries.contactEmail,
-        contactPhone: this.state.eventFormEntries.contactPhone,
-        contactFirstName: this.state.eventFormEntries.contactFirstName,
-        contactLastName: this.state.eventFormEntries.contactLastName,
+        contactEmail: this.state.eventFormEntries.creatorEmail,
+        contactPhone: this.state.eventFormEntries.creatorPhone,
+        contactFirstName: this.state.eventFormEntries.creatorFName,
+        contactLastName: this.state.eventFormEntries.creatorLName,
         services: this.state.eventFormEntries.services,
         organizations: this.state.eventFormEntries.orgs
       }),
@@ -79,14 +79,16 @@ export default class AddEvent extends Component {
       })
     })
       .then(response => {
-        if(response.ok) {
+        if (response.ok) {
           return response.text();
         }
         throw response.text();
-      }).then(text => {
+      })
+      .then(text => {
         console.log(text);
         return JSON.parse(text);
-      }).then(responseObject => {
+      })
+      .then(responseObject => {
         this.handleNext();
       })
       .catch(function(err) {
@@ -122,7 +124,7 @@ export default class AddEvent extends Component {
 
     this.setState({
       eventFormEntries: updateEventForm
-    })
+    });
   };
 
   //change eventForms
@@ -141,20 +143,19 @@ export default class AddEvent extends Component {
           form={this.state.eventFormEntries}
           onChange={this.handleChangeEvent}
           onUpdate={this.handleChangeService}
+          onNext={this.handleNext}
         />
       );
     } else if (this.state.currentStage === Stage.CONFIRMATION) {
-      content = <Confirmation eventForm={this.state.eventFormEntries} />;
+      content = (
+        <Confirmation
+          eventForm={this.state.eventFormEntries}
+          onConfirm={this.handleSaveEvent}
+        />
+      );
     } else if (this.state.currentStage === Stage.SUBMISSION) {
       content = <Submission />;
     }
-    return (
-      <div>
-        {content}
-        <Button variant="primary" type="submit" onClick={this.handleSaveEvent}>
-          Continue
-        </Button>
-      </div>
-    );
+    return <div>{content}</div>;
   }
 }

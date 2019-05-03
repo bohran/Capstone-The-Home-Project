@@ -5,6 +5,7 @@ import { About } from "./About";
 import { Events } from "./Events";
 import AddEvent from "./AddEvent";
 import { Contact } from "./Contact";
+import { HashLink as PageLink } from 'react-router-hash-link';
 // import{Calendar} from './Calendar';
 
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
@@ -52,9 +53,9 @@ class App extends Component {
                 <Link className="links" to="/Contact">
                   ToolKits
                 </Link>
-                <Link className="links" to="/About">
+                <PageLink className="links" to="#aboutus">
                   About Us
-                </Link>              
+                </PageLink>              
               </div> 
           </Collapse>
         </Navbar>
@@ -66,7 +67,7 @@ class App extends Component {
         </div> */}
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path = "/About" component={About}/>
+          <Route path = "#aboutus" component={About}/>
           <Route path="/Events" component={Events} />
           <Route path="/AddEvent" component={AddEvent} />
           <Route path="/RegOrganization" component={RegOrganization}/>

@@ -64,16 +64,18 @@ class NewEvent extends Component {
                     value={this.props.form.services}
                     onChange={this.props.onUpdate}
                   >
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
+                    <option>Housing/Shelter</option>
+                    <option>Legal/Employment</option>
+                    <option>Day Centers</option>
+                    <option>Basic Needs</option>
+                    <option>{"Health & Wellness"}</option>
                   </Input>
                 </FormGroup>
               </Col>
             </Row>
 
             <FormGroup>
-              <Label>Event Description</Label>
+              <Label>Description</Label>
               <Input
                 type="text"
                 name="descr"
@@ -132,7 +134,7 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
-              <Col md={4}>
+              <Col md={2}>
                 <FormGroup>
                   <Label>Room</Label>
                   <Input
@@ -144,12 +146,24 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
+              <Col md={2}>
+                <FormGroup>
+                  <Label>Event Capacity</Label>
+                  <Input
+                    type="text"
+                    name="capacity"
+                    placeholder="e.g. 40"
+                    value={this.props.form.capacity}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
             </Row>
 
             <Row form>
               <Col md={4}>
                 <FormGroup>
-                  <Label>Event City</Label>
+                  <Label>City</Label>
                   <Input
                     type="text"
                     name="city"
@@ -161,7 +175,7 @@ class NewEvent extends Component {
               </Col>
               <Col md={4}>
                 <FormGroup>
-                  <Label>Event County</Label>
+                  <Label>County</Label>
                   <Input
                     type="text"
                     name="county"
@@ -173,7 +187,7 @@ class NewEvent extends Component {
               </Col>
               <Col md={2}>
                 <FormGroup>
-                  <Label>Event Zip Code</Label>
+                  <Label>Zip Code</Label>
                   <Input
                     type="text"
                     name="zip"
@@ -338,6 +352,9 @@ class NewEvent extends Component {
             </FormGroup>
           </Form>
         </div>
+        <Button variant="primary" type="submit" onClick={this.props.onNext}>
+          Continue
+        </Button>
       </div>
     );
   }
@@ -346,7 +363,8 @@ class NewEvent extends Component {
 NewEvent.propTypes = {
   form: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  onUpdate: PropTypes.func.isRequired
+  onUpdate: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired
 };
 
 export default NewEvent;

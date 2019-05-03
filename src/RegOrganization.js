@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import { Button } from "reactstrap";
 
 import NewOrg from "./OrgForm";
 import Confirmation from "./OrgConfirmation";
@@ -38,11 +37,11 @@ export default class RegOrganization extends Component {
     }
   };
 
-  componentDidMount() {
+  handleSaveOrg = () => {
     let url = "https://api.emmaropes.me/organizations";
     // let req = new Request(url);
     fetch(url, {
-      method: 'post',
+      method: "post",
       body: JSON.stringify({
         organizationName: this.state.orgFormEntries.name,
         organizationDescription: this.state.orgFormEntries.mission,
@@ -63,15 +62,29 @@ export default class RegOrganization extends Component {
         facebook: this.state.orgFormEntries.facebook
       }),
       headers: new Headers({
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
         // 'Accept': 'application/json'
       })
-    }).then(response => {
-        return response.json();
-      }).then(function(data) {
-        console.log(data);
+    })
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        }
+        throw response.text();
+      })
+      .then(text => {
+        console.log(text);
+        return JSON.parse(text);
+      })
+      .then(responseObject => {
+        this.handleNext();
+      })
+      .catch(function(err) {
+        console.log("ERROR!");
+        console.log(err);
       });
-  }
+  };
+
   // change orgForms
   handleChangeOrg = event => {
     // Copy orgFormEntries
@@ -85,20 +98,20 @@ export default class RegOrganization extends Component {
   };
 
   handleChangeType = event => {
-      var options = event.target.options;
-      var types = this.state.orgFormEntries.type;
-      for (var i = 0, l = options.length; i < l; i++) {
-        if (options[i].selected) {
-          types.push(options[i].value);
-        }
+    var options = event.target.options;
+    var types = this.state.orgFormEntries.type;
+    for (var i = 0, l = options.length; i < l; i++) {
+      if (options[i].selected) {
+        types.push(options[i].value);
       }
-      this.setState({
-        orgFormEntries: {
-          type: types
-        }
-      });
-      console.log(this.state.orgFormEntries.type);
-      // this.props.someCallback(types);
+    }
+    this.setState({
+      orgFormEntries: {
+        type: types
+      }
+    });
+    console.log(this.state.orgFormEntries.type);
+    // this.props.someCallback(types);
   };
 
   //change eventForms
@@ -117,19 +130,22 @@ export default class RegOrganization extends Component {
           form={this.state.orgFormEntries}
           onChange={this.handleChangeOrg}
           onUpdate={this.handleChangeType}
+          onNext={this.handleNext}
         />
       );
     } else if (this.state.currentStage === Stage.CONFIRMATION) {
-      content = <Confirmation orgForm={this.state.orgFormEntries} />;
+      content = (
+        <Confirmation
+          orgForm={this.state.orgFormEntries}
+          onConfirm={this.handleSaveOrg}
+        />
+      );
     } else if (this.state.currentStage === Stage.SUBMISSION) {
       content = <Submission />;
     }
     return (
       <div>
         {content}
-        <Button variant="primary" type="submit" onClick={this.handleNext}>
-          Continue
-        </Button>
       </div>
     );
   }
