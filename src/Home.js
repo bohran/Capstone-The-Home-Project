@@ -3,6 +3,8 @@ import 'mdbreact/dist/css/mdb.css';
 import 'mdbreact/dist/css/style.css';
 // import { Parallax, ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax';
 import { Parallax } from 'react-parallax';
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+
 
 import './css/Home.css';
 
@@ -32,10 +34,13 @@ export class Home extends Component {
             <h3>People across our region are frustrated that so many King County residents are experiencing homelessness, and are concerned that progress is not happening quickly enough, at a large enough scale.</h3>
 
 <h3>We know that homelessness in King County is solvable.</h3>
-
 <h3>And, to solve this problem, the whole community must be invested in understanding its causes and supporting its solutions.</h3>
-
-<h3>How we talk about these issues matters. Together, by building common understanding about who is experiencing homelessness, why, and what we can do about it, we can foster unity and community support for our shared path forward.</h3>
-        </div>)
+<h3>How we talk about these issues matters. Together, by building common understanding about who is experiencing homelessness, why, and what we can do about it, 
+    we can foster unity and community support for our shared path forward.</h3> <br/>
+    <div>
+        <h3>Learn more about how you can help via our Messaging Toolkits:</h3>
+        <Button href = 'https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0'>Toolkits</Button>
+    </div>
+</div>)
     }
 }

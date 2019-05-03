@@ -95,7 +95,6 @@ export class Events extends Component {
       modal: !this.state.modal
     });
   };
-  // API from NewsAPI (headlines from National Geog)
   componentDidMount() {
     this.setState({ isLoading: true });
     let url = "https://api.emmaropes.me/events";
@@ -330,6 +329,9 @@ export class Events extends Component {
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.eventName}.</ModalHeader>
             <ModalBody> 
+            Organization:
+            {this.state.organizations}
+            <br/>
             Description:
             {this.state.eventDescription}
             <br/>
