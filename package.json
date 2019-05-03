@@ -24,6 +24,7 @@
     "react-parallax": "^2.2.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "react-router-hash-link": "^1.2.1",
     "react-scripts": "2.1.8",
     "react-scroll-parallax": "^2.1.2",
     "react-sidebar": "^3.0.2",

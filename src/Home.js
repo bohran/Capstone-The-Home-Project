@@ -18,7 +18,7 @@ export class Home extends Component {
                 <h1 style={{ color: "white" , marginTop: "100px", fontSize: "150px", color: "#fafaed"}}>#SeattleForAll</h1>
                 <div style={{ height: '300px' }} />
             </Parallax>
-            <h1 style ={{fontSize: '100px', fontWeight:'bold'}}>The Home Project</h1>
+            <h1 style ={{fontSize: '6.5rem', fontWeight:'bold'}}>The Home Project</h1>
             <h2>An Engagement and Advocacy Initiative with One Goal:</h2>
             <h2>A Home for Everyone in King County</h2>
             <br/>
@@ -28,7 +28,14 @@ export class Home extends Component {
                 strength={1000}>
             <div style={{ height: '500px' }} />
             </Parallax>
-            <h1>About Us</h1>
+            <h1 style ={{fontSize: '4rem', fontWeight:'bold'}} id='#aboutus'>About Us</h1>
+            <h3>People across our region are frustrated that so many King County residents are experiencing homelessness, and are concerned that progress is not happening quickly enough, at a large enough scale.</h3>
+
+<h3>We know that homelessness in King County is solvable.</h3>
+
+<h3>And, to solve this problem, the whole community must be invested in understanding its causes and supporting its solutions.</h3>
+
+<h3>How we talk about these issues matters. Together, by building common understanding about who is experiencing homelessness, why, and what we can do about it, we can foster unity and community support for our shared path forward.</h3>
         </div>)
     }
 }
