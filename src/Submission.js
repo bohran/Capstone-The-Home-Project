@@ -24,7 +24,7 @@ class Submission extends Component {
         </div>
         <div className="buttonContainer">
         <Button variant="primary" type="submit" onClick={this.handleNext}>
-          Confirm
+          Go Back to Events
         </Button>
             {/* <button className="submitButton"><a className="eventLink" href="./events.html"> Submit Another Event</a> </button> */}
             </div>

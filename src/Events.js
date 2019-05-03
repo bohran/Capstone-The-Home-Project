@@ -41,7 +41,7 @@ export class Events extends Component {
       previous: 0,
       title: "",
       description: "",
-      category: "Give"
+      category: "All"
     };
   }
 
@@ -159,7 +159,7 @@ export class Events extends Component {
       //     </div>
       //   );
       // }
-      if (d.categoryName === this.state.category) {
+      if (d.categoryName === this.state.category || this.state.category === "All") {
         return (
           <div className="events" key={"event" + i}>
             <CardGroup>
@@ -217,7 +217,7 @@ export class Events extends Component {
                 <Input
                   type="radio"
                   name="radio1"
-                  value={["Give", "Learn", "Volunteer", "Activism"]}
+                  value={"All"}
                   onChange={this.handleCategory}
                 />{" "}
                 All

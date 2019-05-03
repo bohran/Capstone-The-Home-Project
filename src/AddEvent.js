@@ -22,11 +22,11 @@ export default class AddEvent extends Component {
       orgs: ["All Home"],
       services: ["Housing/Shelter"],
       descr: "Run a marathon while raising money for the homeless shelter around the King County area.",
-      date: "10/22/2019",
+      date: "19/10/22",
       startTime: "10:00:00",
       endTime: "17:00:00",
       address: "3rd Ave Main St.",
-      room: "",
+      room: "https://i.ytimg.com/vi/Ll4HftFKjD8/maxresdefault.jpg",
       city: "Bellevue",
       capacity: 1000,
       county: "King",
@@ -41,7 +41,7 @@ export default class AddEvent extends Component {
       coordinatorEmail: "",
       coordinatorPhone: "",
       website: "",
-      img: ""
+      img: "https://i.ytimg.com/vi/Ll4HftFKjD8/maxresdefault.jpg"
     }
   };
 

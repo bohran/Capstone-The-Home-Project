@@ -47,7 +47,7 @@ class Confirmation extends Component {
               <Label>Address: {this.props.eventForm.address}</Label>
             </FormGroup>
             <FormGroup>
-              <Label>Room: {this.props.eventForm.room}</Label>
+              <Label>Room: </Label>
             </FormGroup>
             <FormGroup>
               <Label>Event Capacity: {this.props.eventForm.capacity}</Label>
@@ -108,7 +108,7 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-            <Label>Media: </Label>
+            <Label>Media: {this.props.eventForm.img}</Label>
             </FormGroup>
           </Form>
       </div>
