@@ -13,9 +13,6 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
 } from "reactstrap";
 
 import "./css/App.css";

@@ -44,53 +44,52 @@ export class Events extends Component {
       category: "Give"
     };
   }
-  
+
   handleCardClick = index => {
     const eventName = this.state.data[index].eventName;
     const eventDescription = this.state.data[index].eventDescription;
     const organizationName = this.state.data[index].organizations[0];
     const address = this.state.data[index].address;
     const city = this.state.data[index].city;
-    const state = this.state.data[index].state; 
+    const state = this.state.data[index].state;
     const zipcode = this.state.data[index].zipcode;
-    const date = this.state.data[index].date; 
+    const date = this.state.data[index].date;
     const startTime = this.state.data[index].startTime;
     const endTime = this.state.data[index].endTime;
     const url = this.state.data[index].url;
     const capacity = this.state.data[index].capacity;
-    const room = this.state.data[index].room; 
+    const room = this.state.data[index].room;
     const contactFirstName = this.state.data[index].contactFirstName;
     const contactLastName = this.state.data[index].contactLastName;
     const contactEmail = this.state.data[index].contactEmail;
     const contactPhone = this.state.data[index].contactPhone;
     const coordinatorFirstName = this.state.data[index].coordinatorFirstName;
     const coordinatorLastName = this.state.data[index].coordinatorLastName;
-    const coordinatorEmail = this.state.data[index].coordinatorEmail; 
+    const coordinatorEmail = this.state.data[index].coordinatorEmail;
     const coordinatorPhone = this.state.data[index].coordinatorPhone;
 
-     
     this.setState({
       eventName: eventName,
       eventDescription: eventDescription,
       organizationName: organizationName,
-      address:address, 
-      city: city, 
-      state: state, 
-      zipcode: zipcode, 
-      date:date, 
-      startTime:startTime, 
-      endTime: endTime, 
-      url: url, 
-      capacity:capacity, 
-      room:room, 
-      contactFirstName:contactFirstName,
-      contactLastName:contactLastName, 
-      contactEmail:contactEmail, 
-      contactPhone:contactPhone, 
-      coordinatorFirstName:coordinatorFirstName, 
-      coordinatorLastName:coordinatorLastName,
-      coordinatorEmail:coordinatorEmail, 
-      coordinatorPhone:coordinatorPhone, 
+      address: address,
+      city: city,
+      state: state,
+      zipcode: zipcode,
+      date: date,
+      startTime: startTime,
+      endTime: endTime,
+      url: url,
+      capacity: capacity,
+      room: room,
+      contactFirstName: contactFirstName,
+      contactLastName: contactLastName,
+      contactEmail: contactEmail,
+      contactPhone: contactPhone,
+      coordinatorFirstName: coordinatorFirstName,
+      coordinatorLastName: coordinatorLastName,
+      coordinatorEmail: coordinatorEmail,
+      coordinatorPhone: coordinatorPhone,
       modal: true
     });
   };
@@ -142,9 +141,9 @@ export class Events extends Component {
 
   render() {
     const content = this.state.data.map((d, i) => {
-    //   let dates = this.state.data.map((d) => {
-    //     return new Date((d.date)).toString();
-    // })
+      //   let dates = this.state.data.map((d) => {
+      //     return new Date((d.date)).toString();
+      // })
       // let imageSrc = d.eventName;
       // if (d.urlToImage == null) {
       //   imageSrc = <br />;
@@ -160,36 +159,39 @@ export class Events extends Component {
       //     </div>
       //   );
       // }
-      return (
-        <div className="events" key={"event" + i}>
-        <CardGroup>
-          <Card>
-            <div className="image">
-              <CardImg src={d.room} style={{ width: "100%" }} />
-              <CardBody>
-                <CardTitle>{d.eventName}</CardTitle>
-                <CardSubtitle>
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
-                </CardSubtitle>
-                <CardSubtitle>
-                  <FontAwesomeIcon icon={faClock} /> {d.startTime} - {d.endTime}
-                </CardSubtitle>
-                <CardSubtitle>
-                  <FontAwesomeIcon icon={faCalendar} />
-                   {" " + d.date}
-                </CardSubtitle>
-                <Button
-                  className="learn"
-                  onClick={this.handleCardClick.bind(null, i)}
-                >
-                  learn more
-                </Button>
-              </CardBody>
-            </div>
-          </Card>
-          </CardGroup>
-        </div>
-      );
+      if (d.categoryName === this.state.category) {
+        return (
+          <div className="events" key={"event" + i}>
+            <CardGroup>
+              <Card>
+                <div className="image">
+                  <CardImg src={d.room} style={{ width: "100%" }} />
+                  <CardBody>
+                    <CardTitle>{d.eventName}</CardTitle>
+                    <CardSubtitle>
+                      <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
+                    </CardSubtitle>
+                    <CardSubtitle>
+                      <FontAwesomeIcon icon={faClock} /> {d.startTime} -{" "}
+                      {d.endTime}
+                    </CardSubtitle>
+                    <CardSubtitle>
+                      <FontAwesomeIcon icon={faCalendar} />
+                      {" " + d.date}
+                    </CardSubtitle>
+                    <Button
+                      className="learn"
+                      onClick={this.handleCardClick.bind(null, i)}
+                    >
+                      learn more
+                    </Button>
+                  </CardBody>
+                </div>
+              </Card>
+            </CardGroup>
+          </div>
+        );
+      }
     });
     return (
       <div>
@@ -269,10 +271,10 @@ export class Events extends Component {
           <div className="filters">
             <h4>Select Area of Service:</h4>
             <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> All
-                </Label>
-              </FormGroup>
+              <Label check>
+                <Input type="checkbox" name="check1" /> All
+              </Label>
+            </FormGroup>
             <FormGroup check>
               <Label check>
                 <Input type="checkbox" name="check1" /> Housing/Shelter
@@ -370,7 +372,7 @@ export class Events extends Component {
                   style={{ width: "50%" }}
                   type="select"
                   id="exampleSelect"
-               >
+                >
                   <option>All</option>
                   <option>Today</option>
                   <option>Tomorrow</option>
@@ -382,7 +384,7 @@ export class Events extends Component {
             </div>
           </div>
         </Nav>
-        
+
         <div
           style={{
             display: "flex",
@@ -397,36 +399,36 @@ export class Events extends Component {
 
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.eventName}.</ModalHeader>
-            <ModalBody> 
-            Organization:
-            {this.state.organizationName}
-            <br/>
-            Description:
-            {" " + this.state.eventDescription}
-            <br/>
-            Address:
-            {" " + this.state.address},{" " + this.state.city}, {" " + this.state.zipcode},
-            <br/>
-            Date:
-            {" " + this.state.date}
-            <br/>
-            Time:
-            {" " + this.state.startTime} - {" " + this.state.endTime}
-            <br/>
-            Event Website: {" "}
-            <a href={" " + this.state.url + " "}>Visit Site</a>
-            <br/>
-            Capacity:
-            {" " + this.state.capacity}
-            <br/>
-            Event Coordinator Contact Information:
-            {" " + this.state.coordinatorFirstName}
-            <br/>
-            {" " + this.state.coordinatorLastName}
-            <br/>
-            {" " + this.state.coordinatorEmail}
-            <br/>
-            {" " + this.state.coordinatorPhone}
+            <ModalBody>
+              Organization:
+              {this.state.organizationName}
+              <br />
+              Description:
+              {" " + this.state.eventDescription}
+              <br />
+              Address:
+              {" " + this.state.address},{" " + this.state.city},{" "}
+              {" " + this.state.zipcode},
+              <br />
+              Date:
+              {" " + this.state.date}
+              <br />
+              Time:
+              {" " + this.state.startTime} - {" " + this.state.endTime}
+              <br />
+              Event Website: <a href={" " + this.state.url + " "}>Visit Site</a>
+              <br />
+              Capacity:
+              {" " + this.state.capacity}
+              <br />
+              Event Coordinator Contact Information:
+              {" " + this.state.coordinatorFirstName}
+              <br />
+              {" " + this.state.coordinatorLastName}
+              <br />
+              {" " + this.state.coordinatorEmail}
+              <br />
+              {" " + this.state.coordinatorPhone}
             </ModalBody>
 
             <Button
