@@ -109,13 +109,22 @@ export default class AddEvent extends Component {
   };
 
   handleChangeService = event => {
-    var options = event.target.options;
+    console.log(event.target.value);
+    var option = event.target.value;
     var services = this.state.eventFormEntries.services;
-    for (var i = 0, l = options.length; i < l; i++) {
-      if (options[i].selected) {
-        services.push(options[i].value);
+    let match = false;
+    if (services.length !== 0) {
+    for (var i = 0; i < services.length; i++) {
+      if (services[i].value === option) {
+        match = true;
       }
     }
+  }
+  if (match === false) {
+    services.push(option);
+  }
+  console.log(services);
+
     let updateEventForm = _.cloneDeep(this.state.eventFormEntries);
 
     updateEventForm.services = services;

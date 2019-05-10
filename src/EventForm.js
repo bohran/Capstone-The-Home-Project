@@ -1,19 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Row,
-  Col,
-  CustomInput
-} from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
 class NewEvent extends Component {
+  // componentDidMount() {
+  //   let url = "https://api.emmaropes.me/organizations";
+  //   let req = new Request(url);
+  //   fetch(req)
+  //     .then(response => {
+  //       return response.json();
+  //     })
+  //     .then(results => {
+  //       console.log(results);
+  //       this.setState({
+  //         orgList: results
+  //       });
+  //     });
+  // }
+
+  // let orgOptions =
   render() {
     return (
       <div>
@@ -36,7 +43,7 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
-              <Col md={3}>
+              <Col md={6}>
                 <FormGroup>
                   <Label>Event Type</Label>
                   <Input
@@ -52,26 +59,58 @@ class NewEvent extends Component {
                   </Input>
                 </FormGroup>
               </Col>
-
-              <Col md={3}>
-                <FormGroup>
-                  <Label>Area of Service</Label>
-                  <Input
-                    multiple={true}
-                    type="select"
-                    name="services"
-                    value={this.props.form.services}
-                    onChange={this.props.onUpdate}
-                  >
-                    <option>Housing/Shelter</option>
+            </Row>
+            <h6>Area of Service</h6>
+            <FormGroup check inline>
+              <Input
+                type="checkbox"
+                name="housing"
+                value={this.props.form.housing}
+                onChange={this.props.onUpdate}
+              />{" "}
+              <Label check>Housing/Shelter</Label>
+            </FormGroup>
+            <FormGroup check inline>
+              <Input
+                type="checkbox"
+                name="emp"
+                value={this.props.form.emp}
+                onChange={this.props.onUpdate}
+              />{" "}
+              <Label check>Employment</Label>
+            </FormGroup>
+            <FormGroup check inline>
+              <Input
+                type="checkbox"
+                name="dayCenter"
+                value={this.props.form.dayCenter}
+                onChange={this.props.onUpdate}
+              />{" "}
+              <Label check>Day Center</Label>
+            </FormGroup>
+            <FormGroup check inline>
+              <Input
+                type="checkbox"
+                name="basic"
+                value={this.props.form.basic}
+                onChange={this.props.onUpdate}
+              />{" "}
+              <Label check>Basic Needs</Label>
+            </FormGroup>
+            <FormGroup check inline>
+              <Input
+                type="checkbox"
+                name="wellness"
+                value={this.props.form.wellness}
+                onChange={this.props.onUpdate}
+              />{" "}
+              <Label check>{"Health & Wellness"}</Label>
+            </FormGroup>
+            {/* <option>Housing/Shelter</option>
                     <option>Legal/Employment</option>
                     <option>Day Centers</option>
                     <option>Basic Needs</option>
-                    <option>{"Health & Wellness"}</option>
-                  </Input>
-                </FormGroup>
-              </Col>
-            </Row>
+                    <option>{"Health & Wellness"}</option> */}
             {/* <FormGroup>
               <Label>Select Your Organization</Label>
               <Input
@@ -86,16 +125,33 @@ class NewEvent extends Component {
                 <option>Activism</option>
               </Input>
             </FormGroup> */}
-            <FormGroup>
-              <Label>Description</Label>
-              <Input
-                type="text"
-                name="descr"
-                placeholder="Enter text"
-                value={this.props.form.descr}
-                onChange={this.props.onChange}
-              />
-            </FormGroup>
+            <Row form>
+              <Col md={8}>
+                <FormGroup>
+                  <Label>Description</Label>
+                  <Input
+                    type="text"
+                    name="descr"
+                    placeholder="Enter text"
+                    value={this.props.form.descr}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={4}>
+                <FormGroup>
+                  <Label>Host Organization</Label>
+                  <Input
+                    type="select"
+                    name="org"
+                    value={this.props.form.orgs}
+                    onChange={this.props.onChange}
+                  >
+                    <option />
+                  </Input>
+                </FormGroup>
+              </Col>
+            </Row>
 
             <Row form>
               <Col md={4}>
@@ -351,16 +407,33 @@ class NewEvent extends Component {
               />
             </FormGroup>
 
-            <FormGroup>
-              <Label>Select Cover Photo</Label>
-              <Input
-                type="test"
-                name="img"
-                placeholder="Enter URL"
-                value={this.props.form.img}
-                onChange={this.props.onChange}
-              />
-            </FormGroup>
+            <h5>Cover Photo</h5>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Link</Label>
+                  <Input
+                    type="test"
+                    name="img"
+                    placeholder="Enter URL"
+                    value={this.props.form.img}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Browse Default</Label>
+                  <Input
+                    type="test"
+                    name="img"
+                    placeholder="Enter URL"
+                    value={this.props.form.img}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
           </Form>
         </div>
         <Button variant="primary" type="submit" onClick={this.props.onNext}>
