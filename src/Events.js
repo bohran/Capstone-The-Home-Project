@@ -159,8 +159,10 @@ export class Events extends Component {
                   <CardBody>
                     <CardTitle>{d.eventName}</CardTitle>
                     <CardTitle>
-                    <FontAwesomeIcon icon={faCalendar} style = {{backgroundColor:"black"}} />
+                      <div className = "dateHeader" style = {{backgroundColor: "#fafaed"}}>
+                    <FontAwesomeIcon icon={faCalendar} />
                       {" " + d.date}
+                      </div>
                       </CardTitle>
                     <CardSubtitle>
                       <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
