@@ -35,7 +35,7 @@ export class Home extends Component {
             <h1 style ={{fontSize: '4rem', fontWeight:'bold'}} id='#aboutus'>About Us</h1>
             <h3>People across our region are frustrated that so many King County residents are experiencing homelessness, and are concerned that progress is not happening quickly enough, at a large enough scale.</h3>
 
-<h3>We know that homelessness in King County is solvable.</h3>
+<h2 style ={{backgroundColor: "#cf0f2e", color:"white"}}>We know that homelessness in King County is solvable.</h2>
 <h3>And, to solve this problem, the whole community must be invested in understanding its causes and supporting its solutions.</h3>
 <h3>How we talk about these issues matters. Together, by building common understanding about who is experiencing homelessness, why, and what we can do about it, 
     we can foster unity and community support for our shared path forward.</h3> <br/>

@@ -22,8 +22,6 @@ import {
   faCalendar
 } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { NationalGeographicAPI } from "national-geographic-api";
-import LoadingScreen from "react-loading-screen";
 // import Sticky from 'react-sticky';
 
 import DatePicker from "react-datepicker";
@@ -123,16 +121,6 @@ export class Events extends Component {
       category: newCategory
     });
   };
-
-  // handleCardClick = index => {
-  //   const eventName = this.state.data[index].eventName;
-  //   const eventDescription = this.state.data[index].eventDescription;
-  //   this.setState({
-  //     eventName: eventName,
-  //     eventDescription: eventDescription,
-  //     modal: true
-  //   });
-  // };
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -162,22 +150,24 @@ export class Events extends Component {
       if (d.categoryName === this.state.category || this.state.category === "All") {
         return (
           <div className="events" key={"event" + i}>
+          <Row>
+          <Col>
             <CardGroup>
               <Card>
                 <div className="image">
                   <CardImg src={d.room} style={{ width: "100%" }} />
                   <CardBody>
                     <CardTitle>{d.eventName}</CardTitle>
+                    <CardTitle>
+                    <FontAwesomeIcon icon={faCalendar} style = {{backgroundColor:"black"}} />
+                      {" " + d.date}
+                      </CardTitle>
                     <CardSubtitle>
                       <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
                     </CardSubtitle>
                     <CardSubtitle>
                       <FontAwesomeIcon icon={faClock} /> {d.startTime} -{" "}
                       {d.endTime}
-                    </CardSubtitle>
-                    <CardSubtitle>
-                      <FontAwesomeIcon icon={faCalendar} />
-                      {" " + d.date}
                     </CardSubtitle>
                     <Button
                       className="learn"
@@ -189,6 +179,8 @@ export class Events extends Component {
                 </div>
               </Card>
             </CardGroup>
+            </Col>
+            </Row>
           </div>
         );
       }
@@ -208,10 +200,10 @@ export class Events extends Component {
             + Add Event
           </Button>
         </div>
-        <Nav vertical className="sidebar">
-        <form className = "sidebarFilter">
+        {/* <Nav vertical className="sidebar"> */}
+        <div className = "sidebarFilter">
           <div className="categories">
-            <h4>Select an Action:</h4>
+            <h5>Select an Action:</h5>
             <FormGroup check>
               <Label check>
                 <Input
@@ -270,7 +262,7 @@ export class Events extends Component {
           </div>
           <br />
           <div className="filters">
-            <h4>Select Area of Service:</h4>
+            <h5>Select Area of Service:</h5>
             <FormGroup check>
               <Label check>
                 <Input type="checkbox" name="check1" /> All
@@ -303,7 +295,7 @@ export class Events extends Component {
             </FormGroup>
             <br />
             <div className="location">
-              <h4>Select Location:</h4>
+              <h5>Select Location:</h5>
               <FormGroup check>
                 <Label check>
                   <Input type="checkbox" name="check1" /> All
@@ -367,7 +359,7 @@ export class Events extends Component {
             </div>
             <br />
             <div className="date">
-              <h4>Select Date:</h4>
+              <h5>Select Date:</h5>
               <FormGroup>
                 <Input
                   style={{ width: "50%" }}
@@ -384,8 +376,8 @@ export class Events extends Component {
               </FormGroup>
             </div>
           </div>
-          </form>
-        </Nav>
+          </div>
+        {/* </Nav> */}
 
         <div
           style={{

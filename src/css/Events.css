@@ -2,14 +2,19 @@ body{
     font-family: 'Nunito Sans', sans-serif;
     color: #6e6e70;
 }
-.sidebar{
+/* .sidebar{
     float: left;
     margin-top: 15px; 
-    /* padding-left: 20px; */
+    padding-left: 20px;
     margin-left:15px;
-}
+} */
 .sidebarFilter{
     float: left;
+    padding-left:30px;
+    padding-right:40px;
+    background-color: #33cbe64b;
+    padding-top: 20px;
+
 }
 
 .navbar-wrapper{
@@ -45,10 +50,10 @@ body{
 } */
 
 .card{
-    width: 300px;
-    height: 400px;
-    margin-left: 40px;
-    margin-right: 40px; 
+    width: 220px;
+    height: 320px;
+    /* margin-left: 40px;
+    margin-right: 40px;  */
     margin: 20px;
     /* display: flex;
     flex-direction: row; */
@@ -57,10 +62,9 @@ body{
     width: auto;
     max-width: 300px;
     height:auto;
-    max-height: 175px;
-    min-height: 175px;
+    max-height: 110px;
+    min-height: 110px;
     
-
 }
 .card-body{
     align-content: left;
@@ -74,7 +78,7 @@ body{
 }
 
 .card-title{
-    font-size: 22px;
+    font-size: 16px;
     text-align: center;
     overflow: hidden;
     white-space: nowrap;
