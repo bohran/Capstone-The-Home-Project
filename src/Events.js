@@ -209,7 +209,7 @@ export class Events extends Component {
           </Button>
         </div>
         <Nav vertical className="sidebar">
-        <form className = "sidebarFilter">
+        <div className = "sidebarFilter">
           <div className="categories">
             <h4>Select an Action:</h4>
             <FormGroup check>
@@ -384,7 +384,7 @@ export class Events extends Component {
               </FormGroup>
             </div>
           </div>
-          </form>
+          </div>
         </Nav>
 
         <div
