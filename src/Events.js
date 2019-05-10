@@ -159,10 +159,8 @@ export class Events extends Component {
                   <CardBody>
                     <CardTitle>{d.eventName}</CardTitle>
                     <CardTitle>
-                      <div className = "dateHeader" style = {{backgroundColor: "#fafaed"}}>
-                    <FontAwesomeIcon icon={faCalendar} />
+                    <FontAwesomeIcon icon={faCalendar} style = {{backgroundColor:"black"}} />
                       {" " + d.date}
-                      </div>
                       </CardTitle>
                     <CardSubtitle>
                       <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
@@ -192,26 +190,18 @@ export class Events extends Component {
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
-        {/* <div className="addOrg">
+        <div className="add">
           <h4>New Organization?</h4>
           <Button tag={Link} to="/RegOrganization">
             + Add Organization
           </Button>
-          </div> */}
           <br />
-          <div className = "addEvent">
           <Button tag={Link} to="/AddEvent">
             + Add Event
           </Button>
         </div>
         {/* <Nav vertical className="sidebar"> */}
         <div className = "sidebarFilter">
-        <div className="addOrg">
-          <h4>New Organization?</h4>
-          <Button tag={Link} to="/RegOrganization">
-            + Register Organization
-          </Button>
-          </div>
           <div className="categories">
             <h5>Select an Action:</h5>
             <FormGroup check>

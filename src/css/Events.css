@@ -12,7 +12,7 @@ body{
     float: left;
     padding-left:30px;
     padding-right:40px;
-    /* background-color: #33cbe64b; */
+    background-color: #33cbe64b;
     padding-top: 20px;
 
 }
@@ -24,10 +24,10 @@ body{
     margin-top:0;
 }
 
-.addOrg{
-    float: left;
+.newOrg{
+    float:right;
 }
-.addEvent{
+.add{
     float: right;
     position: relative;
     margin-right: 3%;
