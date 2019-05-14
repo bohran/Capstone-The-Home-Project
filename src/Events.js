@@ -22,6 +22,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from 'moment'
+import { SearchBar } from 'react-native-elements';
+
 
 // import Sticky from 'react-sticky';
 
@@ -38,8 +40,13 @@ export class Events extends Component {
       previous: 0,
       title: "",
       description: "",
-      category: "All"
+      category: "All",
+      search: ''
     };
+    let updateSearch = search => {
+      this.setState({ search });
+    };
+  
   }
 
   handleCardClick = index => {
@@ -127,6 +134,8 @@ export class Events extends Component {
   };
 
   render() {
+    const { search } = this.state;
+
     const content = this.state.data.map((d, i) => {
       //   let dates = this.state.data.map((d) => {
       //     return new Date((d.date)).toString();
@@ -146,6 +155,7 @@ export class Events extends Component {
       //     </div>
       //   );
       // }
+      
       let mlist = [];
       var month_name = function(dt) {
         mlist = [
@@ -177,13 +187,29 @@ export class Events extends Component {
                     <div className="image">
                       <CardImg src={d.room} style={{ width: "100%" }} />
                       <CardBody>
-                        <CardTitle>{d.eventName}</CardTitle>
+                        {/* <CardTitle>{d.eventName}</CardTitle> */}
                         <CardTitle>
-                          <FontAwesomeIcon icon={faCalendar} />
-                          <div className="eventDate">
-                          {" " + month_name(new Date(d.date))}
-                          {" " + new Date(d.date).getDate()}
+                          {/* <FontAwesomeIcon icon={faCalendar} /> */}
+                          <div className="eventMonth">
+                          {" " + month_name(new Date(d.date))} <br/>
+                          <div className = "eventDay">
+                          {" " + new Date(d.date).getDate() + " "} 
                           </div>
+                          </div>
+                          
+                          {/* <div className = "eventDay">
+                          {" " + new Date(d.date).getDate()} 
+                          </div> */}
+                          <div className = "eventName">
+                            {" " + d.eventName}
+                          </div>
+                          {/* <div className = "eventAddress">
+                          <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
+                          </div>
+                          <div className = "eventTime">
+                          <FontAwesomeIcon icon={faClock} /> {moment(d.startTime, 'HH:mm:ss').format('h:mm A')} -{" "}
+                          {moment(d.endTime, 'HH:mm:ss').format("h:mm A")}
+                          </div> */}
                         </CardTitle>
                         <CardSubtitle>
                           <div className = "eventAddress">
@@ -214,6 +240,11 @@ export class Events extends Component {
     });
     return (
       <div>
+        <SearchBar
+        placeholder="Type Here..."
+        onChangeText={this.updateSearch}
+        value={search}
+      />
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
@@ -455,7 +486,7 @@ export class Events extends Component {
             <Button
               style={{
                 backgroundColor: " #cf0f2e",
-                width: "80px",
+                width: "90px",
                 float: "right",
                 marginLeft: "80%"
               }}

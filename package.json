@@ -22,6 +22,7 @@
     "react-dom": "^16.8.6",
     "react-event-calendar": "^0.3.0",
     "react-loading-screen": "0.0.17",
+    "react-native-elements": "^1.1.0",
     "react-parallax": "^2.2.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
