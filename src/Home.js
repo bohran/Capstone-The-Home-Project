@@ -19,19 +19,22 @@ export class Home extends Component {
                 bgImage={require('./img/Seattle-WA.jpg')}
                 strength={1000}>
                 <h1 style={{ color: "white" , marginTop: "100px", fontSize: "150px", color: "#fafaed"}}>#SeattleForAll</h1>
-                <div style={{ height: '300px' }} />
+                <div style={{ height: '200px' }} />
             </Parallax>
+            <div className="contentBox">
             <h1 style ={{fontSize: '6.5rem', fontWeight:'bold'}}>The Home Project</h1>
             <h2>An Engagement and Advocacy Initiative with One Goal:</h2>
             <h2>A Home for Everyone in King County</h2>
             <br/>
+            </div>
             <Parallax
                 blur={{ min: -15, max: 15 }}
                 bgImage={require('./img/tent.jpg')}
                 strength={1000}>
-            <div style={{ height: '500px' }} />
+            <div style={{ height: '400px' }} />
             </Parallax>
-            <h1 style ={{fontSize: '4rem', fontWeight:'bold'}} id='#aboutus'>About Us</h1>
+            <div className="contentBox">
+            <h1 style ={{fontSize: '4rem', fontWeight:'bold'}} id='#aboutus'>Our Mission</h1>
             <h3>People across our region are frustrated that so many King County residents are experiencing homelessness, and are concerned that progress is not happening quickly enough, at a large enough scale.</h3>
 
 <h2 style ={{backgroundColor: "#cf0f2e", color:"white"}}>We know that homelessness in King County is solvable.</h2>
@@ -43,7 +46,7 @@ export class Home extends Component {
         <Button href = 'https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0'>Toolkits</Button>
     </div>
     <div>
-        {About}
+        </div>  
     </div>
 </div>)
     }

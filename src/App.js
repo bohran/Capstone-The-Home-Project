@@ -71,10 +71,13 @@ class App extends Component {
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
         <div className="footer">
-          Contact Us: Pyramid Communications <br />
-          marketing@pyramidcommunications.com <br />
-          206.374.7788 <br />
-          1932 First Avenue Suite 507, Seattle, WA 98101
+          <div className="footer-title">Contact Us</div> <br />
+          <div>
+          <span>Pyramid Communications</span>
+          <span>marketing@pyramidcommunications.com</span>
+          <span>206.374.7788</span>
+          <span>1932 First Avenue Suite 507, Seattle, WA 98101</span>
+          </div>
         </div>
       </Router>
     );
