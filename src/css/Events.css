@@ -91,3 +91,19 @@ body{
     text-overflow: ellipsis;
     padding: 3px;
 }
+
+.eventDate{
+    font-size: 20px;
+    text-align: left;
+    align-content: left;
+
+}
+
+.eventAddress{
+    align-content: right;
+    text-align: right;
+}
+.eventTime{
+    align-content: right;
+    text-align: right;
+}
