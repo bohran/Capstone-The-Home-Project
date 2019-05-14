@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
-import { Nav, NavItem, NavLink } from "reactstrap";
+import { HashRouter as  Link } from "react-router-dom";
+import { Button, FormGroup, Label, Input } from "reactstrap";
 import {
   Card,
   CardImg,
@@ -14,7 +13,6 @@ import {
   CardDeck,
   Col
 } from "reactstrap";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
@@ -24,7 +22,6 @@ import {
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 // import Sticky from 'react-sticky';
 
-import DatePicker from "react-datepicker";
 
 import "./css/Events.css";
 
@@ -147,6 +144,11 @@ export class Events extends Component {
       //     </div>
       //   );
       // }
+      let mlist=[];
+      var month_name = function(dt){
+        mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+          return mlist[dt.getMonth()];
+        };
       if (d.categoryName === this.state.category || this.state.category === "All") {
         return (
           <div className="events" key={"event" + i}>
@@ -160,7 +162,8 @@ export class Events extends Component {
                     <CardTitle>{d.eventName}</CardTitle>
                     <CardTitle>
                     <FontAwesomeIcon icon={faCalendar} style = {{backgroundColor:"black"}} />
-                      {" " + d.date}
+                      {" " + month_name(new Date(d.date))} 
+                      {" " + new Date(d.date).getDate()}
                       </CardTitle>
                     <CardSubtitle>
                       <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
