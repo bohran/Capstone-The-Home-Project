@@ -147,10 +147,6 @@ export default class AddEvent extends Component {
         currentStage: Stage.EVENT
       });
     }
-    // let newStage = this.state.currentStage + 1;
-    // this.setState({
-    //   currentStage: newStage
-    // });
   };
 
   render() {

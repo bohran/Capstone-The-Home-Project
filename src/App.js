@@ -71,7 +71,7 @@ class App extends Component {
         </Switch>
         <div className="footer">
           <div className="footer-title">Contact Us</div> <br />
-          <div>
+          <div className="footer-content">
           <span>Pyramid Communications</span>
           <span>marketing@pyramidcommunications.com</span>
           <span>206.374.7788</span>
