@@ -22,7 +22,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from 'moment'
-import { SearchBar } from 'react-native-elements';
 
 
 // import Sticky from 'react-sticky';
@@ -134,7 +133,6 @@ export class Events extends Component {
   };
 
   render() {
-    const { search } = this.state;
 
     const content = this.state.data.map((d, i) => {
       //   let dates = this.state.data.map((d) => {
@@ -240,11 +238,6 @@ export class Events extends Component {
     });
     return (
       <div>
-        <SearchBar
-        placeholder="Type Here..."
-        onChangeText={this.updateSearch}
-        value={search}
-      />
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
