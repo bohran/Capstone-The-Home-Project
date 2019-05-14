@@ -1,28 +1,14 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Container, Row, Col } from 'reactstrap';
+import "./css/Events.css";
+
 
 export class About extends Component {
   render() {
     return (<div>
         
-        <div class="membersContainer">
-                <h2 className="contactPageTitle">Contact Us</h2>
-        <div class="formContainer">
-            <div class="contactName">
-            Pyramid Communications
-            </div>
-            <div class="contactInfo">
-            marketing@pyramidcommunications.com
-            </div>
-            <div class="contactInfo">
-            206.374.7788
-            </div>
-            <div class="contactInfo">
-            1932 First Avenue Suite 507, Seattle, WA 98101  
-            </div>
-        </div>
-        <br/>
+        
         <h2 className="contactPageTitle">Our Creators</h2>
             <Row>
                 <div class="col-lg-3 col-sm-6 text-center mb-4">
@@ -50,7 +36,6 @@ export class About extends Component {
                     <p id="email">bohran@uw.edu</p>
                 </div>
             </Row>
-        </div>
         </div>
     );
   }
