@@ -21,7 +21,8 @@ export default class AddEvent extends Component {
       category: "Give",
       orgs: ["All Home"],
       services: ["Housing/Shelter"],
-      descr: "Run a marathon while raising money for the homeless shelter around the King County area.",
+      descr:
+        "Run a marathon while raising money for the homeless shelter around the King County area.",
       date: "19/10/22",
       startTime: "10:00:00",
       endTime: "17:00:00",
@@ -46,7 +47,7 @@ export default class AddEvent extends Component {
   };
 
   handleSaveEvent = () => {
-    var capacityAsInt = parseInt(this.state.eventFormEntries.capacity, 10)
+    var capacityAsInt = parseInt(this.state.eventFormEntries.capacity, 10);
     let url = "https://api.emmaropes.me/events";
     fetch(url, {
       method: "post",
@@ -114,16 +115,16 @@ export default class AddEvent extends Component {
     var services = this.state.eventFormEntries.services;
     let match = false;
     if (services.length !== 0) {
-    for (var i = 0; i < services.length; i++) {
-      if (services[i].value === option) {
-        match = true;
+      for (var i = 0; i < services.length; i++) {
+        if (services[i].value === option) {
+          match = true;
+        }
       }
     }
-  }
-  if (match === false) {
-    services.push(option);
-  }
-  console.log(services);
+    if (match === false) {
+      services.push(option);
+    }
+    console.log(services);
 
     let updateEventForm = _.cloneDeep(this.state.eventFormEntries);
 
@@ -135,11 +136,21 @@ export default class AddEvent extends Component {
   };
 
   //change eventForms
-  handleNext = () => {
-    let newStage = this.state.currentStage + 1;
-    this.setState({
-      currentStage: newStage
-    });
+  handleNext = event => {
+    console.log(event.target.value);
+    if (event.target.value === "1") {
+      this.setState({
+        currentStage: Stage.CONFIRMATION
+      });
+    } else if (event.target.value === "0") {
+      this.setState({
+        currentStage: Stage.EVENT
+      });
+    }
+    // let newStage = this.state.currentStage + 1;
+    // this.setState({
+    //   currentStage: newStage
+    // });
   };
 
   render() {
@@ -151,12 +162,14 @@ export default class AddEvent extends Component {
           onChange={this.handleChangeEvent}
           onUpdate={this.handleChangeService}
           onNext={this.handleNext}
+          onSameAs={this.handleSameAs}
         />
       );
     } else if (this.state.currentStage === Stage.CONFIRMATION) {
       content = (
         <Confirmation
           eventForm={this.state.eventFormEntries}
+          onNext={this.handleNext}
           onConfirm={this.handleSaveEvent}
         />
       );

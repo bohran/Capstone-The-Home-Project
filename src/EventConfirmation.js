@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Form, FormGroup, Label} from "reactstrap";
+import { Button, Form, FormGroup, Label } from "reactstrap";
 
-import './css/App.css';
+import "./css/App.css";
 
 class Confirmation extends Component {
   render() {
-    console.log(this.props.eventForm)
+    console.log(this.props.eventForm);
     return (
       <section>
         <h2 className="orgPageTitle">Almost there.</h2>
@@ -108,15 +108,28 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-            <Label>Media: {this.props.eventForm.img}</Label>
+              <Label>Media: {this.props.eventForm.img}</Label>
             </FormGroup>
           </Form>
-      </div>
-      <div>
-      <Button variant="primary" type="submit" onClick={this.props.onConfirm}>
-          Confirm
-        </Button>
-      </div>
+        </div>
+        <div>
+          <Button
+            variant="primary"
+            type="submit"
+            value="0"
+            onClick={this.props.onNext}
+          >
+            Edit
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            value="2"
+            onClick={this.props.onConfirm}
+          >
+            Confirm
+          </Button>
+        </div>
       </section>
     );
   }
@@ -124,8 +137,8 @@ class Confirmation extends Component {
 
 Confirmation.propTypes = {
   eventForm: PropTypes.object.isRequired,
+  onNext: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired
 };
 
 export default Confirmation;
-

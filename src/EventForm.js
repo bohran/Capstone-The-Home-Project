@@ -21,6 +21,19 @@ class NewEvent extends Component {
   // }
 
   // let orgOptions =
+  handleSameAs = () => {
+    var contact = document.getElementById("coordInfo");
+    if(contact.style.display === "block") {
+      contact.style.display = "none";
+      this.props.form.coordinatorFName = this.props.form.creatorFName;
+      this.props.form.coordinatorLName = this.props.form.creatorLName;
+      this.props.form.coordinatorEmail = this.props.form.creatorEmail;
+      this.props.form.coordinatorPhone = this.props.form.creatorPhone;
+    } else {
+      contact.style.display = "block";
+    }
+
+  }
   render() {
     return (
       <div>
@@ -322,7 +335,6 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
-
               <Col md={3}>
                 <FormGroup>
                   <Label>Phone</Label>
@@ -343,56 +355,67 @@ class NewEvent extends Component {
               participants who want to get invovled
             </h3>
 
-            <Row form>
-              <Col md={3}>
-                <FormGroup>
-                  <Label>First Name</Label>
-                  <Input
-                    type="text"
-                    name="coordinatorFName"
-                    placeholder="Enter text"
-                    value={this.props.form.coordinatorFName}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={3}>
-                <FormGroup>
-                  <Label>Last Name</Label>
-                  <Input
-                    type="text"
-                    name="coordinatorLName"
-                    placeholder="Enter text"
-                    value={this.props.form.coordinatorLName}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={3}>
-                <FormGroup>
-                  <Label>Email</Label>
-                  <Input
-                    type="text"
-                    name="coordinatorEmail"
-                    placeholder="Enter email"
-                    value={this.props.form.coordinatorEmail}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={3}>
-                <FormGroup>
-                  <Label>Phone</Label>
-                  <Input
-                    type="text"
-                    name="coordinatorPhone"
-                    placeholder="Enter phone"
-                    value={this.props.form.coordinatorPhone}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
+            <FormGroup check inline>
+              <Input
+                type="checkbox"
+                name="coordinatorInfo"
+                onClick={this.handleSameAs}
+              />{" "}
+              <Label check>Same As Event Contact Information</Label>
+            </FormGroup>
+
+            <div id="coordInfo" style={{display: "block"}}>
+              <Row form>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label>First Name</Label>
+                    <Input
+                      type="text"
+                      name="coordinatorFName"
+                      placeholder="Enter text"
+                      value={this.props.form.coordinatorFName}
+                      onChange={this.props.onChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label>Last Name</Label>
+                    <Input
+                      type="text"
+                      name="coordinatorLName"
+                      placeholder="Enter text"
+                      value={this.props.form.coordinatorLName}
+                      onChange={this.props.onChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label>Email</Label>
+                    <Input
+                      type="text"
+                      name="coordinatorEmail"
+                      placeholder="Enter email"
+                      value={this.props.form.coordinatorEmail}
+                      onChange={this.props.onChange}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md={3}>
+                  <FormGroup>
+                    <Label>Phone</Label>
+                    <Input
+                      type="text"
+                      name="coordinatorPhone"
+                      placeholder="Enter phone"
+                      value={this.props.form.coordinatorPhone}
+                      onChange={this.props.onChange}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+            </div>
 
             <h5>Additional Event Information</h5>
 
@@ -436,7 +459,12 @@ class NewEvent extends Component {
             </Row>
           </Form>
         </div>
-        <Button variant="primary" type="submit" onClick={this.props.onNext}>
+        <Button
+          variant="primary"
+          type="submit"
+          value="1"
+          onClick={this.props.onNext}
+        >
           Continue
         </Button>
       </div>
@@ -448,7 +476,8 @@ NewEvent.propTypes = {
   form: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
-  onNext: PropTypes.func.isRequired
+  onNext: PropTypes.func.isRequired,
+  onSameAs: PropTypes.func.isRequired
 };
 
 export default NewEvent;
