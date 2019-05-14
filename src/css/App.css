@@ -28,9 +28,14 @@ body{
     width: 50%; 
     text-align: left;
 }
+
+.nav-link{
+    display: inline;
+}
 .tabs{
     width: 100%;
     text-align: right;
+    display: row;
 }
 .navbar-collapse{
     align-content: right !important;
@@ -44,7 +49,23 @@ body{
 .footer {
     position: absolute;
     background-color: #177283;
+    background-repeat: repeat;
     color:white;
     width: 100%;
-    margin-top: 50%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.footer-title{
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+span {
+    padding-left: 3.9%;
+    padding-right: 3.5%;
+  }
+.contentBox {
+    margin-top: 2%;
+    margin-bottom: 2%;
 }

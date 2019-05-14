@@ -4,7 +4,6 @@ import { Home } from "./Home";
 import { About } from "./About";
 import { Events } from "./Events";
 import AddEvent from "./AddEvent";
-import { HashLink as PageLink } from 'react-router-hash-link';
 // import{Calendar} from './Calendar';
 
 import {
@@ -50,18 +49,16 @@ class App extends Component {
           </div>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-              <div className="tabs">  
-              <Link>                     
-                 <NavLink className="links" href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0" target="_blank">
-                 Toolkits</NavLink>
-                 </Link>        
+              <span className="tabs">  
                 <Link className="links" to="/Events">
                   Events
                 </Link>
+                <NavLink className="links" href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0" target="_blank">
+                 Toolkits</NavLink>
                 <Link className="links" to="/About">
                   About Us
                 </Link> 
-              </div> 
+              </span> 
           </Collapse>
         </Navbar>
         <Switch>
@@ -73,10 +70,13 @@ class App extends Component {
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
         <div className="footer">
-          Contact Us: Pyramid Communications <br />
-          marketing@pyramidcommunications.com <br />
-          206.374.7788 <br />
-          1932 First Avenue Suite 507, Seattle, WA 98101
+          <div className="footer-title">Contact Us</div> <br />
+          <div>
+          <span>Pyramid Communications</span>
+          <span>marketing@pyramidcommunications.com</span>
+          <span>206.374.7788</span>
+          <span>1932 First Avenue Suite 507, Seattle, WA 98101</span>
+          </div>
         </div>
       </Router>
     );
