@@ -51,10 +51,8 @@ class App extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
               <div className="tabs">  
-              <Link>                     
                  <NavLink className="links" href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0" target="_blank">
                  Toolkits</NavLink>
-                 </Link>        
                 <Link className="links" to="/Events">
                   Events
                 </Link>
