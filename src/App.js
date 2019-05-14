@@ -1,10 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, LinkingIOS } from "react";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Home } from "./Home";
 import { About } from "./About";
 import { Events } from "./Events";
 import AddEvent from "./AddEvent";
-import { Contact } from "./Contact";
 import { HashLink as PageLink } from 'react-router-hash-link';
 // import{Calendar} from './Calendar';
 
@@ -13,6 +12,7 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
+  NavLink
 } from "reactstrap";
 
 import "./css/App.css";
@@ -50,26 +50,26 @@ class App extends Component {
           </div>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-              <div className="tabs">
+              <div className="tabs">  
+              <Link>                     
+                 <NavLink className="links" href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0" target="_blank">
+                 Toolkits</NavLink>
+                 </Link>        
                 <Link className="links" to="/Events">
                   Events
-                </Link>               
-                <Link className="links" to="/Contact">
-                  ToolKits
                 </Link>
-                <PageLink className="links" to="#aboutus">
+                <Link className="links" to="/About">
                   About Us
-                </PageLink>              
+                </Link> 
               </div> 
           </Collapse>
         </Navbar>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path = "#aboutus" component={About}/>
+          <Route path = "/About" component={About}/>
           <Route path="/Events" component={Events} />
           <Route path="/AddEvent" component={AddEvent} />
           <Route path="/RegOrganization" component={RegOrganization} />
-          <Route path="/Contact" component={Contact} />
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
         <div className="footer">

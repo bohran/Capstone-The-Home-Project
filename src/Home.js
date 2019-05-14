@@ -7,7 +7,6 @@ import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 
 import './css/Home.css';
-import { Contact } from './Contact';
 import { About } from './About';
 
 

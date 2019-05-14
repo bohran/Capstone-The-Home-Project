@@ -15,6 +15,9 @@ body{
     color: #f1faed;
     text-align: right;
     align-content: right;
+    /* -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row; */
 }
 .nav-wrapper{
     background-color:#177283;
