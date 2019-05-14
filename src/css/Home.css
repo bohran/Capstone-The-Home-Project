@@ -1,24 +1,33 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400');
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:600');
-
-@font-face{
-    font-family: 'Nunito Sans 400', sans-serif;
-    src:url(../fonts/Nunito_Sans/NunitoSans-Bold.ttf)
-}
-@font-face{
-    font-family: 'Nunito Sans 600', sans-serif;
-    src:url(../fonts/Nunito_Sans/NunitoSans-ExtraBold.ttf)
-}
 body{
+    font-family: "lato", sans-serif;
     color: #6e6e70;
 }
 .homeBody{
-    font-family: 'Nunito Sans 400' sans-serif;
     text-align: center;
 }
 
 .parallaxTitle {
-    font-size: 50px;
-    font-weight: 600;
+    margin-top: 20px;
+    font-size: 28px;
+}
 
+.slogan {
+    font-style: italic;
+    font-size: 20px;
+    margin: 5px 10px 0px 10px;
+}
+
+.missionContent {
+    font-size: 22px;
+    text-align: left;
+    margin: 0px 300px 15px 300px;
+    font-weight: 0;
+}
+
+.attention {
+    /* background-color: #db4b62; */
+    color: #db4b62;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }

@@ -1,16 +1,16 @@
 body{
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'lato', sans-serif;
     color: #6e6e70;
 }
 .title{
-    font-weight: 600;
-    font-size: 50px;
+    font-weight: 400;
+    font-size: 26px;
     color: #fafaed;
     padding-right:60px;
 }
 .links{
-    font-weight: 600;
-    font-size:20px;
+    font-weight: 200;
+    font-size: 18px;
     padding: 10px;
     color: #f1faed;
     text-align: right;
@@ -19,6 +19,11 @@ body{
     -ms-flex-direction: row;
     flex-direction: row; */
 }
+
+.navbar {
+    padding: 10px;
+}
+
 .nav-wrapper{
     background-color:#177283;
     width:100%;

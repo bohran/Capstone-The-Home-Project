@@ -1,10 +1,9 @@
-import React, { Component, LinkingIOS } from "react";
+import React, { Component } from "react";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Home } from "./Home";
 import { About } from "./About";
 import { Events } from "./Events";
 import AddEvent from "./AddEvent";
-// import{Calendar} from './Calendar';
 
 import {
   Collapse,

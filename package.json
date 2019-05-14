@@ -31,6 +31,7 @@
     "react-sidebar": "^3.0.2",
     "react-sticky-footer": "0.1.0-rc3",
     "reactstrap": "^8.0.0",
+    "typeface-lato": "0.0.54",
     "typeface-nunito-sans": "0.0.72"
   },
   "scripts": {
