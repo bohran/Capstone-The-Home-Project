@@ -86,7 +86,21 @@ class Confirmation extends Component {
             </FormGroup>
           </Form>
         </div>
-        <Button variant="primary" type="submit" onClick={this.props.onConfirm}>
+        
+        <Button
+          variant="primary"
+          type="submit"
+          value="0"
+          onClick={this.props.onNext}
+        >
+          Edit
+        </Button>
+        <Button
+          variant="primary"
+          type="submit"
+          value="2"
+          onClick={this.props.onConfirm}
+        >
           Confirm
         </Button>
       </section>
@@ -96,6 +110,7 @@ class Confirmation extends Component {
 
 Confirmation.propTypes = {
   orgForm: PropTypes.object.isRequired,
+  onNext: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired
 };
 

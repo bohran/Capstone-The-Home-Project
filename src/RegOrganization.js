@@ -8,7 +8,8 @@ import Submission from "./Submission";
 const Stage = {
   ORGANIZATION: 0,
   CONFIRMATION: 1,
-  SUBMISSION: 2
+  EDIT: 2,
+  SUBMISSION: 3
 };
 
 export default class RegOrganization extends Component {
@@ -114,11 +115,21 @@ export default class RegOrganization extends Component {
   };
 
   //change eventForms
-  handleNext = () => {
-    let newStage = this.state.currentStage + 1;
-    this.setState({
-      currentStage: newStage
-    });
+  handleNext = event => {
+    console.log(event.target.value)
+    if(event.target.value === "1") {
+      this.setState({
+        currentStage: Stage.CONFIRMATION
+      });
+    } else if(event.target.value === "0") {
+      this.setState({
+        currentStage: Stage.ORGANIZATION
+      });
+    }
+    // let newStage = this.state.currentStage + 1;
+    // this.setState({
+    //   currentStage: newStage
+    // });
   };
 
   render() {
@@ -130,12 +141,14 @@ export default class RegOrganization extends Component {
           onChange={this.handleChangeOrg}
           onUpdate={this.handleChangeType}
           onNext={this.handleNext}
+          stage={this.state.currentStage}
         />
       );
     } else if (this.state.currentStage === Stage.CONFIRMATION) {
       content = (
         <Confirmation
           orgForm={this.state.orgFormEntries}
+          onNext={this.handleNext}
           onConfirm={this.handleSaveOrg}
         />
       );

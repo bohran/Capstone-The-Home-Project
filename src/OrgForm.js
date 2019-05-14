@@ -50,6 +50,31 @@ class NewOrg extends Component {
                     <option>Rapid Re-housing</option>
                     <option>Transitional Housing</option>
                     <option>Urban Encampments</option>
+                    <option>Housing Search </option>
+                    <option>Diversion</option>
+                    <option>Safe Parking</option>
+                    <option>Women's/Family Drop-In</option>
+                    <option>YYA Drop-In</option>
+                    <option>Men's Drop-In</option>
+                    <option>General Population Drop-In</option>
+                    <option>Legal Services / Eviction</option>
+                    <option>Case Management</option>
+                    <option>Employment Search</option>
+                    <option>Clothing</option>
+                    <option>Food</option>
+                    <option>Shower/Laundry</option>
+                    <option>Toiletries</option>
+                    <option>Storage</option>
+                    <option>Medical / Health</option>
+                    <option>Social / Emotional</option>
+                    <option>Dental Care</option>
+                    <option>Addiction Recovery</option>
+                    <option>Mental Health</option>
+                    <option>Domestic Violence Support</option>
+                    <option>Emergency/ Crisis Hotline</option>
+                    <option>Mailing Address</option>
+                    <option>Phone and Computer Access</option>
+                    <option>Transportation Assistance</option>
                   </Input>
                 </FormGroup>
               </Col>
@@ -267,7 +292,12 @@ class NewOrg extends Component {
             </FormGroup>
           </Form>
         </div>
-        <Button variant="primary" type="submit" onClick={this.props.onNext}>
+        <Button
+          variant="primary"
+          type="submit"
+          value="1"
+          onClick={this.props.onNext}
+        >
           Continue
         </Button>
       </div>
@@ -279,7 +309,8 @@ NewOrg.propTypes = {
   form: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
-  onNext: PropTypes.func.isRequired
+  onNext: PropTypes.func.isRequired,
+  stage: PropTypes.func.isRequired
 };
 
 export default NewOrg;
