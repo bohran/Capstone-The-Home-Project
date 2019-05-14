@@ -309,8 +309,7 @@ NewOrg.propTypes = {
   form: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
-  onNext: PropTypes.func.isRequired,
-  stage: PropTypes.func.isRequired
+  onNext: PropTypes.func.isRequired
 };
 
 export default NewOrg;

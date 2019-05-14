@@ -141,7 +141,6 @@ export default class RegOrganization extends Component {
           onChange={this.handleChangeOrg}
           onUpdate={this.handleChangeType}
           onNext={this.handleNext}
-          stage={this.state.currentStage}
         />
       );
     } else if (this.state.currentStage === Stage.CONFIRMATION) {
