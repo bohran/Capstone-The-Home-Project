@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { HashRouter as  Link } from "react-router-dom";
-import { Button, FormGroup, Label, Input } from "reactstrap";
+import { HashRouter as Router, Route, Link, Switch  } from "react-router-dom";
 import {
   Card,
   CardImg,
@@ -10,18 +9,19 @@ import {
   CardSubtitle,
   CardGroup,
   Row,
-  CardDeck,
-  Col
-} from "reactstrap";
+  Col,
+  Button,
+  FormGroup,
+  Label,
+  Input} from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
   faClock,
   faCalendar
 } from "@fortawesome/free-solid-svg-icons";
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-// import Sticky from 'react-sticky';
-
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import moment from 'moment'
 
 import "./css/Events.css";
 
@@ -36,8 +36,11 @@ export class Events extends Component {
       previous: 0,
       title: "",
       description: "",
-      category: "All"
-    };
+      category: "All",
+      query : "",
+      filteredData: []
+    };  
+    
   }
 
   handleCardClick = index => {
@@ -88,6 +91,19 @@ export class Events extends Component {
       modal: true
     });
   };
+  // handleInputChange = event => {
+  //   const query = event.target.value;
+  //   this.setState(prevState => {
+  //     const filteredData = prevState.data.filter(element => {
+  //       return element.name.includes(query);
+  //     });
+  //     return {
+  //       query,
+  //       filteredData
+  //     };
+  //   });
+  // };
+
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -102,9 +118,13 @@ export class Events extends Component {
         return response.json();
       })
       .then(results => {
+        // const { query } = this.state.data;
+        // const filteredData = results.filter(element => {
+        // return element.name.includes(query);
+        // });
         this.setState({
           data: results,
-          isLoading: false
+          // filteredData
         });
       });
   }
@@ -118,6 +138,11 @@ export class Events extends Component {
       category: newCategory
     });
   };
+
+  handleFilters = event =>{
+    let newFilter = event.target.value;
+    console.log(event.target.value);
+  }
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -125,6 +150,7 @@ export class Events extends Component {
   };
 
   render() {
+
     const content = this.state.data.map((d, i) => {
       //   let dates = this.state.data.map((d) => {
       //     return new Date((d.date)).toString();
@@ -144,45 +170,84 @@ export class Events extends Component {
       //     </div>
       //   );
       // }
-      let mlist=[];
-      var month_name = function(dt){
-        mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-          return mlist[dt.getMonth()];
-        };
-      if (d.categoryName === this.state.category || this.state.category === "All") {
+      
+      let mlist = [];
+      var month_name = function(dt) {
+        mlist = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ];
+        return mlist[dt.getMonth()];
+      };
+      if (
+        d.categoryName === this.state.category ||
+        this.state.category === "All"
+      ) {
         return (
           <div className="events" key={"event" + i}>
-          <Row>
-          <Col>
-            <CardGroup>
-              <Card>
-                <div className="image">
-                  <CardImg src={d.room} style={{ width: "100%" }} />
-                  <CardBody>
-                    <CardTitle>{d.eventName}</CardTitle>
-                    <CardTitle>
-                    <FontAwesomeIcon icon={faCalendar} style = {{backgroundColor:"black"}} />
-                      {" " + month_name(new Date(d.date))} 
-                      {" " + new Date(d.date).getDate()}
-                      </CardTitle>
-                    <CardSubtitle>
-                      <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
-                    </CardSubtitle>
-                    <CardSubtitle>
-                      <FontAwesomeIcon icon={faClock} /> {d.startTime} -{" "}
-                      {d.endTime}
-                    </CardSubtitle>
-                    <Button
-                      className="learn"
-                      onClick={this.handleCardClick.bind(null, i)}
-                    >
-                      learn more
-                    </Button>
-                  </CardBody>
-                </div>
-              </Card>
-            </CardGroup>
-            </Col>
+            <Row>
+              <Col>
+                <CardGroup>
+                  <Card>
+                    <div className="image">
+                      <CardImg src={d.room} style={{ width: "100%" }} />
+                      <CardBody>
+                        {/* <CardTitle>{d.eventName}</CardTitle> */}
+                        <CardTitle>
+                          {/* <FontAwesomeIcon icon={faCalendar} /> */}
+                          <div className="eventMonth">
+                          {" " + month_name(new Date(d.date))} <br/>
+                          <div className = "eventDay">
+                          {" " + new Date(d.date).getDate() + " "} 
+                          </div>
+                          </div>
+                          
+                          {/* <div className = "eventDay">
+                          {" " + new Date(d.date).getDate()} 
+                          </div> */}
+                          <div className = "eventName">
+                            {" " + d.eventName}
+                          </div>
+                          {/* <div className = "eventAddress">
+                          <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
+                          </div>
+                          <div className = "eventTime">
+                          <FontAwesomeIcon icon={faClock} /> {moment(d.startTime, 'HH:mm:ss').format('h:mm A')} -{" "}
+                          {moment(d.endTime, 'HH:mm:ss').format("h:mm A")}
+                          </div> */}
+                        </CardTitle>
+                        <CardSubtitle>
+                          <div className = "eventAddress">
+                          <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
+                          </div>
+                        </CardSubtitle>
+                        <CardSubtitle>
+                          <div className = "eventTime">
+                          <FontAwesomeIcon icon={faClock} /> {moment(d.startTime, 'HH:mm:ss').format('h:mm A')} -{" "}
+                          {moment(d.endTime, 'HH:mm:ss').format("h:mm A")}
+                          </div>
+                        </CardSubtitle>
+                        <Button
+                          className="learn"
+                          onClick={this.handleCardClick.bind(null, i)}
+                        >
+                          learn more
+                        </Button>
+                      </CardBody>
+                    </div>
+                  </Card>
+                </CardGroup>
+              </Col>
             </Row>
           </div>
         );
@@ -190,21 +255,31 @@ export class Events extends Component {
     });
     return (
       <div>
+         <div className="searchForm">
+        <form>
+          <input
+            placeholder="Search for..."
+            value={this.state.query}
+            onChange={this.handleInputChange}
+          />
+        </form>
+        <div>{this.state.filteredData.map(i => <p>{i.name}</p>)}</div>
+      </div>
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
         <div className="add">
           <h4>New Organization?</h4>
-          <Button tag={Link} to="/RegOrganization">
+          <Button tag = {Link} to="/RegOrganization">
             + Add Organization
           </Button>
           <br />
-          <Button tag={Link} to="/AddEvent">
+          <Button tag= {Link} to ="/AddEvent">
             + Add Event
           </Button>
         </div>
         {/* <Nav vertical className="sidebar"> */}
-        <div className = "sidebarFilter">
+        <div className="sidebarFilter">
           <div className="categories">
             <h5>Select an Action:</h5>
             <FormGroup check>
@@ -379,7 +454,7 @@ export class Events extends Component {
               </FormGroup>
             </div>
           </div>
-          </div>
+        </div>
         {/* </Nav> */}
 
         <div
@@ -431,7 +506,7 @@ export class Events extends Component {
             <Button
               style={{
                 backgroundColor: " #cf0f2e",
-                width: "80px",
+                width: "90px",
                 float: "right",
                 marginLeft: "80%"
               }}
