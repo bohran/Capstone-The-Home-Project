@@ -1,5 +1,5 @@
 body{
-    font-family: "lato", sans-serif;
+    font-family: "Lato", sans-serif;
     color: #6e6e70;
 }
 .homeBody{
@@ -19,14 +19,13 @@ body{
 .slogan {
     font-style: italic;
     font-size: 20px;
-    margin: 5px 10px 0px 10px;
+    margin: 5px 10% 0px 10%;
 }
 
 .missionContent {
     font-size: 22px;
     text-align: left;
-    margin: 0px 300px 15px 300px;
-    font-weight: 0;
+    margin: 0px 20% 15px 20%;
 }
 
 .attention {
@@ -34,5 +33,5 @@ body{
     color: #db4b62;
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin: 0px 20% 20px 20%;
 }
