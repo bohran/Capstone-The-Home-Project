@@ -17,26 +17,25 @@ export default class AddEvent extends Component {
     currentStage: Stage.EVENT,
     // ONLY place where the data exists
     eventFormEntries: {
-      title: "21 Mile Marathon",
-      category: "Give",
-      orgs: ["All Home"],
-      services: ["Housing/Shelter"],
-      descr:
-        "Run a marathon while raising money for the homeless shelter around the King County area.",
-      date: "19/10/22",
-      startTime: "10:00:00",
-      endTime: "17:00:00",
-      address: "3rd Ave Main St.",
-      room: "https://i.ytimg.com/vi/Ll4HftFKjD8/maxresdefault.jpg",
-      city: "Bellevue",
-      capacity: 1000,
-      county: "King",
-      zip: "98007",
-      state: "WA",
-      creatorFName: "Emily",
-      creatorLName: "Lao",
-      creatorEmail: "EmLao@gmail.com",
-      creatorPhone: "425-332-1910",
+      title: "",
+      category: "",
+      orgs: [""],
+      services: [""],
+      descr: "",
+      date: "",
+      startTime: "",
+      endTime: "",
+      address: "",
+      room: "",
+      city: "",
+      capacity: 0,
+      county: "",
+      zip: "",
+      state: "",
+      creatorFName: "",
+      creatorLName: "",
+      creatorEmail: "",
+      creatorPhone: "",
       coordinatorFName: "",
       coordinatorLName: "",
       coordinatorEmail: "",
@@ -89,7 +88,7 @@ export default class AddEvent extends Component {
         return JSON.parse(text);
       })
       .then(responseObject => {
-        this.handleNext();
+        this.handleConfirm();
       })
       .catch(function(err) {
         console.log("ERROR!");
@@ -147,7 +146,14 @@ export default class AddEvent extends Component {
       this.setState({
         currentStage: Stage.EVENT
       });
+    } else if (event.target.value === null) {
     }
+  };
+
+  handleConfirm = () => {
+    this.setState({
+      currentStage: Stage.SUBMISSION
+    });
   };
 
   componentDidMount() {
@@ -162,13 +168,13 @@ export default class AddEvent extends Component {
           orgData: results
         });
       });
-      console.log(this.state.orgData)
+    console.log(this.state.orgData);
   }
 
   render() {
     let orgOptions = this.state.orgData.map((d, i) => {
-      return <option key={d.organizationName + i}>{d.organizationName}</option>
-    })
+      return <option key={d.organizationName + i}>{d.organizationName}</option>;
+    });
     let content = "";
     if (this.state.currentStage === Stage.EVENT) {
       content = (
@@ -184,7 +190,7 @@ export default class AddEvent extends Component {
       content = (
         <Confirmation
           eventForm={this.state.eventFormEntries}
-          onNext={this.handleNext}
+          onEdit={this.handleNext}
           onConfirm={this.handleSaveEvent}
         />
       );

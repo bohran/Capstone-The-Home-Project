@@ -72,8 +72,11 @@ class App extends Component {
               <Link className="links" to="/About">
                 About Us
               </Link>
+              <Link className="links" to="/AddEvent">
+                Add Event
+              </Link>
               {/* <Dropdown className="links" isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}> */}
-              <UncontrolledDropdown inNavbar className="links">
+              {/* <UncontrolledDropdown inNavbar className="links">
               <DropdownToggle nav caret className="links">Register</DropdownToggle>
               <DropdownMenu right>
                 <Link to="/RegOrganization">
@@ -81,7 +84,7 @@ class App extends Component {
                 </Link> <br/>
                 <Link to="/AddEvent">Add Event</Link>
               </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
               {/* </Dropdown> */}
             </span>
           </Collapse>

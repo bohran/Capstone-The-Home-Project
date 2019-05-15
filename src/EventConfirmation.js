@@ -117,7 +117,7 @@ class Confirmation extends Component {
             variant="primary"
             type="submit"
             value="0"
-            onClick={this.props.onNext}
+            onClick={this.props.onEdit}
           >
             Edit
           </Button>
@@ -137,7 +137,7 @@ class Confirmation extends Component {
 
 Confirmation.propTypes = {
   eventForm: PropTypes.object.isRequired,
-  onNext: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired
 };
 
