@@ -268,7 +268,7 @@ export class Events extends Component {
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
-        <div className="add">
+        {/* <div className="add">
           <h4>New Organization?</h4>
           <Button tag = {Link} to="/RegOrganization">
             + Add Organization
@@ -277,7 +277,7 @@ export class Events extends Component {
           <Button tag= {Link} to ="/AddEvent">
             + Add Event
           </Button>
-        </div>
+        </div> */}
         {/* <Nav vertical className="sidebar"> */}
         <div className="sidebarFilter">
           <div className="categories">

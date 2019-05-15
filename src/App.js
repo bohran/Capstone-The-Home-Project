@@ -10,7 +10,11 @@ import {
   Navbar,
   NavbarToggler,
   NavbarBrand,
-  NavLink
+  NavLink,
+  DropdownMenu,
+  DropdownToggle,
+  DropdownItem,
+  UncontrolledDropdown
 } from "reactstrap";
 
 import "./css/App.css";
@@ -22,13 +26,20 @@ class App extends Component {
     super(props);
 
     this.state = {
-      isOpen: false
+      isOpen: false,
+      dropdownOpen: false
     };
   }
 
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
+    });
+  };
+
+  toggleDropdown = () => {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
     });
   };
 
@@ -48,21 +59,37 @@ class App extends Component {
           </div>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-              <span className="tabs">  
-                <Link className="links" to="/Events">
-                  Events
-                </Link>
-                <NavLink className="links" href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0" target="_blank">
-                 Toolkits</NavLink>
-                <Link className="links" to="/About">
-                  About Us
-                </Link> 
-              </span> 
+            <span className="tabs">
+              <Link className="links" to="/Events">
+                Events
+              </Link>
+              <NavLink
+                className="links"
+                href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0"
+                target="_blank"
+              >
+                Toolkits
+              </NavLink>
+              <Link className="links" to="/About">
+                About Us
+              </Link>
+              {/* <Dropdown className="links" isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}> */}
+              <UncontrolledDropdown inNavbar className="links">
+              <DropdownToggle nav caret>Register</DropdownToggle>
+              <DropdownMenu right>
+                <Link to="/RegOrganization">
+                  Add Organization
+                </Link> <br/>
+                <Link to="/AddEvent">Add Event</Link>
+              </DropdownMenu>
+              </UncontrolledDropdown>
+              {/* </Dropdown> */}
+            </span>
           </Collapse>
         </Navbar>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path = "/About" component={About}/>
+          <Route path="/About" component={About} />
           <Route path="/Events" component={Events} />
           <Route path="/AddEvent" component={AddEvent} />
           <Route path="/RegOrganization" component={RegOrganization} />
@@ -71,10 +98,10 @@ class App extends Component {
         <div className="footer">
           <div className="footer-title">Contact Us</div> <br />
           <div className="footer-content">
-          <span>Pyramid Communications</span>
-          <span>marketing@pyramidcommunications.com</span>
-          <span>206.374.7788</span>
-          <span>1932 First Avenue Suite 507, Seattle, WA 98101</span>
+            <span>Pyramid Communications</span>
+            <span>marketing@pyramidcommunications.com</span>
+            <span>206.374.7788</span>
+            <span>1932 First Avenue Suite 507, Seattle, WA 98101</span>
           </div>
         </div>
       </Router>

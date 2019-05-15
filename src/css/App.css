@@ -11,13 +11,19 @@ body{
 .links{
     font-weight: 200;
     font-size: 18px;
-    padding: 10px;
+    padding: 25px 10px 10px 25px;
     color: #f1faed;
     text-align: right;
     align-content: right;
     /* -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row; */
+}
+
+.links:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
 }
 
 .navbar {
