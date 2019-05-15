@@ -53,7 +53,7 @@ class App extends Component {
         >
           <div className="navtitle">
             <NavbarBrand className="title" href="/">
-              The Home Project
+              THE HOME PROJECT CALENDAR
             </NavbarBrand>
           </div>
           <NavbarToggler onClick={this.toggle} />

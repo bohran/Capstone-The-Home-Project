@@ -3,8 +3,8 @@ body{
     color: #6e6e70;
 }
 .title{
-    font-weight: 600;
-    font-size: 26px;
+    /* font-weight: 400; */
+    font-size: 18px;
     color: #fafaed;
     padding-right:60px;
 }
@@ -58,8 +58,8 @@ body{
 }
 
 div.links.dropdown {
-    width: 0;
     display: inline;
+    padding: 0px;
 }
 
 .footer {

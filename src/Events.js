@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { HashRouter as Router, Route, Link, Switch  } from "react-router-dom";
+import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import {
   Card,
   CardImg,
-  CardText,
   CardBody,
   CardTitle,
   CardSubtitle,
@@ -13,18 +12,24 @@ import {
   Button,
   FormGroup,
   Label,
-  Input} from "reactstrap";
+  Input
+} from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMapMarkerAlt,
-  faClock,
-  faCalendar
-} from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt, faClock } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
-import moment from 'moment'
+import moment from "moment";
 import _ from "lodash";
 
 import "./css/Events.css";
+
+// TODO: Put in seperate constant file
+const Service = {
+  HOUSING: "Housing/Shelter",
+  LEGAL: "Legal/Employment",
+  DAYCENTER: "Day Centers",
+  BASIC: "Basic Needs",
+  HEALTH: "Health & Wellness"
+};
 
 export class Events extends Component {
   constructor(props) {
@@ -39,10 +44,8 @@ export class Events extends Component {
       description: "",
       category: "All",
       filter: [],
-      query : "",
-      filteredData: []
-    };  
-    
+      query: ""
+    };
   }
 
   handleCardClick = index => {
@@ -125,7 +128,7 @@ export class Events extends Component {
         // return element.name.includes(query);
         // });
         this.setState({
-          data: results,
+          data: results
           // filteredData
         });
       });
@@ -134,23 +137,44 @@ export class Events extends Component {
   handleCategory = event => {
     // Update every field
     let newCategory = event.target.value;
-    console.log(event.target.value);
     // Set state og orgFormEntires with new copy
     this.setState({
       category: newCategory
     });
   };
 
-  handleFilters = event =>{
-    let services = _.cloneDeep(this.state.filter);
-    let newFilter = event.target.value;
-    services.push(newFilter);
-    this.setState({
-      filter: services
-    })
-    console.log(this.state.filter);
+  handleSelect = event => {
+    if (this.state.filter.includes(event.target.value)) {
+      this.removeService(event.target.value);
+    } else {
+      this.addService(event.target.value);
+    }
+    console.log(this.state.isSelected);
+    console.log(event.target.value);
+  };
 
-  }
+  addService = service => {
+    let newServices = _.cloneDeep(this.state.filter);
+    newServices.push(service);
+    this.setState({
+      filter: newServices
+    });
+  };
+
+  // handle the All option of Area of Service
+  handleAll = event => {
+    this.setState({
+      filter: _.values(Service)
+    });
+  };
+
+  removeService = service => {
+    let newServices = _.filter(this.state.filter, s => service !== s);
+    this.setState({
+      filter: newServices
+    });
+  };
+
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -158,8 +182,21 @@ export class Events extends Component {
   };
 
   render() {
+    const filteredData = this.state.data.filter(d => {
+      const matchesCategory =
+        d.categoryName === this.state.category || this.state.category === "All";
 
-    const content = this.state.data.map((d, i) => {
+      //TODO: improve efficiency?
+      const serviceOverlap = _.intersection(d.services, this.state.filter);
+      const matchesService =
+        serviceOverlap.length !== 0 || this.state.filter.length === 0;
+      if (matchesCategory && matchesService) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    const content = filteredData.map((d, i) => {
       //   let dates = this.state.data.map((d) => {
       //     return new Date((d.date)).toString();
       // })
@@ -178,7 +215,7 @@ export class Events extends Component {
       //     </div>
       //   );
       // }
-      
+
       let mlist = [];
       var month_name = function(dt) {
         mlist = [
@@ -197,71 +234,69 @@ export class Events extends Component {
         ];
         return mlist[dt.getMonth()];
       };
-      if (d.categoryName === this.state.category ||
-          this.state.category === "All") {
-          if(d.services.includes(this.state.filter) || this.state.filter === "All"){
-        return (
-          <div className="events" key={"event" + i}>
-            <Row>
-              <Col>
-                <CardGroup>
-                  <Card>
-                    <div className="image">
-                      <CardImg src={d.room} style={{ width: "100%" }} />
-                      <CardBody>
-                        {/* <CardTitle>{d.eventName}</CardTitle> */}
-                        <CardTitle>
-                          {/* <FontAwesomeIcon icon={faCalendar} /> */}
-                          <div className="eventMonth">
-                          {" " + month_name(new Date(d.date))} <br/>
-                          <div className = "eventDay">
-                          {" " + new Date(d.date).getDate() + " "} 
+      return (
+        <div className="events" key={"event" + i}>
+          <Row>
+            <Col>
+              <CardGroup>
+                <Card>
+                  <div className="image">
+                    <CardImg src={d.room} style={{ width: "100%" }} />
+                    <CardBody>
+                      {/* <CardTitle>{d.eventName}</CardTitle> */}
+                      <CardTitle>
+                        {/* <FontAwesomeIcon icon={faCalendar} /> */}
+                        <div className="eventMonth">
+                          {" " + month_name(new Date(d.date))} <br />
+                          <div className="eventDay">
+                            {" " + new Date(d.date).getDate() + " "}
                           </div>
-                          </div>
-                          <div className = "eventName">
-                            {" " + d.eventName}
-                          </div>
-                        </CardTitle>
-                        <CardSubtitle>
-                          <div className = "eventAddress">
+                        </div>
+                        <div className="eventName">{" " + d.eventName}</div>
+                      </CardTitle>
+                      <CardSubtitle>
+                        <div className="eventAddress">
                           <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
-                          </div>
-                        </CardSubtitle>
-                        <CardSubtitle>
-                          <div className = "eventTime">
-                          <FontAwesomeIcon icon={faClock} /> {moment(d.startTime, 'HH:mm:ss').format('h:mm A')} -{" "}
-                          {moment(d.endTime, 'HH:mm:ss').format("h:mm A")}
-                          </div>
-                        </CardSubtitle>
-                        <Button
-                          className="learn"
-                          onClick={this.handleCardClick.bind(null, i)}
-                        >
-                          learn more
-                        </Button>
-                      </CardBody>
-                    </div>
-                  </Card>
-                </CardGroup>
-              </Col>
-            </Row>
-          </div>
-        );
-      }
-    }
+                        </div>
+                      </CardSubtitle>
+                      <CardSubtitle>
+                        <div className="eventTime">
+                          <FontAwesomeIcon icon={faClock} />{" "}
+                          {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
+                          {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
+                        </div>
+                      </CardSubtitle>
+                      <Button
+                        className="learn"
+                        onClick={this.handleCardClick.bind(null, i)}
+                      >
+                        learn more
+                      </Button>
+                    </CardBody>
+                  </div>
+                </Card>
+              </CardGroup>
+            </Col>
+          </Row>
+        </div>
+      );
     });
     return (
       <div>
-         <div className="searchForm">
-        <form>
-          <input
-            placeholder="Search for..."
-            value={this.state.query}
-            onChange={this.handleInputChange}
-          />
-        </form>
-        <div>{this.state.filteredData.map(i => <p>{i.name}</p>)}</div>
-      </div>
+        {/* <div className="searchForm">
+          <form>
+            <input
+              placeholder="Search for..."
+              value={this.state.query}
+              onChange={this.handleInputChange}
+            />
+          </form>
+          <div>
+            {this.state.filteredData.map(i => (
+              <p>{i.name}</p>
+            ))}
+          </div>
+        </div> */}
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
@@ -282,6 +317,7 @@ export class Events extends Component {
             <FormGroup check>
               <Label check>
                 <Input
+                  checked={this.state.category === "All"}
                   type="radio"
                   name="radio1"
                   value={"All"}
@@ -338,34 +374,75 @@ export class Events extends Component {
           <br />
           <div className="filters">
             <h5>Select Area of Service:</h5>
+            {/* <FormGroup check>
+              <Label check>
+                <Input
+                  type="checkbox"
+                  name="check1"
+                  value={"All"}
+                  onChange={this.handleAll}
+                />{" "}
+                All
+              </Label>
+            </FormGroup> */}
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1"/> All
+                <Input
+                  checked={this.state.filter.includes(Service.HOUSING)}
+                  type="checkbox"
+                  name="check1"
+                  value={Service.HOUSING}
+                  onChange={this.handleSelect}
+                />{" "}
+                {Service.HOUSING}
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" value = {"Housing/Shelter"} onChange={this.handleFilters}/> Housing/Shelter
+                <Input
+                  checked={this.state.filter.includes(Service.LEGAL)}
+                  type="checkbox"
+                  name="check1"
+                  value={Service.LEGAL}
+                  onChange={this.handleSelect}
+                />{" "}
+                {Service.LEGAL}
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" value ={"Legal/Employment"} onChange={this.handleFilters} /> Legal/Employment
+                <Input
+                  checked={this.state.filter.includes(Service.DAYCENTER)}
+                  type="checkbox"
+                  name="check1"
+                  value={Service.DAYCENTER}
+                  onChange={this.handleSelect}
+                />{" "}
+                {Service.DAYCENTER}
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" value={"Day Centers"} onChange={this.handleFilters}/> Day Centers
+                <Input
+                  checked={this.state.filter.includes(Service.BASIC)}
+                  type="checkbox"
+                  name="check1"
+                  value={"Basic Needs"}
+                  onChange={this.handleSelect}
+                />{" "}
+                {Service.BASIC}
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" value ={"Basic Needs"} onChange={this.handleFilters}/> Basic Needs
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" value = {"Health/Wellness"} onChange={this.handleFilters}/> Health/Wellness
+                <Input
+                  checked={this.state.filter.includes(Service.HEALTH)}
+                  type="checkbox"
+                  name="check1"
+                  value={Service.HEALTH}
+                  onChange={this.handleSelect}
+                />{" "}
+                {Service.HEALTH}
               </Label>
             </FormGroup>
             <br />
