@@ -23,9 +23,6 @@ import {
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from 'moment'
 
-
-// import Sticky from 'react-sticky';
-
 import "./css/Events.css";
 
 export class Events extends Component {
@@ -40,12 +37,10 @@ export class Events extends Component {
       title: "",
       description: "",
       category: "All",
-      search: ''
-    };
-    let updateSearch = search => {
-      this.setState({ search });
-    };
-  
+      query : "",
+      filteredData: []
+    };  
+    
   }
 
   handleCardClick = index => {
@@ -96,6 +91,19 @@ export class Events extends Component {
       modal: true
     });
   };
+  // handleInputChange = event => {
+  //   const query = event.target.value;
+  //   this.setState(prevState => {
+  //     const filteredData = prevState.data.filter(element => {
+  //       return element.name.includes(query);
+  //     });
+  //     return {
+  //       query,
+  //       filteredData
+  //     };
+  //   });
+  // };
+
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -110,9 +118,13 @@ export class Events extends Component {
         return response.json();
       })
       .then(results => {
+        // const { query } = this.state.data;
+        // const filteredData = results.filter(element => {
+        // return element.name.includes(query);
+        // });
         this.setState({
           data: results,
-          isLoading: false
+          // filteredData
         });
       });
   }
@@ -126,6 +138,11 @@ export class Events extends Component {
       category: newCategory
     });
   };
+
+  handleFilters = event =>{
+    let newFilter = event.target.value;
+    console.log(event.target.value);
+  }
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -238,6 +255,16 @@ export class Events extends Component {
     });
     return (
       <div>
+         <div className="searchForm">
+        <form>
+          <input
+            placeholder="Search for..."
+            value={this.state.query}
+            onChange={this.handleInputChange}
+          />
+        </form>
+        <div>{this.state.filteredData.map(i => <p>{i.name}</p>)}</div>
+      </div>
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
