@@ -10,6 +10,11 @@ body{
     margin-top: 20px;
     font-size: 28px;
 }
+.bannerTitle{
+    color: white;
+    font-family: "Lato", sans-serif;
+    font-size: 100px;
+}
 
 .slogan {
     font-style: italic;

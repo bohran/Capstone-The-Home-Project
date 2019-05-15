@@ -35,10 +35,13 @@ export class Home extends Component {
           bgImage={require("./img/CoverPhoto2BWY.png")}
           bgImageAlt="collective pictures of the community"
           strength={500}
-        >
-          <div style={{ height: "600px", width: "100%" }} />
+          style={{ minHeight: "800px", maxHeight:"800px", width: "100%" }}
+          >
+         <div className = "bannerTitle" style={{marginTop:"15%", fontWeight: "lighter",textShadow: "0 0 100px rgba(0,0,0,500)"}}>#SeattleForAll</div>
+         {/* <div className = "bannerTitle" style={{marginTop:"15%", color: "black"}}>#SeattleForAll</div> */}
+
+          {/* <div style={{ minHeight: "600px", maxHeight:"600px", width: "100%" }} /> */}
         </Parallax>
-        <h1 className="parallaxTitle">#SeattleForAll</h1>
         <div className="contentBox">
           <div className="missionTitle" style={{ fontSize: "40px", fontWeight: "bold" }}>
             The Home Project

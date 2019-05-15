@@ -22,6 +22,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from 'moment'
+import _ from "lodash";
 
 import "./css/Events.css";
 
@@ -37,6 +38,7 @@ export class Events extends Component {
       title: "",
       description: "",
       category: "All",
+      filter: [],
       query : "",
       filteredData: []
     };  
@@ -140,8 +142,14 @@ export class Events extends Component {
   };
 
   handleFilters = event =>{
+    let services = _.cloneDeep(this.state.filter);
     let newFilter = event.target.value;
-    console.log(event.target.value);
+    services.push(newFilter);
+    this.setState({
+      filter: services
+    })
+    console.log(this.state.filter);
+
   }
   toggle = () => {
     this.setState({
@@ -189,10 +197,9 @@ export class Events extends Component {
         ];
         return mlist[dt.getMonth()];
       };
-      if (
-        d.categoryName === this.state.category ||
-        this.state.category === "All"
-      ) {
+      if (d.categoryName === this.state.category ||
+          this.state.category === "All") {
+          if(d.services.includes(this.state.filter) || this.state.filter === "All"){
         return (
           <div className="events" key={"event" + i}>
             <Row>
@@ -211,20 +218,9 @@ export class Events extends Component {
                           {" " + new Date(d.date).getDate() + " "} 
                           </div>
                           </div>
-                          
-                          {/* <div className = "eventDay">
-                          {" " + new Date(d.date).getDate()} 
-                          </div> */}
                           <div className = "eventName">
                             {" " + d.eventName}
                           </div>
-                          {/* <div className = "eventAddress">
-                          <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
-                          </div>
-                          <div className = "eventTime">
-                          <FontAwesomeIcon icon={faClock} /> {moment(d.startTime, 'HH:mm:ss').format('h:mm A')} -{" "}
-                          {moment(d.endTime, 'HH:mm:ss').format("h:mm A")}
-                          </div> */}
                         </CardTitle>
                         <CardSubtitle>
                           <div className = "eventAddress">
@@ -252,6 +248,7 @@ export class Events extends Component {
           </div>
         );
       }
+    }
     });
     return (
       <div>
@@ -343,32 +340,32 @@ export class Events extends Component {
             <h5>Select Area of Service:</h5>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" /> All
+                <Input type="checkbox" name="check1"/> All
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" /> Housing/Shelter
+                <Input type="checkbox" name="check1" value = {"Housing/Shelter"} onChange={this.handleFilters}/> Housing/Shelter
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" /> Legal/Employment
+                <Input type="checkbox" name="check1" value ={"Legal/Employment"} onChange={this.handleFilters} /> Legal/Employment
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" /> Day Centers
+                <Input type="checkbox" name="check1" value={"Day Centers"} onChange={this.handleFilters}/> Day Centers
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" /> Basic Needs
+                <Input type="checkbox" name="check1" value ={"Basic Needs"} onChange={this.handleFilters}/> Basic Needs
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" /> Health/Wellness
+                <Input type="checkbox" name="check1" value = {"Health/Wellness"} onChange={this.handleFilters}/> Health/Wellness
               </Label>
             </FormGroup>
             <br />

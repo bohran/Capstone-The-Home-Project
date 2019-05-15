@@ -95,7 +95,7 @@ class App extends Component {
           <Route path="/RegOrganization" component={RegOrganization} />
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
-        <div className="footer">
+        {/* <div className="footer">
           <div className="footer-title">Contact Us</div> <br />
           <div className="footer-content">
             <span>Pyramid Communications</span>
@@ -103,7 +103,7 @@ class App extends Component {
             <span>206.374.7788</span>
             <span>1932 First Avenue Suite 507, Seattle, WA 98101</span>
           </div>
-        </div>
+        </div> */}
       </Router>
     );
   }
