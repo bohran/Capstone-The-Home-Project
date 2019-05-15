@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/capstone-home-project-sp19/precache-manifest.b4b617f714deb8097eea0ed4e9e6f60e.js"
+  "/capstone-home-project-sp19/precache-manifest.6de845a7d9530426fdc50bf38f1051b5.js"
 );
 
 workbox.clientsClaim();
