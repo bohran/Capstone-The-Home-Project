@@ -57,6 +57,11 @@ body{
     align-content: right;
 }
 
+div.links.dropdown {
+    width: 0;
+    display: inline;
+}
+
 .footer {
     position: absolute;
     background-color: #177283;

@@ -13,7 +13,6 @@ import {
   NavLink,
   DropdownMenu,
   DropdownToggle,
-  DropdownItem,
   UncontrolledDropdown
 } from "reactstrap";
 
@@ -75,7 +74,7 @@ class App extends Component {
               </Link>
               {/* <Dropdown className="links" isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}> */}
               <UncontrolledDropdown inNavbar className="links">
-              <DropdownToggle nav caret>Register</DropdownToggle>
+              <DropdownToggle nav caret className="links">Register</DropdownToggle>
               <DropdownMenu right>
                 <Link to="/RegOrganization">
                   Add Organization

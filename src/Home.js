@@ -32,7 +32,7 @@ export class Home extends Component {
         {/* </div> */}
         <Parallax
           //   blur={{ min: -15, max: 15 }}
-          bgImage={require("./img/CoverPhoto2BWY.png")}
+          bgImage={require("./img/CoverPhoto2BW.png")}
           bgImageAlt="collective pictures of the community"
           strength={500}
           style={{ minHeight: "800px", maxHeight:"800px", width: "100%" }}
