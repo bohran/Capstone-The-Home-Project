@@ -106,7 +106,7 @@ body{
     color: #cf0f2e; 
     min-width: 45px;
     float: left;
-    background-color: rgb(241, 236, 236);
+    
 }
 
 .eventDay{
@@ -114,7 +114,6 @@ body{
     color: #6e6e70;
     text-align: center;
     min-width: 45px;
-    background-color: rgb(241, 236, 236);
-
+   
 
 }

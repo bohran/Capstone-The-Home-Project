@@ -31,15 +31,13 @@ export class Events extends Component {
     super(props);
     this.state = {
       modal: false,
-      isLoading: false,
       data: [],
       value: 0,
       previous: 0,
       title: "",
       description: "",
       category: "All",
-      filter: [],
-      query : "",
+      input : '',
       filteredData: []
     };  
     
@@ -99,10 +97,13 @@ export class Events extends Component {
   //     const filteredData = prevState.data.filter(element => {
   //       return element.name.includes(query);
   //     });
+  //     console.log(query)
+
   //     return {
   //       query,
   //       filteredData
   //     };
+
   //   });
   // };
 
@@ -120,9 +121,9 @@ export class Events extends Component {
         return response.json();
       })
       .then(results => {
-        // const { query } = this.state.data;
+        // const { query } = this.state;
         // const filteredData = results.filter(element => {
-        // return element.name.includes(query);
+        // return element.name.toLowerCase().includes(query.toLowerCase());
         // });
         this.setState({
           data: results,
@@ -140,25 +141,24 @@ export class Events extends Component {
       category: newCategory
     });
   };
-
-  handleFilters = event =>{
-    let services = _.cloneDeep(this.state.filter);
-    let newFilter = event.target.value;
-    services.push(newFilter);
-    this.setState({
-      filter: services
-    })
-    console.log(this.state.filter);
-
-  }
   toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
   };
-
+  handleSearch = (e) => {
+    this.setState({
+        input: e.target.value
+    });
+}
   render() {
-
+    let results = this.state.filteredData.filter((d) => {
+      if(this.props.input ==='') {
+          return true;
+      } else {
+          return d.eventName.toLowerCase().includes(this.state.input.toLowerCase());
+      }
+  })
     const content = this.state.data.map((d, i) => {
       //   let dates = this.state.data.map((d) => {
       //     return new Date((d.date)).toString();
@@ -178,7 +178,13 @@ export class Events extends Component {
       //     </div>
       //   );
       // }
-      
+    //   let results = this.state.data.filter((data) => {
+    //     if(this.props.input ==='') {
+    //         return true;
+    //     } else {
+    //         return post.title.toLowerCase().includes(this.state.input.toLowerCase());
+    //     }
+    // })
       let mlist = [];
       var month_name = function(dt) {
         mlist = [
@@ -199,7 +205,7 @@ export class Events extends Component {
       };
       if (d.categoryName === this.state.category ||
           this.state.category === "All") {
-          if(d.services.includes(this.state.filter) || this.state.filter === "All"){
+          // if(d.services.includes(this.state.filter) || this.state.filter === "All"){
         return (
           <div className="events" key={"event" + i}>
             <Row>
@@ -248,19 +254,19 @@ export class Events extends Component {
           </div>
         );
       }
-    }
+    // }
     });
-    return (
+    return (    
       <div>
          <div className="searchForm">
         <form>
           <input
-            placeholder="Search for..."
-            value={this.state.query}
-            onChange={this.handleInputChange}
+            placeholder="Search for events..."
+            type = "search"
+            onChange={this.handleSearch}
           />
         </form>
-        <div>{this.state.filteredData.map(i => <p>{i.name}</p>)}</div>
+        <div>{this.state.filteredData.map(i => <p>{i.eventName}</p>)}</div>
       </div>
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
