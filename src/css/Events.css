@@ -12,8 +12,9 @@ body {
   float: left;
   padding-left: 30px;
   padding-right: 40px;
-  background-color: #33cbe64b;
+  /* background-color: #33cbe64b; */
   padding-top: 20px;
+  font-weight: 300;
 }
 
 .navbar-wrapper {
@@ -50,7 +51,8 @@ body {
 
 .card {
   width: 240px;
-  height: 320px;
+  min-height: 320px;
+  max-height: 320px;
   /* margin-left: 40px;
     margin-right: 40px;  */
   margin: 20px;
@@ -77,9 +79,13 @@ body {
 .card-title {
   /* font-size: 14px; */
   text-align: center;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  /* overflow: hidden; */
+  /* white-space: nowrap; */
+  /* text-overflow: ellipsis;
+  white-space: nowrap; */
+  /* height: 3.6rem; */
+
+
 }
 
 .card-subtitle {
@@ -92,11 +98,13 @@ body {
 }
 
 .eventName {
-  text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
-  font-size: 14px;
-  padding: 8px;
+  white-space: pre-wrap;
+  font-size: 15px;
+  padding: 8.5px;
+  height: 3.8em;
+   /* adds 3 lines */
+  /* text-align: left; */
 }
 .eventMonth {
   font-size: 14px;
@@ -105,6 +113,8 @@ body {
   min-width: 45px;
   float: left;
   background-color: rgb(241, 236, 236);
+  margin-top: 12px;
+
   /* border-style: solid; */
   /* border-color: rgb(218, 213, 213); */
 }

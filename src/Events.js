@@ -183,8 +183,8 @@ export class Events extends Component {
       filter: [],
       input : '',
       filteredData: [], 
-      selectedCity: null,
-      selectedTime: null
+      selectedCity: "All",
+      selectedTime: "All"
     };  
   }
   handleCityChange = (selectedCity) => {
@@ -263,6 +263,7 @@ export class Events extends Component {
           data: results
         });
       });
+    window.scrollTo(0, 0)
   }
 
   handleCategory = event => {
@@ -384,20 +385,21 @@ export class Events extends Component {
           <Row>
             <Col>
               <CardGroup>
-                <Card>
+                <Card
+                onClick={this.handleCardClick.bind(null, i)}>
                   <div className="image">
                     <CardImg src={d.room} style={{ width: "100%" }} />
                     <CardBody>
+                    
                       {/* <CardTitle>{d.eventName}</CardTitle> */}
                       <CardTitle>
-                        {/* <FontAwesomeIcon icon={faCalendar} /> */}
+                      <div className="eventName">{" " + d.eventName}</div>
                         <div className="eventMonth">
                           {" " + month_name(new Date(d.date))} <br />
                           <div className="eventDay">
                             {" " + new Date(d.date).getDate() + " "}
                           </div>
                         </div>
-                        <div className="eventName">{" " + d.eventName}</div>
                       </CardTitle>
                       <CardSubtitle>
                         <div className="eventAddress">
@@ -411,12 +413,12 @@ export class Events extends Component {
                           {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
                         </div>
                       </CardSubtitle>
-                      <Button
+                      {/* <Button
                         className="learn"
                         onClick={this.handleCardClick.bind(null, i)}
-                      >
+                        style = {{marginLeft: "15%"}}>
                         learn more
-                      </Button>
+                      </Button> */}
                     </CardBody>
                   </div>
                 </Card>
@@ -593,7 +595,7 @@ export class Events extends Component {
             <br />
             <div className="location">
               <h5>Select Location:</h5>
-              <Select
+              <Select style ={{position: "fixed"}}
                  value={selectedCity}
                   onChange={this.handleCityChange}
                   options={cities}
@@ -601,68 +603,6 @@ export class Events extends Component {
                   placeholder = "Select..."
                   defaultValue = {cities === "All"}
                 />
-              {/* <Multiselect options={ cities } onSelectOptions={this.result} placeholder = "Select cities"/> */}
-
-              {/* <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> All
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Seattle
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Bellevue
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Everett
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Burien
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Kirkland
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Bothell
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Renton
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Redmond
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Tacoma
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Olympia
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Lakewood
-                </Label>
-              </FormGroup> */}
             </div>
             <br />
             <div className="date">
@@ -708,7 +648,7 @@ export class Events extends Component {
             <ModalHeader>{this.state.eventName}.</ModalHeader>
             <ModalBody>
               Organization:
-              {this.state.organizationName}
+              {" " + this.state.organizationName}
               <br />
               Description:
               {" " + this.state.eventDescription}
