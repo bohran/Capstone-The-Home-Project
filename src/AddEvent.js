@@ -4,7 +4,9 @@ import _ from "lodash";
 
 import NewEvent from "./EventForm";
 import Confirmation from "./EventConfirmation";
-import Submission from "./Submission";
+import EventSubmission from "./EventSubmission";
+import "./css/form.css";
+import "./css/confirm.css";
 
 const Stage = {
   EVENT: 0,
@@ -19,8 +21,8 @@ export default class AddEvent extends Component {
     eventFormEntries: {
       title: "",
       category: "",
-      orgs: [""],
-      services: [""],
+      orgs: [],
+      services: [],
       descr: "",
       date: "",
       startTime: "",
@@ -111,24 +113,19 @@ export default class AddEvent extends Component {
 
   handleChangeService = event => {
     console.log(event.target.value);
+    let newServices = _.cloneDeep(this.state.eventFormEntries.services);
     var option = event.target.value;
-    var services = this.state.eventFormEntries.services;
-    let match = false;
-    if (services.length !== 0) {
-      for (var i = 0; i < services.length; i++) {
-        if (services[i].value === option) {
-          match = true;
-        }
-      }
+    if(newServices.includes(option)) {
+      newServices = _.remove(newServices, function(n) {
+        return n !== option
+      })
+    } else {
+      newServices.push(option);
     }
-    if (match === false) {
-      services.push(option);
-    }
-    console.log(services);
-
+    console.log(newServices);
     let updateEventForm = _.cloneDeep(this.state.eventFormEntries);
 
-    updateEventForm.services = services;
+    updateEventForm.services = newServices;
 
     this.setState({
       eventFormEntries: updateEventForm
@@ -195,7 +192,7 @@ export default class AddEvent extends Component {
         />
       );
     } else if (this.state.currentStage === Stage.SUBMISSION) {
-      content = <Submission />;
+      content = <EventSubmission />;
     }
     return <div>{content}</div>;
   }
