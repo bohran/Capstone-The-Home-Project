@@ -1,107 +1,176 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Form, FormGroup, Label } from "reactstrap";
-
-import "./css/App.css";
+import { Button, Form, FormGroup, Label, Row, Col } from "reactstrap";
 
 class Confirmation extends Component {
   render() {
-    console.log(this.props.eventForm);
+    console.log(this.props.eventForm.services);
+    let services = this.props.eventForm.services.map((d, i) => {
+      if (i + 1 !== this.props.eventForm.services.length) {
+        return d + ", ";
+      } else {
+        return d;
+      }
+    });
     return (
       <section>
-        <h2 className="orgPageTitle">Almost there.</h2>
+        <h2 className="pageTitle">CONFIRM YOUR EVENT DETAILS</h2>
 
         <div className="addEvent">
           <Form>
-            <h6>Please confirm your information before submitting.</h6>
-            <h5>Event Information</h5>
+            <h6>
+              Please confirm the following information before submitting. If you
+              need to make edits, select the edit button below the form.
+            </h6>
+            <br />
+            <h5 className="formTitle">Event Information</h5>
             <FormGroup>
-              <Label>Event Title: {this.props.eventForm.title}</Label>
+              <Label>Organization: {this.props.eventForm.orgs}</Label>
             </FormGroup>
 
-            <FormGroup>
-              <Label>Event Type: {this.props.eventForm.category}</Label>
-            </FormGroup>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Event Title: {this.props.eventForm.title}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Event Type: {this.props.eventForm.category}</Label>
+                </FormGroup>
+              </Col>
+            </Row>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Area(s) of Service: {services}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Event Description: {this.props.eventForm.descr}</Label>
+                </FormGroup>
+              </Col>
+            </Row>
 
-            <FormGroup>
-              <Label>Area of Services: {this.props.eventForm.services}</Label>
-            </FormGroup>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Event Date: {this.props.eventForm.date}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>
+                    Time: {this.props.eventForm.startTime} to{" "}
+                    {this.props.eventForm.endTime}
+                  </Label>
+                </FormGroup>
+              </Col>
+              {/* <Col md={4}>
+                <FormGroup>
+                  <Label>End Time: {this.props.eventForm.endTime}</Label>
+                </FormGroup>
+              </Col> */}
+            </Row>
 
-            <FormGroup>
-              <Label>Event Description: {this.props.eventForm.descr}</Label>
-            </FormGroup>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Address: {this.props.eventForm.address}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>Room: {this.props.eventForm.room}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>Event Capacity: {this.props.eventForm.capacity}</Label>
+                </FormGroup>
+              </Col>
+            </Row>
 
-            <FormGroup>
-              <Label>Event Date: {this.props.eventForm.date}</Label>
-            </FormGroup>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>City: {this.props.eventForm.city}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>County: {this.props.eventForm.county}</Label>
+                </FormGroup>
+              </Col>
+            </Row>
 
-            <FormGroup>
-              <Label>Start Time: {this.props.eventForm.startTime}</Label>
-            </FormGroup>
+            <Row form>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>Zip Code: {this.props.eventForm.zip}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label>State: {this.props.eventForm.state}</Label>
+                </FormGroup>
+              </Col>
+            </Row>
 
-            <FormGroup>
-              <Label>End Time: {this.props.eventForm.endTime}</Label>
-            </FormGroup>
+            <h5 className="formTitle">Event Contact Information</h5>
+            <Row form>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>First Name: {this.props.eventForm.creatorFName}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>Last Name: {this.props.eventForm.creatorLName}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>Email: {this.props.eventForm.creatorEmail}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>Phone: {this.props.eventForm.creatorPhone}</Label>
+                </FormGroup>
+              </Col>
+            </Row>
 
-            <FormGroup>
-              <Label>Address: {this.props.eventForm.address}</Label>
-            </FormGroup>
-            <FormGroup>
-              <Label>Room: </Label>
-            </FormGroup>
-            <FormGroup>
-              <Label>Event Capacity: {this.props.eventForm.capacity}</Label>
-            </FormGroup>
+            <h5 className="formTitle">Event Coordinator Information</h5>
+            <Row form>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>
+                    First Name: {this.props.eventForm.coordinatorFName}
+                  </Label>
+                </FormGroup>
+              </Col>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>
+                    Last Name: {this.props.eventForm.coordinatorLName}
+                  </Label>
+                </FormGroup>
+              </Col>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>Email: {this.props.eventForm.coordinatorEmail}</Label>
+                </FormGroup>
+              </Col>
+              <Col md={3}>
+                <FormGroup>
+                  <Label>Phone: {this.props.eventForm.coordinatorPhone}</Label>
+                </FormGroup>
+              </Col>
+            </Row>
 
-            <FormGroup>
-              <Label>Event City: {this.props.eventForm.city}</Label>
-            </FormGroup>
-
-            <FormGroup>
-              <Label>Event County: {this.props.eventForm.county}</Label>
-            </FormGroup>
-
-            <FormGroup>
-              <Label>Event Zip Code: {this.props.eventForm.zip}</Label>
-            </FormGroup>
-
-            <h5>Event Contact Information</h5>
-
-            <FormGroup>
-              <Label>First Name: {this.props.eventForm.creatorFName}</Label>
-            </FormGroup>
-
-            <FormGroup>
-              <Label>Last Name: {this.props.eventForm.creatorLName}</Label>
-            </FormGroup>
-
-            <FormGroup>
-              <Label>Email: {this.props.eventForm.creatorEmail}</Label>
-            </FormGroup>
-
-            <FormGroup>
-              <Label>Phone: {this.props.eventForm.creatorPhone}</Label>
-            </FormGroup>
-
-            <h5>Event Coordinator Information</h5>
-
-            <FormGroup>
-              <Label>First Name: {this.props.eventForm.coordinatorFName}</Label>
-            </FormGroup>
-
-            <FormGroup>
-              <Label>Last Name: {this.props.eventForm.coordinatorLName}</Label>
-            </FormGroup>
-
-            <FormGroup>
-              <Label>Email: {this.props.eventForm.coordinatorEmail}</Label>
-            </FormGroup>
-
-            <FormGroup>
-              <Label>Phone: {this.props.eventForm.coordinatorPhone}</Label>
-            </FormGroup>
-
-            <h5>Additional Event Information</h5>
+            <h5 className="formTitle">Additional Event Information</h5>
 
             <FormGroup>
               <Label>Website: {this.props.eventForm.website}</Label>
@@ -112,12 +181,12 @@ class Confirmation extends Component {
             </FormGroup>
           </Form>
         </div>
-        <div>
+        <div className="formButton">
           <Button
             variant="primary"
             type="submit"
             value="0"
-            onClick={this.props.onNext}
+            onClick={this.props.onEdit}
           >
             Edit
           </Button>
@@ -137,7 +206,7 @@ class Confirmation extends Component {
 
 Confirmation.propTypes = {
   eventForm: PropTypes.object.isRequired,
-  onNext: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired
 };
 

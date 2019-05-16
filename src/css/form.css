@@ -1,0 +1,48 @@
+form,
+.newOrgButton {
+  margin: 20px 20% 20px 20%;
+  padding: 40px;
+  background-color: white;
+  box-shadow: 3px 3px 10px -5px #6e6e70;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+}
+
+.pageTitle {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+  margin-top: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #db4b62;
+}
+
+.newOrgButton {
+  text-emphasis: bold;
+}
+
+.subtitle {
+  font-size: 12px;
+}
+
+.formButton {
+  text-align: center;
+}
+
+.formTitle {
+    color: #db4b62;
+}
+
+.helpLink {
+    color: #177283;
+    font-weight: bold;
+}
+
+.helpLink:hover {
+    color: #177283;
+    font-weight: bold;
+}
+
+.formChecks {
+    margin-bottom: 10px;
+}

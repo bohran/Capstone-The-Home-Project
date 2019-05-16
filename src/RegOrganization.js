@@ -3,7 +3,7 @@ import _ from "lodash";
 
 import NewOrg from "./OrgForm";
 import Confirmation from "./OrgConfirmation";
-import Submission from "./Submission";
+import OrgSubmission from "./OrgSubmission";
 
 const Stage = {
   ORGANIZATION: 0,
@@ -77,7 +77,7 @@ export default class RegOrganization extends Component {
         return JSON.parse(text);
       })
       .then(responseObject => {
-        this.handleNext();
+        this.handleSubmit();
       })
       .catch(function(err) {
         console.log("ERROR!");
@@ -132,6 +132,11 @@ export default class RegOrganization extends Component {
     // });
   };
 
+  handleSubmit = () =>
+    this.setState({
+      currentStage: Stage.SUBMISSION
+    });
+
   render() {
     let content = "";
     if (this.state.currentStage === Stage.ORGANIZATION) {
@@ -152,7 +157,7 @@ export default class RegOrganization extends Component {
         />
       );
     } else if (this.state.currentStage === Stage.SUBMISSION) {
-      content = <Submission />;
+      content = <OrgSubmission />;
     }
     return (
       <div>

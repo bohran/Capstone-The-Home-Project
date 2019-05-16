@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
-import "./css/Organization.css";
+// import "./css/form.css";
 
 class NewEvent extends Component {
   // componentDidMount() {
@@ -36,13 +37,13 @@ class NewEvent extends Component {
   render() {
     return (
       <div>
-        <h2 className="pageTitle">Add a New Event</h2>
+        <h2 className="pageTitle">ADD A NEW EVENT</h2>
 
         <div className="addEvent">
           <Form>
-            <h5>Event Information</h5>
+            <h5 className="formTitle">Select Your Organization</h5>
             <FormGroup>
-              <Label>Select Organization</Label>
+              {/* <Label>Select Your Organization</Label> */}
               <Input
                 type="select"
                 name="org"
@@ -54,6 +55,14 @@ class NewEvent extends Component {
               </Input>
             </FormGroup>
 
+            <h6 className="help">
+              Don't see your Organization listed?{" "}
+              <Link className="helpLink" to="/RegOrganization">
+                Register it here.
+              </Link>
+            </h6>
+
+            <h5 className="formTitle">Event Information</h5>
             <Row form>
               <Col md={6}>
                 <FormGroup>
@@ -85,71 +94,61 @@ class NewEvent extends Component {
                 </FormGroup>
               </Col>
             </Row>
+
             <h6>Area of Service</h6>
-            <FormGroup check inline>
-              <Input
-                type="checkbox"
-                name="housing"
-                value={this.props.form.housing}
-                onChange={this.props.onUpdate}
-              />{" "}
-              <Label check>Housing/Shelter</Label>
-            </FormGroup>
-            <FormGroup check inline>
-              <Input
-                type="checkbox"
-                name="emp"
-                value={this.props.form.emp}
-                onChange={this.props.onUpdate}
-              />{" "}
-              <Label check>Employment</Label>
-            </FormGroup>
-            <FormGroup check inline>
-              <Input
-                type="checkbox"
-                name="dayCenter"
-                value={this.props.form.dayCenter}
-                onChange={this.props.onUpdate}
-              />{" "}
-              <Label check>Day Center</Label>
-            </FormGroup>
-            <FormGroup check inline>
-              <Input
-                type="checkbox"
-                name="basic"
-                value={this.props.form.basic}
-                onChange={this.props.onUpdate}
-              />{" "}
-              <Label check>Basic Needs</Label>
-            </FormGroup>
-            <FormGroup check inline>
-              <Input
-                type="checkbox"
-                name="wellness"
-                value={this.props.form.wellness}
-                onChange={this.props.onUpdate}
-              />{" "}
-              <Label check>{"Health & Wellness"}</Label>
-            </FormGroup>
-            {/* <option>Housing/Shelter</option>
-                    <option>Legal/Employment</option>
-                    <option>Day Centers</option>
-                    <option>Basic Needs</option>
-                    <option>{"Health & Wellness"}</option> */}
-            {/* <FormGroup>
-              <Label>Select Your Organization</Label>
-              <Input
-                type="select"
-                name="orgs"
-                value={this.props.form.orgs}
-                onChange={this.props.onChange}
-              >
-                <option>Give</option>
-                <option>Learn</option>
-                <option>Volunteer</option>
-                <option>Activism</option>
-              </Input>
-            </FormGroup> */}
+            <div>
+              <FormGroup check inline>
+                <Input
+                  checked={this.props.form.services.includes("Housing/Shelter")}
+                  type="checkbox"
+                  name="services"
+                  value={"Housing/Shelter"}
+                  onChange={this.props.onUpdate}
+                />{" "}
+                <Label check>Housing/Shelter</Label>
+              </FormGroup>
+              <FormGroup check inline>
+                <Input
+                checked={this.props.form.services.includes("Employment")}
+                  type="checkbox"
+                  name="services"
+                  value={"Employment"}
+                  onChange={this.props.onUpdate}
+                />{" "}
+                <Label check>Employment</Label>
+              </FormGroup>
+              <FormGroup check inline>
+                <Input
+                checked={this.props.form.services.includes("Day Center")}
+                  type="checkbox"
+                  name="services"
+                  value={"Day Center"}
+                  onChange={this.props.onUpdate}
+                />{" "}
+                <Label check>Day Center</Label>
+              </FormGroup>
+              <FormGroup check inline>
+                <Input
+                checked={this.props.form.services.includes("Basic Needs")}
+                  type="checkbox"
+                  name="services"
+                  value={"Basic Needs"}
+                  onChange={this.props.onUpdate}
+                />{" "}
+                <Label check>Basic Needs</Label>
+              </FormGroup>
+              <FormGroup check inline>
+                <Input
+                checked={this.props.form.services.includes("Health & Wellness")}
+                  type="checkbox"
+                  name="services"
+                  value={"Health & Wellness"}
+                  onChange={this.props.onUpdate}
+                />{" "}
+                <Label check>{"Health & Wellness"}</Label>
+              </FormGroup>
+            </div>
+
             <FormGroup>
               <Label>Description</Label>
               <Input
@@ -287,7 +286,7 @@ class NewEvent extends Component {
               </Col>
             </Row>
 
-            <h5>Event Contact Information</h5>
+            <h5 className="formTitle">Event Contact Information</h5>
             <h3 className="subtitle">
               This information is used to confirm any changes in the event
               details
@@ -344,20 +343,21 @@ class NewEvent extends Component {
               </Col>
             </Row>
 
-            <h5>Event Coordinator Information</h5>
+            <h5 className="formTitle">Event Coordinator Information</h5>
             <h3 className="subtitle">
               This information will be used by interested volunteers and
               participants who want to get invovled
             </h3>
-
-            <FormGroup check inline>
-              <Input
-                type="checkbox"
-                name="coordinatorInfo"
-                onClick={this.handleSameAs}
-              />{" "}
-              <Label check>Same As Event Contact Information</Label>
-            </FormGroup>
+            <div className="formChecks">
+              <FormGroup check inline>
+                <Input
+                  type="checkbox"
+                  name="coordinatorInfo"
+                  onClick={this.handleSameAs}
+                />{" "}
+                <Label check>Same As Event Contact Information</Label>
+              </FormGroup>
+            </div>
 
             <div id="coordInfo" style={{ display: "block" }}>
               <Row form>
@@ -412,7 +412,7 @@ class NewEvent extends Component {
               </Row>
             </div>
 
-            <h5>Additional Event Information</h5>
+            <h5 className="formTitle">Additional Event Information</h5>
 
             <FormGroup>
               <Label>Website</Label>
@@ -454,14 +454,16 @@ class NewEvent extends Component {
             </Row>
           </Form>
         </div>
-        <Button
-          variant="primary"
-          type="submit"
-          value="1"
-          onClick={this.props.onNext}
-        >
-          Continue
-        </Button>
+        <div className="formButton">
+          <Button
+            variant="primary"
+            type="submit"
+            value="1"
+            onClick={this.props.onNext}
+          >
+            Continue
+          </Button>
+        </div>
       </div>
     );
   }

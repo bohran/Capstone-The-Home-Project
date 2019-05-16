@@ -32,7 +32,7 @@ export class Home extends Component {
         {/* </div> */}
         <Parallax
           //   blur={{ min: -15, max: 15 }}
-          bgImage={require("./img/CoverPhoto2BW.png")}
+          bgImage={require("./img/CoverPhotoBW.png")}
           bgImageAlt="collective pictures of the community"
           strength={500}
           style={{ minHeight: "750px", maxHeight:"750px", width: "100%" }}
@@ -75,7 +75,7 @@ export class Home extends Component {
             <div className="learnMore">
               Learn more about how you can help via our Messaging Toolkits:
             </div>
-            <Button href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0">
+            <Button className="toolkitButton" href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0">
               Toolkits
             </Button>
           </div>
