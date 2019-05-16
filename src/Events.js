@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { HashRouter as Router, Route, Link, Switch  } from "react-router-dom";
+import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import {
   Card,
   CardImg,
-  CardText,
   CardBody,
   CardTitle,
   CardSubtitle,
@@ -13,18 +12,162 @@ import {
   Button,
   FormGroup,
   Label,
-  Input} from "reactstrap";
+  Input
+} from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faMapMarkerAlt,
-  faClock,
-  faCalendar
-} from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt, faClock } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
-import moment from 'moment'
+import moment from "moment";
 import _ from "lodash";
+import Multiselect from 'multiselect-dropdown-react';
+import Select from 'react-select';
+
+
 
 import "./css/Events.css";
+
+// TODO: Put in seperate constant file
+const Service = {
+  HOUSING: "Housing/Shelter",
+  LEGAL: "Legal/Employment",
+  DAYCENTER: "Day Centers",
+  BASIC: "Basic Needs",
+  HEALTH: "Health & Wellness"
+};
+
+const times =[{
+  value: "All", 
+  label: "All"
+},
+{
+  value: "Today",
+  label: "Today"
+}, {
+  value: "Tomorrow", 
+  label: "Tomorrow"
+}, 
+{
+  value: "This Week", 
+  label: "This Week"
+}, 
+{
+  value: "Next Week", 
+  label: "Next Week"
+
+}, 
+{
+  value: "This Month", 
+  label: "This Month"
+}]
+
+const cities =[{
+  value: "All", 
+  label: "All"
+},
+{
+  value: 'Algona',
+  label: 'Algona'
+},
+{
+  value: "Auburn", 
+  label: "Auburn"
+},
+{
+  value: "Bellevue", 
+  label: "Bellevue"
+}, 
+{
+  value: "Bothell", 
+  label: "Bothell"
+}, 
+{
+  value: "Burien", 
+  label: "Burien"
+}, 
+{
+  value: "Carnation", 
+  label: "Carnation"
+}, {
+  value: "Covington", 
+  label: "Covington"
+}, {
+  value: "Des Moines", 
+  label: "Des Moines"
+}, {
+  value: "Duvall", 
+  label: "Duvall"
+}, {
+  value: "Enumclaw", 
+  label: "Enumclaw"
+}, {
+  value: "Federal Way", 
+  label: "Federal Way"
+}, {
+  value: "Issaquah", 
+  label: "Issaquah"
+}, {
+  value: "Kenmore", 
+  label: "Kenmore"
+}, {
+  value: "Kent", 
+  label: "Kent"
+}, {
+  value: "Kirkland", 
+  label: "Kirkland"
+}, {
+  value: "Lake Forest Park", 
+  label: "Lake Forest Park"
+}, {
+  value: "Maple Valley", 
+  label: "Maple Valley"
+}, {
+  value: "Medina", 
+  label: "Medina"
+}, {
+  value: "Mercer Island", 
+  label: "Mercer Island"
+}, {
+  value: "Newcastle", 
+  label: "Newcastle"
+}, {
+  value: "Normandy Park", 
+  label: "Normandy Park"
+}, {
+  value: "North Bend", 
+  label: "North Bend"
+}, 
+{
+  value: "Pacific", 
+  label: "Pacific"
+}, {
+  value: "Redmond", 
+  label: "Redmond"
+}, {
+  value: "Renton", 
+  label: "Renton"
+}, {
+  value: "Sammamish", 
+  label: "Sammamish"
+}, {
+  value: "Seatac", 
+  label: "Seatac"
+}, {
+  value: "Seattle", 
+  label: "Seattle"
+}, {
+  value: "Shoreline", 
+  label: "Shoreline"
+}, 
+{
+  value: "Snoqualmie", 
+  label: "Snoqualmie"
+}, {
+  value: "Tukwila", 
+  label: "Tukwila"
+}, {
+  value: "Woodinville", 
+  label: "Woodinville"
+}]
 
 export class Events extends Component {
   constructor(props) {
@@ -37,10 +180,20 @@ export class Events extends Component {
       title: "",
       description: "",
       category: "All",
+      filter: [],
       input : '',
-      filteredData: []
+      filteredData: [], 
+      selectedCity: null,
+      selectedTime: null
     };  
-    
+  }
+  handleCityChange = (selectedCity) => {
+    this.setState({ selectedCity });
+    console.log(`Option selected:`, selectedCity);
+  }
+  handleTimeChange = (selectedTime) => {
+    this.setState({ selectedTime });
+    console.log(`Option selected:`, selectedTime);
   }
 
   handleCardClick = index => {
@@ -91,22 +244,7 @@ export class Events extends Component {
       modal: true
     });
   };
-  // handleInputChange = event => {
-  //   const query = event.target.value;
-  //   this.setState(prevState => {
-  //     const filteredData = prevState.data.filter(element => {
-  //       return element.name.includes(query);
-  //     });
-  //     console.log(query)
-
-  //     return {
-  //       query,
-  //       filteredData
-  //     };
-
-  //   });
-  // };
-
+  
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -121,13 +259,8 @@ export class Events extends Component {
         return response.json();
       })
       .then(results => {
-        // const { query } = this.state;
-        // const filteredData = results.filter(element => {
-        // return element.name.toLowerCase().includes(query.toLowerCase());
-        // });
         this.setState({
-          data: results,
-          // filteredData
+          data: results
         });
       });
   }
@@ -135,31 +268,74 @@ export class Events extends Component {
   handleCategory = event => {
     // Update every field
     let newCategory = event.target.value;
-    console.log(event.target.value);
     // Set state og orgFormEntires with new copy
     this.setState({
       category: newCategory
     });
   };
+
+  handleSelect = event => {
+    if (this.state.filter.includes(event.target.value)) {
+      this.removeService(event.target.value);
+    } else {
+      this.addService(event.target.value);
+    }
+    console.log(this.state.isSelected);
+    console.log(event.target.value);
+  };
+
+  addService = service => {
+    let newServices = _.cloneDeep(this.state.filter);
+    newServices.push(service);
+    this.setState({
+      filter: newServices
+    });
+  };
+
+  // handle the All option of Area of Service
+  handleAll = event => {
+    this.setState({
+      filter: _.values(Service)
+    });
+  };
+
+  removeService = service => {
+    let newServices = _.filter(this.state.filter, s => service !== s);
+    this.setState({
+      filter: newServices
+    });
+  };
+
   toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
   };
+  // Search method
   handleSearch = (e) => {
     this.setState({
         input: e.target.value
     });
 }
   render() {
-    let results = this.state.filteredData.filter((d) => {
-      if(this.props.input ==='') {
-          return true;
+    const { selectedCity } = this.state;
+    const { selectedTime } = this.state;
+
+    const filteredData = this.state.data.filter(d => {
+      const matchesCategory =
+        d.categoryName === this.state.category || this.state.category === "All";
+
+      //TODO: improve efficiency?
+      const serviceOverlap = _.intersection(d.services, this.state.filter);
+      const matchesService =
+        serviceOverlap.length !== 0 || this.state.filter.length === 0;
+      if (matchesCategory && matchesService) {
+        return true;
       } else {
-          return d.eventName.toLowerCase().includes(this.state.input.toLowerCase());
+        return false;
       }
-  })
-    const content = this.state.data.map((d, i) => {
+    });
+    const content = filteredData.map((d, i) => {
       //   let dates = this.state.data.map((d) => {
       //     return new Date((d.date)).toString();
       // })
@@ -203,75 +379,73 @@ export class Events extends Component {
         ];
         return mlist[dt.getMonth()];
       };
-      if (d.categoryName === this.state.category ||
-          this.state.category === "All") {
-          // if(d.services.includes(this.state.filter) || this.state.filter === "All"){
-        return (
-          <div className="events" key={"event" + i}>
-            <Row>
-              <Col>
-                <CardGroup>
-                  <Card>
-                    <div className="image">
-                      <CardImg src={d.room} style={{ width: "100%" }} />
-                      <CardBody>
-                        {/* <CardTitle>{d.eventName}</CardTitle> */}
-                        <CardTitle>
-                          {/* <FontAwesomeIcon icon={faCalendar} /> */}
-                          <div className="eventMonth">
-                          {" " + month_name(new Date(d.date))} <br/>
-                          <div className = "eventDay">
-                          {" " + new Date(d.date).getDate() + " "} 
+      return (
+        <div className="events" key={"event" + i}>
+          <Row>
+            <Col>
+              <CardGroup>
+                <Card>
+                  <div className="image">
+                    <CardImg src={d.room} style={{ width: "100%" }} />
+                    <CardBody>
+                      {/* <CardTitle>{d.eventName}</CardTitle> */}
+                      <CardTitle>
+                        {/* <FontAwesomeIcon icon={faCalendar} /> */}
+                        <div className="eventMonth">
+                          {" " + month_name(new Date(d.date))} <br />
+                          <div className="eventDay">
+                            {" " + new Date(d.date).getDate() + " "}
                           </div>
-                          </div>
-                          <div className = "eventName">
-                            {" " + d.eventName}
-                          </div>
-                        </CardTitle>
-                        <CardSubtitle>
-                          <div className = "eventAddress">
+                        </div>
+                        <div className="eventName">{" " + d.eventName}</div>
+                      </CardTitle>
+                      <CardSubtitle>
+                        <div className="eventAddress">
                           <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.address}
-                          </div>
-                        </CardSubtitle>
-                        <CardSubtitle>
-                          <div className = "eventTime">
-                          <FontAwesomeIcon icon={faClock} /> {moment(d.startTime, 'HH:mm:ss').format('h:mm A')} -{" "}
-                          {moment(d.endTime, 'HH:mm:ss').format("h:mm A")}
-                          </div>
-                        </CardSubtitle>
-                        <Button
-                          className="learn"
-                          onClick={this.handleCardClick.bind(null, i)}
-                        >
-                          learn more
-                        </Button>
-                      </CardBody>
-                    </div>
-                  </Card>
-                </CardGroup>
-              </Col>
-            </Row>
-          </div>
-        );
-      }
-    // }
+                        </div>
+                      </CardSubtitle>
+                      <CardSubtitle>
+                        <div className="eventTime">
+                          <FontAwesomeIcon icon={faClock} />{" "}
+                          {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
+                          {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
+                        </div>
+                      </CardSubtitle>
+                      <Button
+                        className="learn"
+                        onClick={this.handleCardClick.bind(null, i)}
+                      >
+                        learn more
+                      </Button>
+                    </CardBody>
+                  </div>
+                </Card>
+              </CardGroup>
+            </Col>
+          </Row>
+        </div>
+      );
     });
     return (    
       <div>
-         <div className="searchForm">
-        <form>
-          <input
-            placeholder="Search for events..."
-            type = "search"
-            onChange={this.handleSearch}
-          />
-        </form>
-        <div>{this.state.filteredData.map(i => <p>{i.eventName}</p>)}</div>
-      </div>
+        <div className="searchForm">
+          <form>
+            <input
+              placeholder="Search for..."
+              value={this.state.input}
+              onChange={this.handleSearch}
+            />
+          </form>
+          <div>
+            {this.state.filteredData.map(i => (
+              <p>{i.eventName}</p>
+            ))}
+          </div>
+        </div>
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
-        <div className="add">
+        {/* <div className="add">
           <h4>New Organization?</h4>
           <Button tag = {Link} to="/RegOrganization">
             + Add Organization
@@ -280,7 +454,7 @@ export class Events extends Component {
           <Button tag= {Link} to ="/AddEvent">
             + Add Event
           </Button>
-        </div>
+        </div> */}
         {/* <Nav vertical className="sidebar"> */}
         <div className="sidebarFilter">
           <div className="categories">
@@ -288,6 +462,7 @@ export class Events extends Component {
             <FormGroup check>
               <Label check>
                 <Input
+                  checked={this.state.category === "All"}
                   type="radio"
                   name="radio1"
                   value={"All"}
@@ -344,40 +519,91 @@ export class Events extends Component {
           <br />
           <div className="filters">
             <h5>Select Area of Service:</h5>
+            {/* <FormGroup check>
+              <Label check>
+                <Input
+                  type="checkbox"
+                  name="check1"
+                  value={"All"}
+                  onChange={this.handleAll}
+                />{" "}
+                All
+              </Label>
+            </FormGroup> */}
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1"/> All
+                <Input
+                  checked={this.state.filter.includes(Service.HOUSING)}
+                  type="checkbox"
+                  name="check1"
+                  value={Service.HOUSING}
+                  onChange={this.handleSelect}
+                />{" "}
+                {Service.HOUSING}
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" value = {"Housing/Shelter"} onChange={this.handleFilters}/> Housing/Shelter
+                <Input
+                  checked={this.state.filter.includes(Service.LEGAL)}
+                  type="checkbox"
+                  name="check1"
+                  value={Service.LEGAL}
+                  onChange={this.handleSelect}
+                />{" "}
+                {Service.LEGAL}
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" value ={"Legal/Employment"} onChange={this.handleFilters} /> Legal/Employment
+                <Input
+                  checked={this.state.filter.includes(Service.DAYCENTER)}
+                  type="checkbox"
+                  name="check1"
+                  value={Service.DAYCENTER}
+                  onChange={this.handleSelect}
+                />{" "}
+                {Service.DAYCENTER}
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" value={"Day Centers"} onChange={this.handleFilters}/> Day Centers
+                <Input
+                  checked={this.state.filter.includes(Service.BASIC)}
+                  type="checkbox"
+                  name="check1"
+                  value={"Basic Needs"}
+                  onChange={this.handleSelect}
+                />{" "}
+                {Service.BASIC}
               </Label>
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" name="check1" value ={"Basic Needs"} onChange={this.handleFilters}/> Basic Needs
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="checkbox" name="check1" value = {"Health/Wellness"} onChange={this.handleFilters}/> Health/Wellness
+                <Input
+                  checked={this.state.filter.includes(Service.HEALTH)}
+                  type="checkbox"
+                  name="check1"
+                  value={Service.HEALTH}
+                  onChange={this.handleSelect}
+                />{" "}
+                {Service.HEALTH}
               </Label>
             </FormGroup>
             <br />
             <div className="location">
               <h5>Select Location:</h5>
-              <FormGroup check>
+              <Select
+                 value={selectedCity}
+                  onChange={this.handleCityChange}
+                  options={cities}
+                  isMulti = "true"
+                  placeholder = "Select..."
+                  defaultValue = {cities === "All"}
+                />
+              {/* <Multiselect options={ cities } onSelectOptions={this.result} placeholder = "Select cities"/> */}
+
+              {/* <FormGroup check>
                 <Label check>
                   <Input type="checkbox" name="check1" /> All
                 </Label>
@@ -436,12 +662,18 @@ export class Events extends Component {
                 <Label check>
                   <Input type="checkbox" name="check1" /> Lakewood
                 </Label>
-              </FormGroup>
+              </FormGroup> */}
             </div>
             <br />
             <div className="date">
               <h5>Select Date:</h5>
-              <FormGroup>
+              <Select
+                 value={selectedTime}
+                  onChange={this.handleTimeChange}
+                  options={times}
+                  placeholder = "Select..."
+                />
+              {/* <FormGroup>
                 <Input
                   style={{ width: "50%" }}
                   type="select"
@@ -454,7 +686,7 @@ export class Events extends Component {
                   <option>This Weekend</option>
                   <option>This Month</option>
                 </Input>
-              </FormGroup>
+              </FormGroup> */}
             </div>
           </div>
         </div>

@@ -43,7 +43,8 @@ export default class AddEvent extends Component {
       coordinatorPhone: "",
       website: "",
       img: "https://i.ytimg.com/vi/Ll4HftFKjD8/maxresdefault.jpg"
-    }
+    },
+    orgData: []
   };
 
   handleSaveEvent = () => {
@@ -149,7 +150,25 @@ export default class AddEvent extends Component {
     }
   };
 
+  componentDidMount() {
+    let url = "https://api.emmaropes.me/organizations";
+    let req = new Request(url);
+    fetch(req)
+      .then(response => {
+        return response.json();
+      })
+      .then(results => {
+        this.setState({
+          orgData: results
+        });
+      });
+      console.log(this.state.orgData)
+  }
+
   render() {
+    let orgOptions = this.state.orgData.map((d, i) => {
+      return <option key={d.organizationName + i}>{d.organizationName}</option>
+    })
     let content = "";
     if (this.state.currentStage === Stage.EVENT) {
       content = (
@@ -158,7 +177,7 @@ export default class AddEvent extends Component {
           onChange={this.handleChangeEvent}
           onUpdate={this.handleChangeService}
           onNext={this.handleNext}
-          onSameAs={this.handleSameAs}
+          orgList={orgOptions}
         />
       );
     } else if (this.state.currentStage === Stage.CONFIRMATION) {

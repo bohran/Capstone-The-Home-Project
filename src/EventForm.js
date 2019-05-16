@@ -23,7 +23,7 @@ class NewEvent extends Component {
   // let orgOptions =
   handleSameAs = () => {
     var contact = document.getElementById("coordInfo");
-    if(contact.style.display === "block") {
+    if (contact.style.display === "block") {
       contact.style.display = "none";
       this.props.form.coordinatorFName = this.props.form.creatorFName;
       this.props.form.coordinatorLName = this.props.form.creatorLName;
@@ -32,8 +32,7 @@ class NewEvent extends Component {
     } else {
       contact.style.display = "block";
     }
-
-  }
+  };
   render() {
     return (
       <div>
@@ -42,6 +41,18 @@ class NewEvent extends Component {
         <div className="addEvent">
           <Form>
             <h5>Event Information</h5>
+            <FormGroup>
+              <Label>Select Organization</Label>
+              <Input
+                type="select"
+                name="org"
+                value={this.props.form.orgs}
+                onChange={this.props.onChange}
+              >
+                {" "}
+                {this.props.orgList}
+              </Input>
+            </FormGroup>
 
             <Row form>
               <Col md={6}>
@@ -53,6 +64,7 @@ class NewEvent extends Component {
                     placeholder="Enter text"
                     value={this.props.form.title}
                     onChange={this.props.onChange}
+                    // isRequired={true}
                   />
                 </FormGroup>
               </Col>
@@ -138,33 +150,16 @@ class NewEvent extends Component {
                 <option>Activism</option>
               </Input>
             </FormGroup> */}
-            <Row form>
-              <Col md={8}>
-                <FormGroup>
-                  <Label>Description</Label>
-                  <Input
-                    type="text"
-                    name="descr"
-                    placeholder="Enter text"
-                    value={this.props.form.descr}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={4}>
-                <FormGroup>
-                  <Label>Host Organization</Label>
-                  <Input
-                    type="select"
-                    name="org"
-                    value={this.props.form.orgs}
-                    onChange={this.props.onChange}
-                  >
-                    <option />
-                  </Input>
-                </FormGroup>
-              </Col>
-            </Row>
+            <FormGroup>
+              <Label>Description</Label>
+              <Input
+                type="text"
+                name="descr"
+                placeholder="Enter text"
+                value={this.props.form.descr}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
 
             <Row form>
               <Col md={4}>
@@ -364,7 +359,7 @@ class NewEvent extends Component {
               <Label check>Same As Event Contact Information</Label>
             </FormGroup>
 
-            <div id="coordInfo" style={{display: "block"}}>
+            <div id="coordInfo" style={{ display: "block" }}>
               <Row form>
                 <Col md={3}>
                   <FormGroup>
@@ -477,7 +472,7 @@ NewEvent.propTypes = {
   onChange: PropTypes.func.isRequired,
   onUpdate: PropTypes.func.isRequired,
   onNext: PropTypes.func.isRequired,
-  onSameAs: PropTypes.func.isRequired
+  orgList: PropTypes.array.isRequired
 };
 
 export default NewEvent;

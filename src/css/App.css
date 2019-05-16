@@ -3,21 +3,27 @@ body{
     color: #6e6e70;
 }
 .title{
-    font-weight: 600;
-    font-size: 26px;
+    /* font-weight: 400; */
+    font-size: 18px;
     color: #fafaed;
     padding-right:60px;
 }
 .links{
     font-weight: 200;
     font-size: 18px;
-    padding: 10px;
+    padding: 25px 10px 10px 25px;
     color: #f1faed;
     text-align: right;
     align-content: right;
     /* -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row; */
+}
+
+.links:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
 }
 
 .navbar {
@@ -49,6 +55,11 @@ body{
 }
 .menuItems {
     align-content: right;
+}
+
+div.links.dropdown {
+    display: inline;
+    padding: 0px;
 }
 
 .footer {
