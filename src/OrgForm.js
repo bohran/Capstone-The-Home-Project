@@ -10,17 +10,40 @@ import {
   Col,
   CustomInput
 } from "reactstrap";
+import _ from "lodash";
 import "bootstrap/dist/css/bootstrap.css";
+
 import "./css/Organization.css";
 
 class NewOrg extends Component {
+
+  handleTypeChange = event => {
+    let selected = false;
+    let inputType = event.target.value;
+    let formCategory = this.props.form.type;
+    if(formCategory.includes(inputType)) {
+      formCategory = _.remove(formCategory, function(n) {
+        return n !== inputType
+      })
+    } else {
+      formCategory.push(inputType);
+      selected = true;
+    }
+    this.props.form.type = formCategory;
+    console.log(this.props.form.type);
+    return selected;
+  }
+
+  handleTypeOutput = () => {
+    return this.props.form.type;
+  }
   render() {
     return (
       <div>
         <h2 className="pageTitle">Add Your Organization</h2>
         <div className="addOrg">
           <Form>
-            <h5>Organization Information</h5>
+            <h5 className="formTitle">Organization Information</h5>
 
             <Row form>
               <Col md={6}>
@@ -38,12 +61,15 @@ class NewOrg extends Component {
               <Col md={6}>
                 <FormGroup>
                   <Label for="exampleSelect">Category</Label>
+                  <h6 onChange={this.handleTypeOutput}>Category Selected: {this.props.form.type}</h6>
                   <Input
-                    multiple={true}
+                    // selected={this.props.form.type.includes(value)}
+                    // select={this.handleCategoryChange}
                     type="select"
                     name="type"
                     value={this.props.form.type}
-                    onChange={this.props.onUpdate}
+                    onChange={this.handleTypeChange}
+                    // multiple
                   >
                     <option>Housing (Permanent)</option>
                     <option>Shelter (Not Permanent)</option>
@@ -157,7 +183,7 @@ class NewOrg extends Component {
               </Col>
             </Row>
 
-            <h5>Organization Contact</h5>
+            <h5 className="formTitle">Organization Contact</h5>
             <h3 className="subtitle">
               This information will be used to confirm any changes in the
               organization details
@@ -229,7 +255,7 @@ class NewOrg extends Component {
               </Col>
             </Row>
 
-            <h5>Additional Information</h5>
+            <h5 className="formTitle">Additional Information</h5>
             <FormGroup>
               <Label>Website</Label>
               <Input

@@ -6,22 +6,7 @@ import "bootstrap/dist/css/bootstrap.css";
 // import "./css/form.css";
 
 class NewEvent extends Component {
-  // componentDidMount() {
-  //   let url = "https://api.emmaropes.me/organizations";
-  //   let req = new Request(url);
-  //   fetch(req)
-  //     .then(response => {
-  //       return response.json();
-  //     })
-  //     .then(results => {
-  //       console.log(results);
-  //       this.setState({
-  //         orgList: results
-  //       });
-  //     });
-  // }
 
-  // let orgOptions =
   handleSameAs = () => {
     var contact = document.getElementById("coordInfo");
     if (contact.style.display === "block") {
@@ -46,11 +31,12 @@ class NewEvent extends Component {
               {/* <Label>Select Your Organization</Label> */}
               <Input
                 type="select"
-                name="org"
+                name="orgs"
                 value={this.props.form.orgs}
                 onChange={this.props.onChange}
               >
                 {" "}
+                <option>Select</option>
                 {this.props.orgList}
               </Input>
             </FormGroup>

@@ -4,7 +4,6 @@ import { Button, Form, FormGroup, Label, Row, Col } from "reactstrap";
 
 class Confirmation extends Component {
   render() {
-    console.log(this.props.eventForm.services);
     let services = this.props.eventForm.services.map((d, i) => {
       if (i + 1 !== this.props.eventForm.services.length) {
         return d + ", ";

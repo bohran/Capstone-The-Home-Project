@@ -21,7 +21,7 @@ export default class AddEvent extends Component {
     eventFormEntries: {
       title: "",
       category: "",
-      orgs: [],
+      orgs: "",
       services: [],
       descr: "",
       date: "",
@@ -73,7 +73,7 @@ export default class AddEvent extends Component {
         contactFirstName: this.state.eventFormEntries.creatorFName,
         contactLastName: this.state.eventFormEntries.creatorLName,
         services: this.state.eventFormEntries.services,
-        organizations: this.state.eventFormEntries.orgs
+        organizations: [this.state.eventFormEntries.orgs]
       }),
       headers: new Headers({
         "Content-Type": "application/json"
@@ -100,7 +100,6 @@ export default class AddEvent extends Component {
 
   // change eventForms
   handleChangeEvent = event => {
-    console.log(event.target.value);
     // Copy of eventFormEntries
     let updateEventForm = _.cloneDeep(this.state.eventFormEntries);
     // Check for each field
@@ -112,7 +111,6 @@ export default class AddEvent extends Component {
   };
 
   handleChangeService = event => {
-    console.log(event.target.value);
     let newServices = _.cloneDeep(this.state.eventFormEntries.services);
     var option = event.target.value;
     if(newServices.includes(option)) {
@@ -122,7 +120,6 @@ export default class AddEvent extends Component {
     } else {
       newServices.push(option);
     }
-    console.log(newServices);
     let updateEventForm = _.cloneDeep(this.state.eventFormEntries);
 
     updateEventForm.services = newServices;
@@ -134,7 +131,6 @@ export default class AddEvent extends Component {
 
   //change eventForms
   handleNext = event => {
-    console.log(event.target.value);
     if (event.target.value === "1") {
       this.setState({
         currentStage: Stage.CONFIRMATION
@@ -165,7 +161,6 @@ export default class AddEvent extends Component {
           orgData: results
         });
       });
-    console.log(this.state.orgData);
   }
 
   render() {
