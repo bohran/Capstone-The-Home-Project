@@ -14,22 +14,15 @@ import {
 import _ from "lodash";
 import "bootstrap/dist/css/bootstrap.css";
 
-import "./css/Organization.css";
-
 class NewOrg extends Component {
   handleTypeChange = input => {
-    console.log(input);
     let types = [];
     for (let i = 0; i < input.length; i = i + 1) {
       types.push(input[i].value);
     }
     this.props.form.type = types;
-    console.log(this.props.form.type);
   };
 
-  handleTypeOutput = () => {
-    return this.props.form.type;
-  };
   render() {
     // const selectStyle = {
     //   multiValue: (provided, state) => {

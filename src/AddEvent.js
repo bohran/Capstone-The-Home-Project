@@ -161,11 +161,14 @@ export default class AddEvent extends Component {
           orgData: results
         });
       });
+      
   }
 
   render() {
-    let orgOptions = this.state.orgData.map((d, i) => {
-      return <option key={d.organizationName + i}>{d.organizationName}</option>;
+    let orgOptions = [];
+    orgOptions = this.state.orgData.map((d, i) => {
+      return {value: d.organizationName, label: d.organizationName};
+      // return <option key={d.organizationName + i}>{d.organizationName}</option>;
     });
     let content = "";
     if (this.state.currentStage === Stage.EVENT) {

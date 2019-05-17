@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
+import Select from "react-select";
 import "bootstrap/dist/css/bootstrap.css";
+
+import "./css/form.css"
 // import "./css/form.css";
 
 class NewEvent extends Component {
-
   handleSameAs = () => {
     var contact = document.getElementById("coordInfo");
     if (contact.style.display === "block") {
@@ -19,7 +21,27 @@ class NewEvent extends Component {
       contact.style.display = "block";
     }
   };
+
+  handleHostOrgs = input => {
+    let newOrgs = [];
+    for (let i = 0; i < input.length; i = i + 1) {
+      newOrgs.push(input[i].value);
+    }
+    this.props.form.orgs = newOrgs;
+  };
+
+  handleTypeChange = input => {
+    this.props.form.category = input.value;
+  }
+
   render() {
+    const types = [
+      { value: "Give", label: "Give" },
+      { value: "Learn", label: "Learn" },
+      { value: "Volunteer", label: "Volunteer" },
+      { value: "Activism", label: "Activism" }
+    ];
+
     return (
       <div>
         <h2 className="pageTitle">ADD A NEW EVENT</h2>
@@ -27,19 +49,7 @@ class NewEvent extends Component {
         <div className="addEvent">
           <Form>
             <h5 className="formTitle">Select Your Organization</h5>
-            <FormGroup>
-              {/* <Label>Select Your Organization</Label> */}
-              <Input
-                type="select"
-                name="orgs"
-                value={this.props.form.orgs}
-                onChange={this.props.onChange}
-              >
-                {" "}
-                <option>Select</option>
-                {this.props.orgList}
-              </Input>
-            </FormGroup>
+            <Select options={this.props.orgList} isMulti onChange={this.handleHostOrgs}/>
 
             <h6 className="help">
               Don't see your Organization listed?{" "}
@@ -49,40 +59,24 @@ class NewEvent extends Component {
             </h6>
 
             <h5 className="formTitle">Event Information</h5>
-            <Row form>
-              <Col md={6}>
-                <FormGroup>
-                  <Label>Event Title</Label>
-                  <Input
-                    type="text"
-                    name="title"
-                    placeholder="Enter text"
-                    value={this.props.form.title}
-                    onChange={this.props.onChange}
-                    // isRequired={true}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label>Event Type</Label>
-                  <Input
-                    type="select"
-                    name="category"
-                    value={this.props.form.category}
-                    onChange={this.props.onChange}
-                  >
-                    <option>Give</option>
-                    <option>Learn</option>
-                    <option>Volunteer</option>
-                    <option>Activism</option>
-                  </Input>
-                </FormGroup>
-              </Col>
-            </Row>
+            <FormGroup>
+              <Label>Event Title</Label>
+              <Input
+                type="text"
+                name="title"
+                placeholder="Enter text"
+                value={this.props.form.title}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
+
+            <div className="formTypes">
+              <h6>Event Type</h6>
+              <Select options={types} onChange={this.handleTypeChange} />
+            </div>
 
             <h6>Area of Service</h6>
-            <div>
+            <div className="formChecks">
               <FormGroup check inline>
                 <Input
                   checked={this.props.form.services.includes("Housing/Shelter")}
@@ -95,7 +89,7 @@ class NewEvent extends Component {
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                checked={this.props.form.services.includes("Employment")}
+                  checked={this.props.form.services.includes("Employment")}
                   type="checkbox"
                   name="services"
                   value={"Employment"}
@@ -105,7 +99,7 @@ class NewEvent extends Component {
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                checked={this.props.form.services.includes("Day Center")}
+                  checked={this.props.form.services.includes("Day Center")}
                   type="checkbox"
                   name="services"
                   value={"Day Center"}
@@ -115,7 +109,7 @@ class NewEvent extends Component {
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                checked={this.props.form.services.includes("Basic Needs")}
+                  checked={this.props.form.services.includes("Basic Needs")}
                   type="checkbox"
                   name="services"
                   value={"Basic Needs"}
@@ -125,7 +119,9 @@ class NewEvent extends Component {
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                checked={this.props.form.services.includes("Health & Wellness")}
+                  checked={this.props.form.services.includes(
+                    "Health & Wellness"
+                  )}
                   type="checkbox"
                   name="services"
                   value={"Health & Wellness"}
