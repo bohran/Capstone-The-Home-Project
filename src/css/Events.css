@@ -50,7 +50,7 @@ body {
 } */
 
 .card {
-  width: 240px;
+  width: 270px;
   min-height: 320px;
   max-height: 320px;
   /* margin-left: 40px;
@@ -58,13 +58,27 @@ body {
   margin: 20px;
   /* display: flex;
     flex-direction: row; */
+    box-shadow: none;
 }
+.card:hover{
+  /* background-color:#fafaed; */
+  box-shadow: 1px 1px 40px #cfcfcf;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  }
+  /* @keyframes popout {
+    from{transform:scale(0)}
+    30%{transform:scale(0.75)}
+    to{transform:scale(0.5)}
+} */
+
+
 .card-img {
   width: auto;
   max-width: 300px;
   height: auto;
-  max-height: 135px;
-  min-height: 135px;
+  max-height: 170px;
+  min-height: 170px;
 }
 .card-body {
   align-content: left;
@@ -76,55 +90,51 @@ body {
   outline-color: #fafaed;
 }
 
-.card-title {
-  /* font-size: 14px; */
-  text-align: center;
-  /* overflow: hidden; */
-  /* white-space: nowrap; */
-  /* text-overflow: ellipsis;
-  white-space: nowrap; */
-  /* height: 3.6rem; */
-
-
-}
-
 .card-subtitle {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   text-align: center;
-  font-size: 12px;
-  padding: 3px;
+  font-size: 13px;
+  padding-top: 5%;
 }
 
 .eventName {
   overflow: hidden;
-  white-space: pre-wrap;
+  text-overflow: ellipsis;
+  white-space: pre-line;
   font-size: 15px;
-  padding: 8.5px;
+  padding: 8px;
   height: 3.8em;
-   /* adds 3 lines */
-  /* text-align: left; */
+  text-align: left;
+  font-weight: 400
 }
 .eventMonth {
   font-size: 14px;
   text-align: center;
   color: #cf0f2e;
-  min-width: 45px;
-  float: left;
-  background-color: rgb(241, 236, 236);
-  margin-top: 12px;
-
-  /* border-style: solid; */
-  /* border-color: rgb(218, 213, 213); */
+  min-width: 50px;
+  float:left;
+  font-weight: 300;
+  /* background-color: whitesmoke; */
+  margin-top: 5%;
+  margin-right: 5%;
 }
 
 .eventDay {
-  font-size: 17px;
+  font-size: 20px;
   color: #6e6e70;
   text-align: center;
-  min-width: 45px;
-  background-color: rgb(241, 236, 236);
+  /* background-color: rgb(223, 199, 199); */
+  font-weight: 350;
+}
+.eventAddress{
+text-align: left;  
+font-weight: 300;
+}
+.eventTime{
+  text-align: left;  
+  font-weight: 300;
 }
 
 .help {
