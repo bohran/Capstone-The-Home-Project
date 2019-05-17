@@ -462,7 +462,7 @@ export class Events extends Component {
     });
     return (
       <div>
-        <div className="searchForm">
+        {/* <div className="searchForm">
           <form>
             <input
               placeholder="Search for..."
@@ -475,9 +475,9 @@ export class Events extends Component {
               <p>{i.eventName}</p>
             ))}
           </div>
-        </div>
+        </div> */}
         <h2 style={{ textAlign: "center", fontWeight: "300" }}>
-          Events that match your search:
+          {/* Events that match your search: */}
         </h2>
         {/* <div className="add">
           <h4>New Organization?</h4>
