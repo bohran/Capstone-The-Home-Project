@@ -35,7 +35,7 @@ export class Home extends Component {
           bgImage={require("./img/CoverPhotoBW.png")}
           bgImageAlt="collective pictures of the community"
           strength={500}
-          style={{ minHeight: "800px", maxHeight:"800px", width: "100%" }}
+          style={{ minHeight: "750px", maxHeight:"750px", width: "100%" }}
           >
          <div className = "bannerTitle" style={{marginTop:"15%", fontWeight: "lighter",textShadow: "0 0 100px rgba(0,0,0,500)"}}>#SeattleForAll</div>
          {/* <div className = "bannerTitle" style={{marginTop:"15%", color: "black"}}>#SeattleForAll</div> */}

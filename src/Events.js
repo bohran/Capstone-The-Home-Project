@@ -19,6 +19,10 @@ import { faMapMarkerAlt, faClock } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from "moment";
 import _ from "lodash";
+import Multiselect from 'multiselect-dropdown-react';
+import Select from 'react-select';
+
+
 
 import "./css/Events.css";
 
@@ -31,12 +35,145 @@ const Service = {
   HEALTH: "Health & Wellness"
 };
 
+const times =[{
+  value: "All", 
+  label: "All"
+},
+{
+  value: "Today",
+  label: "Today"
+}, {
+  value: "Tomorrow", 
+  label: "Tomorrow"
+}, 
+{
+  value: "This Week", 
+  label: "This Week"
+}, 
+{
+  value: "Next Week", 
+  label: "Next Week"
+
+}, 
+{
+  value: "This Month", 
+  label: "This Month"
+}]
+
+const cities =[{
+  value: "All", 
+  label: "All"
+},
+{
+  value: 'Algona',
+  label: 'Algona'
+},
+{
+  value: "Auburn", 
+  label: "Auburn"
+},
+{
+  value: "Bellevue", 
+  label: "Bellevue"
+}, 
+{
+  value: "Bothell", 
+  label: "Bothell"
+}, 
+{
+  value: "Burien", 
+  label: "Burien"
+}, 
+{
+  value: "Carnation", 
+  label: "Carnation"
+}, {
+  value: "Covington", 
+  label: "Covington"
+}, {
+  value: "Des Moines", 
+  label: "Des Moines"
+}, {
+  value: "Duvall", 
+  label: "Duvall"
+}, {
+  value: "Enumclaw", 
+  label: "Enumclaw"
+}, {
+  value: "Federal Way", 
+  label: "Federal Way"
+}, {
+  value: "Issaquah", 
+  label: "Issaquah"
+}, {
+  value: "Kenmore", 
+  label: "Kenmore"
+}, {
+  value: "Kent", 
+  label: "Kent"
+}, {
+  value: "Kirkland", 
+  label: "Kirkland"
+}, {
+  value: "Lake Forest Park", 
+  label: "Lake Forest Park"
+}, {
+  value: "Maple Valley", 
+  label: "Maple Valley"
+}, {
+  value: "Medina", 
+  label: "Medina"
+}, {
+  value: "Mercer Island", 
+  label: "Mercer Island"
+}, {
+  value: "Newcastle", 
+  label: "Newcastle"
+}, {
+  value: "Normandy Park", 
+  label: "Normandy Park"
+}, {
+  value: "North Bend", 
+  label: "North Bend"
+}, 
+{
+  value: "Pacific", 
+  label: "Pacific"
+}, {
+  value: "Redmond", 
+  label: "Redmond"
+}, {
+  value: "Renton", 
+  label: "Renton"
+}, {
+  value: "Sammamish", 
+  label: "Sammamish"
+}, {
+  value: "Seatac", 
+  label: "Seatac"
+}, {
+  value: "Seattle", 
+  label: "Seattle"
+}, {
+  value: "Shoreline", 
+  label: "Shoreline"
+}, 
+{
+  value: "Snoqualmie", 
+  label: "Snoqualmie"
+}, {
+  value: "Tukwila", 
+  label: "Tukwila"
+}, {
+  value: "Woodinville", 
+  label: "Woodinville"
+}]
+
 export class Events extends Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: false,
-      isLoading: false,
       data: [],
       value: 0,
       previous: 0,
@@ -44,8 +181,19 @@ export class Events extends Component {
       description: "",
       category: "All",
       filter: [],
-      query: ""
-    };
+      input : '',
+      filteredData: [], 
+      selectedCity: "All",
+      selectedTime: "All"
+    };  
+  }
+  handleCityChange = (selectedCity) => {
+    this.setState({ selectedCity });
+    console.log(`Option selected:`, selectedCity);
+  }
+  handleTimeChange = (selectedTime) => {
+    this.setState({ selectedTime });
+    console.log(`Option selected:`, selectedTime);
   }
 
   handleCardClick = index => {
@@ -96,19 +244,7 @@ export class Events extends Component {
       modal: true
     });
   };
-  // handleInputChange = event => {
-  //   const query = event.target.value;
-  //   this.setState(prevState => {
-  //     const filteredData = prevState.data.filter(element => {
-  //       return element.name.includes(query);
-  //     });
-  //     return {
-  //       query,
-  //       filteredData
-  //     };
-  //   });
-  // };
-
+  
   toggle = () => {
     this.setState({
       modal: !this.state.modal
@@ -123,15 +259,11 @@ export class Events extends Component {
         return response.json();
       })
       .then(results => {
-        // const { query } = this.state.data;
-        // const filteredData = results.filter(element => {
-        // return element.name.includes(query);
-        // });
         this.setState({
           data: results
-          // filteredData
         });
       });
+    window.scrollTo(0, 0)
   }
 
   handleCategory = event => {
@@ -180,8 +312,16 @@ export class Events extends Component {
       modal: !this.state.modal
     });
   };
-
+  // Search method
+  handleSearch = (e) => {
+    this.setState({
+        input: e.target.value
+    });
+}
   render() {
+    const { selectedCity } = this.state;
+    const { selectedTime } = this.state;
+
     const filteredData = this.state.data.filter(d => {
       const matchesCategory =
         d.categoryName === this.state.category || this.state.category === "All";
@@ -215,7 +355,13 @@ export class Events extends Component {
       //     </div>
       //   );
       // }
-
+    //   let results = this.state.data.filter((data) => {
+    //     if(this.props.input ==='') {
+    //         return true;
+    //     } else {
+    //         return post.title.toLowerCase().includes(this.state.input.toLowerCase());
+    //     }
+    // })
       let mlist = [];
       var month_name = function(dt) {
         mlist = [
@@ -239,20 +385,21 @@ export class Events extends Component {
           <Row>
             <Col>
               <CardGroup>
-                <Card>
+                <Card
+                onClick={this.handleCardClick.bind(null, i)}>
                   <div className="image">
                     <CardImg src={d.room} style={{ width: "100%" }} />
                     <CardBody>
+                    
                       {/* <CardTitle>{d.eventName}</CardTitle> */}
                       <CardTitle>
-                        {/* <FontAwesomeIcon icon={faCalendar} /> */}
+                      <div className="eventName">{" " + d.eventName}</div>
                         <div className="eventMonth">
                           {" " + month_name(new Date(d.date))} <br />
                           <div className="eventDay">
                             {" " + new Date(d.date).getDate() + " "}
                           </div>
                         </div>
-                        <div className="eventName">{" " + d.eventName}</div>
                       </CardTitle>
                       <CardSubtitle>
                         <div className="eventAddress">
@@ -266,12 +413,12 @@ export class Events extends Component {
                           {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
                         </div>
                       </CardSubtitle>
-                      <Button
+                      {/* <Button
                         className="learn"
                         onClick={this.handleCardClick.bind(null, i)}
-                      >
+                        style = {{marginLeft: "15%"}}>
                         learn more
-                      </Button>
+                      </Button> */}
                     </CardBody>
                   </div>
                 </Card>
@@ -281,22 +428,22 @@ export class Events extends Component {
         </div>
       );
     });
-    return (
+    return (    
       <div>
-        {/* <div className="searchForm">
+        <div className="searchForm">
           <form>
             <input
               placeholder="Search for..."
-              value={this.state.query}
-              onChange={this.handleInputChange}
+              value={this.state.input}
+              onChange={this.handleSearch}
             />
           </form>
           <div>
             {this.state.filteredData.map(i => (
-              <p>{i.name}</p>
+              <p>{i.eventName}</p>
             ))}
           </div>
-        </div> */}
+        </div>
         <h2 style={{ textAlign: "center", marginTop: "10px" }}>
           Events that match your search:
         </h2>
@@ -448,71 +595,25 @@ export class Events extends Component {
             <br />
             <div className="location">
               <h5>Select Location:</h5>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> All
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Seattle
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Bellevue
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Everett
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Burien
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Kirkland
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Bothell
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Renton
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Redmond
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Tacoma
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Olympia
-                </Label>
-              </FormGroup>
-              <FormGroup check>
-                <Label check>
-                  <Input type="checkbox" name="check1" /> Lakewood
-                </Label>
-              </FormGroup>
+              <Select style ={{position: "fixed"}}
+                 value={selectedCity}
+                  onChange={this.handleCityChange}
+                  options={cities}
+                  isMulti = "true"
+                  placeholder = "Select..."
+                  defaultValue = {cities === "All"}
+                />
             </div>
             <br />
             <div className="date">
               <h5>Select Date:</h5>
-              <FormGroup>
+              <Select
+                 value={selectedTime}
+                  onChange={this.handleTimeChange}
+                  options={times}
+                  placeholder = "Select..."
+                />
+              {/* <FormGroup>
                 <Input
                   style={{ width: "50%" }}
                   type="select"
@@ -525,7 +626,7 @@ export class Events extends Component {
                   <option>This Weekend</option>
                   <option>This Month</option>
                 </Input>
-              </FormGroup>
+              </FormGroup> */}
             </div>
           </div>
         </div>
@@ -547,7 +648,7 @@ export class Events extends Component {
             <ModalHeader>{this.state.eventName}.</ModalHeader>
             <ModalBody>
               Organization:
-              {this.state.organizationName}
+              {" " + this.state.organizationName}
               <br />
               Description:
               {" " + this.state.eventDescription}
