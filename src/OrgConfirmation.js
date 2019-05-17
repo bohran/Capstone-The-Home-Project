@@ -12,8 +12,8 @@ class Confirmation extends Component {
 
         <div className="addOrg">
           <Form>
-            <h6>Please confirm your information before submitting.</h6>
-            <h5>Organization Information</h5>
+            <h6 className="help">Please confirm your information before submitting.</h6>
+            <h5 className="formTitle">Organization Information</h5>
             <FormGroup>
               <Label>Organization Name: {this.props.orgForm.name}</Label>
             </FormGroup>
@@ -46,7 +46,7 @@ class Confirmation extends Component {
               <Label>Organization Zip Code: {this.props.orgForm.zip}</Label>
             </FormGroup>
 
-            <h5>Organization Contact</h5>
+            <h5 className="formTitle">Organization Contact</h5>
 
             <FormGroup>
               <Label>First Name: {this.props.orgForm.contactFName}</Label>
@@ -68,7 +68,7 @@ class Confirmation extends Component {
               <Label>Phone: {this.props.orgForm.contactPhone}</Label>
             </FormGroup>
 
-            <h5>Additional Information</h5>
+            <h5 className="formTitle">Additional Information</h5>
             <FormGroup>
               <Label>Website: {this.props.orgForm.website}</Label>
             </FormGroup>
@@ -86,23 +86,25 @@ class Confirmation extends Component {
             </FormGroup>
           </Form>
         </div>
-        
-        <Button
-          variant="primary"
-          type="submit"
-          value="0"
-          onClick={this.props.onNext}
-        >
-          Edit
-        </Button>
-        <Button
-          variant="primary"
-          type="submit"
-          value="2"
-          onClick={this.props.onConfirm}
-        >
-          Confirm
-        </Button>
+
+        <div className="formButton">
+          <Button
+            variant="primary"
+            type="submit"
+            value="0"
+            onClick={this.props.onNext}
+          >
+            Edit
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            value="2"
+            onClick={this.props.onConfirm}
+          >
+            Confirm
+          </Button>
+        </div>
       </section>
     );
   }

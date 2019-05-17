@@ -17,7 +17,7 @@ class Confirmation extends Component {
 
         <div className="addEvent">
           <Form>
-            <h6>
+            <h6 className="help">
               Please confirm the following information before submitting. If you
               need to make edits, select the edit button below the form.
             </h6>

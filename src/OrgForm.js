@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Select from "react-select";
 import {
   Button,
   Form,
@@ -16,95 +17,96 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./css/Organization.css";
 
 class NewOrg extends Component {
-
-  handleTypeChange = event => {
-    let selected = false;
-    let inputType = event.target.value;
-    let formCategory = this.props.form.type;
-    if(formCategory.includes(inputType)) {
-      formCategory = _.remove(formCategory, function(n) {
-        return n !== inputType
-      })
-    } else {
-      formCategory.push(inputType);
-      selected = true;
+  handleTypeChange = input => {
+    console.log(input);
+    let types = [];
+    for (let i = 0; i < input.length; i = i + 1) {
+      types.push(input[i].value);
     }
-    this.props.form.type = formCategory;
+    this.props.form.type = types;
     console.log(this.props.form.type);
-    return selected;
-  }
+  };
 
   handleTypeOutput = () => {
     return this.props.form.type;
-  }
+  };
   render() {
+    // const selectStyle = {
+    //   multiValue: (provided, state) => {
+    //   return { ...provided, color: state.isFocused ? 'blue' : 'red' };
+    // }
+    // }
+    const types = [
+      { value: "Housing (Permanent)", label: "Housing (Permanent)" },
+      { value: "Shelter (Not Permanent)", label: "Shelter (Not Permanent)" },
+      { value: "Rapid Re-housing", label: "Rapid Re-housing" },
+      { value: "Transitional Housing", label: "Transitional Housing" },
+      { value: "Urban Encampments", label: "Urban Encampments" },
+      { value: "Housing Search", label: "Housing Search" },
+      { value: "Diversion", label: "Diversion" },
+      { value: "Safe Parking", label: "Safe Parking" },
+      { value: "Women's/Family Drop-In", label: "Women's/Family Drop-In" },
+      { value: "YYA Drop-In", label: "YYA Drop-In" },
+      { value: "Men's Drop-In", label: "Men's Drop-In" },
+      {
+        value: "General Population Drop-In",
+        label: "General Population Drop-In"
+      },
+      {
+        value: "Legal Services / Eviction",
+        label: "Legal Services / Eviction"
+      },
+      { value: "Case Management", label: "Case Management" },
+      { value: "Employment Search", label: "Employment Search" },
+      { value: "Clothing", label: "Clothing" },
+      { value: "Food", label: "Food" },
+      { value: "Shower/Laundry", label: "Shower/Laundry" },
+      { value: "Toiletries", label: "Toiletries" },
+      { value: "Storage", label: "Storage" },
+      { value: "Medical / Health", label: "Medical / Health" },
+      { value: "Social / Emotional", label: "Social / Emotional" },
+      { value: "Dental Care", label: "Dental Care" },
+      { value: "Addiction Recovery", label: "Addiction Recovery" },
+      { value: "Mental Health", label: "Mental Health" },
+      {
+        value: "Domestic Violence Support",
+        label: "Domestic Violence Support"
+      },
+      {
+        value: "Emergency/ Crisis Hotline",
+        label: "Emergency/ Crisis Hotline"
+      },
+      { value: "Mailing Address", label: "Mailing Address" },
+      {
+        value: "Phone and Computer Access",
+        label: "Phone and Computer Access"
+      },
+      { value: "Transportation Assistance", label: "Transportation Assistance" }
+    ];
     return (
       <div>
         <h2 className="pageTitle">Add Your Organization</h2>
         <div className="addOrg">
           <Form>
             <h5 className="formTitle">Organization Information</h5>
-
-            <Row form>
-              <Col md={6}>
-                <FormGroup>
-                  <Label>Name</Label>
-                  <Input
-                    type="text"
-                    name="name"
-                    placeholder="Enter text"
-                    value={this.props.form.name}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="exampleSelect">Category</Label>
-                  <h6 onChange={this.handleTypeOutput}>Category Selected: {this.props.form.type}</h6>
-                  <Input
-                    // selected={this.props.form.type.includes(value)}
-                    // select={this.handleCategoryChange}
-                    type="select"
-                    name="type"
-                    value={this.props.form.type}
-                    onChange={this.handleTypeChange}
-                    // multiple
-                  >
-                    <option>Housing (Permanent)</option>
-                    <option>Shelter (Not Permanent)</option>
-                    <option>Rapid Re-housing</option>
-                    <option>Transitional Housing</option>
-                    <option>Urban Encampments</option>
-                    <option>Housing Search </option>
-                    <option>Diversion</option>
-                    <option>Safe Parking</option>
-                    <option>Women's/Family Drop-In</option>
-                    <option>YYA Drop-In</option>
-                    <option>Men's Drop-In</option>
-                    <option>General Population Drop-In</option>
-                    <option>Legal Services / Eviction</option>
-                    <option>Case Management</option>
-                    <option>Employment Search</option>
-                    <option>Clothing</option>
-                    <option>Food</option>
-                    <option>Shower/Laundry</option>
-                    <option>Toiletries</option>
-                    <option>Storage</option>
-                    <option>Medical / Health</option>
-                    <option>Social / Emotional</option>
-                    <option>Dental Care</option>
-                    <option>Addiction Recovery</option>
-                    <option>Mental Health</option>
-                    <option>Domestic Violence Support</option>
-                    <option>Emergency/ Crisis Hotline</option>
-                    <option>Mailing Address</option>
-                    <option>Phone and Computer Access</option>
-                    <option>Transportation Assistance</option>
-                  </Input>
-                </FormGroup>
-              </Col>
-            </Row>
+            <FormGroup>
+              <Label>Name</Label>
+              <Input
+                type="text"
+                name="name"
+                placeholder="Enter text"
+                value={this.props.form.name}
+                onChange={this.props.onChange}
+              />
+            </FormGroup>
+            <div className="formTypes">
+              <h6>Organization Category</h6>
+              <Select
+                options={types}
+                isMulti
+                onChange={this.handleTypeChange}
+              />
+            </div>
 
             <FormGroup>
               <Label>Mission Statement</Label>
@@ -318,14 +320,16 @@ class NewOrg extends Component {
             </FormGroup>
           </Form>
         </div>
-        <Button
-          variant="primary"
-          type="submit"
-          value="1"
-          onClick={this.props.onNext}
-        >
-          Continue
-        </Button>
+        <div className="formButton">
+          <Button
+            variant="primary"
+            type="submit"
+            value="1"
+            onClick={this.props.onNext}
+          >
+            Continue
+          </Button>
+        </div>
       </div>
     );
   }

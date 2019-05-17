@@ -1,11 +1,12 @@
-form,
-.newOrgButton {
+form{
   margin: 20px 20% 20px 20%;
   padding: 40px;
   background-color: white;
   box-shadow: 3px 3px 10px -5px #6e6e70;
   font-family: "Lato", sans-serif;
   font-weight: 400;
+  overflow-y: scroll;
+  max-height: 69vh;
 }
 
 .pageTitle {
@@ -13,7 +14,7 @@ form,
   font-family: "Lato", sans-serif;
   margin-top: 20px;
   font-size: 28px;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #db4b62;
 }
 
@@ -33,6 +34,11 @@ form,
     color: #db4b62;
 }
 
+h6.help {
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
+
 .helpLink {
     color: #177283;
     font-weight: bold;
@@ -40,9 +46,21 @@ form,
 
 .helpLink:hover {
     color: #177283;
-    font-weight: bold;
 }
 
 .formChecks {
     margin-bottom: 10px;
+}
+
+.formTypes {
+  padding-bottom: px;
+}
+
+label, h6 {
+  font-weight: bold;
+  color: #177283;
+}
+
+.input {
+  font-weight: lighter;
 }
