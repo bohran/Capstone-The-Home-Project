@@ -34,7 +34,7 @@ export class Home extends Component {
           //   blur={{ min: -15, max: 15 }}
           bgImage={require("./img/CoverPhotoBW.png")}
           bgImageAlt="collective pictures of the community"
-          strength={500}
+          strength={400}
           style={{ minHeight: "750px", maxHeight:"750px", width: "100%" }}
           >
          <div className = "bannerTitle" style={{marginTop:"15%", fontWeight: "lighter",textShadow: "0 0 100px rgba(0,0,0,500)"}}>#SeattleForAll</div>

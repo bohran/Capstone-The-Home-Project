@@ -15,7 +15,7 @@ import {
   Input
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faClock } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkerAlt, faClock, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from "moment";
 import _ from "lodash";
@@ -235,6 +235,7 @@ export class Events extends Component {
     const endTime = this.state.data[index].endTime;
     const url = this.state.data[index].url;
     const capacity = this.state.data[index].capacity;
+    const imageURL = this.state.data[index].imageURL;
     const room = this.state.data[index].room;
     const contactFirstName = this.state.data[index].contactFirstName;
     const contactLastName = this.state.data[index].contactLastName;
@@ -259,6 +260,7 @@ export class Events extends Component {
       url: url,
       capacity: capacity,
       room: room,
+      imageURL:imageURL,
       contactFirstName: contactFirstName,
       contactLastName: contactLastName,
       contactEmail: contactEmail,
@@ -414,7 +416,7 @@ export class Events extends Component {
               <CardGroup>
                 <Card onClick={this.handleCardClick.bind(null, i)}>
                   <div className="image">
-                    <CardImg src={d.room} style={{ width: "100%" }} />
+                    <CardImg src={d.imageURL} style={{ width: "100%" }} />
                     <CardBody>
                       {/* <CardTitle>{d.eventName}</CardTitle> */}
                       <CardTitle>
@@ -431,7 +433,7 @@ export class Events extends Component {
                           <FontAwesomeIcon icon={faMapMarkerAlt} /> {" "}{d.city}, {d.state}   
                         </div>
                         <div className="eventTime">
-                          <FontAwesomeIcon icon={faClock} />{" "}
+                          <FontAwesomeIcon icon={faClock}/>{" "}
                           {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
                           {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
                         </div>
@@ -489,79 +491,8 @@ export class Events extends Component {
         </div> */}
         {/* <Nav vertical className="sidebar"> */}
         <div className="sidebarFilter">
-          <div className="categories">
-            <h5>Select an Action:</h5>
-            <FormGroup check>
-              <Label check>
-                <Input
-                  checked={this.state.category === "All"}
-                  type="radio"
-                  name="radio1"
-                  value={"All"}
-                  onChange={this.handleCategory}
-                />{" "}
-                All
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input
-                  type="radio"
-                  name="radio1"
-                  value={"Give"}
-                  onChange={this.handleCategory}
-                />{" "}
-                Give
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input
-                  type="radio"
-                  name="radio1"
-                  value={"Learn"}
-                  onChange={this.handleCategory}
-                />{" "}
-                Learn
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input
-                  type="radio"
-                  name="radio1"
-                  value={"Volunteer"}
-                  onChange={this.handleCategory}
-                />{" "}
-                Volunteer
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input
-                  type="radio"
-                  name="radio1"
-                  value={"Activism"}
-                  onChange={this.handleCategory}
-                />{" "}
-                Activism
-              </Label>
-            </FormGroup>
-          </div>
-          <br />
-          <div className="filters">
+        <div className="filters">
             <h5>Select Area of Service:</h5>
-            {/* <FormGroup check>
-              <Label check>
-                <Input
-                  type="checkbox"
-                  name="check1"
-                  value={"All"}
-                  onChange={this.handleAll}
-                />{" "}
-                All
-              </Label>
-            </FormGroup> */}
             <FormGroup check>
               <Label check>
                 <Input
@@ -623,6 +554,16 @@ export class Events extends Component {
               </Label>
             </FormGroup>
             <br />
+            <div className="date">
+              <h5>Select Date:</h5>
+              <Select
+                value={selectedTime}
+                onChange={this.handleTimeChange}
+                options={times}
+                placeholder="Select..."
+              />
+            </div>
+            <br/>
             <div className="location">
               <h5>Select Location:</h5>
               <Select
@@ -636,30 +577,75 @@ export class Events extends Component {
               />
             </div>
             <br />
-            <div className="date">
-              <h5>Select Date:</h5>
-              <Select
-                value={selectedTime}
-                onChange={this.handleTimeChange}
-                options={times}
-                placeholder="Select..."
-              />
-              {/* <FormGroup>
-                <Input
-                  style={{ width: "50%" }}
-                  type="select"
-                  id="exampleSelect"
-                >
-                  <option>All</option>
-                  <option>Today</option>
-                  <option>Tomorrow</option>
-                  <option>This Week</option>
-                  <option>This Weekend</option>
-                  <option>This Month</option>
-                </Input>
-              </FormGroup> */}
-            </div>
           </div>
+          <div className="categories">
+            <h5>Select an Action:</h5>
+            <FormGroup check>
+              <Label check>
+                <Input
+                  checked={this.state.category === "All"}
+                  type="radio"
+                  name="radio1"
+                  value={"All"}
+                  onChange={this.handleCategory}
+                />{" "}
+                All
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Give"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Give
+              </Label>
+              {" "}
+              <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} />
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Learn"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Learn
+              </Label>
+              {" "}
+              <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} />
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Volunteer"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Volunteer
+              </Label>
+              {" "}
+              <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} />
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input
+                  type="radio"
+                  name="radio1"
+                  value={"Activism"}
+                  onChange={this.handleCategory}
+                />{" "}
+                Activism
+              </Label>
+              {" "}
+              <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} />
+            </FormGroup>
+          </div>
+          <br />
         </div>
         {/* </Nav> */}
 
@@ -678,10 +664,10 @@ export class Events extends Component {
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.eventName}.</ModalHeader>
             <ModalBody>
-              Organization:
-              {" " + this.state.organizationName}
+              <h6>Organization:</h6>
+              <h6>{" " + this.state.organizationName}</h6>
               <br />
-              Description:
+              <h6>Description:</h6>
               {" " + this.state.eventDescription}
               <br />
               Address:
