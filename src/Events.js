@@ -12,7 +12,8 @@ import {
   Button,
   FormGroup,
   Label,
-  Input
+  Input,
+  Tooltip
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt, faClock, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
@@ -20,6 +21,8 @@ import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from "moment";
 import _ from "lodash";
 import Select from "react-select";
+// import { mapToCssModules } from '../../../src/utils'
+import classNames from 'classnames'
 
 import "./css/Events.css";
 
@@ -197,6 +200,7 @@ const cities = [
 export class Events extends Component {
   constructor(props) {
     super(props);
+    this.toggle = this.toggle.bind(this);
     this.state = {
       modal: false,
       data: [],
@@ -210,9 +214,17 @@ export class Events extends Component {
       filteredData: [],
       selectedCity: "All",
       selectedTime: "All", 
-      opacity: 1
+      opacity: 1,
+      tooltipOpen: false
     };
   }
+
+  toggle() {
+    this.setState({
+      tooltipOpen: !this.state.tooltipOpen
+    });
+  }
+
   handleCityChange = selectedCity => {
     this.setState({ selectedCity });
     console.log(`Option selected:`, selectedCity);
@@ -348,6 +360,7 @@ export class Events extends Component {
   };
   
   render() {
+    const classes = 'tooltip-inner';
     const { selectedCity } = this.state;
     const { selectedTime } = this.state;
     const filteredData = this.state.data.filter(d => {
@@ -600,10 +613,16 @@ export class Events extends Component {
                   value={"Give"}
                   onChange={this.handleCategory}
                 />{" "}
+               <div>
                 Give
-              </Label>
               {" "}
-              <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} />
+        <span href="#" id="TooltipExample"><FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} /></span>
+        <Tooltip placement="right" isOpen={this.state.tooltipOpen} target="TooltipExample" toggle={this.toggle}>
+        Donating your money, supplies, or resources
+        </Tooltip>
+      </div>
+      </Label>
+
             </FormGroup>
             <FormGroup check>
               <Label check>
