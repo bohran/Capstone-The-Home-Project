@@ -1,38 +1,73 @@
-body{
-    font-family: "Lato", sans-serif;
-    color: #6e6e70;
+body {
+  font-family: "Lato", sans-serif;
 }
-.homeBody{
-    text-align: center;
-}
-
-.parallaxTitle {
-    margin-top: 20px;
-    font-size: 28px;
-}
-.bannerTitle{
-    color: white;
-    font-family: "Lato", sans-serif;
-    font-size: 100px;
+.homeBody {
+  text-align: center;
 }
 
-.slogan {
-    font-style: italic;
-    font-size: 20px;
-    margin: 5px 10% 0px 10%;
+.bannerBox {
+  width: 40%;
+  height: 100vh;
+  opacity: 0.7;
+  /* background-color: #db4b62; */
+  background-color: #cf0f2e;
+  /* background-color: #177283 */
 }
 
-.missionContent {
-    font-size: 22px;
-    text-align: left;
-    margin: 0px 20% 15px 20%;
-    font-weight: 100;
+.bannerContent {
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-size: 68px;
+  padding: 10%;
+  font-weight: bold;
+  text-shadow: 0 0 100px rgba(0, 0, 0, 500);
+  text-align: left;
+  /* padding-left: 10%; */
+  opacity: 1;
 }
 
-.attention {
-    /* background-color: #db4b62; */
-    color: #db4b62;
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0px 20% 20px 20%;
+.homeTitle {
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.homeAbstract,
+.homeFeatures {
+  text-align: left;
+  margin-top: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+  font-size: 16px;
+}
+
+.homePurpose {
+  color: #177283;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 50px 20% 50px 20%;
+}
+
+.homeSubtitle {
+  text-align: left;
+  font-size: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.homeFeatures {
+  /* font-style: italic; */
+  display: flex;
+  padding-bottom: 100px;
+}
+
+.highlightFeature {
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  margin-bottom: 5px;
+}
+
+.feature {
+    width: 33%;
+    padding-right: 30px;
 }
