@@ -142,3 +142,9 @@ font-weight: 300;
   font-size: 14px;
   margin-bottom: 30px;
 }
+
+.search {
+  width: 70%;
+  margin-left: 20%;
+  padding-top: 25px;
+}
