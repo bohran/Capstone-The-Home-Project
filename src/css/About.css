@@ -31,3 +31,44 @@ body{
     font-weight: bold;
     margin: 0px 20% 20px 20%;
 }
+
+.email {
+    font-weight: lighter;
+}
+
+.photoTitles {
+    font-size: 20px;
+    padding-top: 10px;
+    margin-bottom: 0px;
+}
+
+.memberTag {
+    color: #6e6e70;
+    padding-bottom: 0px !important;
+    font-weight: lighter;
+}
+
+.aboutTitle {
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 25px;
+}
+
+.aboutTeamImgs {
+    margin: 0px;
+    height: 250px;
+    width: 250px;
+}
+
+.imgContainer {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding-left: 17%;
+}
+
+.teamPhotos {
+    width: 180px;
+    height: 180px;
+    border-radius: 100px;
+}
