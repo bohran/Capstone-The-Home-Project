@@ -21,12 +21,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
   faClock,
-  faQuestionCircle
+  faQuestionCircle,
+  faQuestion,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from "moment";
 import _ from "lodash";
 import Select from "react-select";
+import ReactTooltip from 'react-tooltip'
+
 
 import "./css/Events.css";
 
@@ -204,6 +208,7 @@ const cities = [
 export class Events extends Component {
   constructor(props) {
     super(props);
+    this.toggle = this.toggle.bind(this);
     this.state = {
       modal: false,
       data: [],
@@ -216,8 +221,8 @@ export class Events extends Component {
       input: "",
       filteredData: [],
       selectedCity: "All",
-      selectedTime: "All",
-      opacity: 1
+      selectedTime: "All", 
+      opacity: 1,
     };
   }
   handleCityChange = selectedCity => {
@@ -279,12 +284,13 @@ export class Events extends Component {
       modal: true
     });
   };
-
+  
   toggle = () => {
     this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
     });
   };
+
   componentDidMount() {
     this.setState({ isLoading: true });
     let url = "https://api.emmaropes.me/events";
@@ -342,11 +348,6 @@ export class Events extends Component {
     });
   };
 
-  toggle = () => {
-    this.setState({
-      modal: !this.state.modal
-    });
-  };
   // Search method
   handleSearch = search => {
     this.setState({
@@ -400,9 +401,8 @@ export class Events extends Component {
               <CardGroup>
                 <Card onClick={this.handleCardClick.bind(null, i)}>
                   <div className="image">
-                    <CardImg src={d.imageURL} style={{ width: "100%" }} />
+                    <CardImg src={d.imageURL} />
                     <CardBody>
-                      {/* <CardTitle>{d.eventName}</CardTitle> */}
                       <CardTitle>
                         <div className="eventMonth">
                           {" " + month_name(new Date(d.date))} <br />
@@ -423,19 +423,8 @@ export class Events extends Component {
                           {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
                         </div>
                       </CardSubtitle>
-                      <CardSubtitle>
-                        {/* <div className="eventTime">
-                          <FontAwesomeIcon icon={faClock} />{" "}
-                          {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
-                          {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
-                        </div> */}
+                      <CardSubtitle>  
                       </CardSubtitle>
-                      {/* <Button
-                        className="learn"
-                        onClick={this.handleCardClick.bind(null, i)}
-                        style = {{marginLeft: "15%"}}>
-                        learn more
-                      </Button> */}
                     </CardBody>
                   </div>
                 </Card>
@@ -449,14 +438,14 @@ export class Events extends Component {
       <div>
         <div className="search">
           <InputGroup>
-            <InputGroupAddon addonType="append">
-              <InputGroupText>Search</InputGroupText>
+            {/* <InputGroupAddon addonType="append"> */}
+              {/* <InputGroupText>Search</InputGroupText> */}
               <Input
-                placeholder="Search for an event"
+                placeholder="Search for an event or organization..."
                 value={this.state.input}
                 onChange={this.handleSearch}
               />
-            </InputGroupAddon>
+            {/* </InputGroupAddon> */}
           </InputGroup>
         </div>
         {/* <h2 style={{ textAlign: "center", fontWeight: "300" }}> */}
@@ -584,11 +573,10 @@ export class Events extends Component {
                   onChange={this.handleCategory}
                 />{" "}
                 Give
-              </Label>{" "}
-              <FontAwesomeIcon
-                icon={faQuestionCircle}
-                style={{ width: "10px" }}
-              />
+              </Label>
+              {" "}
+              <ReactTooltip place="top" type="dark" effect="float"/>
+              <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} data-tip = "Donating money, supplies, or resources"/>
             </FormGroup>
             <FormGroup check>
               <Label check>
@@ -599,11 +587,9 @@ export class Events extends Component {
                   onChange={this.handleCategory}
                 />{" "}
                 Learn
-              </Label>{" "}
-              <FontAwesomeIcon
-                icon={faQuestionCircle}
-                style={{ width: "10px" }}
-              />
+              </Label>
+              {" "}
+            <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} data-tip = "Educating yourself or learning something new"/>
             </FormGroup>
             <FormGroup check>
               <Label check>
@@ -614,11 +600,9 @@ export class Events extends Component {
                   onChange={this.handleCategory}
                 />{" "}
                 Volunteer
-              </Label>{" "}
-              <FontAwesomeIcon
-                icon={faQuestionCircle}
-                style={{ width: "10px" }}
-              />
+              </Label>
+              {" "}
+            <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} data-tip = "Building houses, serving food, delivering care packages"/>
             </FormGroup>
             <FormGroup check>
               <Label check>
@@ -629,11 +613,9 @@ export class Events extends Component {
                   onChange={this.handleCategory}
                 />{" "}
                 Activism
-              </Label>{" "}
-              <FontAwesomeIcon
-                icon={faQuestionCircle}
-                style={{ width: "10px" }}
-              />
+              </Label>
+              {" "}
+            <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} data-tip = "Pushing to affect change through an event" />
             </FormGroup>
           </div>
           <br />
@@ -653,30 +635,38 @@ export class Events extends Component {
           {content}
 
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
-            <ModalHeader>{this.state.eventName}.</ModalHeader>
+            <ModalHeader>{this.state.eventName}</ModalHeader>
             <ModalBody>
-              <h6>Organization:</h6>
-              <h6>{" " + this.state.organizationName}</h6>
+              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Hosted by:</h7>
+              <h7 style={{fontWeight: "400"}}>{" " + this.state.organizationName}</h7>
               <br />
-              <h6>Description:</h6>
-              {" " + this.state.eventDescription}
+              <br/>
+              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Description:</h7>
+              <h7 style={{fontWeight: "100"}}>{" " + this.state.eventDescription}</h7>
+              <br/>
+              <br/>
+              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Address:</h7>
+              <h7 style={{fontWeight: "100"}}>{" " + this.state.address+ ","} {this.state.city + ","} {this.state.state} 
+              {" " + this.state.zipcode}</h7> 
               <br />
-              Address:
-              {" " + this.state.address},{" " + this.state.city},{" "}
-              {" " + this.state.zipcode},
+              <br/>
+              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Date:</h7>
+              <h7 style={{fontWeight: "100"}}>{" " + this.state.date}</h7>
               <br />
-              Date:
-              {" " + this.state.date}
+              <br/>
+              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Time:</h7>
+              <h7 style={{fontWeight: "100"}}>{" " + moment(this.state.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
+              {moment(this.state.endTime, "HH:mm:ss").format("h:mm A")}</h7>
               <br />
-              Time:
-              {" " + this.state.startTime} - {" " + this.state.endTime}
+              <br/>
+              <h7 style={{color: "#177283", fontWeight:"bold"}}>Event Website:</h7> <a href={" " + this.state.url + " "}>Visit Site</a>
               <br />
-              Event Website: <a href={" " + this.state.url + " "}>Visit Site</a>
-              <br />
-              Capacity:
-              {" " + this.state.capacity}
-              <br />
-              Event Coordinator Contact Information:
+              <br/>
+              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Capacity:</h7>
+              <h7 style ={{fontWeight:"100"}}>{" " + this.state.capacity}</h7>
+              <br/>
+              <br/>
+              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Event Coordinator Contact Information:</h7>
               {" " + this.state.coordinatorFirstName}
               <br />
               {" " + this.state.coordinatorLastName}
@@ -685,7 +675,6 @@ export class Events extends Component {
               <br />
               {" " + this.state.coordinatorPhone}
             </ModalBody>
-
             <Button
               style={{
                 backgroundColor: " #cf0f2e",
