@@ -21,7 +21,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
   faClock,
-  faQuestionCircle
+  faQuestionCircle,
+  faQuestion,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from "moment";
@@ -354,7 +356,6 @@ export class Events extends Component {
   };
 
   render() {
-    const classes = "tooltip-inner";
     const { selectedCity } = this.state;
     const { selectedTime } = this.state;
     const filteredData = this.state.data.filter(d => {
@@ -400,9 +401,8 @@ export class Events extends Component {
               <CardGroup>
                 <Card onClick={this.handleCardClick.bind(null, i)}>
                   <div className="image">
-                    <CardImg src={d.imageURL} style={{ width: "100%" }} />
+                    <CardImg src={d.imageURL} />
                     <CardBody>
-                      {/* <CardTitle>{d.eventName}</CardTitle> */}
                       <CardTitle>
                         <div className="eventMonth">
                           {" " + month_name(new Date(d.date))} <br />
@@ -438,14 +438,14 @@ export class Events extends Component {
       <div>
         <div className="search">
           <InputGroup>
-            <InputGroupAddon addonType="append">
-              <InputGroupText>Search</InputGroupText>
+            {/* <InputGroupAddon addonType="append"> */}
+              {/* <InputGroupText>Search</InputGroupText> */}
               <Input
-                placeholder="Search for an event"
+                placeholder="Search for an event or organization..."
                 value={this.state.input}
                 onChange={this.handleSearch}
               />
-            </InputGroupAddon>
+            {/* </InputGroupAddon> */}
           </InputGroup>
         </div>
         {/* <h2 style={{ textAlign: "center", fontWeight: "300" }}> */}
