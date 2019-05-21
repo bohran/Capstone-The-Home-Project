@@ -61,16 +61,11 @@ body {
     box-shadow: none;
 }
 .card:hover{
-  /* background-color:#fafaed; */
   box-shadow: 1px 1px 40px #cfcfcf;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
   }
-  /* @keyframes popout {
-    from{transform:scale(0)}
-    30%{transform:scale(0.75)}
-    to{transform:scale(0.5)}
-} */
+
 
 
 .card-img {
@@ -141,4 +136,8 @@ font-weight: 300;
   /* text-align: center; */
   font-size: 14px;
   margin-bottom: 30px;
+}
+
+.modal-title{
+  font-weight: 300;
 }
