@@ -51,8 +51,8 @@ body {
 
 .card {
   width: 270px;
-  min-height: 320px;
-  max-height: 320px;
+  min-height: 350px;
+  max-height: 350px;
   /* margin-left: 40px;
     margin-right: 40px;  */
   margin: 20px;
@@ -131,6 +131,14 @@ font-weight: 300;
   text-align: left;  
   font-weight: 300;
 }
+.service{
+  text-align: left;
+}
+.serviceType {
+  text-align: right;
+  margin-bottom: 50%;
+  border-radius: 50%;
+}
 
 .help {
   /* text-align: center; */
@@ -139,7 +147,7 @@ font-weight: 300;
 }
 
 .search {
-  width: 70%;
+  width: 71%;
   margin-left: 23%;
   padding-top: 3%;
 }
