@@ -138,6 +138,8 @@ font-weight: 300;
   margin-bottom: 30px;
 }
 
-.modal-title{
-  font-weight: 300;
+.search {
+  width: 70%;
+  margin-left: 20%;
+  padding-top: 25px;
 }

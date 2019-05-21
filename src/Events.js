@@ -12,10 +12,17 @@ import {
   Button,
   FormGroup,
   Label,
-  Input
+  Input,
+  InputGroup,
+  InputGroupText,
+  InputGroupAddon
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkerAlt, faClock, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMapMarkerAlt,
+  faClock,
+  faQuestionCircle
+} from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from "moment";
 import _ from "lodash";
@@ -263,7 +270,7 @@ export class Events extends Component {
       url: url,
       capacity: capacity,
       room: room,
-      imageURL:imageURL,
+      imageURL: imageURL,
       contactFirstName: contactFirstName,
       contactLastName: contactLastName,
       contactEmail: contactEmail,
@@ -340,12 +347,12 @@ export class Events extends Component {
   };
 
   // Search method
-  handleSearch = e => {
+  handleSearch = search => {
     this.setState({
-      input: e.target.value
+      input: search.target.value
     });
   };
-  
+
   render() {
     const classes = "tooltip-inner";
     const { selectedCity } = this.state;
@@ -358,38 +365,15 @@ export class Events extends Component {
       const serviceOverlap = _.intersection(d.services, this.state.filter);
       const matchesService =
         serviceOverlap.length !== 0 || this.state.filter.length === 0;
-      if (matchesCategory && matchesService) {
+      const userInput =
+        d.eventName.includes(this.state.input) || this.state.input === "";
+      if (matchesCategory && matchesService && userInput) {
         return true;
       } else {
         return false;
       }
     });
     const content = filteredData.map((d, i) => {
-      //   let dates = this.state.data.map((d) => {
-      //     return new Date((d.date)).toString();
-      // })
-      // let imageSrc = d.eventName;
-      // if (d.urlToImage == null) {
-      //   imageSrc = <br />;
-      // } else {
-      //   imageSrc = (
-      //     <div className="image">
-      //       <CardImg
-      //         size="cover"
-      //         src={imageSrc}
-      //         display="block"
-      //         alt={d.title}
-      //       />
-      //     </div>
-      //   );
-      // }
-      //   let results = this.state.data.filter((data) => {
-      //     if(this.props.input ==='') {
-      //         return true;
-      //     } else {
-      //         return post.title.toLowerCase().includes(this.state.input.toLowerCase());
-      //     }
-      // })
       let mlist = [];
       var month_name = function(dt) {
         mlist = [
@@ -408,9 +392,9 @@ export class Events extends Component {
         ];
         return mlist[dt.getMonth()];
       };
-      console.log(i)
+      console.log(i);
       return (
-        <div className="events" key={"event" + i}>        
+        <div className="events" key={"event" + i}>
           <Row>
             <Col>
               <CardGroup>
@@ -430,10 +414,11 @@ export class Events extends Component {
                       </CardTitle>
                       <CardSubtitle>
                         <div className="eventAddress">
-                          <FontAwesomeIcon icon={faMapMarkerAlt} /> {" "}{d.city}, {d.state}   
+                          <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.city},{" "}
+                          {d.state}
                         </div>
                         <div className="eventTime">
-                          <FontAwesomeIcon icon={faClock}/>{" "}
+                          <FontAwesomeIcon icon={faClock} />{" "}
                           {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
                           {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
                         </div>
@@ -451,23 +436,21 @@ export class Events extends Component {
     });
     return (
       <div>
-        <div className="searchForm">
-          <form>
-            <input
-              placeholder="Search for..."
-              value={this.state.input}
-              onChange={this.handleSearch}
-            />
-          </form>
-          <div>
-            {this.state.filteredData.map(i => (
-              <p>{i.eventName}</p>
-            ))}
-          </div>
+        <div className="search">
+          <InputGroup>
+            <InputGroupAddon addonType="append">
+              <InputGroupText>Search</InputGroupText>
+              <Input
+                placeholder="Search for an event"
+                value={this.state.input}
+                onChange={this.handleSearch}
+              />
+            </InputGroupAddon>
+          </InputGroup>
         </div>
-        <h2 style={{ textAlign: "center", fontWeight: "300" }}>
-          Events that match your search:
-        </h2>
+        {/* <h2 style={{ textAlign: "center", fontWeight: "300" }}> */}
+        {/* Events that match your search: */}
+        {/* </h2> */}
         {/* <div className="add">
           <h4>New Organization?</h4>
           <Button tag = {Link} to="/RegOrganization">
@@ -480,7 +463,7 @@ export class Events extends Component {
         </div> */}
         {/* <Nav vertical className="sidebar"> */}
         <div className="sidebarFilter">
-        <div className="filters">
+          <div className="filters">
             <h5>Select Area of Service:</h5>
             <FormGroup check>
               <Label check>
@@ -552,7 +535,7 @@ export class Events extends Component {
                 placeholder="Select..."
               />
             </div>
-            <br/>
+            <br />
             <div className="location">
               <h5>Select Location:</h5>
               <Select

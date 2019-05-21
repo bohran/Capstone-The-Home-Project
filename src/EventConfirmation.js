@@ -4,7 +4,6 @@ import { Button, Form, FormGroup, Label, Row, Col } from "reactstrap";
 
 class Confirmation extends Component {
   render() {
-    console.log(this.props.eventForm.services);
     let services = this.props.eventForm.services.map((d, i) => {
       if (i + 1 !== this.props.eventForm.services.length) {
         return d + ", ";
@@ -18,7 +17,7 @@ class Confirmation extends Component {
 
         <div className="addEvent">
           <Form>
-            <h6>
+            <h6 className="help">
               Please confirm the following information before submitting. If you
               need to make edits, select the edit button below the form.
             </h6>
