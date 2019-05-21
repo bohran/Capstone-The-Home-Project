@@ -21,7 +21,7 @@ export default class AddEvent extends Component {
     eventFormEntries: {
       title: "",
       category: "",
-      orgs: "",
+      orgs: [],
       services: [],
       descr: "",
       date: "",
@@ -73,7 +73,7 @@ export default class AddEvent extends Component {
         contactFirstName: this.state.eventFormEntries.creatorFName,
         contactLastName: this.state.eventFormEntries.creatorLName,
         services: this.state.eventFormEntries.services,
-        organizations: [this.state.eventFormEntries.orgs]
+        organizations: this.state.eventFormEntries.orgs
       }),
       headers: new Headers({
         "Content-Type": "application/json"
