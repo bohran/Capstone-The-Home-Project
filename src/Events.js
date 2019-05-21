@@ -225,6 +225,13 @@ export class Events extends Component {
       opacity: 1,
     };
   }
+
+  toggle() {
+    this.setState({
+      tooltipOpen: !this.state.tooltipOpen
+    });
+  }
+
   handleCityChange = selectedCity => {
     this.setState({ selectedCity });
     console.log(`Option selected:`, selectedCity);
@@ -356,6 +363,7 @@ export class Events extends Component {
   };
 
   render() {
+    const classes = 'tooltip-inner';
     const { selectedCity } = this.state;
     const { selectedTime } = this.state;
     const filteredData = this.state.data.filter(d => {
@@ -586,7 +594,7 @@ export class Events extends Component {
                   onChange={this.handleCategory}
                 />{" "}
                 Give
-              </Label>
+                </Label>
               {" "}
               <ReactTooltip place="top" type="dark" effect="float"/>
               <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} data-tip = "Donating money, supplies, or resources"/>
