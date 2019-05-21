@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Container, Row, Col } from "reactstrap";
+import { Row } from "reactstrap";
 import { Button } from "reactstrap";
 
 import "./css/About.css";
@@ -10,7 +10,10 @@ export class About extends Component {
     return (
       <div className="aboutBody">
         <div className="contentBox">
-          <div className="missionTitle" style={{ fontSize: "40px", fontWeight: "bold" }}>
+          <div
+            className="aboutTitle"
+            // style={{ fontSize: "40px", fontWeight: "bold" }}
+          >
             The Home Project
           </div>
           <div className="slogan">
@@ -24,7 +27,6 @@ export class About extends Component {
             progress is not happening quickly enough, at a large enough scale.
           </div>
           <div className="attention">
-            {/* WE KNOW THAT HOMELESSNESS IN KING COUNTY IS SOLVABLE. */}
             We know that homelessness in King County is solvable.
           </div>
           <div className="missionContent">
@@ -42,61 +44,70 @@ export class About extends Component {
             <div className="learnMore">
               Learn more about how you can help via our Messaging Toolkits:
             </div>
-            <Button className="toolkitButton" href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0">
+            <Button
+              className="toolkitButton"
+              href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0"
+            >
               Toolkits
             </Button>
           </div>
           <div />
         </div>
-        <h2 className="contactPageTitle">Our Creators</h2>
-        <Row>
-          <div class="col-lg-3 col-sm-6 text-center mb-4">
-            <img
-              class="rounded-circle img-fluid d-block mx-auto w-50"
-              src="./img/shannon.jpg"
-              alt="Portrait of Shannon Gatta"
-            />
-            <h3>Shannon Gatta </h3>
-            <h3>
-              <small>Data Scientist</small>
-            </h3>
-            <p id="email">sgatta@uw.edu</p>
+        <h2 className="aboutTitle">The Team</h2>
+          <div className="imgContainer">
+            <div className="aboutTeamImgs">
+              <img
+                // className="rounded-circle img-fluid d-block mx-auto w-50"
+                className="teamPhotos"
+                src="./img/shannon.jpg"
+                alt="Portrait of Shannon Gatta"
+              />
+              <h6 className="photoTitles">Shannon Gatta </h6>
+              <h3>
+                <h6 className="memberTag">UX Researcher</h6>
+              </h3>
+              {/* <p className="email">sgatta@uw.edu</p> */}
+            </div>
+            <div className="aboutTeamImgs">
+              <img
+                // className="rounded-circle img-fluid d-block mx-auto w-50"
+                className="teamPhotos"
+                src="./img/esha.jpg"
+                alt="Portrait of Esha More"
+              />
+              <h6 className="photoTitles">Esha More</h6>
+              <h3>
+                <h6 className="memberTag">Front-End Developer</h6>
+              </h3>
+              {/* <p className="email">moree@uw.edu</p> */}
+            </div>
+            <div className="aboutTeamImgs">
+              <img
+                // className="rounded-circle img-fluid d-block mx-auto w-50"
+                className="teamPhotos"
+                src="./img/emma.jpeg"
+                alt="Portrait of Emma Ropes"
+              />
+              <h6 className="photoTitles">Emma Ropes</h6>
+              <h3>
+                <h6 className="memberTag">Back-End Developer</h6>
+              </h3>
+              {/* <p className="email">eropes@uw.edu</p> */}
+            </div>
+            <div className="aboutTeamImgs">
+              <img
+                // className="rounded-circle img-fluid d-block mx-auto w-50"
+                className="teamPhotos"
+                src="./img/nicole.jpg"
+                alt="Portrait of Nicole Bohra"
+              />
+              <h6 className="photoTitles">Nicole Bohra</h6>
+              <h3>
+                <h6 className="memberTag">Front-End Developer</h6>
+              </h3>
+              {/* <p className="email">bohran@uw.edu</p> */}
+            </div>
           </div>
-          <div class="col-lg-3 col-sm-6 text-center mb-4">
-            <img
-              class="rounded-circle img-fluid d-block mx-auto w-50"
-              src="./img/esha.jpg"
-            />
-            <h3>Esha More</h3>
-            <h3>
-              <small>UX Designer</small>
-            </h3>
-            <p id="email">moree@uw.edu </p>
-          </div>
-          <div class="col-lg-3 col-sm-6 text-center mb-4">
-            <img
-              class="rounded-circle img-fluid d-block mx-auto w-50"
-              src="./img/emma.jpeg"
-              alt="Portrait of Emma Ropes"
-            />
-            <h3>Emma Ropes</h3>
-            <h3>
-              <small>Web Developer</small>
-            </h3>
-            <p id="email">eropes@uw.edu </p>
-          </div>
-          <div class="col-lg-3 col-sm-6 text-center mb-4">
-            <img
-              class="rounded-circle img-fluid d-block mx-auto w-50"
-              src="./img/nicole.jpg"
-            />
-            <h3>Nicole Bohra</h3>
-            <h3>
-              <small>Data Scientist</small>
-            </h3>
-            <p id="email">bohran@uw.edu</p>
-          </div>
-        </Row>
       </div>
     );
   }

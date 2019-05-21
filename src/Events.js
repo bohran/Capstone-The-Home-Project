@@ -341,9 +341,9 @@ export class Events extends Component {
     });
   };
   // Search method
-  handleSearch = e => {
+  handleSearch = search => {
     this.setState({
-      input: e.target.value
+      input: search.target.value
     });
   };
   
@@ -356,40 +356,15 @@ export class Events extends Component {
 
       //TODO: improve efficiency?
       const serviceOverlap = _.intersection(d.services, this.state.filter);
-      const matchesService =
-        serviceOverlap.length !== 0 || this.state.filter.length === 0;
-      if (matchesCategory && matchesService) {
+      const matchesService = serviceOverlap.length !== 0 || this.state.filter.length === 0;
+      const userInput = d.eventName.includes(this.state.input) || this.state.input === "";
+      if (matchesCategory && matchesService && userInput) {
         return true;
       } else {
         return false;
       }
     });
     const content = filteredData.map((d, i) => {
-      //   let dates = this.state.data.map((d) => {
-      //     return new Date((d.date)).toString();
-      // })
-      // let imageSrc = d.eventName;
-      // if (d.urlToImage == null) {
-      //   imageSrc = <br />;
-      // } else {
-      //   imageSrc = (
-      //     <div className="image">
-      //       <CardImg
-      //         size="cover"
-      //         src={imageSrc}
-      //         display="block"
-      //         alt={d.title}
-      //       />
-      //     </div>
-      //   );
-      // }
-      //   let results = this.state.data.filter((data) => {
-      //     if(this.props.input ==='') {
-      //         return true;
-      //     } else {
-      //         return post.title.toLowerCase().includes(this.state.input.toLowerCase());
-      //     }
-      // })
       let mlist = [];
       var month_name = function(dt) {
         mlist = [
@@ -462,20 +437,15 @@ export class Events extends Component {
     });
     return (
       <div>
-        {/* <div className="searchForm">
+        <div className="searchForm">
           <form>
             <input
-              placeholder="Search for..."
+              placeholder="Search for an event"
               value={this.state.input}
               onChange={this.handleSearch}
             />
           </form>
-          <div>
-            {this.state.filteredData.map(i => (
-              <p>{i.eventName}</p>
-            ))}
-          </div>
-        </div> */}
+        </div>
         <h2 style={{ textAlign: "center", fontWeight: "300" }}>
           {/* Events that match your search: */}
         </h2>
