@@ -59,16 +59,19 @@ class OrgPage extends Component {
 
     return (
       <div>
-        <div className="orgSearch">
-          <InputGroup>
-            <Input
-              placeholder="Search organizations"
-              value={this.state.input}
-              onChange={this.handleSearch}
-            />
-          </InputGroup>
-          <div className="orgButton">
-            <Button>Add New Org</Button>
+        <div className="orgFuntions">
+          <div className="orgSearch">
+            <InputGroup>
+              <Input
+                placeholder="Search organizations"
+                value={this.state.input}
+                onChange={this.handleSearch}
+              />
+            </InputGroup>
+            <div className="orgButton">
+              <Button>Add New Org</Button>
+              <Button>Toolkits</Button>
+            </div>
           </div>
         </div>
         <div className="orgCollection">{displayOrgs}</div>
