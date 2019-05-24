@@ -4,7 +4,7 @@ import { Home } from "./Home";
 import { About } from "./About";
 import { Events } from "./Events";
 import AddEvent from "./AddEvent";
-import Confirmation from "./EventConfirmation";
+import OrgInfo from "./OrgPage";
 
 import {
   Collapse,
@@ -63,6 +63,9 @@ class App extends Component {
               <Link className="links" to="/Events">
                 Events
               </Link>
+              <Link className="links" to="/Orgs">
+                Organizations
+              </Link>
               <NavLink
                 className="links"
                 href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0"
@@ -76,6 +79,7 @@ class App extends Component {
               <Link className="links" to="/AddEvent">
                 Add Event
               </Link>
+              
               {/* <Dropdown className="links" isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}> */}
               {/* <UncontrolledDropdown inNavbar className="links">
               <DropdownToggle nav caret className="links">Register</DropdownToggle>
@@ -94,6 +98,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/About" component={About} />
           <Route path="/Events" component={Events} />
+          <Route path="/Orgs" component={OrgInfo} />
           <Route path="/AddEvent" component={AddEvent} />
           <Route path="/RegOrganization" component={RegOrganization} />
           {/* <Route path = "/Calendar" component = { Calendar } /> */}

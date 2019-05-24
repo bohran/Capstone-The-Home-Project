@@ -90,7 +90,7 @@ export default class AddEvent extends Component {
         return JSON.parse(text);
       })
       .then(responseObject => {
-        this.handleConfirm();
+        this.handleNext();
       })
       .catch(function(err) {
         console.log("ERROR!");
@@ -130,24 +130,17 @@ export default class AddEvent extends Component {
   };
 
   //change eventForms
-  handleNext = event => {
-    if (event.target.value === "1") {
+  handleNext = () => {
       this.setState({
-        currentStage: Stage.CONFIRMATION
+        currentStage: this.state.currentStage + 1
       });
-    } else if (event.target.value === "0") {
-      this.setState({
-        currentStage: Stage.EVENT
-      });
-    } else if (event.target.value === null) {
-    }
   };
 
-  handleConfirm = () => {
+  handleBack = () => {
     this.setState({
-      currentStage: Stage.SUBMISSION
+      currentStage: this.state.currentStage - 1
     });
-  };
+};
 
   componentDidMount() {
     let url = "https://api.emmaropes.me/organizations";
@@ -161,7 +154,6 @@ export default class AddEvent extends Component {
           orgData: results
         });
       });
-      
   }
 
   render() {
@@ -185,7 +177,7 @@ export default class AddEvent extends Component {
       content = (
         <Confirmation
           eventForm={this.state.eventFormEntries}
-          onEdit={this.handleNext}
+          onEdit={this.handleBack}
           onConfirm={this.handleSaveEvent}
         />
       );

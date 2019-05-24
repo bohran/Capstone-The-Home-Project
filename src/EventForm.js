@@ -3,12 +3,62 @@ import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 import Select from "react-select";
+import _ from "lodash";
 import "bootstrap/dist/css/bootstrap.css";
 
-import "./css/form.css"
+import "./css/form.css";
 // import "./css/form.css";
 
+const requiredFields = [
+  "orgs",
+  "title",
+  "category",
+  "services",
+  "date",
+  "startTime",
+  "address",
+  "city",
+  "creatorFName",
+  "creatorLName",
+  "creatorEmail",
+  "coordinatorFName",
+  "coordinatorLName",
+  "coordinatorEmail"
+];
+
+const prettyNames = {
+  title: "Title",
+  category: "Type",
+  orgs: "Organizations",
+  services: "Services",
+  descr: "Description",
+  date: "Date",
+  startTime: "Start Time",
+  endTime: "End Time",
+  address: "Address",
+  room: "Room",
+  city: "City",
+  capacity: "Capacity",
+  county: "County",
+  zip: "Zip Code",
+  state: "State",
+  creatorFName: "Creator First Name",
+  creatorLName: "Creator Last Name",
+  creatorEmail: "Creator Email",
+  creatorPhone: "Creator Phone",
+  coordinatorFName: "Coordinator First Name",
+  coordinatorLName: "Coordinator Last Name",
+  coordinatorEmail: "Coordinator Email",
+  coordinatorPhone: "Coordinator Phone"
+};
+
 class NewEvent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      errorMessage: ""
+    };
+  }
   handleSameAs = () => {
     var contact = document.getElementById("coordInfo");
     if (contact.style.display === "block") {
@@ -32,7 +82,47 @@ class NewEvent extends Component {
 
   handleTypeChange = input => {
     this.props.form.category = input.value;
-  }
+  };
+
+  checkDate = () => {
+    let eventDate = this.props.form.date.split("-");
+
+    let newEventDate = new Date(eventDate[0], eventDate[1] - 1, eventDate[2]);
+    var currDate = new Date();
+
+    let formatCurrDate =
+      currDate.getFullYear() + currDate.getMonth() + currDate.getDate();
+    let formatEventDate =
+      newEventDate.getFullYear() +
+      newEventDate.getMonth() +
+      newEventDate.getDate();
+
+    return formatCurrDate > formatEventDate;
+  };
+
+  handleRequirements = () => {
+    let errorFields = requiredFields.filter(field =>
+      _.isEmpty(this.props.form[field])
+    );
+
+    // no errors
+    if (_.isEmpty(errorFields)) {
+      this.props.onNext();
+    } else {
+      // errors = error messages
+      let prettyErrors = errorFields.map(field => {
+        return prettyNames[field];
+      });
+
+      let errors =
+        "The following fields cannot be empty: " + _.join(prettyErrors, ", ");
+      alert(errors);
+
+      this.setState({
+        errorMessage: errors
+      });
+    }
+  };
 
   render() {
     const types = [
@@ -48,8 +138,12 @@ class NewEvent extends Component {
 
         <div className="addEvent">
           <Form>
-            <h5 className="formTitle">Select Your Organization</h5>
-            <Select options={this.props.orgList} isMulti onChange={this.handleHostOrgs}/>
+            <h5 className="formTitle">Select Your Organization *</h5>
+            <Select
+              options={this.props.orgList}
+              isMulti
+              onChange={this.handleHostOrgs}
+            />
 
             <h6 className="help">
               Don't see your Organization listed?{" "}
@@ -60,22 +154,23 @@ class NewEvent extends Component {
 
             <h5 className="formTitle">Event Information</h5>
             <FormGroup>
-              <Label>Event Title</Label>
+              <Label>Event Title *</Label>
               <Input
                 type="text"
                 name="title"
                 placeholder="Enter text"
                 value={this.props.form.title}
                 onChange={this.props.onChange}
+                // invalid={this.state.error[1].title}
               />
             </FormGroup>
 
             <div className="formTypes">
-              <h6>Event Type</h6>
+              <h6>Event Type *</h6>
               <Select options={types} onChange={this.handleTypeChange} />
             </div>
 
-            <h6>Area of Service</h6>
+            <h6>Area of Service *</h6>
             <div className="formChecks">
               <FormGroup check inline>
                 <Input
@@ -85,7 +180,9 @@ class NewEvent extends Component {
                   value={"Housing/Shelter"}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check>Housing/Shelter</Label>
+                <Label check className="serviceOptions">
+                  Housing/Shelter
+                </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
@@ -95,7 +192,9 @@ class NewEvent extends Component {
                   value={"Employment"}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check>Employment</Label>
+                <Label check className="serviceOptions">
+                  Employment
+                </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
@@ -105,7 +204,9 @@ class NewEvent extends Component {
                   value={"Day Center"}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check>Day Center</Label>
+                <Label check className="serviceOptions">
+                  Day Center
+                </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
@@ -115,7 +216,9 @@ class NewEvent extends Component {
                   value={"Basic Needs"}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check>Basic Needs</Label>
+                <Label check className="serviceOptions">
+                  Basic Needs
+                </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
@@ -127,7 +230,9 @@ class NewEvent extends Component {
                   value={"Health & Wellness"}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check>{"Health & Wellness"}</Label>
+                <Label check className="serviceOptions">
+                  {"Health & Wellness"}
+                </Label>
               </FormGroup>
             </div>
 
@@ -145,8 +250,9 @@ class NewEvent extends Component {
             <Row form>
               <Col md={4}>
                 <FormGroup>
-                  <Label>Event Date</Label>
+                  <Label>Event Date *</Label>
                   <Input
+                    invalid={this.checkDate()}
                     type="date"
                     name="date"
                     value={this.props.form.date}
@@ -156,8 +262,9 @@ class NewEvent extends Component {
               </Col>
               <Col md={4}>
                 <FormGroup>
-                  <Label>Start Time</Label>
+                  <Label>Start Time *</Label>
                   <Input
+                    required={true}
                     type="time"
                     name="startTime"
                     value={this.props.form.startTime}
@@ -169,6 +276,10 @@ class NewEvent extends Component {
                 <FormGroup>
                   <Label>End Time</Label>
                   <Input
+                    invalid={
+                      this.props.form.startTime > this.props.form.endTime &&
+                      this.props.form.endTime !== ""
+                    }
                     type="time"
                     name="endTime"
                     value={this.props.form.endTime}
@@ -181,7 +292,7 @@ class NewEvent extends Component {
             <Row form>
               <Col md={8}>
                 <FormGroup>
-                  <Label>Address</Label>
+                  <Label>Address *</Label>
                   <Input
                     type="text"
                     name="address"
@@ -220,7 +331,7 @@ class NewEvent extends Component {
             <Row form>
               <Col md={4}>
                 <FormGroup>
-                  <Label>City</Label>
+                  <Label>City *</Label>
                   <Input
                     type="text"
                     name="city"
@@ -277,7 +388,7 @@ class NewEvent extends Component {
             <Row form>
               <Col md={3}>
                 <FormGroup>
-                  <Label>First Name</Label>
+                  <Label>First Name *</Label>
                   <Input
                     type="text"
                     name="creatorFName"
@@ -289,7 +400,7 @@ class NewEvent extends Component {
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Last Name</Label>
+                  <Label>Last Name *</Label>
                   <Input
                     type="text"
                     name="creatorLName"
@@ -301,7 +412,7 @@ class NewEvent extends Component {
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Email</Label>
+                  <Label>Email *</Label>
                   <Input
                     type="text"
                     name="creatorEmail"
@@ -345,7 +456,7 @@ class NewEvent extends Component {
               <Row form>
                 <Col md={3}>
                   <FormGroup>
-                    <Label>First Name</Label>
+                    <Label>First Name *</Label>
                     <Input
                       type="text"
                       name="coordinatorFName"
@@ -357,7 +468,7 @@ class NewEvent extends Component {
                 </Col>
                 <Col md={3}>
                   <FormGroup>
-                    <Label>Last Name</Label>
+                    <Label>Last Name *</Label>
                     <Input
                       type="text"
                       name="coordinatorLName"
@@ -369,7 +480,7 @@ class NewEvent extends Component {
                 </Col>
                 <Col md={3}>
                   <FormGroup>
-                    <Label>Email</Label>
+                    <Label>Email *</Label>
                     <Input
                       type="text"
                       name="coordinatorEmail"
@@ -440,8 +551,8 @@ class NewEvent extends Component {
           <Button
             variant="primary"
             type="submit"
-            value="1"
-            onClick={this.props.onNext}
+            // onClick={this.props.onNext}
+            onClick={this.handleRequirements}
           >
             Continue
           </Button>

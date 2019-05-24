@@ -29,8 +29,7 @@ import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from "moment";
 import _ from "lodash";
 import Select from "react-select";
-import ReactTooltip from 'react-tooltip'
-
+import ReactTooltip from "react-tooltip";
 
 import "./css/Events.css";
 
@@ -221,8 +220,8 @@ export class Events extends Component {
       input: "",
       filteredData: [],
       selectedCity: "All",
-      selectedTime: "All", 
-      opacity: 1,
+      selectedTime: "All",
+      opacity: 1
     };
   }
 
@@ -291,10 +290,10 @@ export class Events extends Component {
       modal: true
     });
   };
-  
+
   toggle = () => {
     this.setState({
-      modal: !this.state.modal,
+      modal: !this.state.modal
     });
   };
 
@@ -363,7 +362,7 @@ export class Events extends Component {
   };
 
   render() {
-    const classes = 'tooltip-inner';
+    const classes = "tooltip-inner";
     const { selectedCity } = this.state;
     const { selectedTime } = this.state;
     const filteredData = this.state.data.filter(d => {
@@ -374,9 +373,9 @@ export class Events extends Component {
       const serviceOverlap = _.intersection(d.services, this.state.filter);
       const matchesService =
         serviceOverlap.length !== 0 || this.state.filter.length === 0;
-      const userInput =
-        d.eventName.includes(this.state.input) || this.state.input === "";
-      if (matchesCategory && matchesService && userInput) {
+      const searchInput =
+        d.eventName.toLowerCase().includes(this.state.input.toLowerCase()) || this.state.input === "";
+      if (matchesCategory && matchesService && searchInput) {
         return true;
       } else {
         return false;
@@ -401,8 +400,8 @@ export class Events extends Component {
         ];
         return mlist[dt.getMonth()];
       };
-      if(d.services !== null) {
-      console.log(d.services[0]);
+      if (d.services !== null) {
+        console.log(d.services[0]);
       }
       // if(d.categoryName==="Give"){
       //   return <div>hello</div>
@@ -435,15 +434,23 @@ export class Events extends Component {
                           {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
                           {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
                         </div>
-                        <button className = "service">
-                        {d.services}          
-                        </button>
-                        <button className = "serviceType" 
-                        style={{color:d.categoryName==="Give" ? "blue": null  || 
-                        d.categoryName === "Learn" ? "green" : null || 
-                        d.categoryName ==="Volunteer" ? "yellow": null ||
-                        d.categoryName==="Activism" ? "purple": null}}>
-                        {d.categoryName}   
+                        <button className="service">{d.services}</button>
+                        <button
+                          className="serviceType"
+                          style={{
+                            color:
+                              d.categoryName === "Give"
+                                ? "blue"
+                                : null || d.categoryName === "Learn"
+                                ? "green"
+                                : null || d.categoryName === "Volunteer"
+                                ? "yellow"
+                                : null || d.categoryName === "Activism"
+                                ? "purple"
+                                : null
+                          }}
+                        >
+                          {d.categoryName}
                         </button>
                       </CardSubtitle>
                     </CardBody>
@@ -460,12 +467,12 @@ export class Events extends Component {
         <div className="search">
           <InputGroup>
             {/* <InputGroupAddon addonType="append"> */}
-              {/* <InputGroupText>Search</InputGroupText> */}
-              <Input
-                placeholder="Search for an event or organization..."
-                value={this.state.input}
-                onChange={this.handleSearch}
-              />
+            {/* <InputGroupText>Search</InputGroupText> */}
+            <Input
+              placeholder="Search events"
+              value={this.state.input}
+              onChange={this.handleSearch}
+            />
             {/* </InputGroupAddon> */}
           </InputGroup>
         </div>
@@ -594,10 +601,13 @@ export class Events extends Component {
                   onChange={this.handleCategory}
                 />{" "}
                 Give
-                </Label>
-              {" "}
-              <ReactTooltip place="top" type="dark" effect="float"/>
-              <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} data-tip = "Donating money, supplies, or resources"/>
+              </Label>{" "}
+              <ReactTooltip place="top" type="dark" effect="float" />
+              <FontAwesomeIcon
+                icon={faQuestionCircle}
+                style={{ width: "10px" }}
+                data-tip="Donating money, supplies, or resources"
+              />
             </FormGroup>
             <FormGroup check>
               <Label check>
@@ -608,9 +618,12 @@ export class Events extends Component {
                   onChange={this.handleCategory}
                 />{" "}
                 Learn
-              </Label>
-              {" "}
-            <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} data-tip = "Educating yourself or learning something new"/>
+              </Label>{" "}
+              <FontAwesomeIcon
+                icon={faQuestionCircle}
+                style={{ width: "10px" }}
+                data-tip="Educating yourself or learning something new"
+              />
             </FormGroup>
             <FormGroup check>
               <Label check>
@@ -621,9 +634,12 @@ export class Events extends Component {
                   onChange={this.handleCategory}
                 />{" "}
                 Volunteer
-              </Label>
-              {" "}
-            <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} data-tip = "Building houses, serving food, delivering care packages"/>
+              </Label>{" "}
+              <FontAwesomeIcon
+                icon={faQuestionCircle}
+                style={{ width: "10px" }}
+                data-tip="Building houses, serving food, delivering care packages"
+              />
             </FormGroup>
             <FormGroup check>
               <Label check>
@@ -634,9 +650,12 @@ export class Events extends Component {
                   onChange={this.handleCategory}
                 />{" "}
                 Activism
-              </Label>
-              {" "}
-            <FontAwesomeIcon icon={faQuestionCircle} style={{width: '10px'}} data-tip = "Pushing to affect change through an event" />
+              </Label>{" "}
+              <FontAwesomeIcon
+                icon={faQuestionCircle}
+                style={{ width: "10px" }}
+                data-tip="Pushing to affect change through an event"
+              />
             </FormGroup>
           </div>
           <br />
@@ -658,36 +677,59 @@ export class Events extends Component {
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.eventName}</ModalHeader>
             <ModalBody>
-              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Hosted by:</h7>
-              <h7 style={{fontWeight: "400"}}>{" " + this.state.organizationName}</h7>
+              <h7 style={{ color: "#177283", fontWeight: "bold" }}>
+                Hosted by:
+              </h7>
+              <h7 style={{ fontWeight: "400" }}>
+                {" " + this.state.organizationName}
+              </h7>
               <br />
-              <br/>
-              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Description:</h7>
-              <h7 style={{fontWeight: "100"}}>{" " + this.state.eventDescription}</h7>
-              <br/>
-              <br/>
-              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Address:</h7>
-              <h7 style={{fontWeight: "100"}}>{" " + this.state.address+ ","} {this.state.city + ","} {this.state.state} 
-              {" " + this.state.zipcode}</h7> 
               <br />
-              <br/>
-              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Date:</h7>
-              <h7 style={{fontWeight: "100"}}>{" " + this.state.date}</h7>
+              <h7 style={{ color: "#177283", fontWeight: "bold" }}>
+                Description:
+              </h7>
+              <h7 style={{ fontWeight: "100" }}>
+                {" " + this.state.eventDescription}
+              </h7>
               <br />
-              <br/>
-              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Time:</h7>
-              <h7 style={{fontWeight: "100"}}>{" " + moment(this.state.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
-              {moment(this.state.endTime, "HH:mm:ss").format("h:mm A")}</h7>
               <br />
-              <br/>
-              <h7 style={{color: "#177283", fontWeight:"bold"}}>Event Website:</h7> <a href={" " + this.state.url + " "}>Visit Site</a>
+              <h7 style={{ color: "#177283", fontWeight: "bold" }}>Address:</h7>
+              <h7 style={{ fontWeight: "100" }}>
+                {" " + this.state.address + ","} {this.state.city + ","}{" "}
+                {this.state.state}
+                {" " + this.state.zipcode}
+              </h7>
               <br />
-              <br/>
-              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Capacity:</h7>
-              <h7 style ={{fontWeight:"100"}}>{" " + this.state.capacity}</h7>
-              <br/>
-              <br/>
-              <h7 style ={{color: "#177283", fontWeight:"bold"}}>Event Coordinator Contact Information:</h7>
+              <br />
+              <h7 style={{ color: "#177283", fontWeight: "bold" }}>Date:</h7>
+              <h7 style={{ fontWeight: "100" }}>{" " + this.state.date}</h7>
+              <br />
+              <br />
+              <h7 style={{ color: "#177283", fontWeight: "bold" }}>Time:</h7>
+              <h7 style={{ fontWeight: "100" }}>
+                {" " +
+                  moment(this.state.startTime, "HH:mm:ss").format(
+                    "h:mm A"
+                  )}{" "}
+                - {moment(this.state.endTime, "HH:mm:ss").format("h:mm A")}
+              </h7>
+              <br />
+              <br />
+              <h7 style={{ color: "#177283", fontWeight: "bold" }}>
+                Event Website:
+              </h7>{" "}
+              <a href={" " + this.state.url + " "}>Visit Site</a>
+              <br />
+              <br />
+              <h7 style={{ color: "#177283", fontWeight: "bold" }}>
+                Capacity:
+              </h7>
+              <h7 style={{ fontWeight: "100" }}>{" " + this.state.capacity}</h7>
+              <br />
+              <br />
+              <h7 style={{ color: "#177283", fontWeight: "bold" }}>
+                Event Coordinator Contact Information:
+              </h7>
               {" " + this.state.coordinatorFirstName}
               <br />
               {" " + this.state.coordinatorLastName}

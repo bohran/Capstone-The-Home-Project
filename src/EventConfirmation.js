@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label, Row, Col } from "reactstrap";
+import moment from "moment";
 
 class Confirmation extends Component {
   render() {
@@ -61,8 +62,8 @@ class Confirmation extends Component {
               <Col md={6}>
                 <FormGroup>
                   <Label>
-                    Time: {this.props.eventForm.startTime} to{" "}
-                    {this.props.eventForm.endTime}
+                    Time: {moment(this.props.eventForm.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
+                          {moment(this.props.eventForm.endTime, "HH:mm:ss").format("h:mm A")}
                   </Label>
                 </FormGroup>
               </Col>
