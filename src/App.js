@@ -66,19 +66,19 @@ class App extends Component {
               <Link className="links" to="/Orgs">
                 Organizations
               </Link>
-              <NavLink
+              {/* <NavLink
                 className="links"
                 href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0"
                 target="_blank"
               >
                 Toolkits
-              </NavLink>
+              </NavLink> */}
               <Link className="links" to="/About">
                 About Us
               </Link>
-              <Link className="links" to="/AddEvent">
+              {/* <Link className="links" to="/AddEvent">
                 Add Event
-              </Link>
+              </Link> */}
               
               {/* <Dropdown className="links" isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}> */}
               {/* <UncontrolledDropdown inNavbar className="links">
@@ -103,15 +103,23 @@ class App extends Component {
           <Route path="/RegOrganization" component={RegOrganization} />
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
-        {/* <div className="footer">
+        <div className="footer">
           <div className="footer-title">Contact Us</div> <br />
           <div className="footer-content">
+            {/* replace with logo */}
             <span>Pyramid Communications</span>
-            <span>marketing@pyramidcommunications.com</span>
+            <span>1932 First Avenue Suite 507 </span>
+            <span>Seattle, WA 98101</span>
+
+            <span>hello@pyramidcom.com</span>
             <span>206.374.7788</span>
-            <span>1932 First Avenue Suite 507, Seattle, WA 98101</span>
+
+            {/* Explore */}
+            {/* Add in all the nav bar elements here */}
+
+            {/* social media? */}
           </div>
-        </div> */}
+        </div>
       </Router>
     );
   }

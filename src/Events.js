@@ -479,16 +479,16 @@ export class Events extends Component {
         {/* <h2 style={{ textAlign: "center", fontWeight: "300" }}> */}
         {/* Events that match your search: */}
         {/* </h2> */}
-        {/* <div className="add">
-          <h4>New Organization?</h4>
+        <div className="add">
+          {/* <h4>New Organization?</h4>
           <Button tag = {Link} to="/RegOrganization">
             + Add Organization
           </Button>
-          <br />
+          <br /> */}
           <Button tag= {Link} to ="/AddEvent">
             + Add Event
           </Button>
-        </div> */}
+        </div>
         {/* <Nav vertical className="sidebar"> */}
         <div className="sidebarFilter">
           <div className="filters">

@@ -12,6 +12,7 @@ class Confirmation extends Component {
         return d;
       }
     });
+  
     return (
       <section>
         <h2 className="pageTitle">CONFIRM YOUR EVENT DETAILS</h2>

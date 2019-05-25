@@ -43,7 +43,7 @@ export default class AddEvent extends Component {
       coordinatorEmail: "",
       coordinatorPhone: "",
       website: "",
-      img: "https://i.ytimg.com/vi/Ll4HftFKjD8/maxresdefault.jpg"
+      img: ""
     },
     orgData: []
   };
@@ -73,7 +73,8 @@ export default class AddEvent extends Component {
         contactFirstName: this.state.eventFormEntries.creatorFName,
         contactLastName: this.state.eventFormEntries.creatorLName,
         services: this.state.eventFormEntries.services,
-        organizations: this.state.eventFormEntries.orgs
+        organizations: this.state.eventFormEntries.orgs,
+        imageURL: this.state.eventFormEntries.img
       }),
       headers: new Headers({
         "Content-Type": "application/json"
