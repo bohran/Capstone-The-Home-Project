@@ -64,3 +64,8 @@ label, h6 {
 .input {
   font-weight: lighter;
 }
+
+.serviceOptions {
+  color: grey;
+  font-weight: normal;
+}

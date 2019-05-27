@@ -1,0 +1,31 @@
+.orgIntro {
+    width: 500px;
+    padding: 20px;
+}
+
+.orgTitle {
+    font-size: 18px;
+    font-weight: bolder;
+    margin-bottom: 0px;
+}
+
+.orgDescr {
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.orgType {
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 0px;
+}
+
+.orgCollection {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.orgSearch {
+    padding: 20px;
+}
