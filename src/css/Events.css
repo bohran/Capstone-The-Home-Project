@@ -134,10 +134,12 @@ font-weight: 300;
 .service{
   text-align: left;
 }
-.serviceType {
+.actionType {
   text-align: right;
   margin-bottom: 50%;
   border-radius: 50%;
+  font-weight: 300;
+
 }
 
 .help {

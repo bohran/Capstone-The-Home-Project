@@ -363,7 +363,6 @@ export class Events extends Component {
   };
 
   render() {
-    const classes = 'tooltip-inner';
     const { selectedCity } = this.state;
     const { selectedTime } = this.state;
     const filteredData = this.state.data.filter(d => {
@@ -404,9 +403,7 @@ export class Events extends Component {
       if(d.services !== null) {
       console.log(d.services[0]);
       }
-      // if(d.categoryName==="Give"){
-      //   return <div>hello</div>
-      // }
+    
       return (
         <div className="events" key={"event" + i}>
           <Row>
@@ -435,16 +432,17 @@ export class Events extends Component {
                           {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
                           {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
                         </div>
-                        <button className = "service">
-                        {d.services}          
-                        </button>
-                        <button className = "serviceType" 
+                        <br/>
+                        {/* <button className = "service">
+                        {" " + d.services + "  " }        
+                        </button> */}
+                        <div className = "actionType" 
                         style={{color:d.categoryName==="Give" ? "blue": null  || 
                         d.categoryName === "Learn" ? "green" : null || 
-                        d.categoryName ==="Volunteer" ? "yellow": null ||
-                        d.categoryName==="Activism" ? "purple": null}}>
+                        d.categoryName ==="Volunteer" ? "purple": null ||
+                        d.categoryName==="Activism" ? "red": null}}>
                         {d.categoryName}   
-                        </button>
+                        </div>
                       </CardSubtitle>
                     </CardBody>
                   </div>
