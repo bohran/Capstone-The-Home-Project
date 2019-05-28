@@ -149,20 +149,18 @@ font-weight: 300;
 }
 
 .search {
-  /* width: 30%; */
-  /* margin-left: 23%; */
-  /* padding-top: 3%; */
-  /* float: left; */
+  padding: 5px;
 }
 .search .input-group{
   float: left;
-  width: 30%;
+  width: 50%;
   margin-left: 22%;
   margin-top: 1%;
+  margin-right: 5%;
 }
 
 .search .btn-secondary{
-  float: right;
+  /* float: right; */
   margin-right: 8%;
   margin-top: 1%;
 }

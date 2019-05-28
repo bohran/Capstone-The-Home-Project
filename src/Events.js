@@ -463,7 +463,7 @@ export class Events extends Component {
     });
     return (
       <div>
-        <div className="search" style ={{paddingBottom: "5%"}}>
+        <div className="search">
           <InputGroup>
             {/* <InputGroupAddon addonType="append"> */}
             {/* <InputGroupText>Search</InputGroupText> */}

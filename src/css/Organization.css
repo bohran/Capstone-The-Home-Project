@@ -29,3 +29,14 @@
 .orgSearch {
     padding: 20px;
 }
+.orgSearch .input-group{
+    width: 50%; 
+    float: left;
+    margin-right: 10%;
+}
+
+.orgSearch .btn-secondary{
+    margin-top: 0%;
+}
+
+

@@ -12,25 +12,26 @@ export class Home extends Component {
   render() {
     return (
       <div className="homeBody">
-        <Parallax
-          //   blur={{ min: -15, max: 15 }}
-          bgImage={require("./img/CoverPhotoBW.png")}
-          bgImageAlt="collective pictures of the community"
-          strength={400}
-          style={{ minHeight: "700px", maxHeight: "700px", width: "100%" }}
-
-        >
-          <div class="scroll-down" style={{margin:'30%', bottom: '50%', top:'70%'}}></div>
-
-
-          <div className="bannerBox">
-            <p className="bannerContent">
+        <div className="parallax">
+          <Parallax
+            // blur={{ min: -15, max: 30 }}
+            bgImage={require("./img/CoverPhotosTealBlur.jpg")}
+            bgImageAlt="collective pictures of the community"
+            strength={400}
+            style={{ minHeight: "650px", maxHeight: "650px", width: "100%" }}
+          >
+            {/* <div className="bannerBox"> */}
+            {/* <p className="bannerContent">
               Aligning organizations in the fight to end homelessness in King
               County
+            </p> */}
+            <p className="bannerContent">
+              SEATTLE FOR ALL
             </p>
-          </div>
-        </Parallax>
-
+            {/* </div> */}
+            <div class="scroll-down"></div>
+          </Parallax>
+        </div>
         <h1 className="homeTitle">Home Project Calendar</h1>
         <p className="homeAbstract">
           Within King County alone, there are an estimated 12,000 people who are

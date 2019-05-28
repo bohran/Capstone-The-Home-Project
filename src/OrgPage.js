@@ -67,15 +67,15 @@ class OrgPage extends Component {
                 onChange={this.handleSearch}
               />
             </InputGroup>
-            <div className="orgButtons">
-              <Button href="/RegOrganization" >Add Organization</Button>
+            {/* <div className="orgButtons"> */}
+              <Button href="/RegOrganization" >+ Add Organization</Button>
               <Button
                 className="toolkitButton"
                 onClick={()=> window.open("https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0", "_blank")}
               >
                 Toolkits
               </Button>
-            </div>
+            {/* </div> */}
           </div>
         </div>
         <div className="orgCollection">{displayOrgs}</div>
