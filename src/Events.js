@@ -422,6 +422,7 @@ export class Events extends Component {
                         </div>
                         <div className="eventName">{" " + d.eventName}</div>
                       </CardTitle>
+                      <br/>
                       <CardSubtitle>
                         <div className="eventAddress">
                           <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.city},{" "}
@@ -434,7 +435,7 @@ export class Events extends Component {
                         </div>
                         {/* <button className="service">{d.services}</button> */}
                         <br/>
-                        <button
+                        {/* <button
                           className="serviceType"
                           style={{
                             color:
@@ -450,7 +451,7 @@ export class Events extends Component {
                           }}
                         >
                           {d.categoryName}
-                        </button>
+                        </button> */}
                       </CardSubtitle>
                     </CardBody>
                   </div>
@@ -609,7 +610,7 @@ export class Events extends Component {
               <FontAwesomeIcon
                 icon={faQuestionCircle}
                 style={{ width: "10px" }}
-                data-tip="Donating money, supplies, or resources"
+                data-tip="Make a donation, whether it’s funding, food, or in-kind."
               />
             </FormGroup>
             <FormGroup check>
@@ -625,7 +626,7 @@ export class Events extends Component {
               <FontAwesomeIcon
                 icon={faQuestionCircle}
                 style={{ width: "10px" }}
-                data-tip="Educating yourself or learning something new"
+                data-tip="Learn more about the issue and what’s happening in our community."
               />
             </FormGroup>
             <FormGroup check>
@@ -641,7 +642,7 @@ export class Events extends Component {
               <FontAwesomeIcon
                 icon={faQuestionCircle}
                 style={{ width: "10px" }}
-                data-tip="Building houses, serving food, delivering care packages"
+                data-tip="Use your time and talents to help out."
               />
             </FormGroup>
             <FormGroup check>
@@ -657,7 +658,7 @@ export class Events extends Component {
               <FontAwesomeIcon
                 icon={faQuestionCircle}
                 style={{ width: "10px" }}
-                data-tip="Pushing to affect change through an event"
+                data-tip="Use your voice to make change in our community."
               />
             </FormGroup>
           </div>
