@@ -17,8 +17,12 @@ export class Home extends Component {
           bgImage={require("./img/CoverPhotoBW.png")}
           bgImageAlt="collective pictures of the community"
           strength={400}
-          style={{ minHeight: "750px", maxHeight: "750px", width: "100%" }}
+          style={{ minHeight: "700px", maxHeight: "700px", width: "100%" }}
+
         >
+          <div class="scroll-down" style={{margin:'30%', bottom: '50%', top:'70%'}}></div>
+
+
           <div className="bannerBox">
             <p className="bannerContent">
               Aligning organizations in the fight to end homelessness in King
@@ -26,6 +30,7 @@ export class Home extends Component {
             </p>
           </div>
         </Parallax>
+
         <h1 className="homeTitle">Home Project Calendar</h1>
         <p className="homeAbstract">
           Within King County alone, there are an estimated 12,000 people who are

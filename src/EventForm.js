@@ -482,7 +482,7 @@ class NewEvent extends Component {
             <h5 className="formTitle">Event Coordinator Information</h5>
             <h3 className="subtitle">
               This information will be used by interested volunteers and
-              participants who want to get invovled
+              participants who want to get involved
             </h3>
             <div className="formChecks">
               <FormGroup check inline>

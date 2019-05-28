@@ -432,7 +432,8 @@ export class Events extends Component {
                           {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
                           {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
                         </div>
-                        <button className="service">{d.services}</button>
+                        {/* <button className="service">{d.services}</button> */}
+                        <br/>
                         <button
                           className="serviceType"
                           style={{
@@ -462,31 +463,35 @@ export class Events extends Component {
     });
     return (
       <div>
-        <div className="search">
+        <div className="search" style ={{paddingBottom: "5%"}}>
           <InputGroup>
             {/* <InputGroupAddon addonType="append"> */}
             {/* <InputGroupText>Search</InputGroupText> */}
             <Input
-              placeholder="Search events"
+              placeholder="Search events or organizations"
               value={this.state.input}
               onChange={this.handleSearch}
             />
             {/* </InputGroupAddon> */}
           </InputGroup>
+          <Button tag= {Link} to ="/AddEvent">
+            + Add Event
+        </Button>
         </div>
+        
         {/* <h2 style={{ textAlign: "center", fontWeight: "300" }}> */}
         {/* Events that match your search: */}
         {/* </h2> */}
-        <div className="add">
+        {/* <div className="add"> */}
           {/* <h4>New Organization?</h4>
           <Button tag = {Link} to="/RegOrganization">
             + Add Organization
           </Button>
           <br /> */}
-          <Button tag= {Link} to ="/AddEvent">
+          {/* <Button tag= {Link} to ="/AddEvent">
             + Add Event
-          </Button>
-        </div>
+          </Button> */}
+        {/* </div> */}
         {/* <Nav vertical className="sidebar"> */}
         <div className="sidebarFilter">
           <div className="filters">
