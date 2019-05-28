@@ -19,8 +19,10 @@ body {
 	text-shadow: 0;
   width: 50px;
   height: 50px;
-  border-bottom: 5px solid #cf0f2e;
-  border-right: 5px solid #cf0f2e;
+  /* border-bottom: 10px solid #cf0f2e; */
+  border-bottom: 10px solid white;
+  /* border-right: 10px solid #cf0f2e; */
+  border-right: 10px solid white;
   z-index: 9;
   -webkit-transform: translate(-50%, 0%) rotate(45deg);
 	-webkit-animation: fade_move_down 3s ease-in-out infinite;
@@ -106,5 +108,5 @@ body {
   width: 100%;
   align-content: center;
   margin: auto;
-  padding-top: 20px;
+  padding-top: 5px;
 }

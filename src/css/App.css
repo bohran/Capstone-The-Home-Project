@@ -78,7 +78,7 @@ div.links.dropdown {
 
 .footer-title{
     padding-left: 40px;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
 }
 
@@ -95,6 +95,7 @@ span {
     text-align: left;
     display: flex;
     flex-direction: row;
+    font-weight: lighter;
 }
 
 .footer-contact {
