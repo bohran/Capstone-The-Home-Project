@@ -77,9 +77,9 @@ div.links.dropdown {
 }
 
 .footer-title{
-    /* text-align: center; */
     padding-left: 40px;
-    font-size: 1.75rem;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 span {
@@ -92,5 +92,11 @@ span {
 }
 
 .footer-content {
-    text-align: center;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-contact {
+    padding-left: 40px;
 }

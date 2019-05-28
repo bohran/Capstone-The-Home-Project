@@ -79,7 +79,7 @@ class App extends Component {
               {/* <Link className="links" to="/AddEvent">
                 Add Event
               </Link> */}
-              
+
               {/* <Dropdown className="links" isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}> */}
               {/* <UncontrolledDropdown inNavbar className="links">
               <DropdownToggle nav caret className="links">Register</DropdownToggle>
@@ -104,15 +104,19 @@ class App extends Component {
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
         <div className="footer">
-          <div className="footer-title">Contact Us</div> <br />
+          <div className="footer-title">CONTACT US</div> <br />
           <div className="footer-content">
             {/* replace with logo */}
-            <span>Pyramid Communications</span>
-            <span>1932 First Avenue Suite 507 </span>
-            <span>Seattle, WA 98101</span>
+            <div className="footer-contact">
+              <p>Pyramid Communications</p>
+              <p>1932 First Avenue Suite 507 </p>
+              <p>Seattle, WA 98101</p>
+            </div>
 
-            <span>hello@pyramidcom.com</span>
-            <span>206.374.7788</span>
+            <div className="footer-contact">
+              <p>hello@pyramidcom.com</p>
+              <p>206.374.7788</p>
+            </div>
 
             {/* Explore */}
             {/* Add in all the nav bar elements here */}
