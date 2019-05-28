@@ -16,6 +16,7 @@ export class About extends Component {
           >
             The Home Project
           </div>
+          <img src="./img/CoverPhotoBW.png" alt="community" width="70%"/>
           <div className="slogan">
             An Engagement and Advocacy Initiative with One Goal: A Home for
             Everyone in King County

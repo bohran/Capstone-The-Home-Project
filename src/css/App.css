@@ -3,16 +3,18 @@ body{
     color: #6e6e70;
 }
 .title{
-    /* font-weight: 400; */
-    font-size: 18px;
-    color: #fafaed;
-    padding-right:60px;
+    font-weight: bold;
+    font-size: 20px;
+    /* color: #fafaed; */
+    color: black !important;
+    padding-left: 20px;
 }
 .links{
     font-weight: 200;
     font-size: 18px;
     padding: 25px 10px 10px 25px;
-    color: #f1faed;
+    /* color: #f1faed; */
+    color: black;
     text-align: right;
     align-content: right;
     /* -webkit-flex-direction: row;
@@ -23,17 +25,18 @@ body{
 .links:hover {
     text-decoration: none;
     font-weight: bold;
-    color: white;
+    /* color: white; */
+    color: black;
 }
 
 .navbar {
-    padding: 10px;
+    padding: 15px;
 }
 
 .nav-wrapper{
-    background-color:#177283;
+    /* background-color:#177283; */
     width:100%;
-
+    box-shadow: none;
 }
 .navtitle{
     width: 50%; 
@@ -68,13 +71,14 @@ div.links.dropdown {
     background-repeat: repeat;
     color:white;
     width: 100%;
-    margin-top: 10%;
+    margin-top: 3%;
     padding-top: 2%;
     padding-bottom: 2%;
 }
 
 .footer-title{
-    text-align: center;
+    /* text-align: center; */
+    padding-left: 40px;
     font-size: 1.75rem;
 }
 
