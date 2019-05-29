@@ -65,7 +65,7 @@ export class About extends Component {
               />
               <h6 className="photoTitles">Shannon Gatta </h6>
               <h3>
-                <h6 className="memberTag">UX Researcher</h6>
+                <h6 className="memberTag">Front-End Developer</h6>
               </h3>
               {/* <p className="email">sgatta@uw.edu</p> */}
             </div>
