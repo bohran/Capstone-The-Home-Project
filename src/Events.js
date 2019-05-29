@@ -460,6 +460,7 @@ export class Events extends Component {
             + Add Event
         </Button>
         </div>
+        <div className="d-flex">
         <div className="sidebarFilter">
           <div className="filters">
             <h5>Select Area of Service:</h5>
@@ -639,11 +640,13 @@ export class Events extends Component {
             flexDirection: "row",
             flexWrap: "wrap",
             flexBasis: 1,
-            marginLeft: "50px"
+            marginLeft: "50px",
+            // paddingBottom: "275px",
+            flexGrow:"1"
           }}
         >
           {content}
-
+</div>
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.eventName}</ModalHeader>
             <ModalBody>

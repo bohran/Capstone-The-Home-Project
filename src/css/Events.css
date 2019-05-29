@@ -9,12 +9,13 @@ body {
     margin-left:15px;
 } */
 .sidebarFilter {
-  float: left;
+  /* float: left; */
   padding-left: 30px;
   padding-right: 40px;
   /* background-color: #33cbe64b; */
   padding-top: 20px;
   font-weight: 300;
+  padding-bottom: 275px;
 }
 
 .navbar-wrapper {
