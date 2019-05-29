@@ -28,7 +28,7 @@ import moment from "moment";
 import _ from "lodash";
 import Select from "react-select";
 import ReactTooltip from "react-tooltip";
-import {CircleArrow as ScrollUpButton} from "react-scroll-up-button"; //Add this line Here
+import  ScrollUpButton from "react-scroll-up-button"; //Add this line Here
 
 import "./css/Events.css";
 
