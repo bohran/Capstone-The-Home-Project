@@ -97,12 +97,19 @@ body {
   font-weight: bold;
   font-style: normal;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 .feature {
   width: 33%;
   padding-right: 30px;
+  text-align: center;
 }
+
+.icon{
+  font-size: 30px;
+}
+
 
 .parallax {
   width: 100%;

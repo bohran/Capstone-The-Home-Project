@@ -301,7 +301,7 @@ class NewOrg extends Component {
               </Col>
             </Row>
 
-            <FormGroup>
+            {/* <FormGroup>
               <Label>Select Cover Photo</Label>
               <CustomInput
                 id="mediaButton"
@@ -310,7 +310,7 @@ class NewOrg extends Component {
                 value={this.props.form.media}
                 onChange={this.props.onChange}
               />
-            </FormGroup>
+            </FormGroup> */}
           </Form>
         </div>
         <div className="formButton">

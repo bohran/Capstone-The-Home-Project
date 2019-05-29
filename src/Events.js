@@ -21,15 +21,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkerAlt,
   faClock,
-  faQuestionCircle,
-  faQuestion,
-  faSearch
+  faQuestionCircle
 } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import moment from "moment";
 import _ from "lodash";
 import Select from "react-select";
 import ReactTooltip from "react-tooltip";
+import {CircleArrow as ScrollUpButton} from "react-scroll-up-button"; //Add this line Here
 
 import "./css/Events.css";
 
@@ -362,7 +361,6 @@ export class Events extends Component {
   };
 
   render() {
-    const classes = "tooltip-inner";
     const { selectedCity } = this.state;
     const { selectedTime } = this.state;
     const filteredData = this.state.data.filter(d => {
@@ -433,25 +431,6 @@ export class Events extends Component {
                           {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
                           {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
                         </div>
-                        {/* <button className="service">{d.services}</button> */}
-                        <br/>
-                        {/* <button
-                          className="serviceType"
-                          style={{
-                            color:
-                              d.categoryName === "Give"
-                                ? "blue"
-                                : null || d.categoryName === "Learn"
-                                ? "green"
-                                : null || d.categoryName === "Volunteer"
-                                ? "yellow"
-                                : null || d.categoryName === "Activism"
-                                ? "purple"
-                                : null
-                          }}
-                        >
-                          {d.categoryName}
-                        </button> */}
                       </CardSubtitle>
                     </CardBody>
                   </div>
@@ -460,40 +439,27 @@ export class Events extends Component {
             </Col>
           </Row>
         </div>
+
       );
     });
     return (
       <div>
+              <ScrollUpButton 
+              StopPosition={0}
+              ShowAtPosition={150}
+              />
         <div className="search">
           <InputGroup>
-            {/* <InputGroupAddon addonType="append"> */}
-            {/* <InputGroupText>Search</InputGroupText> */}
             <Input
               placeholder="Search events or organizations"
               value={this.state.input}
               onChange={this.handleSearch}
             />
-            {/* </InputGroupAddon> */}
           </InputGroup>
           <Button tag= {Link} to ="/AddEvent">
             + Add Event
         </Button>
         </div>
-        
-        {/* <h2 style={{ textAlign: "center", fontWeight: "300" }}> */}
-        {/* Events that match your search: */}
-        {/* </h2> */}
-        {/* <div className="add"> */}
-          {/* <h4>New Organization?</h4>
-          <Button tag = {Link} to="/RegOrganization">
-            + Add Organization
-          </Button>
-          <br /> */}
-          {/* <Button tag= {Link} to ="/AddEvent">
-            + Add Event
-          </Button> */}
-        {/* </div> */}
-        {/* <Nav vertical className="sidebar"> */}
         <div className="sidebarFilter">
           <div className="filters">
             <h5>Select Area of Service:</h5>

@@ -98,7 +98,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: pre-line;
-  font-size: 15px;
+  font-size: 16px;
   padding: 8px;
   height: 3.8em;
   text-align: left;
@@ -125,11 +125,13 @@ body {
 }
 .eventAddress{
 text-align: left;  
-font-weight: 300;
+font-weight: 200;
+font-size: 15px;
 }
 .eventTime{
   text-align: left;  
-  font-weight: 300;
+  font-weight: 200;
+  font-size: 15px;
 }
 .service{
   text-align: left;

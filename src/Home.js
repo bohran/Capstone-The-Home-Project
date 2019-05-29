@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import "mdbreact/dist/css/mdb.css";
 import "mdbreact/dist/css/style.css";
-// import { Parallax, ParallaxBanner, ParallaxProvider } from 'react-scroll-parallax';
 import { Parallax } from "react-parallax";
-
 import "./css/Home.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch,
+  faCalendar,
+  faHandsHelping
+} from "@fortawesome/free-solid-svg-icons";
 
 // TALK WITH EMMA ABOUT STORING THE EVENT IN A DUMMY TABLE UNTIL APPROVED BY PYRAMID
 
@@ -18,7 +22,7 @@ export class Home extends Component {
             bgImage={require("./img/CoverPhotosTealBlur.jpg")}
             bgImageAlt="collective pictures of the community"
             strength={400}
-            style={{ minHeight: "650px", maxHeight: "650px", width: "100%" }}
+            style={{ minHeight: "700px", maxHeight: "700px", width: "100%" }}
           >
             {/* <div className="bannerBox"> */}
             {/* <p className="bannerContent">
@@ -32,7 +36,8 @@ export class Home extends Component {
             <div class="scroll-down"></div>
           </Parallax>
         </div>
-        <h1 className="homeTitle">Home Project Calendar</h1>
+        <br/>
+        {/* <h1 className="homeTitle">Home Project Calendar</h1> */}
         <p className="homeAbstract">
           Within King County alone, there are an estimated 12,000 people who are
           experiencing homelessness. This is becoming a prominent issue in the
@@ -61,16 +66,20 @@ export class Home extends Component {
         </p>
         <div className="homeFeatures">
           <p className="feature">
+            <FontAwesomeIcon className = "icon" icon={faCalendar}/>
             <p className="highlightFeature">Share </p> Post events directly on
             the site and increase visibility to other organizations and
             community members
           </p>
           <p className="feature">
+          <FontAwesomeIcon className = "icon" icon={faSearch} />
             <p className="highlightFeature">Discover </p> Search the calendar
             for opportunities to get involved and work with other organizations
             based on service area and purpose
+           
           </p>
           <p className="feature">
+          <FontAwesomeIcon className = "icon" icon={faHandsHelping}/>
             <p className="highlightFeature">Collaborate </p> Align missions and
             efforts in order to minimize resource waste and maximize reach and
             impact

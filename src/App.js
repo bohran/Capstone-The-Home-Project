@@ -114,7 +114,7 @@ class App extends Component {
             </div>
 
             <div className="footer-contact">
-              <p>Email: hello@pyramidcom.com</p>
+              <p>Email: info@pyramidcom.com</p>
               <p>Phone: 206.374.7788</p>
               <p>Website: www.pyramidcommunications.com</p>
             </div>
