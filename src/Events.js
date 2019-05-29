@@ -28,7 +28,7 @@ import moment from "moment";
 import _ from "lodash";
 import Select from "react-select";
 import ReactTooltip from "react-tooltip";
-import  ScrollUpButton from "react-scroll-up-button"; //Add this line Here
+import  ScrollUpButton from "react-scroll-up-button"; 
 
 import "./css/Events.css";
 
@@ -463,7 +463,7 @@ export class Events extends Component {
         <div className="d-flex">
         <div className="sidebarFilter">
           <div className="filters">
-            <h5>Select Area of Service:</h5>
+            <h5>Areas of Service:</h5>
             <FormGroup check>
               <Label check>
                 <Input
@@ -526,7 +526,7 @@ export class Events extends Component {
             </FormGroup>
             <br />
             <div className="date">
-              <h5>Select Date:</h5>
+              <h5>Date Range:</h5>
               <Select
                 value={selectedTime}
                 onChange={this.handleTimeChange}
@@ -536,7 +536,7 @@ export class Events extends Component {
             </div>
             <br />
             <div className="location">
-              <h5>Select Location:</h5>
+              <h5>Location:</h5>
               <Select
                 style={{ position: "fixed" }}
                 value={selectedCity}
@@ -550,7 +550,7 @@ export class Events extends Component {
             <br />
           </div>
           <div className="categories">
-            <h5>Select an Action:</h5>
+            <h5>Categories:</h5>
             <FormGroup check>
               <Label check>
                 <Input
