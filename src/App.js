@@ -100,7 +100,7 @@ class App extends Component {
           <Route path="/Events" component={Events} />
           <Route path="/Orgs" component={OrgInfo} />
           <Route path="/AddEvent" component={AddEvent} />
-          <Route path="/RegOrganization" component={RegOrganization} />
+          <Route path="/AddOrganization" component={RegOrganization} />
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
         <div className="footer">
@@ -116,7 +116,7 @@ class App extends Component {
             <div className="footer-contact">
               <p>Email: info@pyramidcom.com</p>
               <p>Phone: 206.374.7788</p>
-              <p>Website: www.pyramidcommunications.com</p>
+              <p>Website: pyramidcommunications.com</p>
             </div>
 
             {/* Explore */}

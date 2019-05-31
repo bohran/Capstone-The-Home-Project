@@ -300,17 +300,6 @@ class NewOrg extends Component {
                 </FormGroup>
               </Col>
             </Row>
-
-            {/* <FormGroup>
-              <Label>Select Cover Photo</Label>
-              <CustomInput
-                id="mediaButton"
-                type="file"
-                name="img"
-                value={this.props.form.media}
-                onChange={this.props.onChange}
-              />
-            </FormGroup> */}
           </Form>
         </div>
         <div className="formButton">

@@ -48,12 +48,26 @@ class OrgPage extends Component {
 
     let displayOrgs = filteredOrgs.map((d, i) => {
       return (
+<<<<<<< HEAD
         <div key={"org" + i} className="orgIntro">
           <p className="orgTitle">
           <a href = {d.url} target="_blank">{d.organizationName}</a>
           </p>
           <p className="orgDescr">{d.organizationDescription}</p>
           <p className="orgType">{d.organizationType}</p>
+=======
+        <div
+          key={"org" + i}
+          className="org"
+          onClick={() => window.open(d.url, "_blank")}
+        >
+          <div className="orgTitle">{d.organizationName}</div>
+          <div className="orgDescr">{d.organizationDescription}</div>
+          <div className="orgContact">
+            Phone: {d.phone} <br /> Email: {d.email}
+          </div>
+          <div className="orgType">{_.join(d.organizationType, ", ")}</div>
+>>>>>>> c0b97714507b8335a072607fc43349341d033a43
         </div>
       );
     });
@@ -70,6 +84,7 @@ class OrgPage extends Component {
               />
             </InputGroup>
             {/* <div className="orgButtons"> */}
+<<<<<<< HEAD
               <Button tag = {Link} to ="/RegOrganization"> + Register Organization</Button>
               <Button
                 className="toolkitButton"
@@ -77,6 +92,22 @@ class OrgPage extends Component {
               >
                 Toolkits
               </Button>
+=======
+            <Button tag={Link} to="/AddOrganization">
+              + Add Organization
+            </Button>
+            <Button
+              className="toolkitButton"
+              onClick={() =>
+                window.open(
+                  "https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0",
+                  "_blank"
+                )
+              }
+            >
+              Toolkits
+            </Button>
+>>>>>>> c0b97714507b8335a072607fc43349341d033a43
             {/* </div> */}
           </div>
         </div>

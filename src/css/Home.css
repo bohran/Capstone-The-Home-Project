@@ -97,7 +97,7 @@ body {
   font-weight: bold;
   font-style: normal;
   margin-bottom: 5px;
-  text-align: center;
+  color: #db4b62;
 }
 
 .feature {
@@ -115,5 +115,4 @@ body {
   width: 100%;
   align-content: center;
   margin: auto;
-  padding-top: 5px;
 }
