@@ -13,15 +13,16 @@ body{
 
 .slogan {
     font-style: italic;
-    font-size: 20px;
-    margin: 5px 10% 0px 10%;
+    font-size: 18px;
+    font-weight: lighter;
+    padding-bottom: 25px;
 }
 
 .missionContent {
-    font-size: 22px;
+    font-size: 20px;
     text-align: left;
-    margin: 0px 20% 15px 20%;
-    font-weight: 100;
+    margin: 20px 22% 15px 22%;
+    font-weight: lighter;
 }
 
 .attention {
@@ -44,31 +45,33 @@ body{
 
 .memberTag {
     color: #6e6e70;
-    padding-bottom: 0px !important;
     font-weight: lighter;
 }
 
 .aboutTitle {
     font-size: 40px;
     font-weight: bold;
-    padding-bottom: 25px;
+    padding-bottom: 5px;
 }
 
 .aboutTeamImgs {
-    margin: 0px;
-    height: 250px;
-    width: 250px;
+    margin: auto;
+    height: 225px;
+    width: 200px;
+    text-align: center;
 }
 
 .imgContainer {
     display: flex;
-    flex-direction: row;
-    text-align: center;
-    padding-left: 17%;
+    flex-wrap: wrap;
+    align-content: center;
+    margin: auto;
+    width: 65%;
+    padding-bottom: 50px;
 }
 
 .teamPhotos {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     border-radius: 100px;
 }

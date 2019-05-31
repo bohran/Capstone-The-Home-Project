@@ -359,112 +359,123 @@ export class Events extends Component {
     if (date.value === "Today") {
       maxDate = moment(maxDate, "YYYY/MM/DD").format("YYYY-MM-DD");
     } else if (date.value === "Tomorrow") {
-      maxDate = moment(maxDate, "YYYY/MM/DD").add(1, "days").format("YYYY-MM-DD");
+      maxDate = moment(maxDate, "YYYY/MM/DD")
+        .add(1, "days")
+        .format("YYYY-MM-DD");
     } else if (date.value === "This Week") {
-      maxDate = moment(maxDate, "YYYY/MM/DD").add(7, "days").format("YYYY-MM-DD");
+      maxDate = moment(maxDate, "YYYY/MM/DD")
+        .add(7, "days")
+        .format("YYYY-MM-DD");
     } else if (date.value === "Next Week") {
-      maxDate = moment(maxDate, "YYYY/MM/DD").add(14, "days").format("YYYY-MM-DD");
+      maxDate = moment(maxDate, "YYYY/MM/DD")
+        .add(14, "days")
+        .format("YYYY-MM-DD");
     } else if (date.value === "This Month") {
-      maxDate = moment(maxDate, "YYYY/MM/DD").add(30, "days").format("YYYY-MM-DD");
+      maxDate = moment(maxDate, "YYYY/MM/DD")
+        .add(30, "days")
+        .format("YYYY-MM-DD");
     } else {
-      maxDate = "All"
+      maxDate = "All";
     }
     console.log(maxDate);
     this.setState({ selectedDate: maxDate });
   };
 
   render() {
+    let content = "";
     console.log(`Option selected:`, this.state.selectedDate);
     const classes = "tooltip-inner";
-    const filteredData = this.state.data.filter(d => {
-      //TODO: improve efficiency?
-      const matchesCategory =
-        d.categoryName === this.state.category || this.state.category === "All";
-      const serviceOverlap = _.intersection(d.services, this.state.filter);
-      const matchesService =
-        serviceOverlap.length !== 0 || this.state.filter.length === 0;
-      const searchInput =
-        d.eventName.toLowerCase().includes(this.state.input.toLowerCase()) ||
-        this.state.input === "";
-      const matchCity =
-        this.state.selectedCity.includes(d.city) ||
-        this.state.selectedCity.length === 0;
+    if (this.state.data.length > 0) {
+      const filteredData = this.state.data.filter(d => {
+        //TODO: improve efficiency?
+        const matchesCategory =
+          d.categoryName === this.state.category ||
+          this.state.category === "All";
+        const serviceOverlap = _.intersection(d.services, this.state.filter);
+        const matchesService =
+          serviceOverlap.length !== 0 || this.state.filter.length === 0;
+        const searchInput =
+          d.eventName.toLowerCase().includes(this.state.input.toLowerCase()) ||
+          this.state.input === "";
+        const matchCity =
+          this.state.selectedCity.includes(d.city) ||
+          this.state.selectedCity.length === 0;
         console.log(d.date);
-      const matchDate =
-        this.state.selectedDate >= (moment(d.date, "YYYY/MM/DD").subtract(1, "days").format("YYYY-MM-DD")) || this.state.selectedDate === "All";
-      if (
-        matchesCategory &&
-        matchesService &&
-        searchInput &&
-        matchCity &&
-        matchDate
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    const content = filteredData.map((d, i) => {
-      let mlist = [];
-      var month_name = function(dt) {
-        mlist = [
-          "JAN",
-          "FEB",
-          "MAR",
-          "APR",
-          "MAY",
-          "JUN",
-          "JUL",
-          "AUG",
-          "SEP",
-          "OCT",
-          "NOV",
-          "DEC"
-        ];
-        return mlist[dt.getMonth()];
-      };
-      if (d.services !== null) {
-      }
+        const matchDate =
+          this.state.selectedDate >=
+            moment(d.date, "YYYY/MM/DD")
+              .subtract(1, "days")
+              .format("YYYY-MM-DD") || this.state.selectedDate === "All";
+        if (
+          matchesCategory &&
+          matchesService &&
+          searchInput &&
+          matchCity &&
+          matchDate
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      content = filteredData.map((d, i) => {
+        let mlist = [];
+        var month_name = function(dt) {
+          mlist = [
+            "JAN",
+            "FEB",
+            "MAR",
+            "APR",
+            "MAY",
+            "JUN",
+            "JUL",
+            "AUG",
+            "SEP",
+            "OCT",
+            "NOV",
+            "DEC"
+          ];
+          return mlist[dt.getMonth()];
+        };
+        if (d.services !== null) {
+        }
 
-      return (
-        <div className="events" key={"event" + i}>
-          <Row>
-            <Col>
-              <CardGroup>
-                <Card onClick={this.handleCardClick.bind(null, i)}>
-                  <div className="image">
-                    <CardImg src={d.imageURL} />
-                    <CardBody>
-                      <CardTitle>
-                        <div className="eventMonth">
-                          {" " + month_name(new Date(d.date))} <br />
-                          <div className="eventDay">
-                            {" " + new Date(d.date).getDate() + " "}
-                          </div>
-                        </div>
-                        <div className="eventName">{" " + d.eventName}</div>
-                      </CardTitle>
-                      <br />
-                      <CardSubtitle>
-                        <div className="eventAddress">
-                          <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.city},{" "}
-                          {d.state}
-                        </div>
-                        <div className="eventTime">
-                          <FontAwesomeIcon icon={faClock} />{" "}
-                          {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
-                          {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
-                        </div>
-                      </CardSubtitle>
-                    </CardBody>
-                  </div>
-                </Card>
-              </CardGroup>
-            </Col>
-          </Row>
-        </div>
-      );
-    });
+        return (
+          <div className="event" key={"event" + i}>
+            <Card onClick={this.handleCardClick.bind(null, i)}>
+              <div className="image">
+                <CardImg src={d.imageURL} />
+                <CardBody>
+                  <CardTitle>
+                    <div className="eventMonth">
+                      {" " + month_name(new Date(d.date))} <br />
+                      <div className="eventDay">
+                        {" " + new Date(d.date).getDate() + " "}
+                      </div>
+                    </div>
+                    <div className="eventName">{" " + d.eventName}</div>
+                  </CardTitle>
+                  <br />
+                  <CardSubtitle>
+                    <div className="eventAddress">
+                      <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.city},{" "}
+                      {d.state}
+                    </div>
+                    <div className="eventTime">
+                      <FontAwesomeIcon icon={faClock} />{" "}
+                      {moment(d.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
+                      {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
+                    </div>
+                  </CardSubtitle>
+                </CardBody>
+              </div>
+            </Card>
+          </div>
+        );
+      });
+    } else {
+      content = <p className="noEvents">No events currently planned</p>;
+    }
     return (
       <div>
         <ScrollUpButton StopPosition={0} ShowAtPosition={150} />
@@ -652,18 +663,8 @@ export class Events extends Component {
           {/* </Nav> */}
 
           <div
-            style={{
-              display: "flex",
-              alignItems: "align-self",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              flexBasis: 1,
-              marginLeft: "50px",
-              // paddingBottom: "275px",
-              flexGrow: "1"
-            }}
           >
-            {content}
+            <div className="events">{content}</div>
           </div>
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
             <ModalHeader>{this.state.eventName}</ModalHeader>
@@ -693,7 +694,12 @@ export class Events extends Component {
               <br />
               <br />
               <h7 style={{ color: "#177283", fontWeight: "bold" }}>Date:</h7>
-              <h7 style={{ fontWeight: "100" }}>{" " + moment(this.state.date, "YYYY/MM/DD").subtract(1, "days").format("MM/DD/YY")}</h7>
+              <h7 style={{ fontWeight: "100" }}>
+                {" " +
+                  moment(this.state.date, "YYYY/MM/DD")
+                    .subtract(1, "days")
+                    .format("MM/DD/YY")}
+              </h7>
               <br />
               <br />
               <h7 style={{ color: "#177283", fontWeight: "bold" }}>Time:</h7>
@@ -701,8 +707,8 @@ export class Events extends Component {
                 {" " +
                   moment(this.state.startTime, "HH:mm:ss").format(
                     "h:mm A"
-                  )}{" "} - 
-                  {moment(this.state.endTime, "HH:mm:ss").format("h:mm A")}
+                  )}{" "}
+                -{moment(this.state.endTime, "HH:mm:ss").format("h:mm A")}
               </h7>
               <br />
               <br />
@@ -724,9 +730,9 @@ export class Events extends Component {
               {" " + this.state.coordinatorFirstName}
               {" " + this.state.coordinatorLastName}
               <br />
-              {" " + "Email: " + this.state.coordinatorEmail}
+              {" Email: " + this.state.coordinatorEmail}
               <br />
-              {" " + "Phone: " + this.state.coordinatorPhone}
+              {" Phone: " + this.state.coordinatorPhone}
             </ModalBody>
             <Button
               style={{
