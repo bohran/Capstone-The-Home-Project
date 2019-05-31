@@ -31,7 +31,7 @@ export class Home extends Component {
             </p> */}
             <p className="bannerContent">SEATTLE FOR ALL</p>
             {/* </div> */}
-            <div class="scroll-down" />
+            <div className="scroll-down" />
           </Parallax>
         </div>
         <br/>
