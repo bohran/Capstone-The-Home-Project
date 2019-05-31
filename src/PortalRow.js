@@ -4,7 +4,8 @@ export default class PortalRow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            selectedEvents: []
         }
     }
 
@@ -29,6 +30,7 @@ export default class PortalRow extends React.Component {
             if (data.length > 0) {
                 for (let event of data) {
                     console.log(event.county);
+                    let submit = document.getElementById("approveEventsButton");
                     let table = document.getElementById("table");
                     let row = document.createElement("tr");
                     let id = document.createElement("th");
@@ -42,22 +44,39 @@ export default class PortalRow extends React.Component {
                     let button = document.createElement("button");
                     let approveButton = document.createElement("button");
                     approveButton.innerHTML = "Approve";
+                    let form = document.createElement("div");
+                    form.classList.add("form-check");
+                    let input = document.createElement("input");
+                    input.type = "checkbox";
+                    input.classList.add("form-check-input");
+                    form.appendChild(input);
+                    input.addEventListener("change", () => {
+                        if (!this.state.selectedEvents.includes(event.id)) {
+                            this.state.selectedEvents.push(event.id);
+                        } else {
+                            let index = this.state.selectedEvents.indexOf(event.id)
+                            this.state.selectedEvents.splice(index, 1);
+                        }
+                        console.log(this.state.selectedEvents);
+                    });
                     //button = createModal(event, button);
                     button.addEventListener("click", () => {
                         console.log("clicked");
                     });
-                    approveButton.addEventListener("click", () => {
-                        let url = "https://api.emmaropes.me/events/approve/" + event.id;
-                        console.log(url);
-                        fetch(url, {
-                          method: "PATCH"
-                        })
-                          .then(response => {
-                            console.log(response.status);
-                            if(response.ok) {
-                                // NEED PAGE TO REFRESH
-                            }
-                          })
+                    submit.addEventListener("click", () => {
+                        for (let id of this.state.selectedEvents) {
+                            let url = "https://api.emmaropes.me/events/approve/" + id;
+                            console.log(url);
+                            fetch(url, {
+                                method: "PATCH"
+                            })
+                                .then(response => {
+                                    console.log(response.status);
+                                    if (response.ok) {
+                                        // NEED PAGE TO REFRESH
+                                    }
+                                })
+                        }
                     });
                     id.textContent = event.id;
                     if (event.organizations != null && event.organizations.length > 0) {
@@ -79,7 +98,7 @@ export default class PortalRow extends React.Component {
                     row.appendChild(service);
                     row.appendChild(date);
                     row.appendChild(city);
-                    row.appendChild(approveButton);
+                    row.appendChild(form);
                     //row.appendChild(button);
                     table.appendChild(row);
                 }
@@ -87,7 +106,7 @@ export default class PortalRow extends React.Component {
         }
     }
 
-    render () {
+    render() {
         console.log(this.state.data)
         this.renderTable(this.state.data)
         return (

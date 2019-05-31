@@ -4,12 +4,13 @@ export default class PortalRow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            selectedOrgs: []
         }
     }
 
     componentDidMount() {
-        let url = "https://api.emmaropes.me/organizations";
+        let url = "https://api.emmaropes.me/unapprovedorgs";
         let req = new Request(url);
         fetch(req)
             .then(response => {
@@ -23,11 +24,24 @@ export default class PortalRow extends React.Component {
         window.scrollTo(0, 0);
     }
 
+    handleCheck() {
+
+    }
+
+    handleApprove() {
+
+    }
+
+    handleDelete() {
+
+    }
+
     renderTable(data) {
         console.log(this.state.data)
         if (data.length > 0) {
             if (data.length > 0) {
                 for (let org of data) {
+                    let submit = document.getElementById("approveButton");
                     let table = document.getElementById("orgTable");
                     let row = document.createElement("tr");
                     let id = document.createElement("th");
@@ -42,22 +56,42 @@ export default class PortalRow extends React.Component {
                     let approveButton = document.createElement("button");
                     approveButton.innerHTML = "Approve";
                     //button = createModal(event, button);
+                    let form = document.createElement("div");
+                    form.classList.add("form-check");
+                    let input = document.createElement("input");
+                    input.type = "checkbox";
+                    input.classList.add("form-check-input");
+                    form.appendChild(input);
+                    // onChange={this.handleSelect}
+                    // input.onchange = this.state.selectedOrgs.push(org.id)
                     button.addEventListener("click", () => {
                         console.log("clicked");
                     });
-                    approveButton.addEventListener("click", () => {
-                        let url = "https://api.emmaropes.me/events/approve/" + org.id;
-                        console.log(url);
-                        fetch(url, {
-                            method: "PATCH"
-                        })
-                            .then(response => {
-                                console.log(response.status);
-                                if (response.ok) {
-                                    // NEED PAGE TO REFRESH
-                                }
-                            })
+                    input.addEventListener("change", () => {
+                        if (!this.state.selectedOrgs.includes(org.id)) {
+                            this.state.selectedOrgs.push(org.id);
+                        } else {
+                            let index = this.state.selectedOrgs.indexOf(org.id)
+                            this.state.selectedOrgs.splice(index, 1);
+                        }
                     });
+                    submit.addEventListener("click", () => {
+                        for (let id of this.state.selectedOrgs) {
+                            let url = "https://api.emmaropes.me/organizations/" + id;
+                            console.log(url);
+                            fetch(url, {
+                                method: "PATCH"
+                            })
+                                .then(response => {
+                                    console.log(response.status);
+                                    if (response.ok) {
+                                        // NEED PAGE TO REFRESH
+                                    }
+                                })
+                        }
+
+                    });
+
                     id.textContent = org.id;
                     organization.textContent = org.organizationName;
 
@@ -73,7 +107,8 @@ export default class PortalRow extends React.Component {
                     row.appendChild(address);
                     row.appendChild(city);
                     row.appendChild(state);
-                    row.appendChild(approveButton);
+                    // row.appendChild(approveButton);
+                    row.appendChild(form);
                     //row.appendChild(button);
                     table.appendChild(row);
                 }
