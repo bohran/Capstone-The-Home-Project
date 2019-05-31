@@ -104,6 +104,10 @@ body {
   width: 33%;
   padding-right: 30px;
   text-align: center;
+  box-shadow: 1px 1px 5px #cfcfcf;
+  margin: 3%;
+  padding: 20px;
+  box-sizing: content-box;
 }
 
 .icon{
