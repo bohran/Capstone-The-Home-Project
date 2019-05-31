@@ -69,7 +69,8 @@ body {
   margin-top: 20px;
   margin-left: 20%;
   margin-right: 20%;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .homePurpose {
@@ -77,6 +78,12 @@ body {
   font-size: 24px;
   font-weight: bold;
   margin: 50px 20% 50px 20%;
+}
+.homeLiner {
+  color: #177283;
+  font-size: 22px;
+  font-weight: bold;
+  /* margin: 50px 20% 50px 20%; */
 }
 
 .homeSubtitle {
@@ -93,7 +100,7 @@ body {
 }
 
 .highlightFeature {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   font-style: normal;
   margin-bottom: 5px;
@@ -107,10 +114,10 @@ body {
   box-shadow: 1px 1px 5px #cfcfcf;
   margin: 3%;
   padding: 20px;
-  box-sizing: content-box;
+  font-size: 16px;
 }
 
-.icon{
+.feature .icon{
   font-size: 30px;
 }
 

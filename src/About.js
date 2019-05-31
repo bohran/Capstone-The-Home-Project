@@ -16,11 +16,11 @@ export class About extends Component {
           >
             The Home Project
           </div>
-          <img src="./img/CoverPhotoBW.png" alt="community" width="70%"/>
           <div className="slogan">
             An Engagement and Advocacy Initiative with One Goal: A Home for
             Everyone in King County
           </div>
+          <img src="./img/AboutUsImage.png" alt="community" width="20%"/>
           <br />
           <div className="missionContent">
             People across our region are frustrated that so many King County
@@ -39,9 +39,8 @@ export class About extends Component {
             understanding about who is experiencing homelessness, why, and what
             we can do about it, we can foster unity and community support for
             our shared path forward.
-          </div>{" "}
-          <br />
-          <div>
+          </div>
+          {/* <div>
             <div className="learnMore">
               Learn more about how you can help via our Messaging Toolkits:
             </div>
@@ -52,15 +51,19 @@ export class About extends Component {
               Toolkits
             </Button>
           </div>
-          <div />
+          <div /> */}
         </div>
+        <br/>
         <h2 className="aboutTitle">The Team</h2>
+        <div className="slogan">
+            A group of students at the University of Washington <br/> worked with Pyrammid Communuications to bring this calendar resource to life.
+          </div>
           <div className="imgContainer">
             <div className="aboutTeamImgs">
               <img
                 // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
-                src="./img/shannon.jpg"
+                src="./img/shannonBW.jpg"
                 alt="Portrait of Shannon Gatta"
               />
               <h6 className="photoTitles">Shannon Gatta </h6>
@@ -73,7 +76,7 @@ export class About extends Component {
               <img
                 // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
-                src="./img/esha.jpg"
+                src="./img/eshaBW.jpg"
                 alt="Portrait of Esha More"
               />
               <h6 className="photoTitles">Esha More</h6>
@@ -86,7 +89,7 @@ export class About extends Component {
               <img
                 // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
-                src="./img/emma.jpeg"
+                src="./img/emmaBW.jpeg"
                 alt="Portrait of Emma Ropes"
               />
               <h6 className="photoTitles">Emma Ropes</h6>
@@ -99,7 +102,7 @@ export class About extends Component {
               <img
                 // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
-                src="./img/nicole.jpg"
+                src="./img/nicoleBW.jpg"
                 alt="Portrait of Nicole Bohra"
               />
               <h6 className="photoTitles">Nicole Bohra</h6>
