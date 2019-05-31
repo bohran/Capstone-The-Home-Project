@@ -76,7 +76,7 @@ class OrgPage extends Component {
             </InputGroup>
             {/* <div className="orgButtons"> */}
             <Button tag={Link} to="/AddOrganization">
-              + Add Organization
+              + Register Organization
             </Button>
             <Button
               className="toolkitButton"
@@ -92,6 +92,7 @@ class OrgPage extends Component {
             {/* </div> */}
           </div>
         </div>
+        <h4>Click to learn more about local organizations across King County that have joined the fight in ending homelessness: </h4>
         <div className="orgCollection">{displayOrgs}</div>
       </div>
     );

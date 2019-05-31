@@ -693,7 +693,7 @@ export class Events extends Component {
               <br />
               <br />
               <h7 style={{ color: "#177283", fontWeight: "bold" }}>Date:</h7>
-              <h7 style={{ fontWeight: "100" }}>{" " + this.state.date}</h7>
+              <h7 style={{ fontWeight: "100" }}>{" " + moment(this.state.date, "YYYY/MM/DD").subtract(1, "days").format("MM/DD/YY")}</h7>
               <br />
               <br />
               <h7 style={{ color: "#177283", fontWeight: "bold" }}>Time:</h7>
@@ -701,8 +701,8 @@ export class Events extends Component {
                 {" " +
                   moment(this.state.startTime, "HH:mm:ss").format(
                     "h:mm A"
-                  )}{" "}
-                - {moment(this.state.endTime, "HH:mm:ss").format("h:mm A")}
+                  )}{" "} - 
+                  {moment(this.state.endTime, "HH:mm:ss").format("h:mm A")}
               </h7>
               <br />
               <br />
@@ -722,12 +722,11 @@ export class Events extends Component {
                 Event Coordinator Contact Information:
               </h7>
               {" " + this.state.coordinatorFirstName}
-              <br />
               {" " + this.state.coordinatorLastName}
               <br />
-              {" " + this.state.coordinatorEmail}
+              {" " + "Email: " + this.state.coordinatorEmail}
               <br />
-              {" " + this.state.coordinatorPhone}
+              {" " + "Phone: " + this.state.coordinatorPhone}
             </ModalBody>
             <Button
               style={{
