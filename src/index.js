@@ -1,8 +1,8 @@
 import React from 'react';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 import ReactDOM from 'react-dom';
+// import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
-import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
