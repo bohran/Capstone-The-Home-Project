@@ -56,7 +56,7 @@ export class About extends Component {
         <br/>
         <h2 className="aboutTitle">The Team</h2>
         <div className="slogan">
-            A group of students at the University of Washington <br/> worked with Pyrammid Communuications to bring this calendar resource to life.
+            A group of Informatics students at the University of Washington <br/> partnered with Pyramid Communications to bring this calendar resource to life.
           </div>
           <div className="imgContainer">
             <div className="aboutTeamImgs">
