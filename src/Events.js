@@ -662,8 +662,7 @@ export class Events extends Component {
           </div>
           {/* </Nav> */}
 
-          <div
-          >
+          <div>
             <div className="events">{content}</div>
           </div>
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
