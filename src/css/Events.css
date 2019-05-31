@@ -9,12 +9,13 @@ body {
     margin-left:15px;
 } */
 .sidebarFilter {
-  float: left;
+  /* float: left; */
   padding-left: 30px;
   padding-right: 40px;
   /* background-color: #33cbe64b; */
   padding-top: 20px;
   font-weight: 300;
+  padding-bottom: 275px;
 }
 
 .navbar-wrapper {
@@ -98,7 +99,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: pre-line;
-  font-size: 15px;
+  font-size: 16px;
   padding: 8px;
   height: 3.8em;
   text-align: left;
@@ -125,11 +126,13 @@ body {
 }
 .eventAddress{
 text-align: left;  
-font-weight: 300;
+font-weight: 200;
+font-size: 15px;
 }
 .eventTime{
   text-align: left;  
-  font-weight: 300;
+  font-weight: 200;
+  font-size: 15px;
 }
 .service{
   text-align: left;
@@ -154,13 +157,13 @@ font-weight: 300;
 .search .input-group{
   float: left;
   width: 50%;
-  margin-left: 22%;
+  margin-left: 23%;
   margin-top: 1%;
-  margin-right: 5%;
+  margin-right: 3%;
 }
 
 .search .btn-secondary{
   /* float: right; */
-  margin-right: 8%;
+  /* margin-right: 8%; */
   margin-top: 1%;
 }

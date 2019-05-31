@@ -29,6 +29,7 @@
     "react-router-hash-link": "^1.2.1",
     "react-scripts": "2.1.8",
     "react-scroll-parallax": "^2.1.2",
+    "react-scroll-up-button": "^1.6.4",
     "react-select": "^2.4.3",
     "react-sidebar": "^3.0.2",
     "react-sticky-footer": "0.1.0-rc3",
