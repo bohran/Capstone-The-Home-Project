@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PortalRow from "./PortalRow";
+import PortalRowOrg from "./PortalRowOrg";
 
 export class Portal extends Component {
     constructor(props) {
@@ -34,8 +35,9 @@ export class Portal extends Component {
                         </ul>
                     </div>
                 </nav>
-
+<div>
                 <div class="container">
+                <h1>Events To Approve</h1>
                     <table class="table table-hover" id="table">
                         <thead>
                             <tr>
@@ -71,6 +73,24 @@ export class Portal extends Component {
                         <PortalRow/>
                     </table>
                 </div>
+                <div class="container">
+                    <h1>Organizations To Approve</h1>
+                    <table class="table table-hover" id="orgTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Organization Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Website</th>
+                                <th scope="col">Street Address</th>
+                                <th scope="col">City</th>
+                                <th scope="col">State</th>
+                            </tr>
+                        </thead>
+                        <PortalRowOrg/>
+                    </table>
+                </div>
+            </div>
             </div>
         );
     }
