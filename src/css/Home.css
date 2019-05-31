@@ -97,13 +97,17 @@ body {
   font-weight: bold;
   font-style: normal;
   margin-bottom: 5px;
-  text-align: center;
+  color: #db4b62;
 }
 
 .feature {
   width: 33%;
   padding-right: 30px;
   text-align: center;
+  box-shadow: 1px 1px 5px #cfcfcf;
+  margin: 3%;
+  padding: 20px;
+  box-sizing: content-box;
 }
 
 .icon{
@@ -115,5 +119,4 @@ body {
   width: 100%;
   align-content: center;
   margin: auto;
-  padding-top: 5px;
 }

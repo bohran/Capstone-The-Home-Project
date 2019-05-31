@@ -1,12 +1,32 @@
+a {
+   color: #177283;
+}
+h4{
+    font-weight: 300;
+    text-align: center;
+}
 .orgIntro {
     width: 500px;
     padding: 20px;
+}
+.org {
+    width: 400px;
+    padding: 20px;
+    color: grey;
+    /* box-shadow: 1px 1px 5px #cfcfcf; */
+    margin: 2.5%;
+}
+
+.org:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 10px lightgray;
 }
 
 .orgTitle {
     font-size: 18px;
     font-weight: bolder;
     margin-bottom: 0px;
+    color: #177283;
 }
 
 .orgDescr {
@@ -18,6 +38,7 @@
     font-size: 14px;
     font-style: italic;
     margin-bottom: 0px;
+    color: #db4b62;
 }
 
 .orgCollection {
@@ -30,13 +51,21 @@
     padding: 20px;
 }
 .orgSearch .input-group{
-    width: 50%; 
+    width: 60%; 
     float: left;
     margin-right: 5%;
+    margin-left: 5%;
 }
 
 .orgSearch .btn-secondary{
     margin-top: 0%;
+}
+
+.orgContact {
+    font-size: 14px;
+    font-weight: bold;
+    /* color: #db4b62; */
+    margin-bottom: 0px;
 }
 
 

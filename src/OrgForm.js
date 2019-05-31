@@ -83,7 +83,7 @@ class NewOrg extends Component {
           <Form>
             <h5 className="formTitle">Organization Information</h5>
             <FormGroup>
-              <Label>Name</Label>
+              <Label>Name *</Label>
               <Input
                 type="text"
                 name="name"
@@ -93,7 +93,7 @@ class NewOrg extends Component {
               />
             </FormGroup>
             <div className="formTypes">
-              <h6>Organization Category</h6>
+              <h6>Organization Category *</h6>
               <Select
                 options={types}
                 isMulti
@@ -114,7 +114,7 @@ class NewOrg extends Component {
             <Row form>
               <Col md={10}>
                 <FormGroup>
-                  <Label>Address</Label>
+                  <Label>Address *</Label>
                   <Input
                     type="text"
                     name="address"
@@ -127,7 +127,7 @@ class NewOrg extends Component {
 
               <Col md={2}>
                 <FormGroup>
-                  <Label>State</Label>
+                  <Label>State *</Label>
                   <Input
                     type="text"
                     name="state"
@@ -142,7 +142,7 @@ class NewOrg extends Component {
             <Row form>
               <Col md={4}>
                 <FormGroup>
-                  <Label>City</Label>
+                  <Label>City *</Label>
                   <Input
                     type="text"
                     name="city"
@@ -154,7 +154,7 @@ class NewOrg extends Component {
               </Col>
               <Col md={4}>
                 <FormGroup>
-                  <Label>Zip Code</Label>
+                  <Label>Zip Code *</Label>
                   <Input
                     type="text"
                     name="zip"
@@ -166,7 +166,7 @@ class NewOrg extends Component {
               </Col>
               <Col md={4}>
                 <FormGroup>
-                  <Label>County</Label>
+                  <Label>County *</Label>
                   <Input
                     type="text"
                     name="county"
@@ -187,7 +187,7 @@ class NewOrg extends Component {
             <Row form>
               <Col md={4}>
                 <FormGroup>
-                  <Label>First Name</Label>
+                  <Label>First Name *</Label>
                   <Input
                     type="text"
                     name="contactFName"
@@ -199,7 +199,7 @@ class NewOrg extends Component {
               </Col>
               <Col md={4}>
                 <FormGroup>
-                  <Label>Last Name</Label>
+                  <Label>Last Name *</Label>
                   <Input
                     type="text"
                     name="contactLName"
@@ -211,7 +211,7 @@ class NewOrg extends Component {
               </Col>
               <Col md={4}>
                 <FormGroup>
-                  <Label>Role</Label>
+                  <Label>Role *</Label>
                   <Input
                     type="text"
                     name="contactRole"
@@ -226,7 +226,7 @@ class NewOrg extends Component {
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Phone</Label>
+                  <Label>Phone *</Label>
                   <Input
                     type="text"
                     name="contactPhone"
@@ -238,7 +238,7 @@ class NewOrg extends Component {
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Email</Label>
+                  <Label>Email *</Label>
                   <Input
                     type="email"
                     name="contactEmail"
@@ -300,17 +300,6 @@ class NewOrg extends Component {
                 </FormGroup>
               </Col>
             </Row>
-
-            {/* <FormGroup>
-              <Label>Select Cover Photo</Label>
-              <CustomInput
-                id="mediaButton"
-                type="file"
-                name="img"
-                value={this.props.form.media}
-                onChange={this.props.onChange}
-              />
-            </FormGroup> */}
           </Form>
         </div>
         <div className="formButton">

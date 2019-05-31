@@ -21,7 +21,7 @@ export class Home extends Component {
             // blur={{ min: -15, max: 30 }}
             bgImage={require("./img/CoverPhotosTealBlur.jpg")}
             bgImageAlt="collective pictures of the community"
-            strength={400}
+            strength={600}
             style={{ minHeight: "700px", maxHeight: "700px", width: "100%" }}
           >
             {/* <div className="bannerBox"> */}
@@ -29,11 +29,9 @@ export class Home extends Component {
               Aligning organizations in the fight to end homelessness in King
               County
             </p> */}
-            <p className="bannerContent">
-              SEATTLE FOR ALL
-            </p>
+            <p className="bannerContent">SEATTLE FOR ALL</p>
             {/* </div> */}
-            <div class="scroll-down"></div>
+            <div className="scroll-down" />
           </Parallax>
         </div>
         <br/>
@@ -58,11 +56,8 @@ export class Home extends Component {
         </p>
         {/* DEAFUALT TEXT HERE, NEED TO EDIT!!! */}
         <p className="homeAbstract">
-          With overwhelming momentum and support from the community, the Home
-          Project was initiated to help increase coordination, clarity and
-          alignment between those leading the work while also engaging the
-          general public in taking action towards the path to ending
-          homelessness in King County.
+          Through this calendar resource, we are encouraginge the various
+          organizations and the general public involved in this cause to:
         </p>
         <div className="homeFeatures">
           <p className="feature">
