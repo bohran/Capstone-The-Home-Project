@@ -13,9 +13,7 @@ import {
   FormGroup,
   Label,
   Input,
-  InputGroup,
-  InputGroupText,
-  InputGroupAddon
+  InputGroup
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -219,8 +217,8 @@ export class Events extends Component {
       filter: [],
       input: "",
       filteredData: [],
-      selectedCity: "All",
-      selectedTime: "All",
+      selectedCity: [],
+      selectedDate: "",
       opacity: 1
     };
   }
@@ -230,15 +228,6 @@ export class Events extends Component {
       tooltipOpen: !this.state.tooltipOpen
     });
   }
-
-  handleCityChange = selectedCity => {
-    this.setState({ selectedCity });
-    console.log(`Option selected:`, selectedCity);
-  };
-  handleTimeChange = selectedTime => {
-    this.setState({ selectedTime });
-    console.log(`Option selected:`, selectedTime);
-  };
 
   handleCardClick = index => {
     const eventName = this.state.data[index].eventName;
@@ -328,8 +317,6 @@ export class Events extends Component {
     } else {
       this.addService(event.target.value);
     }
-    console.log(this.state.isSelected);
-    console.log(event.target.value);
   };
 
   addService = service => {
@@ -341,7 +328,7 @@ export class Events extends Component {
   };
 
   // handle the All option of Area of Service
-  handleAll = event => {
+  handleAll = () => {
     this.setState({
       filter: _.values(Service)
     });
@@ -361,10 +348,37 @@ export class Events extends Component {
     });
   };
 
+  handleCityChange = city => {
+    let cityList = city.map(d => {
+      return d.value;
+    });
+    this.setState({ selectedCity: cityList });
+  };
+
+  handleDateChange = date => {
+    let maxDate = new Date();
+    if (date.value === "Today") {
+      maxDate = maxDate.getFullYear() + maxDate.getMonth() + maxDate.getDate();
+    } else if (date.value === "Tomorrow") {
+      maxDate =
+        maxDate.getFullYear() + maxDate.getMonth() + maxDate.getDate() + 1;
+    } else if (date.value === "This Week") {
+      maxDate =
+        maxDate.getFullYear() + maxDate.getMonth() + maxDate.getDate() + 7;
+    } else if (date.value === "Next Week") {
+      maxDate =
+        maxDate.getFullYear() + maxDate.getMonth() + maxDate.getDate() + 14;
+    } else if (date.value === "This Month") {
+      maxDate = maxDate.getFullYear() + maxDate.getMonth() + 31;
+    }
+    console.log(maxDate);
+    this.setState({ selectedDate: maxDate });
+  };
+
   render() {
+    console.log(`Option selected:`, this.state.selectedCity);
+    console.log(`Option selected:`, this.state.selectedDate);
     const classes = "tooltip-inner";
-    const { selectedCity } = this.state;
-    const { selectedTime } = this.state;
     const filteredData = this.state.data.filter(d => {
       const matchesCategory =
         d.categoryName === this.state.category || this.state.category === "All";
@@ -374,8 +388,14 @@ export class Events extends Component {
       const matchesService =
         serviceOverlap.length !== 0 || this.state.filter.length === 0;
       const searchInput =
-        d.eventName.toLowerCase().includes(this.state.input.toLowerCase()) || this.state.input === "";
-      if (matchesCategory && matchesService && searchInput) {
+        d.eventName.toLowerCase().includes(this.state.input.toLowerCase()) ||
+        this.state.input === "";
+      const cityMatch =
+        this.state.selectedCity.includes(d.city) ||
+        this.state.selectedCity === [];
+      const dateMatch =
+        this.state.selectedDate >= d.date || this.state.selectedDate === "";
+      if (matchesCategory && matchesService && searchInput && cityMatch && dateMatch) {
         return true;
       } else {
         return false;
@@ -401,9 +421,8 @@ export class Events extends Component {
         return mlist[dt.getMonth()];
       };
       if (d.services !== null) {
-        console.log(d.services[0]);
       }
-    
+
       return (
         <div className="events" key={"event" + i}>
           <Row>
@@ -422,7 +441,7 @@ export class Events extends Component {
                         </div>
                         <div className="eventName">{" " + d.eventName}</div>
                       </CardTitle>
-                      <br/>
+                      <br />
                       <CardSubtitle>
                         <div className="eventAddress">
                           <FontAwesomeIcon icon={faMapMarkerAlt} /> {d.city},{" "}
@@ -434,7 +453,7 @@ export class Events extends Component {
                           {moment(d.endTime, "HH:mm:ss").format("h:mm A")}
                         </div>
                         {/* <button className="service">{d.services}</button> */}
-                        <br/>
+                        <br />
                         {/* <button
                           className="serviceType"
                           style={{
@@ -475,21 +494,21 @@ export class Events extends Component {
             />
             {/* </InputGroupAddon> */}
           </InputGroup>
-          <Button tag= {Link} to ="/AddEvent">
+          <Button tag={Link} to="/AddEvent">
             + Add Event
-        </Button>
+          </Button>
         </div>
-        
+
         {/* <h2 style={{ textAlign: "center", fontWeight: "300" }}> */}
         {/* Events that match your search: */}
         {/* </h2> */}
         {/* <div className="add"> */}
-          {/* <h4>New Organization?</h4>
+        {/* <h4>New Organization?</h4>
           <Button tag = {Link} to="/RegOrganization">
             + Add Organization
           </Button>
           <br /> */}
-          {/* <Button tag= {Link} to ="/AddEvent">
+        {/* <Button tag= {Link} to ="/AddEvent">
             + Add Event
           </Button> */}
         {/* </div> */}
@@ -561,8 +580,7 @@ export class Events extends Component {
             <div className="date">
               <h5>Select Date:</h5>
               <Select
-                value={selectedTime}
-                onChange={this.handleTimeChange}
+                onChange={this.handleDateChange}
                 options={times}
                 placeholder="Select..."
               />
@@ -572,7 +590,6 @@ export class Events extends Component {
               <h5>Select Location:</h5>
               <Select
                 style={{ position: "fixed" }}
-                value={selectedCity}
                 onChange={this.handleCityChange}
                 options={cities}
                 isMulti="true"

@@ -25,14 +25,13 @@ export class Home extends Component {
               Aligning organizations in the fight to end homelessness in King
               County
             </p> */}
-            <p className="bannerContent">
-              SEATTLE FOR ALL
-            </p>
+            <p className="bannerContent">SEATTLE FOR ALL</p>
             {/* </div> */}
-            <div class="scroll-down"></div>
+            <div class="scroll-down" />
           </Parallax>
         </div>
-        <h1 className="homeTitle">Home Project Calendar</h1>
+        {/* <h1 className="homeTitle">Home Project Calendar</h1> */}
+        <br/>
         <p className="homeAbstract">
           Within King County alone, there are an estimated 12,000 people who are
           experiencing homelessness. This is becoming a prominent issue in the
@@ -53,11 +52,8 @@ export class Home extends Component {
         </p>
         {/* DEAFUALT TEXT HERE, NEED TO EDIT!!! */}
         <p className="homeAbstract">
-          With overwhelming momentum and support from the community, the Home
-          Project was initiated to help increase coordination, clarity and
-          alignment between those leading the work while also engaging the
-          general public in taking action towards the path to ending
-          homelessness in King County.
+          Through this calendar resource, we are encouraginge the various
+          organizations and the general public involved in this cause to:
         </p>
         <div className="homeFeatures">
           <p className="feature">
