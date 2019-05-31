@@ -52,8 +52,8 @@ body {
 
 .card {
   width: 270px;
-  min-height: 350px;
-  max-height: 350px;
+  /* min-height: 350px;
+  max-height: 350px; */
   /* margin-left: 40px;
     margin-right: 40px;  */
   margin: 20px;
@@ -144,7 +144,6 @@ font-size: 15px;
   margin-bottom: 50%;
   border-radius: 50%;
   font-weight: 300;
-
 }
 
 .help {
@@ -168,4 +167,9 @@ font-size: 15px;
   /* float: right; */
   /* margin-right: 8%; */
   margin-top: 1%;
+}
+
+.services {
+  color: grey;
+  font-weight: normal;
 }

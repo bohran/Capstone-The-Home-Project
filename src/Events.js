@@ -485,7 +485,7 @@ export class Events extends Component {
             <div className="filters">
               <h5>Areas of Service:</h5>
               <FormGroup check>
-                <Label check>
+                <Label className="services" check>
                   <Input
                     checked={this.state.filter.includes(Service.HOUSING)}
                     type="checkbox"
@@ -497,7 +497,7 @@ export class Events extends Component {
                 </Label>
               </FormGroup>
               <FormGroup check>
-                <Label check>
+                <Label className="services" check>
                   <Input
                     checked={this.state.filter.includes(Service.LEGAL)}
                     type="checkbox"
@@ -509,7 +509,7 @@ export class Events extends Component {
                 </Label>
               </FormGroup>
               <FormGroup check>
-                <Label check>
+                <Label className="services" check>
                   <Input
                     checked={this.state.filter.includes(Service.DAYCENTER)}
                     type="checkbox"
@@ -521,7 +521,7 @@ export class Events extends Component {
                 </Label>
               </FormGroup>
               <FormGroup check>
-                <Label check>
+                <Label className="services" check>
                   <Input
                     checked={this.state.filter.includes(Service.BASIC)}
                     type="checkbox"
@@ -533,7 +533,7 @@ export class Events extends Component {
                 </Label>
               </FormGroup>
               <FormGroup check>
-                <Label check>
+                <Label className="services" check>
                   <Input
                     checked={this.state.filter.includes(Service.HEALTH)}
                     type="checkbox"
@@ -570,7 +570,7 @@ export class Events extends Component {
             <div className="categories">
               <h5>Categories:</h5>
               <FormGroup check>
-                <Label check>
+                <Label className="services" check>
                   <Input
                     checked={this.state.category === "All"}
                     type="radio"
@@ -582,7 +582,7 @@ export class Events extends Component {
                 </Label>
               </FormGroup>
               <FormGroup check>
-                <Label check>
+                <Label className="services" check>
                   <Input
                     type="radio"
                     name="radio1"
@@ -599,7 +599,7 @@ export class Events extends Component {
                 />
               </FormGroup>
               <FormGroup check>
-                <Label check>
+                <Label className="services" check>
                   <Input
                     type="radio"
                     name="radio1"
@@ -615,7 +615,7 @@ export class Events extends Component {
                 />
               </FormGroup>
               <FormGroup check>
-                <Label check>
+                <Label className="services" check>
                   <Input
                     type="radio"
                     name="radio1"
@@ -631,7 +631,7 @@ export class Events extends Component {
                 />
               </FormGroup>
               <FormGroup check>
-                <Label check>
+                <Label className="services" check>
                   <Input
                     type="radio"
                     name="radio1"
