@@ -39,9 +39,8 @@ export class About extends Component {
             understanding about who is experiencing homelessness, why, and what
             we can do about it, we can foster unity and community support for
             our shared path forward.
-          </div>{" "}
-          <br />
-          <div>
+          </div>
+          {/* <div>
             <div className="learnMore">
               Learn more about how you can help via our Messaging Toolkits:
             </div>
@@ -52,7 +51,7 @@ export class About extends Component {
               Toolkits
             </Button>
           </div>
-          <div />
+          <div /> */}
         </div>
         <br/>
         <h2 className="aboutTitle">The Team</h2>
