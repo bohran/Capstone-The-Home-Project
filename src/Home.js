@@ -56,8 +56,8 @@ export class Home extends Component {
         </p>
         {/* DEAFUALT TEXT HERE, NEED TO EDIT!!! */}
         <p className="homeAbstract">
-          Through this calendar resource, we are encouraginge the various
-          organizations and the general public involved in this cause to:
+          We believe there is strength is numbers. Through this calendar resource, we encourage 
+          the organizations to join forces to increase their impact and the general public involved in this cause to:
         </p>
         <div className="homeFeatures">
           <p className="feature">
