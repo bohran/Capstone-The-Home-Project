@@ -16,9 +16,10 @@ import {
 import Select from "react-select";
 import _ from "lodash";
 import ImagePicker from "react-image-picker";
+import moment from "moment";
 
 import "bootstrap/dist/css/bootstrap.css";
-import 'react-image-picker/dist/index.css'
+import "react-image-picker/dist/index.css";
 
 import "./css/form.css";
 // import "./css/form.css";
@@ -85,8 +86,8 @@ const defaultImgs = [
   "./img/volunteer2.jpg",
   "./img/volunteer3.jpg",
   "./img/volunteer4.jpg",
-  "./img/volunteer5.jpg",
-]
+  "./img/volunteer5.jpg"
+];
 
 class NewEvent extends Component {
   constructor(props) {
@@ -134,14 +135,10 @@ class NewEvent extends Component {
     let newEventDate = new Date(eventDate[0], eventDate[1] - 1, eventDate[2]);
     var currDate = new Date();
 
-    let formatCurrDate =
-      currDate.getFullYear() + currDate.getMonth() + currDate.getDate();
-    let formatEventDate =
-      newEventDate.getFullYear() +
-      newEventDate.getMonth() +
-      newEventDate.getDate();
+    let eventDateFormatted = moment(newEventDate, "YYYY/MM/DD").format("YYYY-MM-DD")
+    let currDateFormatted = moment(currDate, "YYYY/MM/DD").subtract(1, "days").format("YYYY-MM-DD")
 
-    return formatCurrDate > formatEventDate;
+    return eventDateFormatted <= currDateFormatted;
   };
 
   handleRequirements = () => {
@@ -572,7 +569,10 @@ class NewEvent extends Component {
             <br /> OR
             <div>
               <ImagePicker
-                images={defaultImgs.map((image, i) => ({ src: image, value: i }))}
+                images={defaultImgs.map((image, i) => ({
+                  src: image,
+                  value: i
+                }))}
                 onPick={this.selectImage}
               />
               <button
@@ -582,32 +582,6 @@ class NewEvent extends Component {
                 OK
               </button>
             </div>
-            {/* <FormGroup>
-              <Button onClick={this.toggle}>Browse Default</Button>
-              <Modal
-                isOpen={this.state.modal}
-                toggle={this.toggle}
-                className={this.props.className}
-              >
-                <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                <ModalBody>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.
-                </ModalBody>
-                <Button color="primary" onClick={this.toggle}>
-                  Do Something
-                </Button>{" "}
-                <Button color="secondary" onClick={this.toggle}>
-                  Cancel
-                </Button>
-              </Modal>
-            </FormGroup> */}
           </Form>
         </div>
         <div className="formButton">

@@ -178,7 +178,7 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Media: {this.props.eventForm.img}</Label>
+              <Label>Media: <img src={this.props.eventForm.img} alt="Default" style={{width: "200px"}}/> </Label>
             </FormGroup>
           </Form>
         </div>
