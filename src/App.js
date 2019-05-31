@@ -49,7 +49,7 @@ class App extends Component {
       <Router>
         <Navbar
           className="nav-wrapper"
-          dark
+          light
           expand="lg"
           style={{ outerHeight: "100px" }}
         >
