@@ -49,7 +49,9 @@ class OrgPage extends Component {
     let displayOrgs = filteredOrgs.map((d, i) => {
       return (
         <div key={"org" + i} className="orgIntro">
-          <p className="orgTitle">{d.organizationName}</p>
+          <p className="orgTitle">
+          <a href = {d.url} target="_blank">{d.organizationName}</a>
+          </p>
           <p className="orgDescr">{d.organizationDescription}</p>
           <p className="orgType">{d.organizationType}</p>
         </div>
@@ -68,7 +70,7 @@ class OrgPage extends Component {
               />
             </InputGroup>
             {/* <div className="orgButtons"> */}
-              <Button tag = {Link} to ="/RegOrganization">+ Add Organization</Button>
+              <Button tag = {Link} to ="/RegOrganization"> + Register Organization</Button>
               <Button
                 className="toolkitButton"
                 onClick={()=> window.open("https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0", "_blank")}
@@ -78,6 +80,7 @@ class OrgPage extends Component {
             {/* </div> */}
           </div>
         </div>
+        <h4>Click to learn more about local organizations across King County that have joined the fight in ending homelessness. </h4>
         <div className="orgCollection">{displayOrgs}</div>
       </div>
     );

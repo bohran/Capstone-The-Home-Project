@@ -1,6 +1,10 @@
+a {
+   color: #177283;
+}
 .orgIntro {
     width: 500px;
     padding: 20px;
+    box-shadow: 1px 1px 5px #cfcfcf;
 }
 
 .orgTitle {

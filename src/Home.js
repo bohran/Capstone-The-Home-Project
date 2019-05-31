@@ -21,7 +21,7 @@ export class Home extends Component {
             // blur={{ min: -15, max: 30 }}
             bgImage={require("./img/CoverPhotosTealBlur.jpg")}
             bgImageAlt="collective pictures of the community"
-            strength={400}
+            strength={600}
             style={{ minHeight: "700px", maxHeight: "700px", width: "100%" }}
           >
             {/* <div className="bannerBox"> */}
