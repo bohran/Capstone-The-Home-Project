@@ -6,6 +6,7 @@ import { Events } from "./Events";
 import AddEvent from "./AddEvent";
 import OrgInfo from "./OrgPage";
 import {Portal} from "./Portal";
+import {PortalAll} from "./PortalAll";
 
 import {
   Collapse,
@@ -103,6 +104,8 @@ class App extends Component {
           <Route path="/AddEvent" component={AddEvent} />
           <Route path="/RegOrganization" component={RegOrganization} />
           <Route path="/Portal" component={Portal} />
+          <Route path="/PortalAll" component={PortalAll}/>
+
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
         <div className="footer">

@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/Portal.css";
 
-export default class PortalRow extends React.Component {
+export default class PortalRowOrg extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -52,10 +52,24 @@ export default class PortalRow extends React.Component {
 
 
                 }
-
-
             });
-
+            let deny = document.getElementById("deleteOrgButton");
+            deny.addEventListener("click", () => {
+                let conf = window.confirm("Delete the selected organizations? This action is final and cannot be reversed");
+                if (conf === true) {
+                    for (let org of this.state.selectedOrgs) {
+                        let url = "https://api.emmaropes.me/organizations/" + org.id;
+                        fetch(url, {
+                            method: "DELETE"
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    window.location.reload(true);
+                                }
+                            })
+                    }
+                }
+            });
             for (let org of data) {
                 if (org.approved === false) {
                     let table = document.getElementById("orgTable");
@@ -74,6 +88,7 @@ export default class PortalRow extends React.Component {
                     buttonDiv.appendChild(button);
                     button.innerHTML = "More";
                     button.classList = "btn-sm";
+                    button.id = "buttonClick";
                     let approveButton = document.createElement("button");
                     approveButton.innerHTML = "Approve";
                     let form = document.createElement("div");
@@ -84,7 +99,7 @@ export default class PortalRow extends React.Component {
                     form.appendChild(input);
 
                     row.addEventListener("click", (event) => {
-                        if (event.target !== "checkbox") {
+                        if (event.target.id !== "buttonClick") {
                             input.click();
                         }
                     });

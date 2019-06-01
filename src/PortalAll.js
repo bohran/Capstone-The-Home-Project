@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import PortalRow from "./PortalRow";
-import PortalRowOrg from "./PortalRowOrg";
+import PortalRowAll from "./PortalRowAll";
+import PortalRowAllOrgs from "./PortalRowAllOrgs";
 import "./css/Portal.css";
 
-export class Portal extends Component {
+export class PortalAll extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,30 +26,9 @@ export class Portal extends Component {
 
                 </div>
                 <div>
-                    <div class="container" id="eventcontainer">
-                        <h1>Events To Approve</h1>
-                        <table class="table table-hover" id="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Select</th>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Organization</th>
-                                    <th scope="col">Event Title</th>
-                                    <th scope="col">Event Type</th>
-                                    <th scope="col">Area of Service</th>
-                                    <th scope="col">Event Date</th>
-                                    <th scope="col">City</th>
-                                    <th scope="col">Details</th>
-                                </tr>
-                            </thead>
-                            <PortalRow />
-                        </table>
-                        <button type="submit" class="btn" id="approveEventsButton">Approve</button>
-                        <button type="submit" class="btn" id="deleteEventButton">Deny</button>
-                    </div>
-                    <div class="container" id="orgcontainer">
-                        <h1>Organizations To Approve</h1>
-                        <table class="table table-hover" id="orgTable">
+                    <div class="container" id="allEventContainer">
+                        <h1>All Orgs</h1>
+                        <table class="table table-hover" id="allEventTable">
                             <thead>
                                 <tr>
                                     <th scope="col">Select</th>
@@ -63,10 +42,31 @@ export class Portal extends Component {
                                     <th scope="col">Details</th>
                                 </tr>
                             </thead>
-                                <PortalRowOrg />
+                                <PortalRowAll/>
                         </table>
-                        <button type="submit" class="btn" id="approveButton">Approve</button>
-                        <button type="submit" class="btn" id="deleteOrgButton">Deny</button>
+                        <button type="submit" class="btn" id="deleteAllEventButton">Delete</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="container" id="allOrgContainer">
+                        <h1>All Orgs</h1>
+                        <table class="table table-hover" id="allOrgTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Select</th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Organization Name</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Website</th>
+                                    <th scope="col">Street Address</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">State</th>
+                                    <th scope="col">Details</th>
+                                </tr>
+                            </thead>
+                                <PortalRowAllOrgs />
+                        </table>
+                        <button type="submit" class="btn" id="deleteAllOrgButton">Delete</button>
                     </div>
                 </div>
 
