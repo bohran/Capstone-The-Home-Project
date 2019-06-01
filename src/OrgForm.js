@@ -15,12 +15,20 @@ import _ from "lodash";
 import "bootstrap/dist/css/bootstrap.css";
 
 class NewOrg extends Component {
+  state = {
+    categories: []
+  };
+
   handleTypeChange = input => {
-    let types = [];
-    for (let i = 0; i < input.length; i = i + 1) {
-      types.push(input[i].value);
-    }
-    this.props.form.type = types;
+    this.props.form.type = input;
+    // let types = [];
+    // for (let i = 0; i < input.length; i = i + 1) {
+    //   types.push(input[i].value);
+    // }
+    // this.props.form.type = types;
+    // this.setState({
+    //   categories: input
+    // });
   };
 
   handleOnChange = (email) => {
@@ -34,6 +42,7 @@ class NewOrg extends Component {
   }
 
   render() {
+    console.log(this.state.categories)
     // const selectStyle = {
     //   multiValue: (provided, state) => {
     //   return { ...provided, color: state.isFocused ? 'blue' : 'red' };
@@ -105,6 +114,7 @@ class NewOrg extends Component {
             <div className="formTypes">
               <h6>Organization Category *</h6>
               <Select
+                defaultValue={this.props.form.type}
                 options={types}
                 isMulti
                 onChange={this.handleTypeChange}
