@@ -27,24 +27,37 @@ export default class PortalRow extends React.Component {
         window.scrollTo(0, 0);
     }
 
-    // handleCheck() {
 
-    // }
-
-    // handleApprove() {
-
-    // }
-
-    // handleDelete() {
-
-    // }
 
     renderTable(data) {
         console.log(this.state.data)
         if (data.length > 0) {
-            if (data.length > 0) {
-                for (let org of data) {
-                    let submit = document.getElementById("approveButton");
+            let submit = document.getElementById("approveButton");
+            submit.addEventListener("click", () => {
+                let conf = window.confirm("Approve the selected organiations?");
+                if (conf === true) {
+                    for (let org of this.state.selectedOrgs) {
+                        let url = "https://api.emmaropes.me/organizations/" + org.id;
+                        console.log(url);
+                        fetch(url, {
+                            method: "PATCH"
+                        })
+                            .then(response => {
+                                console.log(response.status);
+                                if (response.ok) {
+                                    window.location.reload(true);
+                                }
+                            })
+                    }
+
+
+                }
+
+
+            });
+
+            for (let org of data) {
+                if (org.approved === false) {
                     let table = document.getElementById("orgTable");
                     let row = document.createElement("tr");
                     let id = document.createElement("th");
@@ -63,48 +76,30 @@ export default class PortalRow extends React.Component {
                     button.classList = "btn-sm";
                     let approveButton = document.createElement("button");
                     approveButton.innerHTML = "Approve";
-                    //button = createModal(event, button);
                     let form = document.createElement("div");
                     form.classList.add("form-check");
                     let input = document.createElement("input");
                     input.type = "checkbox";
                     input.classList.add("form-check-input");
                     form.appendChild(input);
-                    // onChange={this.handleSelect}
-                    // input.onchange = this.state.selectedOrgs.push(org.id)
 
-
+                    row.addEventListener("click", (event) => {
+                        if (event.target !== "checkbox") {
+                            input.click();
+                        }
+                    });
+                    input.addEventListener("click", () => {
+                        row.click();
+                    });
                     input.addEventListener("change", () => {
-                        if (!this.state.selectedOrgs.includes(org.id)) {
-                            this.state.selectedOrgs.push(org.id);
+                        if (!this.state.selectedOrgs.includes(org)) {
+                            this.state.selectedOrgs.push(org);
                         } else {
-                            let index = this.state.selectedOrgs.indexOf(org.id)
+                            let index = this.state.selectedOrgs.indexOf(org)
                             this.state.selectedOrgs.splice(index, 1);
                         }
                     });
-                    submit.addEventListener("click", () => {
-                        for (let id of this.state.selectedOrgs) {
-                            let url = "https://api.emmaropes.me/organizations/" + id;
-                            console.log(url);
-                            fetch(url, {
-                                method: "PATCH"
-                            })
-                                .then(response => {
-                                    console.log(response.status);
-                                    if (response.ok) {
 
-                                    }
-                                })
-                        }
-                        // let index = this.state.data.indexOf(org);
-                        // console.log(index);
-                        // let newData = this.state.data;
-                        // newData.splice(index, 1);
-                        // this.setState(
-                        //     {data:newData}
-                        // )
-
-                    });
 
                     // Modal Stuff
 
@@ -175,6 +170,7 @@ export default class PortalRow extends React.Component {
                     row.appendChild(buttonDiv);
                     table.appendChild(row);
                 }
+            }
                 let span = document.getElementsByClassName("close")[0];
                 let modal = document.getElementById("modalM");
                 window.onclick = (event) => {
@@ -187,7 +183,8 @@ export default class PortalRow extends React.Component {
                     modal.style.display = "none";
                 });
             }
-        }
+        
+
     }
 
     render() {

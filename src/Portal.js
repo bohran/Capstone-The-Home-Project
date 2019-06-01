@@ -18,6 +18,7 @@ export class Portal extends Component {
 
     render() {
         console.log(this.state.data);
+        
         return (
             <div>
                 <div class="alert alert-danger d-none" id="error-alert"></div>
@@ -92,8 +93,9 @@ export class Portal extends Component {
                                     <th scope="col">Details</th>
                                 </tr>
                             </thead>
+                            <div id="contents">
                             <PortalRowOrg />
-
+                            </div>
                         </table>
                         <button type="submit" class="btn" id="approveButton">Approve Selected</button>
                         {/* <button type="submit" class="btn" id="deleteButton">Deny Selected</button> */}
