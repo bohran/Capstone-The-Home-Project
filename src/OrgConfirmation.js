@@ -5,6 +5,17 @@ import { Button, Form, FormGroup, Label } from "reactstrap";
 import "./css/App.css";
 
 class Confirmation extends Component {
+  convertCategoryInput = () => {
+    let types = [];
+    console.log(this.props.orgForm.type);
+    let input = this.props.orgForm.type;
+    for (let i = 0; i < input.length; i = i + 1) {
+      types.push(input[i].value);
+    }
+    this.props.orgForm.type = this.state.convertedCategories;
+    this.props.onConfirm();
+  };
+
   render() {
     return (
       <section>
@@ -19,7 +30,9 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization Type: {this.props.orgForm.type}</Label>
+              <Label>Organization Type: {this.props.orgForm.type.map((d) => {
+                return d.value
+              })}</Label>
             </FormGroup>
 
             <FormGroup>
@@ -100,7 +113,7 @@ class Confirmation extends Component {
             variant="primary"
             type="submit"
             value="2"
-            onClick={this.props.onConfirm}
+            onClick={this.convertCategoryInput}
           >
             Confirm
           </Button>
