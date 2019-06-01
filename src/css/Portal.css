@@ -1,0 +1,16 @@
+.tableRow:hover {
+    cursor: pointer;
+    background-color:#D3D3D3;
+}
+
+button {
+    background-color: #cf0f2e;
+    border-color: #cf0f2e !important;
+    color: white;
+}
+
+.btn {
+    background-color: #cf0f2e;
+    border-color: #cf0f2e !important;
+    color: white; 
+}

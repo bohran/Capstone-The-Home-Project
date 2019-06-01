@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/Portal.css";
 
 export default class PortalRow extends React.Component {
     constructor(props) {
@@ -33,6 +34,7 @@ export default class PortalRow extends React.Component {
                     let submit = document.getElementById("approveEventsButton");
                     let table = document.getElementById("table");
                     let row = document.createElement("tr");
+                    row.classList.add("tableRow");
                     let id = document.createElement("th");
                     id.scope = "row";
                     let organization = document.createElement("td");
@@ -41,7 +43,11 @@ export default class PortalRow extends React.Component {
                     let service = document.createElement("td");
                     let date = document.createElement("td");
                     let city = document.createElement("td");
+                    let buttonDiv = document.createElement("td");
                     let button = document.createElement("button");
+                    buttonDiv.appendChild(button);
+                    button.innerHTML = "More";
+                    button.classList = "btn-sm";
                     let approveButton = document.createElement("button");
                     approveButton.innerHTML = "Approve";
                     let form = document.createElement("div");
@@ -78,6 +84,52 @@ export default class PortalRow extends React.Component {
                                 })
                         }
                     });
+
+                    // Modal Stuff
+                    row.addEventListener("click", () => {
+                    let modal = document.getElementById("modalM");
+                    let body = document.getElementById("modalBody");
+                    body.innerHTML = "";
+                    let organizationName = document.createElement("p");
+                    let description = document.createElement("p");
+                    let fullAddress = document.createElement("p");
+                    let urlText = document.createElement("p");
+                    let zipcode = document.createElement("p");
+                    let county = document.createElement("p");
+                    let orgType = document.createElement("p");
+                    let email = document.createElement("p");
+                    let phone = document.createElement("p");
+                    let firstName = document.createElement("p");
+                    let role = document.createElement("p");
+                    let fullAddressText = event.address + ", " + event.city + " " + event.state + ", " + event.zipcode;
+                    county.textContent = event.county;
+                    email.textContent = event.contactEmail;
+                    phone.textContent = event.contactPhone;
+                    let fullName = event.contactFirstName + " " + event.contactLastName;
+                    firstName.textContent = fullName;
+                    if (event.organizations != null && event.organizations.length > 0) {
+                        organizationName.textContent = event.organizations[0];
+                    }
+                    
+
+                    urlText.textContent = event.url;
+                    description.textContent = event.description;
+                    fullAddress.textContent = fullAddressText;
+                    body.appendChild(organizationName);
+                    body.appendChild(description);
+                    body.appendChild(fullAddress);
+                    body.appendChild(urlText);
+                    body.appendChild(firstName);
+
+                    
+                        console.log("click row");
+                        console.log(description);
+                        modal.style.display = "block";
+                    });
+
+
+
+
                     id.textContent = event.id;
                     if (event.organizations != null && event.organizations.length > 0) {
                         organization.textContent = event.organizations[0];
@@ -91,6 +143,9 @@ export default class PortalRow extends React.Component {
                     console.log(dateText);
                     date.textContent = dateText.toLocaleString();
                     city.textContent = event.city;
+                    form.style.display = "inline-block";
+                    input.style.margin = "auto";
+                    row.appendChild(form);
                     row.appendChild(id);
                     row.appendChild(organization);
                     row.appendChild(name);
@@ -98,10 +153,20 @@ export default class PortalRow extends React.Component {
                     row.appendChild(service);
                     row.appendChild(date);
                     row.appendChild(city);
-                    row.appendChild(form);
-                    //row.appendChild(button);
+                    row.appendChild(buttonDiv);
                     table.appendChild(row);
                 }
+                let span = document.getElementsByClassName("close")[0];
+                let modal = document.getElementById("modalM");
+                window.onclick = (event) => {
+                    if (event.target === modal) {
+                        modal.style.display = "none";
+                    }
+                }
+                span.addEventListener("click", function (evt) {
+                    evt.preventDefault();
+                    modal.style.display = "none";
+                });
             }
         }
     }
