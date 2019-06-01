@@ -23,6 +23,16 @@ class NewOrg extends Component {
     this.props.form.type = types;
   };
 
+  handleOnChange = (email) => {
+
+    // let email = this.props.form.creatorEmail;
+    if (email === "") {
+      return false;
+    } else {
+      return !email.includes('@');
+    }
+  }
+
   render() {
     // const selectStyle = {
     //   multiValue: (provided, state) => {
@@ -240,6 +250,7 @@ class NewOrg extends Component {
                 <FormGroup>
                   <Label>Email *</Label>
                   <Input
+                    invalid={this.handleOnChange(this.props.form.contactEmail)}
                     type="email"
                     name="contactEmail"
                     placeholder="Enter email"
