@@ -75,7 +75,7 @@ class OrgPage extends Component {
               />
             </InputGroup>
             {/* <div className="orgButtons"> */}
-            <Button tag={Link} to="/AddOrganization">
+            <Button tag={Link} to="/RegOrganization">
               + Register Organization
             </Button>
             <Button

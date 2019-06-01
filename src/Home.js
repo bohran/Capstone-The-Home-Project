@@ -61,7 +61,7 @@ export class Home extends Component {
           and allow the general public to gain visibility on their missions and efforts.
         </p>
         <p className ="homeLiner">
-          We believe we can create this impact with 3 simple steps:
+          We believe we can spark this impact with 3 simple steps:
         </p>
         <div className="homeFeatures">
           <p className="feature">
