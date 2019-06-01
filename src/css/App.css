@@ -49,24 +49,26 @@ body{
 }
 
 .nav-link{
-    display: inline;
+    display: inline-block;
 }
 .tabs{
     width: 100%;
     text-align: right;
-    display: row;
+    /* display: inline-block; */
 }
 .navbar-collapse{
     align-content: right !important;
     /* padding-left: 25%;  */
     text-align: right !important;
+    
 }
 .menuItems {
     align-content: right;
+    /* display: inline-block !important; */
 }
 
 div.links.dropdown {
-    display: inline;
+    /* display: inline-block; */
     padding: 0px;
 }
 

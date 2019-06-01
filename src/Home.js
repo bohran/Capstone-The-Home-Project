@@ -10,8 +10,6 @@ import {
   faHandsHelping
 } from "@fortawesome/free-solid-svg-icons";
 
-// TALK WITH EMMA ABOUT STORING THE EVENT IN A DUMMY TABLE UNTIL APPROVED BY PYRAMID
-
 export class Home extends Component {
   render() {
     return (

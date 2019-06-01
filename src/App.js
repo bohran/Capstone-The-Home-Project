@@ -60,7 +60,7 @@ class App extends Component {
           </div>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <span className="tabs">
+            <div className="tabs">
               <Link className="links" to="/Events">
                 Events
               </Link>
@@ -92,7 +92,7 @@ class App extends Component {
               </DropdownMenu>
               </UncontrolledDropdown> */}
               {/* </Dropdown> */}
-            </span>
+            </div>
           </Collapse>
         </Navbar>
         <Switch>
