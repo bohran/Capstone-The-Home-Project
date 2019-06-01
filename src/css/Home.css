@@ -110,7 +110,8 @@ body {
   width: 33%;
   padding-right: 30px;
   text-align: center;
-  box-shadow: 1px 1px 5px #cfcfcf;
+  /* box-shadow: 1px 1px 5px #cfcfcf; */
+  box-lines: single;
   margin: 3%;
   padding: 20px;
   font-size: 16px;
@@ -118,6 +119,7 @@ body {
 
 .feature .icon{
   font-size: 30px;
+  color: #177283;
 }
 
 
