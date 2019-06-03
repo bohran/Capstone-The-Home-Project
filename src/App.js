@@ -5,7 +5,12 @@ import { About } from "./About";
 import { Events } from "./Events";
 import AddEvent from "./AddEvent";
 import OrgInfo from "./OrgPage";
+<<<<<<< HEAD
+import {Portal} from "./Portal";
+import {PortalAll} from "./PortalAll";
+=======
 import { Portal } from "./Portal";
+>>>>>>> 6e3fc05f6fde8baf309bbd508ed60008257d06ec
 
 import {
   Collapse,
@@ -81,6 +86,8 @@ class App extends Component {
           <Route path="/AddEvent" component={AddEvent} />
           <Route path="/RegOrganization" component={RegOrganization} />
           <Route path="/Portal" component={Portal} />
+          <Route path="/PortalAll" component={PortalAll}/>
+
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
         <div className="footer">

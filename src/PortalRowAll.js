@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/Portal.css";
 
-export default class PortalRow extends React.Component {
+export default class PortalRowAll extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,7 +11,7 @@ export default class PortalRow extends React.Component {
     }
 
     componentDidMount() {
-        let url = "https://api.emmaropes.me/unapprovedevents";
+        let url = "https://api.emmaropes.me/events";
         let req = new Request(url);
         fetch(req)
             .then(response => {
@@ -28,25 +28,7 @@ export default class PortalRow extends React.Component {
     renderTable(data) {
         console.log(this.state.data)
         if (data.length > 0) {
-            let submit = document.getElementById("approveEventsButton");
-            submit.addEventListener("click", () => {
-                let conf = window.confirm("Approve the selected events?");
-                if (conf === true) {
-                    for (let id of this.state.selectedEvents) {
-                        let url = "https://api.emmaropes.me/events/approve/" + id;
-                        console.log(url);
-                        fetch(url, {
-                            method: "PATCH"
-                        })
-                            .then(response => {
-                                if (response.ok) {
-                                    window.location.reload(true);
-                                }
-                            })
-                    }
-                }
-            });
-            let deny = document.getElementById("deleteEventButton");
+            let deny = document.getElementById("deleteAllEventButton");
             deny.addEventListener("click", () => {
                 let conf = window.confirm("Delete the selected events? This action is final and cannot be reversed");
                 if (conf === true) {
@@ -64,9 +46,7 @@ export default class PortalRow extends React.Component {
                 }
             });
             for (let event of data) {
-                console.log(event.county);
-
-                let table = document.getElementById("table");
+                let table = document.getElementById("allEventTable");
                 let row = document.createElement("tr");
                 row.classList.add("tableRow");
                 let id = document.createElement("th");

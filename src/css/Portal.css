@@ -1,0 +1,38 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+.tableRow:hover {
+    cursor: pointer;
+    background-color:#D3D3D3;
+}
+
+button {
+    background-color: #177283;
+    border-color: #177283 !important;
+    color: white;
+}
+
+.btn {
+    background-color: #177283;
+    border-color: #177283 !important;
+    color: white;
+    font-size: 10pt;
+    font-family: "Lato", sans-serif;
+}
+
+
+
+#deleteEventButton {
+background-color: #cf0f2e;
+border-color:  #cf0f2e!important;
+}
+
+#deleteOrgButton {
+    background-color: #cf0f2e;
+    border-color: #cf0f2e !important;
+}
+
+#deleteAllOrgButton {
+    background-color: #cf0f2e;
+    border-color: #cf0f2e !important;
+}

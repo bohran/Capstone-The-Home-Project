@@ -31,6 +31,16 @@ class NewOrg extends Component {
     // });
   };
 
+  handleOnChange = (email) => {
+
+    // let email = this.props.form.creatorEmail;
+    if (email === "") {
+      return false;
+    } else {
+      return !email.includes('@');
+    }
+  }
+
   render() {
     console.log(this.state.categories)
     // const selectStyle = {
@@ -250,6 +260,7 @@ class NewOrg extends Component {
                 <FormGroup>
                   <Label>Email *</Label>
                   <Input
+                    invalid={this.handleOnChange(this.props.form.contactEmail)}
                     type="email"
                     name="contactEmail"
                     placeholder="Enter email"
