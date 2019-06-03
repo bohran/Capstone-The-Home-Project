@@ -10,7 +10,7 @@ body {
 } */
 .sidebarFilter {
   font-weight: normal;
-  padding: 40px;
+  padding: 30px;
   align-content: center;
   /* width: 20vw; */
 }
@@ -77,9 +77,10 @@ body {
 }
 
 .card {
-  width: 270px;
+  width: 250px;
   box-shadow: 1px 1px 5px #cfcfcf;
-  margin: 30px;
+  margin: 20px;
+  
   /* box-sizing: content-box; */
 }
 .card:hover {
@@ -114,6 +115,7 @@ body {
   font-size: 13px;
   padding-top: 5%;
 }
+
 
 .eventName {
   overflow: hidden;
@@ -177,7 +179,7 @@ body {
 .search .input-group {
   float: left;
   width: 50%;
-  margin-left: 23%;
+  margin-left: 25%;
   margin-top: 1%;
   margin-right: 3%;
 }
