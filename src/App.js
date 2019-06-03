@@ -5,8 +5,12 @@ import { About } from "./About";
 import { Events } from "./Events";
 import AddEvent from "./AddEvent";
 import OrgInfo from "./OrgPage";
+<<<<<<< HEAD
 import {Portal} from "./Portal";
 import {PortalAll} from "./PortalAll";
+=======
+import { Portal } from "./Portal";
+>>>>>>> 6e3fc05f6fde8baf309bbd508ed60008257d06ec
 
 import {
   Collapse,
@@ -61,7 +65,7 @@ class App extends Component {
           </div>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <span className="tabs">
+            <div className="tabs">
               <Link className="links" to="/Events">
                 Events
               </Link>
@@ -93,7 +97,7 @@ class App extends Component {
               </DropdownMenu>
               </UncontrolledDropdown> */}
               {/* </Dropdown> */}
-            </span>
+            </div>
           </Collapse>
         </Navbar>
         <Switch>
@@ -123,12 +127,24 @@ class App extends Component {
               <p>Phone: 206.374.7788</p>
               <p>Website: pyramidcommunications.com</p>
             </div>
-
-            {/* Explore */}
-            {/* Add in all the nav bar elements here */}
-
-            {/* social media? */}
           </div>
+          <div className="footer-toolkit">
+            <div className="learnMore">
+              Learn More about the Homelessness Cause:
+            </div>
+            <div
+              className="button-toolkit"
+              onClick={() =>
+                window.open(
+                  "https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0",
+                  "_blank"
+                )
+              }
+            >
+              Toolkits
+            </div>
+          </div>
+          <div />
         </div>
       </Router>
     );

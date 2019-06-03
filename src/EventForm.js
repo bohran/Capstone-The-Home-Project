@@ -22,7 +22,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "react-image-picker/dist/index.css";
 
 import "./css/form.css";
-// import "./css/form.css";
 
 const requiredFields = [
   "orgs",
@@ -141,6 +140,17 @@ class NewEvent extends Component {
     return eventDateFormatted <= currDateFormatted;
   };
 
+
+  handleOnChange = (email) => {
+
+    // let email = this.props.form.creatorEmail;
+    if (email === "") {
+      return false;
+    } else {
+      return !email.includes('@');
+    }
+  }
+
   handleRequirements = () => {
     let errorFields = requiredFields.filter(field =>
       _.isEmpty(this.props.form[field])
@@ -210,7 +220,7 @@ class NewEvent extends Component {
                 placeholder="Enter text"
                 value={this.props.form.title}
                 onChange={this.props.onChange}
-                // invalid={this.state.error[1].title}
+              // invalid={this.state.error[1].title}
               />
             </FormGroup>
             <div className="formTypes">
@@ -455,6 +465,7 @@ class NewEvent extends Component {
                 <FormGroup>
                   <Label>Email *</Label>
                   <Input
+                    invalid={this.handleOnChange(this.props.form.creatorEmail)}
                     type="text"
                     name="creatorEmail"
                     placeholder="Enter email"
@@ -521,6 +532,7 @@ class NewEvent extends Component {
                   <FormGroup>
                     <Label>Email *</Label>
                     <Input
+                      invalid={this.handleOnChange(this.props.form.coordinatorEmail)}
                       type="text"
                       name="coordinatorEmail"
                       placeholder="Enter email"

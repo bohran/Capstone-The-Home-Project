@@ -39,35 +39,33 @@ body {
   overflow: visible;
   margin-top: 20px;
   margin-bottom: 10px;
+  padding: 10px 20px 10px 20px !important;
+  border-radius: 2px !important;
+  font-size: 14px !important;
 }
+
+/* .btn-secondary:active{
+  background-color: #e74f68 !important;
+  border-color: #e74f68 !important;
+  text-decoration: none !important;
+} */
+
 .btn-secondary.dropdown-toggle {
   background-color: #177283 !important;
   border-color: #177283 !important;
 }
-/* .close{
-    background-color: #cf0f2e !important;
-    border-color: #cf0f2e !important;
-    color: #cf0f2e;
-} */
 
 .card {
   width: 270px;
-  /* min-height: 350px;
-  max-height: 350px; */
-  /* margin-left: 40px;
-    margin-right: 40px;  */
-  margin: 20px;
-  /* display: flex;
-    flex-direction: row; */
-  /* box-shadow: none; */
   box-shadow: 1px 1px 5px #cfcfcf;
-  box-sizing: content-box;
+  margin: 30px;
+  /* box-sizing: content-box; */
 }
-.card:hover{
+.card:hover {
   box-shadow: 1px 1px 40px #cfcfcf;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
-  }
+}
 
 .card-img {
   width: 100%;
@@ -104,14 +102,14 @@ body {
   padding: 8px;
   height: 3.8em;
   text-align: left;
-  font-weight: 400
+  font-weight: 400;
 }
 .eventMonth {
   font-size: 14px;
   text-align: center;
   color: #cf0f2e;
   min-width: 50px;
-  float:left;
+  float: left;
   font-weight: 300;
   /* background-color: whitesmoke; */
   margin-top: 5%;
@@ -126,17 +124,17 @@ body {
   /* background-color: rgb(223, 199, 199); */
   font-weight: 350;
 }
-.eventAddress{
-text-align: left;  
-font-weight: 200;
-font-size: 15px;
-}
-.eventTime{
-  text-align: left;  
+.eventAddress {
+  text-align: left;
   font-weight: 200;
   font-size: 15px;
 }
-.service{
+.eventTime {
+  text-align: left;
+  font-weight: 200;
+  font-size: 15px;
+}
+.service {
   text-align: left;
 }
 .actionType {
@@ -155,7 +153,7 @@ font-size: 15px;
 .search {
   padding: 5px;
 }
-.search .input-group{
+.search .input-group {
   float: left;
   width: 50%;
   margin-left: 23%;
@@ -163,7 +161,7 @@ font-size: 15px;
   margin-right: 3%;
 }
 
-.search .btn-secondary{
+.search .btn-secondary {
   /* float: right; */
   /* margin-right: 8%; */
   margin-top: 1%;
@@ -173,3 +171,35 @@ font-size: 15px;
   color: grey;
   font-weight: normal;
 }
+
+.events {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  align-content: center;
+  width: 80%;
+}
+
+/* @media only screen and (max-width: 768px) {
+  .events {
+    width: 100px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .events {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .events {
+    width: 800px;
+  }
+}
+
+@media only screen and (min-width: 1824px) {
+  .events {
+    width: 1500px;
+  }
+} */

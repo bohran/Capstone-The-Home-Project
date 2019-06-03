@@ -55,7 +55,11 @@ export class Home extends Component {
         {/* DEAFUALT TEXT HERE, NEED TO EDIT!!! */}
         <p className="homeAbstract">
           We believe there is strength is numbers. Through this calendar resource, we encourage 
-          the organizations to join forces to increase their impact and the general public involved in this cause to:
+          organizations to join forces to increase their impact for this cause 
+          and allow the general public to gain visibility on their missions and efforts.
+        </p>
+        <p className ="homeLiner">
+          We believe we can spark this impact with 3 simple steps:
         </p>
         <div className="homeFeatures">
           <p className="feature">
