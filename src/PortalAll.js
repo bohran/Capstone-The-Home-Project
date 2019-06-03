@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PortalRowAll from "./PortalRowAll";
 import PortalRowAllOrgs from "./PortalRowAllOrgs";
+import { Link } from "react-router-dom";
+import { Button } from "reactstrap";
 import "./css/Portal.css";
 
 export class PortalAll extends Component {
@@ -15,6 +17,27 @@ export class PortalAll extends Component {
         window.scrollTo(0, 0);
     }
 
+    handleSignOut() {
+        fetch("https://api.seattleforallkc.com/sessions/mine", {
+            method: 'DELETE',
+            headers: new Headers({
+                'Authorization': window.localStorage.getItem("sessionID")
+            })
+        }).then(function (response) {
+            if (response.status < 300) {
+                window.localStorage.removeItem("sessionID")
+                return null;
+            }
+            return response.text().then((t) => Promise.reject(t));
+        }).then(function () {
+            let signInDiv = document.getElementById("signInDiv");
+            signInDiv.style.display = "block";
+            let div = document.getElementById("wholeDiv");
+            div.style.display = "none";
+        }).catch(function (error) {
+            alert(error);
+        });
+    }
 
     render() {
         console.log(this.state.data);
@@ -27,7 +50,13 @@ export class PortalAll extends Component {
                 </div>
                 <div>
                     <div class="container" id="allEventContainer">
-                        <h1>All Orgs</h1>
+                    <Button tag={Link} to="/Portal">
+              See to be Approved
+            </Button>
+            <button type="submit" className="btn" onClick={() => this.handleSignOut()}>
+                                    Sign Out
+                        </button>
+                        <h1>All Events</h1>
                         <table class="table table-hover" id="allEventTable">
                             <thead>
                                 <tr>

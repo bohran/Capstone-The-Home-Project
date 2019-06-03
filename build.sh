@@ -1,2 +1,1 @@
-docker build -t eropes/capclientfinal2 .
-docker push eropes/capclientfinal2
+docker build -t eropes/capclientfinal3 .

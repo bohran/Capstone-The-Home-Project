@@ -12,7 +12,7 @@ export default class PortalRowOrg extends React.Component {
     }
 
     componentDidMount() {
-        let url = "https://api.emmaropes.me/unapprovedorgs";
+        let url = "https://api.seattleforallkc.com/unapprovedorgs";
         let req = new Request(url);
         fetch(req)
             .then(response => {
@@ -37,10 +37,13 @@ export default class PortalRowOrg extends React.Component {
                 let conf = window.confirm("Approve the selected organiations?");
                 if (conf === true) {
                     for (let org of this.state.selectedOrgs) {
-                        let url = "https://api.emmaropes.me/organizations/" + org.id;
+                        let url = "https://api.seattleforallkc.com/organizations/" + org.id;
                         console.log(url);
                         fetch(url, {
-                            method: "PATCH"
+                            method: "PATCH",
+                            headers: new Headers({
+                                'Authorization': window.localStorage.getItem("sessionID")
+                            })
                         })
                             .then(response => {
                                 console.log(response.status);
@@ -58,9 +61,12 @@ export default class PortalRowOrg extends React.Component {
                 let conf = window.confirm("Delete the selected organizations? This action is final and cannot be reversed");
                 if (conf === true) {
                     for (let org of this.state.selectedOrgs) {
-                        let url = "https://api.emmaropes.me/organizations/" + org.id;
+                        let url = "https://api.seattleforallkc.com/organizations/" + org.id;
                         fetch(url, {
-                            method: "DELETE"
+                            method: "DELETE",
+                            headers: new Headers({
+                                'Authorization': window.localStorage.getItem("sessionID")
+                            })
                         })
                             .then(response => {
                                 if (response.ok) {

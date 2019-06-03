@@ -11,7 +11,7 @@ export default class PortalRow extends React.Component {
     }
 
     componentDidMount() {
-        let url = "https://api.emmaropes.me/unapprovedevents";
+        let url = "https://api.seattleforallkc.com/unapprovedevents";
         let req = new Request(url);
         fetch(req)
             .then(response => {
@@ -33,10 +33,13 @@ export default class PortalRow extends React.Component {
                 let conf = window.confirm("Approve the selected events?");
                 if (conf === true) {
                     for (let id of this.state.selectedEvents) {
-                        let url = "https://api.emmaropes.me/events/approve/" + id;
+                        let url = "https://api.seattleforallkc.com/events/approve/" + id;
                         console.log(url);
                         fetch(url, {
-                            method: "PATCH"
+                            method: "PATCH",
+                            headers: new Headers({
+                                'Authorization': window.localStorage.getItem("sessionID")
+                            })
                         })
                             .then(response => {
                                 if (response.ok) {
@@ -51,9 +54,12 @@ export default class PortalRow extends React.Component {
                 let conf = window.confirm("Delete the selected events? This action is final and cannot be reversed");
                 if (conf === true) {
                     for (let id of this.state.selectedEvents) {
-                        let url = "https://api.emmaropes.me/events/" + id;
+                        let url = "https://api.seattleforallkc.com/events/" + id;
                         fetch(url, {
-                            method: "DELETE"
+                            method: "DELETE",
+                            headers: new Headers({
+                                'Authorization': window.localStorage.getItem("sessionID")
+                            })
                         })
                             .then(response => {
                                 if (response.ok) {

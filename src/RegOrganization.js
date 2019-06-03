@@ -39,7 +39,7 @@ export default class RegOrganization extends Component {
   };
 
   handleSaveOrg = () => {
-    let url = "https://api.emmaropes.me/organizations";
+    let url = "https://api.seattleforallkc.com/organizations";
     fetch(url, {
       method: "post",
       body: JSON.stringify({

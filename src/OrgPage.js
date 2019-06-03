@@ -13,7 +13,7 @@ class OrgPage extends Component {
   }
 
   componentDidMount() {
-    let url = "https://api.emmaropes.me/organizations";
+    let url = "https://api.seattleforallkc.com/organizations";
     let req = new Request(url);
     fetch(req)
       .then(response => {

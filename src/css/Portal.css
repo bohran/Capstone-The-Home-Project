@@ -36,3 +36,14 @@ border-color:  #cf0f2e!important;
     background-color: #cf0f2e;
     border-color: #cf0f2e !important;
 }
+
+
+#deleteAllEventButton {
+    background-color: #cf0f2e;
+    border-color: #cf0f2e !important;
+}
+
+.buttons {
+    text-align: right;
+    align-content: right;
+}

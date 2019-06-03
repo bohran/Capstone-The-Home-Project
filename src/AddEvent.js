@@ -50,7 +50,7 @@ export default class AddEvent extends Component {
 
   handleSaveEvent = () => {
     var capacityAsInt = parseInt(this.state.eventFormEntries.capacity, 10);
-    let url = "https://api.emmaropes.me/events";
+    let url = "https://api.seattleforallkc.com/events";
     fetch(url, {
       method: "post",
       body: JSON.stringify({
@@ -144,7 +144,7 @@ export default class AddEvent extends Component {
 };
 
   componentDidMount() {
-    let url = "https://api.emmaropes.me/organizations";
+    let url = "https://api.seattleforallkc.com/organizations";
     let req = new Request(url);
     fetch(req)
       .then(response => {
