@@ -124,3 +124,14 @@ span {
     font-weight: bold;
     cursor: pointer;
 }
+
+@media (max-width: 980px) {
+    .footer {
+        height: 300px;
+    }
+
+    
+    .footer-toolkit {
+        display:none;
+    }
+}
