@@ -9,13 +9,34 @@ body {
     margin-left:15px;
 } */
 .sidebarFilter {
-  /* float: left; */
-  padding-left: 30px;
-  padding-right: 40px;
-  /* background-color: #33cbe64b; */
-  padding-top: 20px;
-  font-weight: 300;
-  padding-bottom: 275px;
+  background-color: #33cbe64b;
+  font-weight: normal;
+  padding: 40px;
+  align-content: center;
+  /* width: 20vw; */
+}
+
+.filters, .categories {
+  width: 12vw;
+  margin: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .sidebarFilter {
+    padding: 20px;
+    /* width: 20vw; */
+  }
+
+  .filters, .categories {
+    width: 20vw;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .sidebarFilter {
+    display: none;
+  }
 }
 
 .navbar-wrapper {
