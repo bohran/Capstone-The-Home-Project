@@ -5,6 +5,10 @@ import { Button, Form, FormGroup, Label } from "reactstrap";
 import "./css/App.css";
 
 class Confirmation extends Component {
+  state = {
+    convertedCategories: []
+  };
+
   convertCategoryInput = () => {
     let types = [];
     console.log(this.props.orgForm.type);

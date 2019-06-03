@@ -135,30 +135,38 @@ export default class PortalRowOrg extends React.Component {
                         let description = document.createElement("p");
                         let fullAddress = document.createElement("p");
                         let urlText = document.createElement("p");
-                        let zipcode = document.createElement("p");
                         let county = document.createElement("p");
                         let orgType = document.createElement("p");
                         let email = document.createElement("p");
                         let phone = document.createElement("p");
-                        let firstName = document.createElement("p");
+                        let fullName = document.createElement("p");
                         let role = document.createElement("p");
-                        let fullAddressText = org.address + ", " + org.city + " " + org.state + ", " + org.zipcode;
-                        zipcode.textContent = org.zipcode;
-                        county.textContent = org.county;
-                        email.textContent = org.email;
-                        phone.textContent = org.phone;
-                        let fullName = org.firstName + " " + org.lastName;
-                        firstName.textContent = fullName;
-                        organizationName.textContent = org.organizationName;
+                        fullAddress.textContent = "Address: " + org.address + ", " + org.city + " " + org.state + ", " + org.zipcode;
+                        county.textContent = "County: " + org.county;
+                        email.textContent = "Contact Email: " + org.email;
+                        phone.textContent = "Contact Phone: " + org.phone;
+                        fullName.textContent = "Contact Name: " + org.firstName + " " + org.lastName;
+                        organizationName.textContent = "Organization Name: " + org.organizationName;
+                        role.textContent = "Contact Role: " + org.role;
+                        urlText.textContent = "Website: " + org.url;
+                        description.textContent = "Description: " + org.organizationDescription;
+                        if (org.organizationType != null && org.organizationType.length > 0) {
+                            let typeList = org.organizationType[0];
+                            for (let i = 1; i < org.organizationType.length; i++) {
+                                typeList = typeList + ", " + org.organizationType[i];
+                            }
+                            orgType.textContent = "Organization Type: " + typeList;
+                        }
 
-                        urlText.textContent = org.url;
-                        description.textContent = org.organizationDescription;
-                        fullAddress.textContent = fullAddressText;
                         body.appendChild(organizationName);
                         body.appendChild(description);
+                        body.appendChild(orgType);
                         body.appendChild(fullAddress);
                         body.appendChild(urlText);
-                        body.appendChild(firstName);
+                        body.appendChild(fullName);
+                        body.appendChild(role);
+                        body.appendChild(email);
+                        body.appendChild(phone);
 
 
                         console.log("click row");
@@ -192,19 +200,19 @@ export default class PortalRowOrg extends React.Component {
                     table.appendChild(row);
                 }
             }
-                let span = document.getElementsByClassName("close")[0];
-                let modal = document.getElementById("modalM");
-                window.onclick = (event) => {
-                    if (event.target === modal) {
-                        modal.style.display = "none";
-                    }
-                }
-                span.addEventListener("click", function (evt) {
-                    evt.preventDefault();
+            let span = document.getElementsByClassName("close")[0];
+            let modal = document.getElementById("modalM");
+            window.onclick = (event) => {
+                if (event.target === modal) {
                     modal.style.display = "none";
-                });
+                }
             }
-        
+            span.addEventListener("click", function (evt) {
+                evt.preventDefault();
+                modal.style.display = "none";
+            });
+        }
+
 
     }
 
