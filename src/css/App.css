@@ -140,16 +140,12 @@ span {
     cursor: pointer;
 }
 
-<<<<<<< HEAD
-=======
 @media (max-width: 980px) {
     .footer {
         height: 300px;
     }
 
-    
     .footer-toolkit {
         display:none;
     }
 }
->>>>>>> 4f7b702687c23c0123e88346d5e63c2ce58aec9a

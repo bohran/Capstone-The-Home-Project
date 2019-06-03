@@ -56,14 +56,14 @@ export class About extends Component {
         <br/>
         <h2 className="aboutTitle">The Team</h2>
         <div className="slogan">
-            A group of Informatics students at the University of Washington <br/> partnered with Pyramid Communications to bring this calendar resource to life.
+            A team of Informatics students at the University of Washington <br/> partnered with Pyramid Communications to bring this calendar resource to life.
           </div>
           <div className="imgContainer">
             <div className="aboutTeamImgs">
               <img
                 // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
-                src="./img/shannonBW.jpg"
+                src="./img/shannonBW2.jpeg"
                 alt="Portrait of Shannon Gatta"
               />
               <h6 className="photoTitles">Shannon Gatta </h6>
@@ -76,7 +76,7 @@ export class About extends Component {
               <img
                 // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
-                src="./img/eshaBW.jpg"
+                src="./img/eshaBW2.jpeg"
                 alt="Portrait of Esha More"
               />
               <h6 className="photoTitles">Esha More</h6>
@@ -89,7 +89,7 @@ export class About extends Component {
               <img
                 // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
-                src="./img/emmaBW.jpeg"
+                src="./img/emmaBW2.jpeg"
                 alt="Portrait of Emma Ropes"
               />
               <h6 className="photoTitles">Emma Ropes</h6>
@@ -102,7 +102,7 @@ export class About extends Component {
               <img
                 // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
-                src="./img/nicoleBW.jpg"
+                src="./img/nicoleBW2.jpeg"
                 alt="Portrait of Nicole Bohra"
               />
               <h6 className="photoTitles">Nicole Bohra</h6>

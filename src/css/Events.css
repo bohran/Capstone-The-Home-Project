@@ -9,7 +9,6 @@ body {
     margin-left:15px;
 } */
 .sidebarFilter {
-  background-color: #33cbe64b;
   font-weight: normal;
   padding: 40px;
   align-content: center;
@@ -54,6 +53,7 @@ body {
   position: relative;
   margin-right: 3%;
 }
+
 .btn-secondary {
   background-color: #cf0f2e !important;
   border-color: #cf0f2e !important;
@@ -73,7 +73,7 @@ body {
 
 .btn-secondary.dropdown-toggle {
   background-color: #177283 !important;
-  border-color: #177283 !important;
+  /* border-color: #177283 !important; */
 }
 
 .card {

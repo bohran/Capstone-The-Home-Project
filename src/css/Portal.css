@@ -14,7 +14,7 @@ button {
 
 .btn {
     background-color: #177283;
-    border-color: #177283 !important;
+    /* border-color: #177283 !important; */
     color: white;
     font-size: 10pt;
     font-family: "Lato", sans-serif;
