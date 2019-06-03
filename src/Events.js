@@ -456,6 +456,9 @@ export class Events extends Component {
 
         return (
           <div className="event" key={"event" + i}>
+            <Row>
+              <Col>
+              <CardGroup>
             <Card onClick={this.handleCardClick.bind(null, i)}>
               <div className="image">
                 <CardImg src={d.imageURL} />
@@ -484,6 +487,9 @@ export class Events extends Component {
                 </CardBody>
               </div>
             </Card>
+            </CardGroup>
+            </Col>
+            </Row>
           </div>
         );
       });
