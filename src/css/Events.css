@@ -10,7 +10,7 @@ body {
 } */
 .sidebarFilter {
   font-weight: normal;
-  padding: 40px;
+  padding: 30px;
   align-content: center;
   /* width: 20vw; */
 }
@@ -115,6 +115,7 @@ body {
   font-size: 13px;
   padding-top: 5%;
 }
+
 
 .eventName {
   overflow: hidden;
