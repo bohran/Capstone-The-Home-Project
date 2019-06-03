@@ -204,7 +204,13 @@ body {
   align-content: center;
   /* width: 80%; */
 }
-
+.noEvents{
+  font-size: 30px;
+  text-align: center;
+  font-weight: 300;
+  /* width: 100%; */
+  padding-left: 40%;
+}
 /* @media only screen and (max-width: 768px) {
   .events {
     width: 100px;
