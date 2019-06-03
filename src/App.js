@@ -5,12 +5,8 @@ import { About } from "./About";
 import { Events } from "./Events";
 import AddEvent from "./AddEvent";
 import OrgInfo from "./OrgPage";
-<<<<<<< HEAD
 import {Portal} from "./Portal";
 import {PortalAll} from "./PortalAll";
-=======
-import { Portal } from "./Portal";
->>>>>>> 6e3fc05f6fde8baf309bbd508ed60008257d06ec
 
 import {
   Collapse,

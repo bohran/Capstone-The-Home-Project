@@ -15,7 +15,8 @@ import {
   Input,
   InputGroup,
   NavbarToggler,
-  Collapse
+  Collapse,
+  Nav
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -385,13 +386,18 @@ export class Events extends Component {
     } else {
       maxDate = "All";
     }
-    console.log(maxDate);
     this.setState({ selectedDate: maxDate });
   };
 
+  handleOrgSearch = (orgs) => {
+    let match = orgs.filter((d) => {
+      return d.toLowerCase().includes(this.state.input.toLowerCase());
+    })
+    return match.length !== 0;
+  }
+
   render() {
     let content = "";
-    console.log(`Option selected:`, this.state.selectedDate);
     const classes = "tooltip-inner";
     if (this.state.data.length > 0) {
       const filteredData = this.state.data.filter(d => {
@@ -404,7 +410,7 @@ export class Events extends Component {
           serviceOverlap.length !== 0 || this.state.filter.length === 0;
         const searchInput =
           d.eventName.toLowerCase().includes(this.state.input.toLowerCase()) ||
-          this.state.input === "";
+          this.state.input === "" || this.handleOrgSearch(d.organizations);
         const matchCity =
           this.state.selectedCity.includes(d.city) ||
           this.state.selectedCity.length === 0;
@@ -501,8 +507,8 @@ export class Events extends Component {
         </div>
         <div className="d-flex">
           <div className="sidebarFilter">
-            <Button onClick={this.toggleFilters}>Filters</Button>
-            <Collapse isOpen={this.state.filtersOpen}>
+            {/* <Button onClick={this.toggleFilters}>Filters</Button> */}
+            {/* <Collapse isOpen={this.state.filtersOpen}> */}
               <div className="filters">
                 <h5>Areas of Service:</h5>
                 <FormGroup check>
@@ -668,10 +674,9 @@ export class Events extends Component {
                   />
                 </FormGroup>
               </div>
-            </Collapse>
+            {/* </Collapse> */}
             <br />
           </div>
-          {/* </Nav> */}
 
           <div>
             <div className="events">{content}</div>
