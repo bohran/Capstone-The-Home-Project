@@ -56,7 +56,7 @@ class App extends Component {
         >
           <div className="navtitle">
             <NavbarBrand className="title" href="/">
-              THE HOME PROJECT CALENDAR
+              HOME PROJECT CALENDAR
             </NavbarBrand>
           </div>
           <NavbarToggler onClick={this.toggle} />
@@ -68,31 +68,9 @@ class App extends Component {
               <Link className="links" to="/Orgs">
                 Organizations
               </Link>
-              {/* <NavLink
-                className="links"
-                href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0"
-                target="_blank"
-              >
-                Toolkits
-              </NavLink> */}
               <Link className="links" to="/About">
                 About Us
               </Link>
-              {/* <Link className="links" to="/AddEvent">
-                Add Event
-              </Link> */}
-
-              {/* <Dropdown className="links" isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}> */}
-              {/* <UncontrolledDropdown inNavbar className="links">
-              <DropdownToggle nav caret className="links">Register</DropdownToggle>
-              <DropdownMenu right>
-                <Link to="/RegOrganization">
-                  Add Organization
-                </Link> <br/>
-                <Link to="/AddEvent">Add Event</Link>
-              </DropdownMenu>
-              </UncontrolledDropdown> */}
-              {/* </Dropdown> */}
             </div>
           </Collapse>
         </Navbar>
