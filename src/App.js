@@ -7,7 +7,6 @@ import AddEvent from "./AddEvent";
 import OrgInfo from "./OrgPage";
 import {Portal} from "./Portal";
 import {PortalAll} from "./PortalAll";
-
 import {
   Collapse,
   Navbar,
