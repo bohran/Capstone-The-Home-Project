@@ -77,9 +77,10 @@ body {
 }
 
 .card {
-  width: 270px;
+  width: 250px;
   box-shadow: 1px 1px 5px #cfcfcf;
-  margin: 30px;
+  margin: 20px;
+  
   /* box-sizing: content-box; */
 }
 .card:hover {
@@ -177,7 +178,7 @@ body {
 .search .input-group {
   float: left;
   width: 50%;
-  margin-left: 23%;
+  margin-left: 25%;
   margin-top: 1%;
   margin-right: 3%;
 }
