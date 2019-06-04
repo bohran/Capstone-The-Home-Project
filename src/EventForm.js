@@ -62,7 +62,7 @@ const defaultImgs = [
   "./img/give1.jpg",
   "./img/give2.jpg",
   "./img/give3.jpg",
-  "./img/give4.jpg",
+  // "./img/give4.jpg",
   "./img/learn1.jpg",
   "./img/learn2.jpg",
   "./img/learn3.jpg",
@@ -70,7 +70,7 @@ const defaultImgs = [
   "./img/learn5.jpg",
   "./img/volunteer1.jpg",
   "./img/volunteer2.jpg",
-  "./img/volunteer3.jpg",
+  // "./img/volunteer3.jpg",
   "./img/volunteer4.jpg",
   "./img/volunteer5.jpg"
 ];

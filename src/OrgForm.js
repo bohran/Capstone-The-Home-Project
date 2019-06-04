@@ -270,7 +270,7 @@ class NewOrg extends Component {
   render() {
     return (
       <div>
-        <h2 className="pageTitle">ADD YOUR ORGANIZATION</h2>
+        <h2 className="pageTitle">REGISTER NEW ORGANIZATION</h2>
         <div className="addOrg">
           <Form>
             <h5 className="formTitle">Organization Information</h5>
