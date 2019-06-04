@@ -233,19 +233,17 @@ class NewEvent extends Component {
       modal: false
     };
   }
-
+ 
   toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
   };
 
-  handleCityChange = city => {
-    let cityList = city.map(d => {
-      return d.value;
-    });
-    this.setState({ selectedCity: cityList });
+  handleCityChange = input => {
+    this.props.form.city = input;
   };
+
   handleSameAs = () => {
     var sameAsChecked = document.getElementById("sameAsCheck");
     var contact = document.getElementById("coordInfo");
@@ -534,8 +532,7 @@ class NewEvent extends Component {
                   style={{ position: "fixed" }}
                   onChange={this.handleCityChange}
                   options={cities}
-                  isMulti="true"
-                  placeholder="Ex: Seattle"
+                  placeholder="Select..."
                 />
                 </FormGroup>
               </Col>

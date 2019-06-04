@@ -13,6 +13,7 @@ class Confirmation extends Component {
     }
     this.props.orgForm.type = orgs;
     this.props.form.eventForm.category = this.props.eventForm.category.value;
+    this.props.form.eventForm.city = this.props.eventForm.city.value;
     this.props.onConfirm();
   };
 
@@ -102,7 +103,7 @@ class Confirmation extends Component {
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>City: {this.props.eventForm.city}</Label>
+                  <Label>City: {this.props.eventForm.city.value}</Label>
                 </FormGroup>
               </Col>
               <Col md={6}>

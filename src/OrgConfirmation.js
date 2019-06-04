@@ -13,6 +13,7 @@ class Confirmation extends Component {
       types.push(input[i].value);
     }
     this.props.orgForm.type = types;
+    this.props.form.orgForm.city = this.props.orgForm.city.value;
     this.props.onConfirm();
   };
 
@@ -48,7 +49,7 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization City: {this.props.orgForm.city}</Label>
+              <Label>Organization City: {this.props.orgForm.city.value}</Label>
             </FormGroup>
 
             <FormGroup>
