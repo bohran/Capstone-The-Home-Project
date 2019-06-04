@@ -18,11 +18,17 @@ class NewOrg extends Component {
   state = {
     categories: []
   };
+  
 
   handleTypeChange = input => {
     this.props.form.type = input;
   };
-
+  handleCityChange = city => {
+    let cityList = city.map(d => {
+      return d.value;
+    });
+    this.setState({ selectedCity: cityList });
+  };
   handleOnChange = (email) => {
 
     // let email = this.props.form.creatorEmail;
@@ -88,6 +94,136 @@ class NewOrg extends Component {
       {
         value: "Phone and Computer Access",
         label: "Phone and Computer Access"
+      }
+    ];
+    const cities = [
+      {
+        value: "Algona",
+        label: "Algona"
+      },
+      {
+        value: "Auburn",
+        label: "Auburn"
+      },
+      {
+        value: "Bellevue",
+        label: "Bellevue"
+      },
+      {
+        value: "Bothell",
+        label: "Bothell"
+      },
+      {
+        value: "Burien",
+        label: "Burien"
+      },
+      {
+        value: "Carnation",
+        label: "Carnation"
+      },
+      {
+        value: "Covington",
+        label: "Covington"
+      },
+      {
+        value: "Des Moines",
+        label: "Des Moines"
+      },
+      {
+        value: "Duvall",
+        label: "Duvall"
+      },
+      {
+        value: "Enumclaw",
+        label: "Enumclaw"
+      },
+      {
+        value: "Federal Way",
+        label: "Federal Way"
+      },
+      {
+        value: "Issaquah",
+        label: "Issaquah"
+      },
+      {
+        value: "Kenmore",
+        label: "Kenmore"
+      },
+      {
+        value: "Kent",
+        label: "Kent"
+      },
+      {
+        value: "Kirkland",
+        label: "Kirkland"
+      },
+      {
+        value: "Lake Forest Park",
+        label: "Lake Forest Park"
+      },
+      {
+        value: "Maple Valley",
+        label: "Maple Valley"
+      },
+      {
+        value: "Medina",
+        label: "Medina"
+      },
+      {
+        value: "Mercer Island",
+        label: "Mercer Island"
+      },
+      {
+        value: "Newcastle",
+        label: "Newcastle"
+      },
+      {
+        value: "Normandy Park",
+        label: "Normandy Park"
+      },
+      {
+        value: "North Bend",
+        label: "North Bend"
+      },
+      {
+        value: "Pacific",
+        label: "Pacific"
+      },
+      {
+        value: "Redmond",
+        label: "Redmond"
+      },
+      {
+        value: "Renton",
+        label: "Renton"
+      },
+      {
+        value: "Sammamish",
+        label: "Sammamish"
+      },
+      {
+        value: "Seatac",
+        label: "Seatac"
+      },
+      {
+        value: "Seattle",
+        label: "Seattle"
+      },
+      {
+        value: "Shoreline",
+        label: "Shoreline"
+      },
+      {
+        value: "Snoqualmie",
+        label: "Snoqualmie"
+      },
+      {
+        value: "Tukwila",
+        label: "Tukwila"
+      },
+      {
+        value: "Woodinville",
+        label: "Woodinville"
       }
     ];
     return (
@@ -158,13 +294,13 @@ class NewOrg extends Component {
               <Col md={4}>
                 <FormGroup>
                   <Label>City *</Label>
-                  <Input
-                    type="text"
-                    name="city"
-                    placeholder="e.g. Seattle"
-                    value={this.props.form.city}
-                    onChange={this.props.onChange}
-                  />
+                  <Select
+                  style={{ position: "fixed" }}
+                  onChange={this.handleCityChange}
+                  options={cities}
+                  isMulti="true"
+                  placeholder="Ex: Seattle"
+                />
                 </FormGroup>
               </Col>
               <Col md={4}>
