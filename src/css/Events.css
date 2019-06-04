@@ -46,15 +46,13 @@ body {
   .sidebarFilter {
     display: none;
   }
-<<<<<<< HEAD
   
   .floatSideBar {
     display: block;
-=======
+  }
 
   .events {
     padding-bottom: 400px;
->>>>>>> 7085267c8d3cb8fa5da30d7a5f5e62b6d02feb48
   }
 }
 
