@@ -9,20 +9,23 @@ body {
     margin-left:15px;
 } */
 .sidebarFilter {
-  font-weight: normal;
+  font-weight: 300;
   padding: 30px;
   align-content: center;
+  margin-bottom: 40%;
+  display: inline-b
   /* width: 20vw; */
 }
 
+.sidebarFilter h5{
+  font-weight: 400;
+}
 
 .filters, .categories {
   width: 12vw;
   margin: auto;
 }
-.filters, h5{
-  font-weight: 300;
-}
+
 
 @media screen and (max-width: 1200px) {
   .sidebarFilter {
@@ -43,7 +46,6 @@ body {
 
   .events {
     padding-bottom: 400px;
-
   }
 }
 
@@ -166,8 +168,10 @@ body {
   font-weight: 200;
   font-size: 15px;
 }
-.service {
+.services {
   text-align: left;
+  font-weight: 200;
+  color: grey;
 }
 .actionType {
   text-align: right;
@@ -199,10 +203,7 @@ body {
   margin-top: 1%;
 }
 
-.services {
-  color: grey;
-  font-weight: normal;
-}
+
 
 .events {
   display: flex;

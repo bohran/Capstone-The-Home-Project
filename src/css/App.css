@@ -36,6 +36,11 @@ body{
 
 .navbar {
     padding: 15px;
+    /* border-top: none;
+    border-bottom:1px; */
+    /* border-bottom-color:solid;  */
+    border-bottom: 0.5px solid #177283;
+    /* background-color: #6e6e70; */
 }
 
 .nav-wrapper{
