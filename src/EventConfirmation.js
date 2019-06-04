@@ -7,12 +7,11 @@ import _ from "lodash";
 class Confirmation extends Component {
   convertOrgInput = () => {
     let orgs = [];
-    console.log(this.props.eventForm.organizations);
     let input = this.props.eventForm.organizations;
     for (let i = 0; i < input.length; i = i + 1) {
       orgs.push(input[i].value);
     }
-    this.props.orgForm.type = orgs;
+    this.props.eventForm.orgs = orgs;
     this.props.eventForm.category = this.props.eventForm.category.value;
     this.props.eventForm.city = this.props.eventForm.city.value;
     this.props.onConfirm();
