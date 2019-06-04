@@ -242,7 +242,7 @@ export class Portal extends Component {
                         <div class="container" id="allEventContainer">
                             <div className="buttons">
                                 <button type="submit" className="btn" onClick={() => this.seeToBeApproved()}>
-                                    See To Be Approved
+                                    See Awaiting Approval
                         </button>
                                 <button type="submit" className="btn" onClick={() => this.handleSignOut()}>
                                     Sign Out
