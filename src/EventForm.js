@@ -34,10 +34,7 @@ const requiredFields = [
   "city",
   "creatorFName",
   "creatorLName",
-  "creatorEmail",
-  "coordinatorFName",
-  "coordinatorLName",
-  "coordinatorEmail"
+  "creatorEmail"
 ];
 
 const prettyNames = {
@@ -59,11 +56,6 @@ const prettyNames = {
   creatorFName: "Creator First Name",
   creatorLName: "Creator Last Name",
   creatorEmail: "Creator Email",
-  creatorPhone: "Creator Phone",
-  coordinatorFName: "Coordinator First Name",
-  coordinatorLName: "Coordinator Last Name",
-  coordinatorEmail: "Coordinator Email",
-  coordinatorPhone: "Coordinator Phone"
 };
 
 const defaultImgs = [
@@ -647,7 +639,7 @@ class NewEvent extends Component {
               <Row form>
                 <Col md={3}>
                   <FormGroup>
-                    <Label>First Name *</Label>
+                    <Label>First Name</Label>
                     <Input
                       type="text"
                       name="coordinatorFName"
@@ -659,7 +651,7 @@ class NewEvent extends Component {
                 </Col>
                 <Col md={3}>
                   <FormGroup>
-                    <Label>Last Name *</Label>
+                    <Label>Last Name</Label>
                     <Input
                       type="text"
                       name="coordinatorLName"
@@ -671,7 +663,7 @@ class NewEvent extends Component {
                 </Col>
                 <Col md={3}>
                   <FormGroup>
-                    <Label>Email *</Label>
+                    <Label>Email</Label>
                     <Input
                       invalid={this.handleOnChange(
                         this.props.form.coordinatorEmail

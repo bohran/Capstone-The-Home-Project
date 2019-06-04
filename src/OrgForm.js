@@ -398,7 +398,7 @@ class NewOrg extends Component {
               </Col>
               <Col md={4}>
                 <FormGroup>
-                  <Label>Role *</Label>
+                  <Label>Role</Label>
                   <Input
                     type="text"
                     name="contactRole"
@@ -413,7 +413,7 @@ class NewOrg extends Component {
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Phone *</Label>
+                  <Label>Phone</Label>
                   <Input
                     type="text"
                     name="contactPhone"
@@ -425,7 +425,7 @@ class NewOrg extends Component {
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Email *</Label>
+                  <Label>Email</Label>
                   <Input
                     invalid={this.handleOnChange(this.props.form.contactEmail)}
                     type="email"

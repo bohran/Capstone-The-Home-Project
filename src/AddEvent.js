@@ -19,30 +19,30 @@ export default class AddEvent extends Component {
     currentStage: Stage.EVENT,
     // ONLY place where the data exists
     eventFormEntries: {
-      title: "1",
-      category: "Give",
+      title: "",
+      category: "",
       orgs: [],
       services: [],
       descr: "",
-      date: "06/03/2019",
-      startTime: "12:00",
+      date: "",
+      startTime: "",
       endTime: "",
-      address: "1234 Main St.",
-      room: "100",
-      city: "Seattle",
+      address: "",
+      room: "",
+      city: "",
       capacity: 0,
-      county: "King",
-      zip: "98012",
-      state: "WA",
-      creatorFName: "E ",
-      creatorLName: "M",
-      creatorEmail: "em@gmail.com",
-      creatorPhone: "123 456 7890",
-      coordinatorFName: "n",
-      coordinatorLName: "b",
-      coordinatorEmail: "nb@gmail.com",
+      county: "",
+      zip: "",
+      state: "",
+      creatorFName: "",
+      creatorLName: "",
+      creatorEmail: "",
+      creatorPhone: "",
+      coordinatorFName: "",
+      coordinatorLName: "",
+      coordinatorEmail: "",
       coordinatorPhone: "",
-      website: "url.com",
+      website: "",
       img: ""
     },
     orgData: []
@@ -118,10 +118,10 @@ export default class AddEvent extends Component {
   handleChangeService = event => {
     let newServices = _.cloneDeep(this.state.eventFormEntries.services);
     var option = event.target.value;
-    if(newServices.includes(option)) {
+    if (newServices.includes(option)) {
       newServices = _.remove(newServices, function(n) {
-        return n !== option
-      })
+        return n !== option;
+      });
     } else {
       newServices.push(option);
     }
@@ -136,16 +136,16 @@ export default class AddEvent extends Component {
 
   //change eventForms
   handleNext = () => {
-      this.setState({
-        currentStage: this.state.currentStage + 1
-      });
+    this.setState({
+      currentStage: this.state.currentStage + 1
+    });
   };
 
   handleBack = () => {
     this.setState({
       currentStage: this.state.currentStage - 1
     });
-};
+  };
 
   componentDidMount() {
     let url = "https://api.seattleforallkc.com/organizations";
@@ -164,7 +164,7 @@ export default class AddEvent extends Component {
   render() {
     let orgOptions = [];
     orgOptions = this.state.orgData.map((d, i) => {
-      return {value: d.organizationName, label: d.organizationName};
+      return { value: d.organizationName, label: d.organizationName };
       // return <option key={d.organizationName + i}>{d.organizationName}</option>;
     });
     let content = "";

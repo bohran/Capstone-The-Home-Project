@@ -8,8 +8,7 @@ import OrgSubmission from "./OrgSubmission";
 const Stage = {
   ORGANIZATION: 0,
   CONFIRMATION: 1,
-  EDIT: 2,
-  SUBMISSION: 3
+  SUBMISSION: 2
 };
 
 export default class RegOrganization extends Component {
@@ -110,7 +109,6 @@ export default class RegOrganization extends Component {
         type: types
       }
     });
-    console.log(this.state.orgFormEntries.type);
     // this.props.someCallback(types);
   };
 
@@ -118,6 +116,12 @@ export default class RegOrganization extends Component {
   handleNext = () => {
     this.setState({
       currentStage: this.state.currentStage + 1
+    });
+  };
+
+  handleBack = () => {
+    this.setState({
+      currentStage: this.state.currentStage - 1
     });
   };
 
@@ -136,12 +140,12 @@ export default class RegOrganization extends Component {
       content = (
         <Confirmation
           orgForm={this.state.orgFormEntries}
-          onNext={this.handleNext}
+          onEdit={this.handleBack}
           onConfirm={this.handleSaveOrg}
         />
       );
     } else if (this.state.currentStage === Stage.SUBMISSION) {
-      content = <OrgSubmission />;
+      content =  <OrgSubmission />;
     }
     return <div>{content}</div>;
   }
