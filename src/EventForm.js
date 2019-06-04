@@ -32,9 +32,7 @@ const requiredFields = [
   "startTime",
   "address",
   "city",
-  "creatorFName",
-  "creatorLName",
-  "creatorEmail"
+  "state"
 ];
 
 const prettyNames = {
@@ -53,9 +51,6 @@ const prettyNames = {
   county: "County",
   zip: "Zip Code",
   state: "State",
-  creatorFName: "Creator First Name",
-  creatorLName: "Creator Last Name",
-  creatorEmail: "Creator Email",
 };
 
 const defaultImgs = [
@@ -556,7 +551,7 @@ class NewEvent extends Component {
               </Col>
               <Col md={2}>
                 <FormGroup>
-                  <Label>State</Label>
+                  <Label>State *</Label>
                   <Input
                     type="text"
                     name="state"
@@ -575,7 +570,7 @@ class NewEvent extends Component {
             <Row form>
               <Col md={3}>
                 <FormGroup>
-                  <Label>First Name *</Label>
+                  <Label>First Name</Label>
                   <Input
                     type="text"
                     name="creatorFName"
@@ -587,7 +582,7 @@ class NewEvent extends Component {
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Last Name *</Label>
+                  <Label>Last Name</Label>
                   <Input
                     type="text"
                     name="creatorLName"
@@ -599,7 +594,7 @@ class NewEvent extends Component {
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Email *</Label>
+                  <Label>Email</Label>
                   <Input
                     invalid={this.handleOnChange(this.props.form.creatorEmail)}
                     type="text"
@@ -731,13 +726,6 @@ class NewEvent extends Component {
                 }))}
                 onPick={this.selectImage}
               />
-              {/* <Button
-                className="imageButton"
-                type="button"
-                onClick={() => console.log(this.props.form.img)}
-              >
-                Select
-              </Button> */}
             </div>
           </Form>
         </div>
