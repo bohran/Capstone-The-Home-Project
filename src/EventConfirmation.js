@@ -4,15 +4,19 @@ import { Button, Form, FormGroup, Label, Row, Col } from "reactstrap";
 import moment from "moment";
 
 class Confirmation extends Component {
+  convertOrgInput = () => {
+    let orgs = [];
+    console.log(this.props.eventForm.organizations);
+    let input = this.props.eventForm.organizations;
+    for (let i = 0; i < input.length; i = i + 1) {
+      orgs.push(input[i].value);
+    }
+    this.props.orgForm.type = orgs;
+    this.props.form.eventForm.category = this.props.eventForm.category.value;
+    this.props.onConfirm();
+  };
+
   render() {
-    let services = this.props.eventForm.services.map((d, i) => {
-      if (i + 1 !== this.props.eventForm.services.length) {
-        return d + ", ";
-      } else {
-        return d;
-      }
-    });
-  
     return (
       <section>
         <h2 className="pageTitle">CONFIRM YOUR EVENT DETAILS</h2>
@@ -26,7 +30,9 @@ class Confirmation extends Component {
             <br />
             <h5 className="formTitle">Event Information</h5>
             <FormGroup>
-              <Label>Organization: {this.props.eventForm.orgs}</Label>
+              <Label>Organization: {this.props.eventForm.organizations.map((d) => {
+                return d.value
+              })}</Label>
             </FormGroup>
 
             <Row form>
@@ -37,14 +43,14 @@ class Confirmation extends Component {
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Event Type: {this.props.eventForm.category}</Label>
+                  <Label>Event Type: {this.props.eventForm.category.value}</Label>
                 </FormGroup>
               </Col>
             </Row>
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Area(s) of Service: {services}</Label>
+                  <Label>Area(s) of Service: {this.props.eventForm.services}</Label>
                 </FormGroup>
               </Col>
               <Col md={6}>
@@ -195,7 +201,7 @@ class Confirmation extends Component {
             variant="primary"
             type="submit"
             value="2"
-            onClick={this.props.onConfirm}
+            onClick={this.props.convertOrgInput}
           >
             Confirm
           </Button>

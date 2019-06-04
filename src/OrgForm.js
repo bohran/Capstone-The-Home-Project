@@ -22,14 +22,6 @@ class NewOrg extends Component {
 
   handleTypeChange = input => {
     this.props.form.type = input;
-    // let types = [];
-    // for (let i = 0; i < input.length; i = i + 1) {
-    //   types.push(input[i].value);
-    // }
-    // this.props.form.type = types;
-    // this.setState({
-    //   categories: input
-    // });
   };
   handleCityChange = city => {
     let cityList = city.map(d => {
@@ -55,6 +47,10 @@ class NewOrg extends Component {
     // }
     // }
     const types = [
+      { value: "Philanthropy", label: "Philanthropy" },
+      { value: "Government", label: "Government" },
+      { value: "Non-Profit", label: "Non-Profit" },
+      { value: "Foundation", label: "Foundation" },
       { value: "Housing (Permanent)", label: "Housing (Permanent)" },
       { value: "Shelter (Not Permanent)", label: "Shelter (Not Permanent)" },
       { value: "Rapid Re-housing", label: "Rapid Re-housing" },
@@ -98,8 +94,7 @@ class NewOrg extends Component {
       {
         value: "Phone and Computer Access",
         label: "Phone and Computer Access"
-      },
-      { value: "Transportation Assistance", label: "Transportation Assistance" }
+      }
     ];
     const cities = [
       {

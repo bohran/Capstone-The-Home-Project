@@ -24,7 +24,7 @@ import "react-image-picker/dist/index.css";
 import "./css/form.css";
 
 const requiredFields = [
-  "orgs",
+  "organizations",
   "title",
   "category",
   "services",
@@ -218,6 +218,13 @@ const cities = [
   }
 ];
 
+const Service = {
+  HOUSING: "Housing/Shelter",
+  LEGAL: "Legal/Employment",
+  DAYCENTER: "Day Centers",
+  BASIC: "Basic Needs",
+  HEALTH: "Health & Wellness"
+};
 class NewEvent extends Component {
   constructor(props) {
     super(props);
@@ -252,14 +259,6 @@ class NewEvent extends Component {
     } else {
       contact.style.display = "block";
     }
-  };
-
-  handleHostOrgs = input => {
-    let newOrgs = [];
-    for (let i = 0; i < input.length; i = i + 1) {
-      newOrgs.push(input[i].value);
-    }
-    this.props.form.orgs = newOrgs;
   };
 
   handleTypeChange = input => {
@@ -319,6 +318,14 @@ class NewEvent extends Component {
     this.props.form.img = image.src;
   };
 
+  handleEventType = input => {
+    this.props.form.category = input;
+  };
+
+  handleOrgNames = input => {
+    this.props.form.organizations = input;
+  };
+
   render() {
     const types = [
       { value: "Give", label: "Give" },
@@ -326,6 +333,8 @@ class NewEvent extends Component {
       { value: "Volunteer", label: "Volunteer" },
       { value: "Activism", label: "Activism" }
     ];
+    // console.log(this.props.orgList);
+    console.log(this.props.form.organizations);
     return (
       <div>
         <h2 className="pageTitle">ADD A NEW EVENT</h2>
@@ -334,9 +343,10 @@ class NewEvent extends Component {
           <Form>
             <h5 className="formTitle">Select Your Organization *</h5>
             <Select
+              defaultValue={this.props.form.organizations}
               options={this.props.orgList}
               isMulti
-              onChange={this.handleHostOrgs}
+              onChange={this.handleOrgNames}
             />
             <h6 className="help">
               Don't see your Organization listed?{" "}
@@ -358,70 +368,72 @@ class NewEvent extends Component {
             </FormGroup>
             <div className="formTypes">
               <h6>Event Type *</h6>
-              <Select options={types} onChange={this.handleTypeChange} />
+              <Select
+                defaultValue={this.props.form.category}
+                options={types}
+                onChange={this.handleEventType}
+              />
             </div>
             <h6>Area of Service *</h6>
             <div className="formChecks">
               <FormGroup check inline>
                 <Input
-                  checked={this.props.form.services.includes("Housing/Shelter")}
+                  checked={this.props.form.services.includes(Service.HOUSING)}
                   type="checkbox"
                   name="services"
-                  value={"Housing/Shelter"}
+                  value={Service.HOUSING}
                   onChange={this.props.onUpdate}
                 />{" "}
                 <Label check className="serviceOptions">
-                  Housing/Shelter
+                  {Service.HOUSING}
                 </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                  checked={this.props.form.services.includes("Employment")}
+                  checked={this.props.form.services.includes(Service.LEGAL)}
                   type="checkbox"
                   name="services"
-                  value={"Employment"}
+                  value={Service.LEGAL}
                   onChange={this.props.onUpdate}
                 />{" "}
                 <Label check className="serviceOptions">
-                  Employment
+                  {Service.LEGAL}
                 </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                  checked={this.props.form.services.includes("Day Center")}
+                  checked={this.props.form.services.includes(Service.DAYCENTER)}
                   type="checkbox"
                   name="services"
-                  value={"Day Center"}
+                  value={Service.DAYCENTER}
                   onChange={this.props.onUpdate}
                 />{" "}
                 <Label check className="serviceOptions">
-                  Day Center
+                  {Service.DAYCENTER}
                 </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                  checked={this.props.form.services.includes("Basic Needs")}
+                  checked={this.props.form.services.includes(Service.BASIC)}
                   type="checkbox"
                   name="services"
-                  value={"Basic Needs"}
+                  value={Service.BASIC}
                   onChange={this.props.onUpdate}
                 />{" "}
                 <Label check className="serviceOptions">
-                  Basic Needs
+                  {Service.BASIC}
                 </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                  checked={this.props.form.services.includes(
-                    "Health & Wellness"
-                  )}
+                  checked={this.props.form.services.includes(Service.HEALTH)}
                   type="checkbox"
                   name="services"
-                  value={"Health & Wellness"}
+                  value={Service.HEALTH}
                   onChange={this.props.onUpdate}
                 />{" "}
                 <Label check className="serviceOptions">
-                  {"Health & Wellness"}
+                  {Service.HEALTH}
                 </Label>
               </FormGroup>
             </div>
@@ -503,7 +515,7 @@ class NewEvent extends Component {
               </Col>
               <Col md={2}>
                 <FormGroup>
-                  <Label>Event Capacity</Label>
+                  <Label>Capacity</Label>
                   <Input
                     type="text"
                     name="capacity"
@@ -705,6 +717,10 @@ class NewEvent extends Component {
             <h5>Cover Photo *</h5>
             <FormGroup>
               <Label>Upload Link</Label>
+              <h3 className="subtitle">
+                You can also upload your local photos on Imgur and copy paste
+                that link into this field.
+              </h3>
               <Input
                 onClick={this.toggle}
                 type="test"
@@ -714,8 +730,9 @@ class NewEvent extends Component {
                 onChange={this.props.onChange}
               />
             </FormGroup>
-            <br /> OR
-            <div>
+            {/* <div className="orOption">OR</div> */}
+            <div className="formImages">
+              <Label>or Select from Default</Label>
               <ImagePicker
                 images={defaultImgs.map((image, i) => ({
                   src: image,
@@ -723,12 +740,13 @@ class NewEvent extends Component {
                 }))}
                 onPick={this.selectImage}
               />
-              <button
+              {/* <Button
+                className="imageButton"
                 type="button"
                 onClick={() => console.log(this.props.form.img)}
               >
-                OK
-              </button>
+                Select
+              </Button> */}
             </div>
           </Form>
         </div>
