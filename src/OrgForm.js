@@ -194,27 +194,27 @@ const cities = [
 ];
 
 const requiredFields = [
-  "organizationName",
-  "organizationType",
+  "name",
+  "typetype",
   "address",
   "state",
   "city",
-  "zipcode",
+  "zip",
   "county",
-  "firstName",
-  "lastName",
+  "contactFName",
+  "contactLName",
 ];
 
 const prettyNames = {
-  organizationName: "Organization Name",
-  organizationType: "Organization Type",
+  name: "Organization Name",
+  type: "Organization Type",
   address: "Address",
   state: "State",
   city: "City",
-  zipcode: "Zip code",
+  zip: "Zip code",
   county: "County",
-  firstName: "Contact First Name",
-  lastName: "Contact Last Name",
+  contactFName: "Contact First Name",
+  contactLName: "Contact Last Name",
 };
 
 class NewOrg extends Component {

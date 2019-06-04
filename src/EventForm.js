@@ -331,8 +331,6 @@ class NewEvent extends Component {
       { value: "Volunteer", label: "Volunteer" },
       { value: "Activism", label: "Activism" }
     ];
-    // console.log(this.props.orgList);
-    console.log(this.props.form.organizations);
     return (
       <div>
         <h2 className="pageTitle">ADD A NEW EVENT</h2>
@@ -770,3 +768,4 @@ NewEvent.propTypes = {
 };
 
 export default NewEvent;
+ 
