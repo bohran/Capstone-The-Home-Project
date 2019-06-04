@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Button } from "reactstrap";
 
-import "./css/App.css";
+import "./css/confirm.css";
 
 class OrgSubmission extends Component {
   // handleNext = () => {
