@@ -50,7 +50,8 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization City: {this.props.orgForm.city.value}</Label>
+              {/* <Label>Organization City: {this.props.orgForm.city.value}</Label> */}
+              <Label>Organization City: {this.props.orgForm.city}</Label>
             </FormGroup>
 
             <FormGroup>

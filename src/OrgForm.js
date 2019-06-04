@@ -336,10 +336,16 @@ class NewOrg extends Component {
               <Col md={4}>
                 <FormGroup>
                   <Label>City *</Label>
-                  <Select
+                  {/* <Select
                     onChange={this.handleCityChange}
                     options={cities}
                     placeholder="Select..."
+                  /> */}
+                  <Input
+                    type="text"
+                    name="city"
+                    value={this.props.form.city}
+                    onChange={this.props.onChange}
                   />
                 </FormGroup>
               </Col>
