@@ -13,10 +13,12 @@ class Confirmation extends Component {
       types.push(input[i].value);
     }
     this.props.orgForm.type = types;
+    this.props.orgForm.city = this.props.orgForm.city.value;
     this.props.onConfirm();
   };
 
   render() {
+    console.log(this.props.orgForm.city);
     return (
       <section>
         <h2 className="orgPageTitle">Almost there.</h2>
@@ -48,7 +50,7 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization City: {this.props.orgForm.city}</Label>
+              <Label>Organization City: {this.props.orgForm.city.value}</Label>
             </FormGroup>
 
             <FormGroup>
@@ -105,7 +107,7 @@ class Confirmation extends Component {
             variant="primary"
             type="submit"
             value="0"
-            onClick={this.props.onNext}
+            onClick={this.props.onEdit}
           >
             Edit
           </Button>
@@ -125,7 +127,7 @@ class Confirmation extends Component {
 
 Confirmation.propTypes = {
   orgForm: PropTypes.object.isRequired,
-  onNext: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired
 };
 

@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Button } from "reactstrap";
 
-import "./css/App.css";
+import "./css/confirm.css";
 
 class EventSubmission extends Component {
   handleNext = () => {

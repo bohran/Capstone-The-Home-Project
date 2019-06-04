@@ -1,5 +1,5 @@
 form{
-  margin: 20px 20% 20px 20%;
+  margin: 30px 20% 20px 20%;
   padding: 40px;
   background-color: white;
   box-shadow: 3px 3px 10px -5px #6e6e70;
@@ -7,6 +7,13 @@ form{
   font-weight: 400;
   overflow-y: scroll;
   max-height: 69vh;
+}
+
+@media screen and (max-width: 991px) {
+  form {
+    padding: 20px;
+    margin: 20px 5% 20px 5%;
+  }
 }
 
 .pageTitle {
@@ -68,4 +75,17 @@ label, h6 {
 .serviceOptions {
   color: grey;
   font-weight: normal;
+}
+
+.imageButton {
+  background-color: gray !important;
+  border: none !important;
+}
+
+.orOption {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: #177283;
 }

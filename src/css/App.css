@@ -11,7 +11,7 @@ body{
     font-weight: bold;
     font-size: 20px;
     /* color: #fafaed; */
-    color: #177283 !important;
+    color: white !important;
     padding-left: 20px;
 }
 .links{
@@ -19,7 +19,7 @@ body{
     font-size: 18px;
     padding: 25px 10px 10px 25px;
     /* color: #f1faed; */
-    color: black;
+    color: white;
     text-align: right;
     align-content: right;
     /* -webkit-flex-direction: row;
@@ -31,7 +31,7 @@ body{
     text-decoration: none;
     font-weight: bold;
     /* color: white; */
-    color: black;
+    color: white;
 }
 
 .navbar {
@@ -39,7 +39,7 @@ body{
     /* border-top: none;
     border-bottom:1px; */
     /* border-bottom-color:solid;  */
-    border-bottom: 0.5px solid #177283;
+    background-color: #177283;
     /* background-color: #6e6e70; */
 }
 
@@ -79,7 +79,7 @@ div.links.dropdown {
 .footer {
     width: 100%;
     height: 225px;
-    background-color: #177283;
+    background-color: #6e6e70;
     background-repeat: repeat;
     color:white;
     margin-top: 3%;

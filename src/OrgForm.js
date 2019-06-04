@@ -14,87 +14,260 @@ import {
 import _ from "lodash";
 import "bootstrap/dist/css/bootstrap.css";
 
+const types = [
+  { value: "Philanthropy", label: "Philanthropy" },
+  { value: "Government", label: "Government" },
+  { value: "Non-Profit", label: "Non-Profit" },
+  { value: "Foundation", label: "Foundation" },
+  { value: "Housing (Permanent)", label: "Housing (Permanent)" },
+  { value: "Shelter (Not Permanent)", label: "Shelter (Not Permanent)" },
+  { value: "Rapid Re-housing", label: "Rapid Re-housing" },
+  { value: "Transitional Housing", label: "Transitional Housing" },
+  { value: "Urban Encampments", label: "Urban Encampments" },
+  { value: "Housing Search", label: "Housing Search" },
+  { value: "Diversion", label: "Diversion" },
+  { value: "Safe Parking", label: "Safe Parking" },
+  { value: "Women's/Family Drop-In", label: "Women's/Family Drop-In" },
+  { value: "YYA Drop-In", label: "YYA Drop-In" },
+  { value: "Men's Drop-In", label: "Men's Drop-In" },
+  {
+    value: "General Population Drop-In",
+    label: "General Population Drop-In"
+  },
+  {
+    value: "Legal Services / Eviction",
+    label: "Legal Services / Eviction"
+  },
+  { value: "Case Management", label: "Case Management" },
+  { value: "Employment Search", label: "Employment Search" },
+  { value: "Clothing", label: "Clothing" },
+  { value: "Food", label: "Food" },
+  { value: "Shower/Laundry", label: "Shower/Laundry" },
+  { value: "Toiletries", label: "Toiletries" },
+  { value: "Storage", label: "Storage" },
+  { value: "Medical / Health", label: "Medical / Health" },
+  { value: "Social / Emotional", label: "Social / Emotional" },
+  { value: "Dental Care", label: "Dental Care" },
+  { value: "Addiction Recovery", label: "Addiction Recovery" },
+  { value: "Mental Health", label: "Mental Health" },
+  {
+    value: "Domestic Violence Support",
+    label: "Domestic Violence Support"
+  },
+  {
+    value: "Emergency/ Crisis Hotline",
+    label: "Emergency/ Crisis Hotline"
+  },
+  { value: "Mailing Address", label: "Mailing Address" },
+  { value: "Phone and Computer Access", label: "Phone and Computer Access" },
+  { value: "Transportation Assistance", label: "Transportation Assistance" }
+];
+const cities = [
+  {
+    value: "Algona",
+    label: "Algona"
+  },
+  {
+    value: "Auburn",
+    label: "Auburn"
+  },
+  {
+    value: "Bellevue",
+    label: "Bellevue"
+  },
+  {
+    value: "Bothell",
+    label: "Bothell"
+  },
+  {
+    value: "Burien",
+    label: "Burien"
+  },
+  {
+    value: "Carnation",
+    label: "Carnation"
+  },
+  {
+    value: "Covington",
+    label: "Covington"
+  },
+  {
+    value: "Des Moines",
+    label: "Des Moines"
+  },
+  {
+    value: "Duvall",
+    label: "Duvall"
+  },
+  {
+    value: "Enumclaw",
+    label: "Enumclaw"
+  },
+  {
+    value: "Federal Way",
+    label: "Federal Way"
+  },
+  {
+    value: "Issaquah",
+    label: "Issaquah"
+  },
+  {
+    value: "Kenmore",
+    label: "Kenmore"
+  },
+  {
+    value: "Kent",
+    label: "Kent"
+  },
+  {
+    value: "Kirkland",
+    label: "Kirkland"
+  },
+  {
+    value: "Lake City",
+    label: "Lake City"
+  },
+  {
+    value: "Lake Forest Park",
+    label: "Lake Forest Park"
+  },
+  {
+    value: "Maple Valley",
+    label: "Maple Valley"
+  },
+  {
+    value: "Medina",
+    label: "Medina"
+  },
+  {
+    value: "Mercer Island",
+    label: "Mercer Island"
+  },
+  {
+    value: "Newcastle",
+    label: "Newcastle"
+  },
+  {
+    value: "Normandy Park",
+    label: "Normandy Park"
+  },
+  {
+    value: "North Bend",
+    label: "North Bend"
+  },
+  {
+    value: "Pacific",
+    label: "Pacific"
+  },
+  {
+    value: "Redmond",
+    label: "Redmond"
+  },
+  {
+    value: "Renton",
+    label: "Renton"
+  },
+  {
+    value: "Sammamish",
+    label: "Sammamish"
+  },
+  {
+    value: "Seatac",
+    label: "Seatac"
+  },
+  {
+    value: "Seattle",
+    label: "Seattle"
+  },
+  {
+    value: "Shoreline",
+    label: "Shoreline"
+  },
+  {
+    value: "Snoqualmie",
+    label: "Snoqualmie"
+  },
+  {
+    value: "Tukwila",
+    label: "Tukwila"
+  },
+  {
+    value: "Woodinville",
+    label: "Woodinville"
+  }
+];
+
+const requiredFields = [
+  "name",
+  "type",
+  "address",
+  "state",
+  "city",
+  "zip",
+  "county",
+  "contactFName",
+  "contactLName"
+];
+
+const prettyNames = {
+  name: "Organization Name",
+  type: "Organization Type",
+  address: "Address",
+  state: "State",
+  city: "City",
+  zip: "Zip code",
+  county: "County",
+  contactFName: "Contact First Name",
+  contactLName: "Contact Last Name"
+};
+
 class NewOrg extends Component {
   state = {
-    categories: []
+    errorMessage: ""
   };
 
   handleTypeChange = input => {
     this.props.form.type = input;
-    // let types = [];
-    // for (let i = 0; i < input.length; i = i + 1) {
-    //   types.push(input[i].value);
-    // }
-    // this.props.form.type = types;
-    // this.setState({
-    //   categories: input
-    // });
   };
 
-  handleOnChange = (email) => {
+  handleCityChange = input => {
+    this.props.form.city = input;
+  };
 
+  handleOnChange = email => {
     // let email = this.props.form.creatorEmail;
     if (email === "") {
       return false;
     } else {
-      return !email.includes('@');
+      return !email.includes("@");
     }
-  }
+  };
+
+  handleRequirements = () => {
+    let errorFields = requiredFields.filter(field =>
+      _.isEmpty(this.props.form[field])
+    );
+
+    // no errors
+    if (_.isEmpty(errorFields)) {
+      this.props.onNext();
+    } else {
+      // errors = error messages
+      let prettyErrors = errorFields.map(field => {
+        return prettyNames[field];
+      });
+
+      let errors =
+        "The following fields cannot be empty: " + _.join(prettyErrors, ", ");
+      alert(errors);
+
+      this.setState({
+        errorMessage: errors
+      });
+    }
+  };
 
   render() {
-    console.log(this.state.categories)
-    // const selectStyle = {
-    //   multiValue: (provided, state) => {
-    //   return { ...provided, color: state.isFocused ? 'blue' : 'red' };
-    // }
-    // }
-    const types = [
-      { value: "Housing (Permanent)", label: "Housing (Permanent)" },
-      { value: "Shelter (Not Permanent)", label: "Shelter (Not Permanent)" },
-      { value: "Rapid Re-housing", label: "Rapid Re-housing" },
-      { value: "Transitional Housing", label: "Transitional Housing" },
-      { value: "Urban Encampments", label: "Urban Encampments" },
-      { value: "Housing Search", label: "Housing Search" },
-      { value: "Diversion", label: "Diversion" },
-      { value: "Safe Parking", label: "Safe Parking" },
-      { value: "Women's/Family Drop-In", label: "Women's/Family Drop-In" },
-      { value: "YYA Drop-In", label: "YYA Drop-In" },
-      { value: "Men's Drop-In", label: "Men's Drop-In" },
-      {
-        value: "General Population Drop-In",
-        label: "General Population Drop-In"
-      },
-      {
-        value: "Legal Services / Eviction",
-        label: "Legal Services / Eviction"
-      },
-      { value: "Case Management", label: "Case Management" },
-      { value: "Employment Search", label: "Employment Search" },
-      { value: "Clothing", label: "Clothing" },
-      { value: "Food", label: "Food" },
-      { value: "Shower/Laundry", label: "Shower/Laundry" },
-      { value: "Toiletries", label: "Toiletries" },
-      { value: "Storage", label: "Storage" },
-      { value: "Medical / Health", label: "Medical / Health" },
-      { value: "Social / Emotional", label: "Social / Emotional" },
-      { value: "Dental Care", label: "Dental Care" },
-      { value: "Addiction Recovery", label: "Addiction Recovery" },
-      { value: "Mental Health", label: "Mental Health" },
-      {
-        value: "Domestic Violence Support",
-        label: "Domestic Violence Support"
-      },
-      {
-        value: "Emergency/ Crisis Hotline",
-        label: "Emergency/ Crisis Hotline"
-      },
-      { value: "Mailing Address", label: "Mailing Address" },
-      {
-        value: "Phone and Computer Access",
-        label: "Phone and Computer Access"
-      },
-      { value: "Transportation Assistance", label: "Transportation Assistance" }
-    ];
     return (
       <div>
         <h2 className="pageTitle">Add Your Organization</h2>
@@ -163,12 +336,10 @@ class NewOrg extends Component {
               <Col md={4}>
                 <FormGroup>
                   <Label>City *</Label>
-                  <Input
-                    type="text"
-                    name="city"
-                    placeholder="e.g. Seattle"
-                    value={this.props.form.city}
-                    onChange={this.props.onChange}
+                  <Select
+                    onChange={this.handleCityChange}
+                    options={cities}
+                    placeholder="Select..."
                   />
                 </FormGroup>
               </Col>
@@ -231,7 +402,7 @@ class NewOrg extends Component {
               </Col>
               <Col md={4}>
                 <FormGroup>
-                  <Label>Role *</Label>
+                  <Label>Role</Label>
                   <Input
                     type="text"
                     name="contactRole"
@@ -246,7 +417,7 @@ class NewOrg extends Component {
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Phone *</Label>
+                  <Label>Phone</Label>
                   <Input
                     type="text"
                     name="contactPhone"
@@ -258,7 +429,7 @@ class NewOrg extends Component {
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Email *</Label>
+                  <Label>Email</Label>
                   <Input
                     invalid={this.handleOnChange(this.props.form.contactEmail)}
                     type="email"
@@ -328,7 +499,7 @@ class NewOrg extends Component {
             variant="primary"
             type="submit"
             value="1"
-            onClick={this.props.onNext}
+            onClick={this.handleRequirements}
           >
             Continue
           </Button>

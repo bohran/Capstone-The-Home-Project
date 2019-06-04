@@ -24,7 +24,7 @@ import "react-image-picker/dist/index.css";
 import "./css/form.css";
 
 const requiredFields = [
-  "orgs",
+  "organizations",
   "title",
   "category",
   "services",
@@ -34,10 +34,7 @@ const requiredFields = [
   "city",
   "creatorFName",
   "creatorLName",
-  "creatorEmail",
-  "coordinatorFName",
-  "coordinatorLName",
-  "coordinatorEmail"
+  "creatorEmail"
 ];
 
 const prettyNames = {
@@ -59,11 +56,6 @@ const prettyNames = {
   creatorFName: "Creator First Name",
   creatorLName: "Creator Last Name",
   creatorEmail: "Creator Email",
-  creatorPhone: "Creator Phone",
-  coordinatorFName: "Coordinator First Name",
-  coordinatorLName: "Coordinator Last Name",
-  coordinatorEmail: "Coordinator Email",
-  coordinatorPhone: "Coordinator Phone"
 };
 
 const defaultImgs = [
@@ -87,7 +79,148 @@ const defaultImgs = [
   "./img/volunteer4.jpg",
   "./img/volunteer5.jpg"
 ];
+const cities = [
+  {
+    value: "Algona",
+    label: "Algona"
+  },
+  {
+    value: "Auburn",
+    label: "Auburn"
+  },
+  {
+    value: "Bellevue",
+    label: "Bellevue"
+  },
+  {
+    value: "Bothell",
+    label: "Bothell"
+  },
+  {
+    value: "Burien",
+    label: "Burien"
+  },
+  {
+    value: "Carnation",
+    label: "Carnation"
+  },
+  {
+    value: "Covington",
+    label: "Covington"
+  },
+  {
+    value: "Des Moines",
+    label: "Des Moines"
+  },
+  {
+    value: "Duvall",
+    label: "Duvall"
+  },
+  {
+    value: "Enumclaw",
+    label: "Enumclaw"
+  },
+  {
+    value: "Federal Way",
+    label: "Federal Way"
+  },
+  {
+    value: "Issaquah",
+    label: "Issaquah"
+  },
+  {
+    value: "Kenmore",
+    label: "Kenmore"
+  },
+  {
+    value: "Kent",
+    label: "Kent"
+  },
+  {
+    value: "Kirkland",
+    label: "Kirkland"
+  },
+  {
+    value: "Lake City",
+    label: "Lake City"
+  },
+  {
+    value: "Lake Forest Park",
+    label: "Lake Forest Park"
+  },
+  {
+    value: "Maple Valley",
+    label: "Maple Valley"
+  },
+  {
+    value: "Medina",
+    label: "Medina"
+  },
+  {
+    value: "Mercer Island",
+    label: "Mercer Island"
+  },
+  {
+    value: "Newcastle",
+    label: "Newcastle"
+  },
+  {
+    value: "Normandy Park",
+    label: "Normandy Park"
+  },
+  {
+    value: "North Bend",
+    label: "North Bend"
+  },
+  {
+    value: "Pacific",
+    label: "Pacific"
+  },
+  {
+    value: "Redmond",
+    label: "Redmond"
+  },
+  {
+    value: "Renton",
+    label: "Renton"
+  },
+  {
+    value: "Sammamish",
+    label: "Sammamish"
+  },
+  {
+    value: "Seatac",
+    label: "Seatac"
+  },
+  {
+    value: "Seattle",
+    label: "Seattle"
+  },
+  {
+    value: "Shoreline",
+    label: "Shoreline"
+  },
+  {
+    value: "Snoqualmie",
+    label: "Snoqualmie"
+  },
+  {
+    value: "Tukwila",
+    label: "Tukwila"
+  },
+  {
+    value: "Woodinville",
+    label: "Woodinville"
+  }
+];
 
+const Service = {
+  HOUSING: "Housing/Shelter",
+  LEGAL: "Legal/Employment",
+  DAYCENTER: "Day Centers",
+  BASIC: "Basic Needs",
+  HEALTH: "Health & Wellness"
+};
 class NewEvent extends Component {
   constructor(props) {
     super(props);
@@ -96,11 +229,15 @@ class NewEvent extends Component {
       modal: false
     };
   }
-
+ 
   toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
+  };
+
+  handleCityChange = input => {
+    this.props.form.city = input;
   };
 
   handleSameAs = () => {
@@ -116,14 +253,6 @@ class NewEvent extends Component {
     } else {
       contact.style.display = "block";
     }
-  };
-
-  handleHostOrgs = input => {
-    let newOrgs = [];
-    for (let i = 0; i < input.length; i = i + 1) {
-      newOrgs.push(input[i].value);
-    }
-    this.props.form.orgs = newOrgs;
   };
 
   handleTypeChange = input => {
@@ -183,6 +312,14 @@ class NewEvent extends Component {
     this.props.form.img = image.src;
   };
 
+  handleEventType = input => {
+    this.props.form.category = input;
+  };
+
+  handleOrgNames = input => {
+    this.props.form.organizations = input;
+  };
+
   render() {
     const types = [
       { value: "Give", label: "Give" },
@@ -198,9 +335,10 @@ class NewEvent extends Component {
           <Form>
             <h5 className="formTitle">Select Your Organization *</h5>
             <Select
+              defaultValue={this.props.form.organizations}
               options={this.props.orgList}
               isMulti
-              onChange={this.handleHostOrgs}
+              onChange={this.handleOrgNames}
             />
             <h6 className="help">
               Don't see your Organization listed?{" "}
@@ -222,70 +360,72 @@ class NewEvent extends Component {
             </FormGroup>
             <div className="formTypes">
               <h6>Event Type *</h6>
-              <Select options={types} onChange={this.handleTypeChange} />
+              <Select
+                defaultValue={this.props.form.category}
+                options={types}
+                onChange={this.handleEventType}
+              />
             </div>
             <h6>Area of Service *</h6>
             <div className="formChecks">
               <FormGroup check inline>
                 <Input
-                  checked={this.props.form.services.includes("Housing/Shelter")}
+                  checked={this.props.form.services.includes(Service.HOUSING)}
                   type="checkbox"
                   name="services"
-                  value={"Housing/Shelter"}
+                  value={Service.HOUSING}
                   onChange={this.props.onUpdate}
                 />{" "}
                 <Label check className="serviceOptions">
-                  Housing/Shelter
+                  {Service.HOUSING}
                 </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                  checked={this.props.form.services.includes("Employment")}
+                  checked={this.props.form.services.includes(Service.LEGAL)}
                   type="checkbox"
                   name="services"
-                  value={"Employment"}
+                  value={Service.LEGAL}
                   onChange={this.props.onUpdate}
                 />{" "}
                 <Label check className="serviceOptions">
-                  Employment
+                  {Service.LEGAL}
                 </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                  checked={this.props.form.services.includes("Day Center")}
+                  checked={this.props.form.services.includes(Service.DAYCENTER)}
                   type="checkbox"
                   name="services"
-                  value={"Day Center"}
+                  value={Service.DAYCENTER}
                   onChange={this.props.onUpdate}
                 />{" "}
                 <Label check className="serviceOptions">
-                  Day Center
+                  {Service.DAYCENTER}
                 </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                  checked={this.props.form.services.includes("Basic Needs")}
+                  checked={this.props.form.services.includes(Service.BASIC)}
                   type="checkbox"
                   name="services"
-                  value={"Basic Needs"}
+                  value={Service.BASIC}
                   onChange={this.props.onUpdate}
                 />{" "}
                 <Label check className="serviceOptions">
-                  Basic Needs
+                  {Service.BASIC}
                 </Label>
               </FormGroup>
               <FormGroup check inline>
                 <Input
-                  checked={this.props.form.services.includes(
-                    "Health & Wellness"
-                  )}
+                  checked={this.props.form.services.includes(Service.HEALTH)}
                   type="checkbox"
                   name="services"
-                  value={"Health & Wellness"}
+                  value={Service.HEALTH}
                   onChange={this.props.onUpdate}
                 />{" "}
                 <Label check className="serviceOptions">
-                  {"Health & Wellness"}
+                  {Service.HEALTH}
                 </Label>
               </FormGroup>
             </div>
@@ -367,7 +507,7 @@ class NewEvent extends Component {
               </Col>
               <Col md={2}>
                 <FormGroup>
-                  <Label>Event Capacity</Label>
+                  <Label>Capacity</Label>
                   <Input
                     type="text"
                     name="capacity"
@@ -382,13 +522,12 @@ class NewEvent extends Component {
               <Col md={4}>
                 <FormGroup>
                   <Label>City *</Label>
-                  <Input
-                    type="text"
-                    name="city"
-                    placeholder="e.g. Seattle"
-                    value={this.props.form.city}
-                    onChange={this.props.onChange}
-                  />
+                  <Select
+                  style={{ position: "fixed" }}
+                  onChange={this.handleCityChange}
+                  options={cities}
+                  placeholder="Select..."
+                />
                 </FormGroup>
               </Col>
               <Col md={4}>
@@ -504,7 +643,7 @@ class NewEvent extends Component {
               <Row form>
                 <Col md={3}>
                   <FormGroup>
-                    <Label>First Name *</Label>
+                    <Label>First Name</Label>
                     <Input
                       type="text"
                       name="coordinatorFName"
@@ -516,7 +655,7 @@ class NewEvent extends Component {
                 </Col>
                 <Col md={3}>
                   <FormGroup>
-                    <Label>Last Name *</Label>
+                    <Label>Last Name</Label>
                     <Input
                       type="text"
                       name="coordinatorLName"
@@ -528,7 +667,7 @@ class NewEvent extends Component {
                 </Col>
                 <Col md={3}>
                   <FormGroup>
-                    <Label>Email *</Label>
+                    <Label>Email</Label>
                     <Input
                       invalid={this.handleOnChange(
                         this.props.form.coordinatorEmail
@@ -569,6 +708,10 @@ class NewEvent extends Component {
             <h5>Cover Photo *</h5>
             <FormGroup>
               <Label>Upload Link</Label>
+              <h3 className="subtitle">
+                You can also upload your local photos on Imgur and copy paste
+                that link into this field.
+              </h3>
               <Input
                 onClick={this.toggle}
                 type="test"
@@ -578,8 +721,9 @@ class NewEvent extends Component {
                 onChange={this.props.onChange}
               />
             </FormGroup>
-            <br /> OR
-            <div>
+            {/* <div className="orOption">OR</div> */}
+            <div className="formImages">
+              <Label>or Select from Default</Label>
               <ImagePicker
                 images={defaultImgs.map((image, i) => ({
                   src: image,
@@ -587,12 +731,13 @@ class NewEvent extends Component {
                 }))}
                 onPick={this.selectImage}
               />
-              <button
+              {/* <Button
+                className="imageButton"
                 type="button"
                 onClick={() => console.log(this.props.form.img)}
               >
-                OK
-              </button>
+                Select
+              </Button> */}
             </div>
           </Form>
         </div>
@@ -619,3 +764,4 @@ NewEvent.propTypes = {
 };
 
 export default NewEvent;
+ 

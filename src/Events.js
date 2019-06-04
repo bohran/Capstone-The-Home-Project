@@ -136,6 +136,10 @@ const cities = [
     label: "Kirkland"
   },
   {
+    value: "Lake City",
+    label: "Lake City"
+  },
+  {
     value: "Lake Forest Park",
     label: "Lake Forest Park"
   },
@@ -210,6 +214,7 @@ export class Events extends Component {
     super(props);
     this.state = {
       modal: false,
+      sidebar: false,
       data: [],
       value: 0,
       previous: 0,
@@ -221,8 +226,7 @@ export class Events extends Component {
       filteredData: [],
       selectedCity: [],
       selectedDate: "All",
-      opacity: 1,
-      sidebarOpen: true
+      opacity: 1
     };
   }
 
@@ -397,16 +401,20 @@ export class Events extends Component {
     return match.length !== 0;
   };
 
-  onSetSidebarOpen = open => {
-    this.setState({ sidebarOpen: open });
+  // onSetSidebarOpen = open => {
+  //   this.setState({ sidebarOpen: open });
+  // };
+
+  toggleSidebar = () => {
+    this.setState({
+      sidebar: !this.state.sidebar
+    });
   };
 
   render() {
     let content = "";
-    const classes = "tooltip-inner";
     if (this.state.data.length > 0) {
       const filteredData = this.state.data.filter(d => {
-        //TODO: improve efficiency?
         const matchesCategory =
           d.categoryName === this.state.category ||
           this.state.category === "All";
@@ -420,7 +428,6 @@ export class Events extends Component {
         const matchCity =
           this.state.selectedCity.includes(d.city) ||
           this.state.selectedCity.length === 0;
-        console.log(d.date);
         const matchDate =
           this.state.selectedDate >=
             moment(d.date, "YYYY/MM/DD")
@@ -500,10 +507,25 @@ export class Events extends Component {
         );
       });
     } else {
-      content = <div className="noEvents" style={{paddingLeft: '50px'}}>No events match your search</div>;
+      content = (
+        <div className="noEvents" style={{ paddingLeft: "50px" }}>
+          No events match your search
+        </div>
+      );
     }
     return (
       <div>
+        <div className="floatSideBar">
+          {/* <Sidebar */}
+          {/* } // open={this.state.sidebarOpen}
+          // onSetOpen={this.onSetSidebarOpen}
+          // styles={{ sidebar: { background: "white" } }}
+          // > */}
+          {/* <button onClick={() => this.onSetSidebarOpen(true)}>
+              Open sidebar
+            </button> */}
+          {/* </Sidebar> */}
+        </div>
         <ScrollUpButton StopPosition={0} ShowAtPosition={150} />
         <div className="search">
           <InputGroup>
@@ -517,192 +539,181 @@ export class Events extends Component {
             + Add Event
           </Button>
         </div>
-        <div className="d-flex">
-          <div className="floatSideBar">
-            <Sidebar
-              sidebar={
-                <b>
-                  <div className="filters">
-                    <h5>Areas of Service:</h5>
-                    <FormGroup check>
-                      <Label className="services" check>
-                        <Input
-                          checked={this.state.filter.includes(Service.HOUSING)}
-                          type="checkbox"
-                          name="check1"
-                          value={Service.HOUSING}
-                          onChange={this.handleSelect}
-                        />{" "}
-                        {Service.HOUSING}
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label className="services" check>
-                        <Input
-                          checked={this.state.filter.includes(Service.LEGAL)}
-                          type="checkbox"
-                          name="check1"
-                          value={Service.LEGAL}
-                          onChange={this.handleSelect}
-                        />{" "}
-                        {Service.LEGAL}
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label className="services" check>
-                        <Input
-                          checked={this.state.filter.includes(
-                            Service.DAYCENTER
-                          )}
-                          type="checkbox"
-                          name="check1"
-                          value={Service.DAYCENTER}
-                          onChange={this.handleSelect}
-                        />{" "}
-                        {Service.DAYCENTER}
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label className="services" check>
-                        <Input
-                          checked={this.state.filter.includes(Service.BASIC)}
-                          type="checkbox"
-                          name="check1"
-                          value={"Basic Needs"}
-                          onChange={this.handleSelect}
-                        />{" "}
-                        {Service.BASIC}
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label className="services" check>
-                        <Input
-                          checked={this.state.filter.includes(Service.HEALTH)}
-                          type="checkbox"
-                          name="check1"
-                          value={Service.HEALTH}
-                          onChange={this.handleSelect}
-                        />{" "}
-                        {Service.HEALTH}
-                      </Label>
-                    </FormGroup>
-                    <br />
-                    <div className="date">
-                      <h5>Date Range:</h5>
-                      <Select
-                        onChange={this.handleDateChange}
-                        options={times}
-                        placeholder="Select..."
-                      />
-                    </div>
-                    <br />
-                    <div className="location">
-                      <h5>Location:</h5>
-                      <Select
-                        style={{ position: "fixed" }}
-                        onChange={this.handleCityChange}
-                        options={cities}
-                        isMulti="true"
-                        placeholder="Select..."
-                        defaultValue={cities === "All"}
-                      />
-                    </div>
-                    <br />
-                  </div>
-                  <div className="categories">
-                    <h5>Categories:</h5>
-                    <FormGroup check>
-                      <Label className="services" check>
-                        <Input
-                          checked={this.state.category === "All"}
-                          type="radio"
-                          name="radio1"
-                          value={"All"}
-                          onChange={this.handleCategory}
-                        />{" "}
-                        All
-                      </Label>
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label className="services" check>
-                        <Input
-                          type="radio"
-                          name="radio1"
-                          value={"Give"}
-                          onChange={this.handleCategory}
-                        />{" "}
-                        Give
-                      </Label>{" "}
-                      <ReactTooltip place="top" type="dark" effect="float" />
-                      <FontAwesomeIcon
-                        icon={faQuestionCircle}
-                        style={{ width: "10px" }}
-                        data-tip="Make a donation, whether it’s funding, food, or in-kind."
-                      />
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label className="services" check>
-                        <Input
-                          type="radio"
-                          name="radio1"
-                          value={"Learn"}
-                          onChange={this.handleCategory}
-                        />{" "}
-                        Learn
-                      </Label>{" "}
-                      <FontAwesomeIcon
-                        icon={faQuestionCircle}
-                        style={{ width: "10px" }}
-                        data-tip="Learn more about the issue and what’s happening in our community."
-                      />
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label className="services" check>
-                        <Input
-                          type="radio"
-                          name="radio1"
-                          value={"Volunteer"}
-                          onChange={this.handleCategory}
-                        />{" "}
-                        Volunteer
-                      </Label>{" "}
-                      <FontAwesomeIcon
-                        icon={faQuestionCircle}
-                        style={{ width: "10px" }}
-                        data-tip="Use your time and talents to help out."
-                      />
-                    </FormGroup>
-                    <FormGroup check>
-                      <Label className="services" check>
-                        <Input
-                          type="radio"
-                          name="radio1"
-                          value={"Activism"}
-                          onChange={this.handleCategory}
-                        />{" "}
-                        Activism
-                      </Label>{" "}
-                      <FontAwesomeIcon
-                        icon={faQuestionCircle}
-                        style={{ width: "10px" }}
-                        data-tip="Use your voice to make change in our community."
-                      />
-                    </FormGroup>
-                  </div>
-                </b>
-              }
-              open={this.state.sidebarOpen}
-              onSetOpen={this.onSetSidebarOpen}
-              styles={{ sidebar: { background: "white" } }}
-            >
-              <button onClick={() => this.onSetSidebarOpen(true)}>
-                Open sidebar
-              </button>
-            </Sidebar>
-          </div>
-          <div className="sidebarFilter">
-            {/* <Button onClick={this.toggleFilters}>Filters</Button> */}
-            {/* <Collapse isOpen={this.state.filtersOpen}> */}
+        <Button className="modal" onClick={this.toggleSidebar}>
+            Open
+          </Button>
+=          <Modal isOpen={this.state.sidebar} toggle={this.toggleSidebar}>
+            {/* sidebar={ */}
+            <ModalBody>
+              <div className="filters">
+                <h5>Areas of Service:</h5>
+                <FormGroup check>
+                  <Label className="services" check>
+                    <Input
+                      checked={this.state.filter.includes(Service.HOUSING)}
+                      type="checkbox"
+                      name="check1"
+                      value={Service.HOUSING}
+                      onChange={this.handleSelect}
+                    />{" "}
+                    {Service.HOUSING}
+                  </Label>
+                </FormGroup>
+                <FormGroup check>
+                  <Label className="services" check>
+                    <Input
+                      checked={this.state.filter.includes(Service.LEGAL)}
+                      type="checkbox"
+                      name="check1"
+                      value={Service.LEGAL}
+                      onChange={this.handleSelect}
+                    />{" "}
+                    {Service.LEGAL}
+                  </Label>
+                </FormGroup>
+                <FormGroup check>
+                  <Label className="services" check>
+                    <Input
+                      checked={this.state.filter.includes(Service.DAYCENTER)}
+                      type="checkbox"
+                      name="check1"
+                      value={Service.DAYCENTER}
+                      onChange={this.handleSelect}
+                    />{" "}
+                    {Service.DAYCENTER}
+                  </Label>
+                </FormGroup>
+                <FormGroup check>
+                  <Label className="services" check>
+                    <Input
+                      checked={this.state.filter.includes(Service.BASIC)}
+                      type="checkbox"
+                      name="check1"
+                      value={"Basic Needs"}
+                      onChange={this.handleSelect}
+                    />{" "}
+                    {Service.BASIC}
+                  </Label>
+                </FormGroup>
+                <FormGroup check>
+                  <Label className="services" check>
+                    <Input
+                      checked={this.state.filter.includes(Service.HEALTH)}
+                      type="checkbox"
+                      name="check1"
+                      value={Service.HEALTH}
+                      onChange={this.handleSelect}
+                    />{" "}
+                    {Service.HEALTH}
+                  </Label>
+                </FormGroup>
+                <br />
+                <div className="date">
+                  <h5>Date Range:</h5>
+                  <Select
+                    onChange={this.handleDateChange}
+                    options={times}
+                    placeholder="Select..."
+                  />
+                </div>
+                <br />
+                <div className="location">
+                  <h5>Location:</h5>
+                  <Select
+                    style={{ position: "fixed" }}
+                    onChange={this.handleCityChange}
+                    options={cities}
+                    isMulti="true"
+                    placeholder="Select..."
+                    defaultValue={cities === "All"}
+                  />
+                </div>
+                <br />
+              </div>
+              <div className="categories">
+                <h5>Categories:</h5>
+                <FormGroup check>
+                  <Label className="services" check>
+                    <Input
+                      checked={this.state.category === "All"}
+                      type="radio"
+                      name="radio1"
+                      value={"All"}
+                      onChange={this.handleCategory}
+                    />{" "}
+                    All
+                  </Label>
+                </FormGroup>
+                <FormGroup check>
+                  <Label className="services" check>
+                    <Input
+                      type="radio"
+                      name="radio1"
+                      value={"Give"}
+                      onChange={this.handleCategory}
+                    />{" "}
+                    Give
+                  </Label>{" "}
+                  <ReactTooltip place="top" type="dark" effect="float" />
+                  <FontAwesomeIcon
+                    icon={faQuestionCircle}
+                    style={{ width: "10px" }}
+                    data-tip="Make a donation, whether it’s funding, food, or in-kind."
+                  />
+                </FormGroup>
+                <FormGroup check>
+                  <Label className="services" check>
+                    <Input
+                      type="radio"
+                      name="radio1"
+                      value={"Learn"}
+                      onChange={this.handleCategory}
+                    />{" "}
+                    Learn
+                  </Label>{" "}
+                  <FontAwesomeIcon
+                    icon={faQuestionCircle}
+                    style={{ width: "10px" }}
+                    data-tip="Learn more about the issue and what’s happening in our community."
+                  />
+                </FormGroup>
+                <FormGroup check>
+                  <Label className="services" check>
+                    <Input
+                      type="radio"
+                      name="radio1"
+                      value={"Volunteer"}
+                      onChange={this.handleCategory}
+                    />{" "}
+                    Volunteer
+                  </Label>{" "}
+                  <FontAwesomeIcon
+                    icon={faQuestionCircle}
+                    style={{ width: "10px" }}
+                    data-tip="Use your time and talents to help out."
+                  />
+                </FormGroup>
+                <FormGroup check>
+                  <Label className="services" check>
+                    <Input
+                      type="radio"
+                      name="radio1"
+                      value={"Activism"}
+                      onChange={this.handleCategory}
+                    />{" "}
+                    Activism
+                  </Label>{" "}
+                  <FontAwesomeIcon
+                    icon={faQuestionCircle}
+                    style={{ width: "10px" }}
+                    data-tip="Use your voice to make change in our community."
+                  />
+                </FormGroup>
+              </div>
+            </ModalBody>
+          </Modal>
+        <div className="calendarContainer">
+          <div className="sidebarFixed">
             <div className="filters">
               <h5>Areas of Service:</h5>
               <FormGroup check>
@@ -878,70 +889,46 @@ export class Events extends Component {
           <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
             <ModalHeader>{this.state.eventName}</ModalHeader>
             <ModalBody>
-              <h7 style={{ color: "#177283", fontWeight: "bold" }}>
-                Hosted by:
-              </h7>
-              <h7 style={{ fontWeight: "400" }}>
-                {" " + this.state.organizationName}
-              </h7>
-              <br />
-              <br />
-              <h7 style={{ color: "#177283", fontWeight: "bold" }}>
-                Description:
-              </h7>
-              <h7 style={{ fontWeight: "100" }}>
-                {" " + this.state.eventDescription}
-              </h7>
-              <br />
-              <br />
-              <h7 style={{ color: "#177283", fontWeight: "bold" }}>Address:</h7>
-              <h7 style={{ fontWeight: "100" }}>
-                {" " + this.state.address + ","} {this.state.city + ","}{" "}
+              <p className = "header">
+                Hosted by:<p className = "subText">{" " + this.state.organizationName}</p>
+              </p>
+              <p className = "header">
+                Description: <p className="subText">{this.state.eventDescription}</p>
+              </p>
+              <p className="header">Address:<p className="subText">{" " + this.state.address + ","} {this.state.city + ","}{" "}
                 {this.state.state}
-                {" " + this.state.zipcode}
-              </h7>
-              <br />
-              <br />
-              <h7 style={{ color: "#177283", fontWeight: "bold" }}>Date:</h7>
-              <h7 style={{ fontWeight: "100" }}>
-                {" " +
+                {" " + this.state.zipcode}</p>
+              </p>
+              <p className="header">Date: <p className = "subText"> {" " +
                   moment(this.state.date, "YYYY/MM/DD")
                     .subtract(1, "days")
-                    .format("MM/DD/YY")}
-              </h7>
-              <br />
-              <br />
-              <h7 style={{ color: "#177283", fontWeight: "bold" }}>Time:</h7>
-              <h7 style={{ fontWeight: "100" }}>
-                {" " +
+                    .format("MM/DD/YY")}</p>
+              </p>
+              <p className = "header">Time:
+              <p className = "subText">
+              {" " +
                   moment(this.state.startTime, "HH:mm:ss").format(
                     "h:mm A"
                   )}{" "}
                 -{moment(this.state.endTime, "HH:mm:ss").format("h:mm A")}
-              </h7>
-              <br />
-              <br />
-              <h7 style={{ color: "#177283", fontWeight: "bold" }}>
-                Event Website:
-              </h7>{" "}
-              <a href={" " + this.state.url + " "}>Visit Site</a>
-              <br />
-              <br />
-              <h7 style={{ color: "#177283", fontWeight: "bold" }}>
-                Capacity:
-              </h7>
-              <h7 style={{ fontWeight: "100" }}>{" " + this.state.capacity}</h7>
-              <br />
-              <br />
-              <h7 style={{ color: "#177283", fontWeight: "bold" }}>
-                Event Coordinator Contact Information:
-              </h7>
-              {" " + this.state.coordinatorFirstName}
+              </p> 
+              </p>
+              <p className = "header">
+                Event Website: <p className = "subText"><a href={" " + this.state.url + " "}>Visit Site</a>
+              </p>
+              </p>
+              <p className = "header">
+                Capacity: <p className = "subText">{" " + this.state.capacity}
+                </p>
+              </p>
+              <p className = "header">
+                Event Coordinator Contact Information: <p className = "subText"> {" " + this.state.coordinatorFirstName}
               {" " + this.state.coordinatorLastName}
               <br />
               {" Email: " + this.state.coordinatorEmail}
               <br />
-              {" Phone: " + this.state.coordinatorPhone}
+              {" Phone: " + this.state.coordinatorPhone}</p>
+              </p>
             </ModalBody>
             <Button
               style={{
@@ -956,6 +943,7 @@ export class Events extends Component {
             </Button>
           </Modal>
         </div>
+        {/* </div> */}
       </div>
     );
   }

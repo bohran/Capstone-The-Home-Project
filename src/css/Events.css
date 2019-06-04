@@ -8,7 +8,11 @@ body {
     padding-left: 20px;
     margin-left:15px;
 } */
-.sidebarFilter {
+.calendarContainer {
+  display: flex;
+  flex-direction: row;
+}
+.sidebarFixed {
   font-weight: 300;
   padding: 30px;
   align-content: center;
@@ -17,7 +21,7 @@ body {
   /* width: 20vw; */
 }
 
-.sidebarFilter h5{
+.sidebarFixed h5{
   font-weight: 400;
 }
 
@@ -31,7 +35,7 @@ body {
 }
 
 @media screen and (max-width: 1200px) {
-  .sidebarFilter {
+  .sidebarFixed {
     padding: 20px;
     /* width: 20vw; */
   }
@@ -42,8 +46,8 @@ body {
   }
 }
 
-@media screen and (max-width: 991px) {
-  .sidebarFilter {
+@media only screen and (max-width: 991px) {
+  .sidebarFixed {
     display: none;
   }
   
@@ -210,8 +214,6 @@ body {
   margin-top: 1%;
 }
 
-
-
 .events {
   display: flex;
   flex-wrap: wrap;
@@ -226,6 +228,19 @@ body {
   font-size: 30px;
   font-weight: 300;
 }
+.modal-title{
+  font-weight: 800;
+}
+.header{
+  color: #177283;
+  font-size: 16px;
+  font-weight: 900;
+}
+.subText{
+  color: #6e6e70;
+  display: inline;
+  font-weight: 300;
+}
   /* width: 100%; */
   /* padding-left: 40%;
 }
@@ -235,9 +250,7 @@ body {
 
   }
 
-
 }
-
 /*
 @media only screen and (min-width: 768px) {
   .events {
@@ -256,3 +269,4 @@ body {
     width: 1500px;
   }
 } */
+

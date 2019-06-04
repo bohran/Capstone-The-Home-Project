@@ -8,8 +8,7 @@ import OrgSubmission from "./OrgSubmission";
 const Stage = {
   ORGANIZATION: 0,
   CONFIRMATION: 1,
-  EDIT: 2,
-  SUBMISSION: 3
+  SUBMISSION: 2
 };
 
 export default class RegOrganization extends Component {
@@ -17,19 +16,19 @@ export default class RegOrganization extends Component {
     currentStage: Stage.ORGANIZATION,
     // ONLY place where the data exists
     orgFormEntries: {
-      name: "One Step",
+      name: "",
       type: [],
-      mission: "Bring together the community with one school at a time.",
-      address: "123 Main st.",
-      state: "WA",
-      city: "Redmond",
-      county: "King",
-      zip: "98012",
-      contactFName: "Jess",
-      contactLName: "Moreno",
-      contactRole: "Supervisor",
-      contactPhone: "425 221 7878",
-      contactEmail: "jmoreno@gmail.com",
+      mission: "",
+      address: "",
+      state: "",
+      city: "",
+      county: "",
+      zip: "",
+      contactFName: "",
+      contactLName: "",
+      contactRole: "",
+      contactPhone: "",
+      contactEmail: "",
       website: "",
       twitter: "",
       facebook: "",
@@ -77,7 +76,7 @@ export default class RegOrganization extends Component {
         return JSON.parse(text);
       })
       .then(responseObject => {
-        this.handleSubmit();
+        this.handleNext();
       })
       .catch(function(err) {
         console.log("ERROR!");
@@ -110,32 +109,21 @@ export default class RegOrganization extends Component {
         type: types
       }
     });
-    console.log(this.state.orgFormEntries.type);
     // this.props.someCallback(types);
   };
 
   //change eventForms
-  handleNext = event => {
-    console.log(event.target.value)
-    if(event.target.value === "1") {
-      this.setState({
-        currentStage: Stage.CONFIRMATION
-      });
-    } else if(event.target.value === "0") {
-      this.setState({
-        currentStage: Stage.ORGANIZATION
-      });
-    }
-    // let newStage = this.state.currentStage + 1;
-    // this.setState({
-    //   currentStage: newStage
-    // });
+  handleNext = () => {
+    this.setState({
+      currentStage: this.state.currentStage + 1
+    });
   };
 
-  handleSubmit = () =>
+  handleBack = () => {
     this.setState({
-      currentStage: Stage.SUBMISSION
+      currentStage: this.state.currentStage - 1
     });
+  };
 
   render() {
     let content = "";
@@ -152,17 +140,13 @@ export default class RegOrganization extends Component {
       content = (
         <Confirmation
           orgForm={this.state.orgFormEntries}
-          onNext={this.handleNext}
+          onEdit={this.handleBack}
           onConfirm={this.handleSaveOrg}
         />
       );
     } else if (this.state.currentStage === Stage.SUBMISSION) {
-      content = <OrgSubmission />;
+      content =  <OrgSubmission />;
     }
-    return (
-      <div>
-        {content}
-      </div>
-    );
+    return <div>{content}</div>;
   }
 }
