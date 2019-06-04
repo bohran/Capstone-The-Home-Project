@@ -72,6 +72,10 @@ export default class AddEvent extends Component {
         contactPhone: this.state.eventFormEntries.creatorPhone,
         contactFirstName: this.state.eventFormEntries.creatorFName,
         contactLastName: this.state.eventFormEntries.creatorLName,
+        coordinatorEmail: this.state.eventFormEntries.coordinatorEmail,
+        coordinatorPhone: this.state.eventFormEntries.coordinatorPhone,
+        coordinatorFirstName: this.state.eventFormEntries.coordinatorLName,
+        coordinatorLastName: this.state.eventFormEntries.coordinatorFName,
         services: this.state.eventFormEntries.services,
         organizations: this.state.eventFormEntries.orgs,
         imageURL: this.state.eventFormEntries.img

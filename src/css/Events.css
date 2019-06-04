@@ -20,6 +20,10 @@ body {
   margin: auto;
 }
 
+.floatSideBar {
+  display: none;
+}
+
 @media screen and (max-width: 1200px) {
   .sidebarFilter {
     padding: 20px;
@@ -35,6 +39,10 @@ body {
 @media screen and (max-width: 991px) {
   .sidebarFilter {
     display: none;
+  }
+  
+  .floatSideBar {
+    display: block;
   }
 }
 

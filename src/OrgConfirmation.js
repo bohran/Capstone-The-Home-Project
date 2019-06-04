@@ -12,7 +12,7 @@ class Confirmation extends Component {
     for (let i = 0; i < input.length; i = i + 1) {
       types.push(input[i].value);
     }
-    this.props.orgForm.type = this.state.convertedCategories;
+    this.props.orgForm.type = types;
     this.props.onConfirm();
   };
 

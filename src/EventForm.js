@@ -104,8 +104,10 @@ class NewEvent extends Component {
   };
 
   handleSameAs = () => {
+    var sameAsChecked = document.getElementById("sameAsCheck");
     var contact = document.getElementById("coordInfo");
-    if (contact.style.display === "block") {
+
+    if (sameAsChecked.checked) {
       contact.style.display = "none";
       this.props.form.coordinatorFName = this.props.form.creatorFName;
       this.props.form.coordinatorLName = this.props.form.creatorLName;
@@ -134,22 +136,24 @@ class NewEvent extends Component {
     let newEventDate = new Date(eventDate[0], eventDate[1] - 1, eventDate[2]);
     var currDate = new Date();
 
-    let eventDateFormatted = moment(newEventDate, "YYYY/MM/DD").format("YYYY-MM-DD")
-    let currDateFormatted = moment(currDate, "YYYY/MM/DD").subtract(1, "days").format("YYYY-MM-DD")
+    let eventDateFormatted = moment(newEventDate, "YYYY/MM/DD").format(
+      "YYYY-MM-DD"
+    );
+    let currDateFormatted = moment(currDate, "YYYY/MM/DD")
+      .subtract(1, "days")
+      .format("YYYY-MM-DD");
 
     return eventDateFormatted <= currDateFormatted;
   };
 
-
-  handleOnChange = (email) => {
-
+  handleOnChange = email => {
     // let email = this.props.form.creatorEmail;
     if (email === "") {
       return false;
     } else {
-      return !email.includes('@');
+      return !email.includes("@");
     }
-  }
+  };
 
   handleRequirements = () => {
     let errorFields = requiredFields.filter(field =>
@@ -176,7 +180,6 @@ class NewEvent extends Component {
   };
 
   selectImage = image => {
-    console.log(image.src);
     this.props.form.img = image.src;
   };
 
@@ -187,12 +190,6 @@ class NewEvent extends Component {
       { value: "Volunteer", label: "Volunteer" },
       { value: "Activism", label: "Activism" }
     ];
-
-    console.log(this.props.form.img);
-    // let filteredImgs = defaultImgs.filter((d) => {
-    //   return d.includes(this.props.form.category.toLowerCase());
-    // })
-
     return (
       <div>
         <h2 className="pageTitle">ADD A NEW EVENT</h2>
@@ -220,7 +217,7 @@ class NewEvent extends Component {
                 placeholder="Enter text"
                 value={this.props.form.title}
                 onChange={this.props.onChange}
-              // invalid={this.state.error[1].title}
+                // invalid={this.state.error[1].title}
               />
             </FormGroup>
             <div className="formTypes">
@@ -492,12 +489,13 @@ class NewEvent extends Component {
               This information will be used by interested volunteers and
               participants who want to get involved
             </h3>
-            <div className="formChecks">
+            <div id="fomrChecks">
               <FormGroup check inline>
                 <Input
+                  id="sameAsCheck"
                   type="checkbox"
                   name="coordinatorInfo"
-                  onClick={this.handleSameAs}
+                  onChange={this.handleSameAs}
                 />{" "}
                 <Label check>Same As Event Contact Information</Label>
               </FormGroup>
@@ -532,7 +530,9 @@ class NewEvent extends Component {
                   <FormGroup>
                     <Label>Email *</Label>
                     <Input
-                      invalid={this.handleOnChange(this.props.form.coordinatorEmail)}
+                      invalid={this.handleOnChange(
+                        this.props.form.coordinatorEmail
+                      )}
                       type="text"
                       name="coordinatorEmail"
                       placeholder="Enter email"
