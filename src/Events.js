@@ -136,12 +136,12 @@ const cities = [
     label: "Kirkland"
   },
   {
-    value: "Lake City",
-    label: "Lake City"
-  },
-  {
     value: "Lake Forest Park",
     label: "Lake Forest Park"
+  },
+  {
+    value: "Lake City",
+    label: "Lake City"
   },
   {
     value: "Maple Valley",
@@ -515,17 +515,15 @@ export class Events extends Component {
     }
     return (
       <div>
-        <div className="floatSideBar">
-          {/* <Sidebar */}
-          {/* } // open={this.state.sidebarOpen}
+        {/* <Sidebar */}
+        {/* } // open={this.state.sidebarOpen}
           // onSetOpen={this.onSetSidebarOpen}
           // styles={{ sidebar: { background: "white" } }}
           // > */}
-          {/* <button onClick={() => this.onSetSidebarOpen(true)}>
+        {/* <button onClick={() => this.onSetSidebarOpen(true)}>
               Open sidebar
             </button> */}
-          {/* </Sidebar> */}
-        </div>
+        {/* </Sidebar> */}
         <ScrollUpButton StopPosition={0} ShowAtPosition={150} />
         <div className="search">
           <InputGroup>
@@ -539,180 +537,180 @@ export class Events extends Component {
             + Add Event
           </Button>
         </div>
-        <Button className="modal" onClick={this.toggleSidebar}>
-            Open{" "}
-          </Button>
-          <Modal isOpen={this.state.sidebar} toggle={this.toggleSidebar}>
-            {/* sidebar={ */}
-            <ModalBody>
-              <div className="filters">
-                <h5>Areas of Service:</h5>
-                <FormGroup check>
-                  <Label className="services" check>
-                    <Input
-                      checked={this.state.filter.includes(Service.HOUSING)}
-                      type="checkbox"
-                      name="check1"
-                      value={Service.HOUSING}
-                      onChange={this.handleSelect}
-                    />{" "}
-                    {Service.HOUSING}
-                  </Label>
-                </FormGroup>
-                <FormGroup check>
-                  <Label className="services" check>
-                    <Input
-                      checked={this.state.filter.includes(Service.LEGAL)}
-                      type="checkbox"
-                      name="check1"
-                      value={Service.LEGAL}
-                      onChange={this.handleSelect}
-                    />{" "}
-                    {Service.LEGAL}
-                  </Label>
-                </FormGroup>
-                <FormGroup check>
-                  <Label className="services" check>
-                    <Input
-                      checked={this.state.filter.includes(Service.DAYCENTER)}
-                      type="checkbox"
-                      name="check1"
-                      value={Service.DAYCENTER}
-                      onChange={this.handleSelect}
-                    />{" "}
-                    {Service.DAYCENTER}
-                  </Label>
-                </FormGroup>
-                <FormGroup check>
-                  <Label className="services" check>
-                    <Input
-                      checked={this.state.filter.includes(Service.BASIC)}
-                      type="checkbox"
-                      name="check1"
-                      value={"Basic Needs"}
-                      onChange={this.handleSelect}
-                    />{" "}
-                    {Service.BASIC}
-                  </Label>
-                </FormGroup>
-                <FormGroup check>
-                  <Label className="services" check>
-                    <Input
-                      checked={this.state.filter.includes(Service.HEALTH)}
-                      type="checkbox"
-                      name="check1"
-                      value={Service.HEALTH}
-                      onChange={this.handleSelect}
-                    />{" "}
-                    {Service.HEALTH}
-                  </Label>
-                </FormGroup>
-                <br />
-                <div className="date">
-                  <h5>Date Range:</h5>
-                  <Select
-                    onChange={this.handleDateChange}
-                    options={times}
-                    placeholder="Select..."
-                  />
-                </div>
-                <br />
-                <div className="location">
-                  <h5>Location:</h5>
-                  <Select
-                    style={{ position: "fixed" }}
-                    onChange={this.handleCityChange}
-                    options={cities}
-                    isMulti="true"
-                    placeholder="Select..."
-                    defaultValue={cities === "All"}
-                  />
-                </div>
-                <br />
-              </div>
-              <div className="categories">
-                <h5>Categories:</h5>
-                <FormGroup check>
-                  <Label className="services" check>
-                    <Input
-                      checked={this.state.category === "All"}
-                      type="radio"
-                      name="radio1"
-                      value={"All"}
-                      onChange={this.handleCategory}
-                    />{" "}
-                    All
-                  </Label>
-                </FormGroup>
-                <FormGroup check>
-                  <Label className="services" check>
-                    <Input
-                      type="radio"
-                      name="radio1"
-                      value={"Give"}
-                      onChange={this.handleCategory}
-                    />{" "}
-                    Give
-                  </Label>{" "}
-                  <ReactTooltip place="top" type="dark" effect="float" />
-                  <FontAwesomeIcon
-                    icon={faQuestionCircle}
-                    style={{ width: "10px" }}
-                    data-tip="Make a donation, whether it’s funding, food, or in-kind."
-                  />
-                </FormGroup>
-                <FormGroup check>
-                  <Label className="services" check>
-                    <Input
-                      type="radio"
-                      name="radio1"
-                      value={"Learn"}
-                      onChange={this.handleCategory}
-                    />{" "}
-                    Learn
-                  </Label>{" "}
-                  <FontAwesomeIcon
-                    icon={faQuestionCircle}
-                    style={{ width: "10px" }}
-                    data-tip="Learn more about the issue and what’s happening in our community."
-                  />
-                </FormGroup>
-                <FormGroup check>
-                  <Label className="services" check>
-                    <Input
-                      type="radio"
-                      name="radio1"
-                      value={"Volunteer"}
-                      onChange={this.handleCategory}
-                    />{" "}
-                    Volunteer
-                  </Label>{" "}
-                  <FontAwesomeIcon
-                    icon={faQuestionCircle}
-                    style={{ width: "10px" }}
-                    data-tip="Use your time and talents to help out."
-                  />
-                </FormGroup>
-                <FormGroup check>
-                  <Label className="services" check>
-                    <Input
-                      type="radio"
-                      name="radio1"
-                      value={"Activism"}
-                      onChange={this.handleCategory}
-                    />{" "}
-                    Activism
-                  </Label>{" "}
-                  <FontAwesomeIcon
-                    icon={faQuestionCircle}
-                    style={{ width: "10px" }}
-                    data-tip="Use your voice to make change in our community."
-                  />
-                </FormGroup>
-              </div>
-            </ModalBody>
-          </Modal>
         <div className="calendarContainer">
+          <div className="floatSideBar">
+            <Button onClick={this.toggleSidebar}>></Button>
+            <Modal isOpen={this.state.sidebar} toggle={this.toggleSidebar}>
+              {/* sidebar={ */}
+              <ModalBody className="sidebar">
+                <div className="filters">
+                  <h5>Areas of Service:</h5>
+                  <FormGroup check>
+                    <Label className="services" check>
+                      <Input
+                        checked={this.state.filter.includes(Service.HOUSING)}
+                        type="checkbox"
+                        name="check1"
+                        value={Service.HOUSING}
+                        onChange={this.handleSelect}
+                      />{" "}
+                      {Service.HOUSING}
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label className="services" check>
+                      <Input
+                        checked={this.state.filter.includes(Service.LEGAL)}
+                        type="checkbox"
+                        name="check1"
+                        value={Service.LEGAL}
+                        onChange={this.handleSelect}
+                      />{" "}
+                      {Service.LEGAL}
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label className="services" check>
+                      <Input
+                        checked={this.state.filter.includes(Service.DAYCENTER)}
+                        type="checkbox"
+                        name="check1"
+                        value={Service.DAYCENTER}
+                        onChange={this.handleSelect}
+                      />{" "}
+                      {Service.DAYCENTER}
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label className="services" check>
+                      <Input
+                        checked={this.state.filter.includes(Service.BASIC)}
+                        type="checkbox"
+                        name="check1"
+                        value={"Basic Needs"}
+                        onChange={this.handleSelect}
+                      />{" "}
+                      {Service.BASIC}
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label className="services" check>
+                      <Input
+                        checked={this.state.filter.includes(Service.HEALTH)}
+                        type="checkbox"
+                        name="check1"
+                        value={Service.HEALTH}
+                        onChange={this.handleSelect}
+                      />{" "}
+                      {Service.HEALTH}
+                    </Label>
+                  </FormGroup>
+                  <br />
+                  <div className="date">
+                    <h5>Date Range:</h5>
+                    <Select
+                      onChange={this.handleDateChange}
+                      options={times}
+                      placeholder="Select..."
+                    />
+                  </div>
+                  <br />
+                  <div className="location">
+                    <h5>Location:</h5>
+                    <Select
+                      style={{ position: "fixed" }}
+                      onChange={this.handleCityChange}
+                      options={cities}
+                      isMulti="true"
+                      placeholder="Select..."
+                      defaultValue={cities === "All"}
+                    />
+                  </div>
+                  <br />
+                </div>
+                <div className="categories">
+                  <h5>Categories:</h5>
+                  <FormGroup check>
+                    <Label className="services" check>
+                      <Input
+                        checked={this.state.category === "All"}
+                        type="radio"
+                        name="radio1"
+                        value={"All"}
+                        onChange={this.handleCategory}
+                      />{" "}
+                      All
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label className="services" check>
+                      <Input
+                        type="radio"
+                        name="radio1"
+                        value={"Give"}
+                        onChange={this.handleCategory}
+                      />{" "}
+                      Give
+                    </Label>{" "}
+                    <ReactTooltip place="top" type="dark" effect="float" />
+                    <FontAwesomeIcon
+                      icon={faQuestionCircle}
+                      style={{ width: "10px" }}
+                      data-tip="Make a donation, whether it’s funding, food, or in-kind."
+                    />
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label className="services" check>
+                      <Input
+                        type="radio"
+                        name="radio1"
+                        value={"Learn"}
+                        onChange={this.handleCategory}
+                      />{" "}
+                      Learn
+                    </Label>{" "}
+                    <FontAwesomeIcon
+                      icon={faQuestionCircle}
+                      style={{ width: "10px" }}
+                      data-tip="Learn more about the issue and what’s happening in our community."
+                    />
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label className="services" check>
+                      <Input
+                        type="radio"
+                        name="radio1"
+                        value={"Volunteer"}
+                        onChange={this.handleCategory}
+                      />{" "}
+                      Volunteer
+                    </Label>{" "}
+                    <FontAwesomeIcon
+                      icon={faQuestionCircle}
+                      style={{ width: "10px" }}
+                      data-tip="Use your time and talents to help out."
+                    />
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label className="services" check>
+                      <Input
+                        type="radio"
+                        name="radio1"
+                        value={"Activism"}
+                        onChange={this.handleCategory}
+                      />{" "}
+                      Activism
+                    </Label>{" "}
+                    <FontAwesomeIcon
+                      icon={faQuestionCircle}
+                      style={{ width: "10px" }}
+                      data-tip="Use your voice to make change in our community."
+                    />
+                  </FormGroup>
+                </div>
+              </ModalBody>
+            </Modal>
+          </div>
           <div className="sidebarFixed">
             <div className="filters">
               <h5>Areas of Service:</h5>

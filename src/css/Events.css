@@ -34,6 +34,24 @@ body {
   display: none;
 }
 
+.floatSideBar button {
+  margin-left: 0px;
+  height: 80px;
+  width: 50px;
+  background-color: #6e6e70 !important;
+  border: none !important;
+  font-weight: bold;
+}
+
+.floatSideBar .modal-body {
+  margin: 0xp !important;
+}
+
+.sidebar {
+  margin-left: 0px;
+  padding: 0px;
+}
+
 @media screen and (max-width: 1200px) {
   .sidebarFixed {
     padding: 20px;
@@ -53,6 +71,7 @@ body {
   
   .floatSideBar {
     display: block;
+    margin-top: 20%;
   }
 
   .events {
@@ -137,7 +156,6 @@ body {
   font-size: 13px;
   padding-top: 5%;
 }
-
 
 .eventName {
   overflow: hidden;
@@ -256,7 +274,3 @@ body {
     width: 1500px;
   }
 } */
-
-.modal {
-  margin: 100px !important;
-}
