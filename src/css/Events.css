@@ -36,6 +36,11 @@ body {
   .sidebarFilter {
     display: none;
   }
+
+  .events {
+    padding-bottom: 400px;
+
+  }
 }
 
 .navbar-wrapper {
