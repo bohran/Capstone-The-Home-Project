@@ -136,6 +136,10 @@ const cities = [
     label: "Kirkland"
   },
   {
+    value: "Lake City",
+    label: "Lake City"
+  },
+  {
     value: "Lake Forest Park",
     label: "Lake Forest Park"
   },
