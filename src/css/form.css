@@ -9,6 +9,13 @@ form{
   max-height: 69vh;
 }
 
+@media screen and (max-width: 991px) {
+  form {
+    padding: 20px;
+    margin: 20px 5% 20px 5%;
+  }
+}
+
 .pageTitle {
   text-align: center;
   font-family: "Lato", sans-serif;
@@ -68,4 +75,17 @@ label, h6 {
 .serviceOptions {
   color: grey;
   font-weight: normal;
+}
+
+.imageButton {
+  background-color: gray !important;
+  border: none !important;
+}
+
+.orOption {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: #177283;
 }
