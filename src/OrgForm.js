@@ -195,14 +195,14 @@ const cities = [
 
 const requiredFields = [
   "name",
-  "typetype",
+  "type",
   "address",
   "state",
   "city",
   "zip",
   "county",
   "contactFName",
-  "contactLName",
+  "contactLName"
 ];
 
 const prettyNames = {
@@ -214,7 +214,7 @@ const prettyNames = {
   zip: "Zip code",
   county: "County",
   contactFName: "Contact First Name",
-  contactLName: "Contact Last Name",
+  contactLName: "Contact Last Name"
 };
 
 class NewOrg extends Component {

@@ -77,7 +77,7 @@ export default class RegOrganization extends Component {
         return JSON.parse(text);
       })
       .then(responseObject => {
-        this.handleSubmit();
+        this.handleNext();
       })
       .catch(function(err) {
         console.log("ERROR!");
@@ -115,27 +115,11 @@ export default class RegOrganization extends Component {
   };
 
   //change eventForms
-  handleNext = event => {
-    console.log(event.target.value)
-    if(event.target.value === "1") {
-      this.setState({
-        currentStage: Stage.CONFIRMATION
-      });
-    } else if(event.target.value === "0") {
-      this.setState({
-        currentStage: Stage.ORGANIZATION
-      });
-    }
-    // let newStage = this.state.currentStage + 1;
-    // this.setState({
-    //   currentStage: newStage
-    // });
-  };
-
-  handleSubmit = () =>
+  handleNext = () => {
     this.setState({
-      currentStage: Stage.SUBMISSION
+      currentStage: this.state.currentStage + 1
     });
+  };
 
   render() {
     let content = "";
@@ -159,10 +143,6 @@ export default class RegOrganization extends Component {
     } else if (this.state.currentStage === Stage.SUBMISSION) {
       content = <OrgSubmission />;
     }
-    return (
-      <div>
-        {content}
-      </div>
-    );
+    return <div>{content}</div>;
   }
 }
