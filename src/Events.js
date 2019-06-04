@@ -494,7 +494,7 @@ export class Events extends Component {
         );
       });
     } else {
-      content = <div className="noEvents">No events match your search</div>;
+      content = <div className="noEvents" style={{paddingLeft: '50px'}}>No events match your search</div>;
     }
     return (
       <div>
