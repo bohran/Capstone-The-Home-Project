@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label } from "reactstrap";
+import _ from "lodash";
 
 import "./css/App.css";
 
@@ -32,9 +33,9 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization Type: {this.props.orgForm.type.map((d) => {
+              <Label>Organization Type: {_.join(this.props.orgForm.type.map((d) => {
                 return d.value
-              })}</Label>
+              }), ", ")}</Label>
             </FormGroup>
 
             <FormGroup>
@@ -50,7 +51,8 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization City: {this.props.orgForm.city.value}</Label>
+              {/* <Label>Organization City: {this.props.orgForm.city.value}</Label> */}
+              <Label>Organization City: {this.props.orgForm.city}</Label>
             </FormGroup>
 
             <FormGroup>

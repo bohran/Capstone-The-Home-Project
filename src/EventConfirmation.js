@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label, Row, Col } from "reactstrap";
 import moment from "moment";
+import _ from "lodash";
 
 class Confirmation extends Component {
   convertOrgInput = () => {
     let orgs = [];
-    console.log(this.props.eventForm.organizations);
     let input = this.props.eventForm.organizations;
     for (let i = 0; i < input.length; i = i + 1) {
       orgs.push(input[i].value);
     }
-    this.props.orgForm.type = orgs;
+    this.props.eventForm.orgs = orgs;
     this.props.eventForm.category = this.props.eventForm.category.value;
     this.props.eventForm.city = this.props.eventForm.city.value;
     this.props.onConfirm();
@@ -31,9 +31,9 @@ class Confirmation extends Component {
             <br />
             <h5 className="formTitle">Event Information</h5>
             <FormGroup>
-              <Label>Organization: {this.props.eventForm.organizations.map((d) => {
+              <Label>Organization: {_.join(this.props.eventForm.organizations.map((d) => {
                 return d.value
-              })}</Label>
+              }), ", ")}</Label>
             </FormGroup>
 
             <Row form>
@@ -51,7 +51,7 @@ class Confirmation extends Component {
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Area(s) of Service: {this.props.eventForm.services}</Label>
+                  <Label>Area(s) of Service: {_.join(this.props.eventForm.services, ", ")}</Label>
                 </FormGroup>
               </Col>
               <Col md={6}>
@@ -202,7 +202,7 @@ class Confirmation extends Component {
             variant="primary"
             type="submit"
             value="2"
-            onClick={this.props.convertOrgInput}
+            onClick={this.convertOrgInput}
           >
             Confirm
           </Button>
