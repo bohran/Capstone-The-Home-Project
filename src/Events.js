@@ -887,70 +887,46 @@ export class Events extends Component {
           <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
             <ModalHeader>{this.state.eventName}</ModalHeader>
             <ModalBody>
-              <h6 style={{ color: "#177283", fontWeight: "bold" }}>
-                Hosted by:
-              </h6>
-              <h6 style={{ fontWeight: "400" }}>
-                {" " + this.state.organizationName}
-              </h6>
-              <br />
-              <br />
-              <h6 style={{ color: "#177283", fontWeight: "bold" }}>
-                Description:
-              </h6>
-              <h6 style={{ fontWeight: "100" }}>
-                {" " + this.state.eventDescription}
-              </h6>
-              <br />
-              <br />
-              <h6 style={{ color: "#177283", fontWeight: "bold" }}>Address:</h6>
-              <h6 style={{ fontWeight: "100" }}>
-                {" " + this.state.address + ","} {this.state.city + ","}{" "}
+              <p className = "header">
+                Hosted by:<p className = "subText">{" " + this.state.organizationName}</p>
+              </p>
+              <p className = "header">
+                Description: <p className="subText">{this.state.eventDescription}</p>
+              </p>
+              <p className="header">Address:<p className="subText">{" " + this.state.address + ","} {this.state.city + ","}{" "}
                 {this.state.state}
-                {" " + this.state.zipcode}
-              </h6>
-              <br />
-              <br />
-              <h6 style={{ color: "#177283", fontWeight: "bold" }}>Date:</h6>
-              <h6 style={{ fontWeight: "100" }}>
-                {" " +
+                {" " + this.state.zipcode}</p>
+              </p>
+              <p className="header">Date: <p className = "subText"> {" " +
                   moment(this.state.date, "YYYY/MM/DD")
                     .subtract(1, "days")
-                    .format("MM/DD/YY")}
-              </h6>
-              <br />
-              <br />
-              <h6 style={{ color: "#177283", fontWeight: "bold" }}>Time:</h6>
-              <h6 style={{ fontWeight: "100" }}>
-                {" " +
+                    .format("MM/DD/YY")}</p>
+              </p>
+              <p className = "header">Time:
+              <p className = "subText">
+              {" " +
                   moment(this.state.startTime, "HH:mm:ss").format(
                     "h:mm A"
                   )}{" "}
                 -{moment(this.state.endTime, "HH:mm:ss").format("h:mm A")}
-              </h6>
-              <br />
-              <br />
-              <h6 style={{ color: "#177283", fontWeight: "bold" }}>
-                Event Website:
-              </h6>{" "}
-              <a href={" " + this.state.url + " "}>Visit Site</a>
-              <br />
-              <br />
-              <h6 style={{ color: "#177283", fontWeight: "bold" }}>
-                Capacity:
-              </h6>
-              <h6 style={{ fontWeight: "100" }}>{" " + this.state.capacity}</h6>
-              <br />
-              <br />
-              <h6 style={{ color: "#177283", fontWeight: "bold" }}>
-                Event Coordinator Contact Information:
-              </h6>
-              {" " + this.state.coordinatorFirstName}
+              </p> 
+              </p>
+              <p className = "header">
+                Event Website: <p className = "subText"><a href={" " + this.state.url + " "}>Visit Site</a>
+              </p>
+              </p>
+              <p className = "header">
+                Capacity: <p className = "subText">{" " + this.state.capacity}
+                </p>
+              </p>
+              <p className = "header">
+                Event Coordinator Contact Information: <p className = "subText"> {" " + this.state.coordinatorFirstName}
               {" " + this.state.coordinatorLastName}
               <br />
               {" Email: " + this.state.coordinatorEmail}
               <br />
-              {" Phone: " + this.state.coordinatorPhone}
+              {" Phone: " + this.state.coordinatorPhone}</p>
+              </p>
             </ModalBody>
             <Button
               style={{

@@ -246,6 +246,19 @@ body {
   font-size: 30px;
   font-weight: 300;
 }
+.modal-title{
+  font-weight: 800;
+}
+.header{
+  color: #177283;
+  font-size: 16px;
+  font-weight: 900;
+}
+.subText{
+  color: #6e6e70;
+  display: inline;
+  font-weight: 300;
+}
   /* width: 100%; */
   /* padding-left: 40%;
 }
