@@ -101,9 +101,16 @@ export class Portal extends Component {
             let div2 = document.getElementById("portalAllContainer");
             div2.style.display = "none";
             window.location.reload(true);
-        }).catch(function (error) {
-            alert(error);
-        });
+        })
+        let signInDiv = document.getElementById("signInDiv");
+        signInDiv.style.display = "block";
+        let div = document.getElementById("wholeDiv");
+        div.style.display = "none";
+        let div2 = document.getElementById("portalAllContainer");
+        div2.style.display = "none";
+        window.location.reload(true);
+        window.localStorage.removeItem("sessionID")
+
     }
 
 
@@ -170,26 +177,26 @@ export class Portal extends Component {
                                 </table>
                                 <button type="submit" class="btn" id="approveButton">Approve</button>
                                 <button type="submit" class="btn" id="deleteOrgButton">Deny</button>
-                            
-                            <h1>Events To Approve</h1>
-                            <table class="table table-hover" id="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Select</th>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Organization</th>
-                                        <th scope="col">Event Title</th>
-                                        <th scope="col">Event Type</th>
-                                        <th scope="col">Area of Service</th>
-                                        <th scope="col">Event Date</th>
-                                        <th scope="col">City</th>
-                                        <th scope="col">Details</th>
-                                    </tr>
-                                </thead>
-                                <PortalRow />
-                            </table>
-                            <button type="submit" class="btn" id="approveEventsButton">Approve</button>
-                            <button type="submit" class="btn" id="deleteEventButton">Deny</button>
+
+                                <h1>Events To Approve</h1>
+                                <table class="table table-hover" id="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Select</th>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Organization</th>
+                                            <th scope="col">Event Title</th>
+                                            <th scope="col">Event Type</th>
+                                            <th scope="col">Area of Service</th>
+                                            <th scope="col">Event Date</th>
+                                            <th scope="col">City</th>
+                                            <th scope="col">Details</th>
+                                        </tr>
+                                    </thead>
+                                    <PortalRow />
+                                </table>
+                                <button type="submit" class="btn" id="approveEventsButton">Approve</button>
+                                <button type="submit" class="btn" id="deleteEventButton">Deny</button>
                             </div>
                         </div>
 
@@ -235,7 +242,7 @@ export class Portal extends Component {
                         <div class="container" id="allEventContainer">
                             <div className="buttons">
                                 <button type="submit" className="btn" onClick={() => this.seeToBeApproved()}>
-                                    See To Be Approved
+                                    See Awaiting Approval
                         </button>
                                 <button type="submit" className="btn" onClick={() => this.handleSignOut()}>
                                     Sign Out

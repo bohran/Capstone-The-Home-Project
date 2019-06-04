@@ -500,7 +500,7 @@ export class Events extends Component {
         );
       });
     } else {
-      content = <p className="noEvents">No events currently planned</p>;
+      content = <div className="noEvents" style={{paddingLeft: '50px'}}>No events match your search</div>;
     }
     return (
       <div>

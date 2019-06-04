@@ -9,10 +9,16 @@ body {
     margin-left:15px;
 } */
 .sidebarFilter {
-  font-weight: normal;
+  font-weight: 300;
   padding: 30px;
   align-content: center;
+  margin-bottom: 40%;
+  display: inline-b
   /* width: 20vw; */
+}
+
+.sidebarFilter h5{
+  font-weight: 400;
 }
 
 .filters, .categories {
@@ -40,9 +46,15 @@ body {
   .sidebarFilter {
     display: none;
   }
+<<<<<<< HEAD
   
   .floatSideBar {
     display: block;
+=======
+
+  .events {
+    padding-bottom: 400px;
+>>>>>>> 7085267c8d3cb8fa5da30d7a5f5e62b6d02feb48
   }
 }
 
@@ -165,8 +177,10 @@ body {
   font-weight: 200;
   font-size: 15px;
 }
-.service {
+.services {
   text-align: left;
+  font-weight: 200;
+  color: grey;
 }
 .actionType {
   text-align: right;
@@ -198,10 +212,7 @@ body {
   margin-top: 1%;
 }
 
-.services {
-  color: grey;
-  font-weight: normal;
-}
+
 
 .events {
   display: flex;
@@ -210,15 +221,26 @@ body {
   flex-basis: 1;
   margin: 20px;
   align-content: center;
+  padding-bottom: 275px;
   /* width: 80%; */
 }
-
+.noEvents{
+  font-size: 30px;
+  font-weight: 300;
+}
+  /* width: 100%; */
+  /* padding-left: 40%;
+}
 /* @media only screen and (max-width: 768px) {
   .events {
-    width: 100px;
+    padding-bottom: 400px;
+
   }
+
+
 }
 
+/*
 @media only screen and (min-width: 768px) {
   .events {
     width: 300px;
