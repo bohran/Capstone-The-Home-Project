@@ -13,7 +13,7 @@ class Confirmation extends Component {
       types.push(input[i].value);
     }
     this.props.orgForm.type = types;
-    this.props.form.orgForm.city = this.props.orgForm.city.value;
+    this.props.orgForm.city = this.props.orgForm.city.value;
     this.props.onConfirm();
   };
 

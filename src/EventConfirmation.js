@@ -12,8 +12,8 @@ class Confirmation extends Component {
       orgs.push(input[i].value);
     }
     this.props.orgForm.type = orgs;
-    this.props.form.eventForm.category = this.props.eventForm.category.value;
-    this.props.form.eventForm.city = this.props.eventForm.city.value;
+    this.props.eventForm.category = this.props.eventForm.category.value;
+    this.props.eventForm.city = this.props.eventForm.city.value;
     this.props.onConfirm();
   };
 

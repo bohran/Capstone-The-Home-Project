@@ -495,7 +495,7 @@ class NewOrg extends Component {
             variant="primary"
             type="submit"
             value="1"
-            onClick={this.props.onNext}
+            onClick={this.handleRequirements}
           >
             Continue
           </Button>
