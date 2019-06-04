@@ -40,6 +40,11 @@ body {
   .sidebarFilter {
     display: none;
   }
+
+  .events {
+    padding-bottom: 400px;
+
+  }
 }
 
 .navbar-wrapper {
@@ -206,6 +211,7 @@ body {
   flex-basis: 1;
   margin: 20px;
   align-content: center;
+  padding-bottom: 275px;
   /* width: 80%; */
 }
 .noEvents{
@@ -219,10 +225,14 @@ body {
 }
 /* @media only screen and (max-width: 768px) {
   .events {
-    width: 100px;
+    padding-bottom: 400px;
+
   }
+
+
 }
 
+/*
 @media only screen and (min-width: 768px) {
   .events {
     width: 300px;

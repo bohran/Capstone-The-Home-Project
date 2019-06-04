@@ -80,6 +80,8 @@ div.links.dropdown {
     margin-top: 3%;
     padding-top: 2%;
     padding-bottom: 2%;
+    bottom:0;
+    right:0;
     
 }
 
