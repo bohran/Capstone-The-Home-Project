@@ -203,14 +203,11 @@ const requiredFields = [
   "county",
   "firstName",
   "lastName",
-  "email",
-  "phone",
-  "role"
 ];
 
 const prettyNames = {
-  organizationName: "Name",
-  organizationType: "Type",
+  organizationName: "Organization Name",
+  organizationType: "Organization Type",
   address: "Address",
   state: "State",
   city: "City",
@@ -218,14 +215,11 @@ const prettyNames = {
   county: "County",
   firstName: "Contact First Name",
   lastName: "Contact Last Name",
-  email: "Contact Email",
-  phone: "Contact Phone",
-  role: "Contact Role"
 };
 
 class NewOrg extends Component {
   state = {
-    categories: []
+    errorMessage: ""
   };
 
   handleTypeChange = input => {
@@ -244,6 +238,7 @@ class NewOrg extends Component {
       return !email.includes("@");
     }
   };
+
   handleRequirements = () => {
     let errorFields = requiredFields.filter(field =>
       _.isEmpty(this.props.form[field])
@@ -338,7 +333,6 @@ class NewOrg extends Component {
                 <FormGroup>
                   <Label>City *</Label>
                   <Select
-                    style={{ position: "fixed" }}
                     onChange={this.handleCityChange}
                     options={cities}
                     placeholder="Select..."

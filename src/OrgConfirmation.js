@@ -18,6 +18,7 @@ class Confirmation extends Component {
   };
 
   render() {
+    console.log(this.props.orgForm.city);
     return (
       <section>
         <h2 className="orgPageTitle">Almost there.</h2>
