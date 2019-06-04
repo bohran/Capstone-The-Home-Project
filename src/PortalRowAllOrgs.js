@@ -71,6 +71,7 @@ export default class PortalRowAllOrgs extends React.Component {
                 button.innerHTML = "More";
                 button.classList = "btn-sm";
                 button.id = "buttonClick";
+                url.style.wordWrap = "break-word";
                 let approveButton = document.createElement("button");
                 approveButton.innerHTML = "Approve";
                 let form = document.createElement("div");

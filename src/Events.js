@@ -542,7 +542,7 @@ export class Events extends Component {
         <Button className="modal" onClick={this.toggleSidebar}>
             Open
           </Button>
-=          <Modal isOpen={this.state.sidebar} toggle={this.toggleSidebar}>
+          <Modal isOpen={this.state.sidebar} toggle={this.toggleSidebar}>
             {/* sidebar={ */}
             <ModalBody>
               <div className="filters">
