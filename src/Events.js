@@ -456,6 +456,9 @@ export class Events extends Component {
 
         return (
           <div className="event" key={"event" + i}>
+            <Row>
+              <Col>
+              <CardGroup>
             <Card onClick={this.handleCardClick.bind(null, i)}>
               <div className="image">
                 <CardImg src={d.imageURL} />
@@ -484,11 +487,14 @@ export class Events extends Component {
                 </CardBody>
               </div>
             </Card>
+            </CardGroup>
+            </Col>
+            </Row>
           </div>
         );
       });
     } else {
-      content = <p className="noEvents">No events currently planned</p>;
+      content = <div className="noEvents" style={{paddingLeft: '50px'}}>No events match your search</div>;
     }
     return (
       <div>

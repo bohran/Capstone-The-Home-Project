@@ -60,6 +60,7 @@ class OrgPage extends Component {
           </div>
           <div className="orgType">{_.join(d.organizationType, ", ")}</div>
         </div>
+        
       );
     });
 
@@ -93,8 +94,10 @@ class OrgPage extends Component {
           </div>
         </div>
         {/* <h4>Click to learn more about local organizations across King County that have joined the fight in ending homelessness: </h4> */}
+        
         <div className="orgCollection">{displayOrgs}</div>
-      </div>
+        </div>
+      
     );
   }
 }
