@@ -62,25 +62,25 @@ export class Home extends Component {
           We can spark this impact with 3 simple steps:
         </p>
         <div className="homeFeatures">
-          <p className="feature">
+          <div className="feature">
             <FontAwesomeIcon className = "icon" icon={faCalendar}/>
             <p className="highlightFeature">Share </p> Post events directly on
             the site and increase visibility to other organizations and
             community members
-          </p>
-          <p className="feature">
+          </div>
+          <div className="feature">
           <FontAwesomeIcon className = "icon" icon={faSearch} />
             <p className="highlightFeature">Discover </p> Search the calendar
             for opportunities to get involved and work with other organizations
             based on service area and purpose
            
-          </p>
-          <p className="feature">
+          </div>
+          <div className="feature">
           <FontAwesomeIcon className = "icon" icon={faHandsHelping}/>
             <p className="highlightFeature">Collaborate </p> Align missions and
             efforts in order to minimize resource waste and maximize reach and
             impact
-          </p>
+          </div>
         </div>
       </div>
     );
