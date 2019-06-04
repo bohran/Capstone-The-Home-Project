@@ -205,8 +205,14 @@ body {
   padding-bottom: 275px;
   /* width: 80%; */
 }
-
- @media (max-width: 991px) {
+.noEvents{
+  font-size: 30px;
+  text-align: center;
+  font-weight: 300;
+  /* width: 100%; */
+  padding-left: 40%;
+}
+/* @media only screen and (max-width: 768px) {
   .events {
     padding-bottom: 400px;
 
