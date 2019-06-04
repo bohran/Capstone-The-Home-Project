@@ -166,7 +166,7 @@ export default class PortalRow extends React.Component {
                         services.textContent = "Service Areas: " + serviceList;
                     } 
                     urlText.textContent = "Event Website: " + event.url;
-                    description.textContent = "Description: " + event.description;
+                    description.textContent = "Description: " + event.eventDescription;
                     fullAddress.textContent = "Address: " + fullAddressText;
                     body.appendChild(eventName);
                     body.appendChild(dateTime);

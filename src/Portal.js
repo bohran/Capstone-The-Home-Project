@@ -238,7 +238,7 @@ export class Portal extends Component {
                     <div>
 
                     </div>
-                    <div>
+                    <div class="container">
                         <div class="container" id="allEventContainer">
                             <div className="buttons">
                                 <button type="submit" className="btn" onClick={() => this.seeToBeApproved()}>
