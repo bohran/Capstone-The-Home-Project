@@ -21,7 +21,7 @@ import {
 import "./css/App.css";
 import "typeface-nunito-sans";
 import RegOrganization from "./RegOrganization";
-// import EventSubmission from "./EventSubmission";
+import EventSubmission from "./EventSubmission";
 // import OrgSubmission from "./OrgSubmission";
 
 class App extends Component {
@@ -84,7 +84,7 @@ class App extends Component {
           <Route path="/RegOrganization" component={RegOrganization} />
           <Route path="/Portal" component={Portal} />
           <Route path="/PortalAll" component={PortalAll}/>
-          {/* <Route path="/Submission" component={OrgSubmission}/> */}
+          <Route path="/Submission" component={EventSubmission}/>
 
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>
