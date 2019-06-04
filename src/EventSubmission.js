@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Button } from "reactstrap";
 
-import "./css/confirm.css";
+import "./css/Submission.css";
 
 class EventSubmission extends Component {
   handleNext = () => {
@@ -18,15 +18,15 @@ class EventSubmission extends Component {
       <section>
         <div className="formContainer">
           <div>
-            <h1>Your event has been submitted for approval!</h1>
-            <p>
+            <h1 className="pageTitle">Your event has been submitted for approval!</h1>
+            <p className="help">
               We've sent your event to Pyramid for approval. The event should be
               approved in the next business day. Please contact us at
               eropes@uw.edu to make changes to your event posting or any other
               inquiries related to your event.
             </p>
           </div>
-          <div className="buttonContainer">
+          <div className="formButton">
           <Link to="/AddEvent">
               <Button variant="primary" type="submit">
                 Add Another Event

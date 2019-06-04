@@ -17,15 +17,15 @@ class OrgSubmission extends Component {
       <section>
         <div className="formContainer">
           <div>
-            <h1>Your organization has been submitted for approval!</h1>
-            <p>
+            <h1 className="pageTitle">Your organization has been submitted for approval!</h1>
+            <p className="help">
               We've sent your organization information to Pyramid for approval.
               The organization should be approved in the next business day.
               Please contact us at eropes@uw.edu to make changes to your event
               posting or any other inquiries related to your event.
             </p>
           </div>
-          <div className="buttonContainer">
+          <div className="formButton">
             <Link to="/AddEvent">
               <Button variant="primary" type="submit">
                 Add Event
