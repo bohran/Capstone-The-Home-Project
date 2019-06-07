@@ -38,7 +38,7 @@ const requiredFields = [
 const prettyNames = {
   title: "Title",
   category: "Type",
-  orgs: "Organizations",
+  organizations: "Organizations",
   services: "Services",
   descr: "Description",
   date: "Date",
@@ -62,7 +62,6 @@ const defaultImgs = [
   "./img/give1.jpg",
   "./img/give2.jpg",
   "./img/give3.jpg",
-  // "./img/give4.jpg",
   "./img/learn1.jpg",
   "./img/learn2.jpg",
   "./img/learn3.jpg",
@@ -70,7 +69,6 @@ const defaultImgs = [
   "./img/learn5.jpg",
   "./img/volunteer1.jpg",
   "./img/volunteer2.jpg",
-  // "./img/volunteer3.jpg",
   "./img/volunteer4.jpg",
   "./img/volunteer5.jpg"
 ];
@@ -371,7 +369,7 @@ class NewEvent extends Component {
                   value={Service.HOUSING}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check className="serviceOptions">
+                <Label check className="formText">
                   {Service.HOUSING}
                 </Label>
               </FormGroup>
@@ -383,7 +381,7 @@ class NewEvent extends Component {
                   value={Service.LEGAL}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check className="serviceOptions">
+                <Label check className="formText">
                   {Service.LEGAL}
                 </Label>
               </FormGroup>
@@ -395,7 +393,7 @@ class NewEvent extends Component {
                   value={Service.DAYCENTER}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check className="serviceOptions">
+                <Label check className="formText">
                   {Service.DAYCENTER}
                 </Label>
               </FormGroup>
@@ -407,7 +405,7 @@ class NewEvent extends Component {
                   value={Service.BASIC}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check className="serviceOptions">
+                <Label check className="formText">
                   {Service.BASIC}
                 </Label>
               </FormGroup>
@@ -419,7 +417,7 @@ class NewEvent extends Component {
                   value={Service.HEALTH}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check className="serviceOptions">
+                <Label check className="formText">
                   {Service.HEALTH}
                 </Label>
               </FormGroup>
