@@ -21,19 +21,24 @@ class Confirmation extends Component {
     return (
       <section>
         <h2 className="pageTitle">CONFIRM YOUR EVENT DETAILS</h2>
-
+        <h6 className="help">
+          Please confirm the following information before submitting. If you
+          need to make edits, select the edit button below the form.
+        </h6>
+        
         <div className="addEvent">
           <Form>
-            <h6 className="help">
-              Please confirm the following information before submitting. If you
-              need to make edits, select the edit button below the form.
-            </h6>
-            <br />
             <h5 className="formTitle">Event Information</h5>
             <FormGroup>
-              <Label>Organization: {_.join(this.props.eventForm.organizations.map((d) => {
-                return d.value
-              }), ", ")}</Label>
+              <Label>
+                Organization:{" "}
+                {_.join(
+                  this.props.eventForm.organizations.map(d => {
+                    return d.value;
+                  }),
+                  ", "
+                )}
+              </Label>
             </FormGroup>
 
             <Row form>
@@ -44,14 +49,19 @@ class Confirmation extends Component {
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Event Type: {this.props.eventForm.category.value}</Label>
+                  <Label>
+                    Event Type: {this.props.eventForm.category.value}
+                  </Label>
                 </FormGroup>
               </Col>
             </Row>
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Area(s) of Service: {_.join(this.props.eventForm.services, ", ")}</Label>
+                  <Label>
+                    Area(s) of Service:{" "}
+                    {_.join(this.props.eventForm.services, ", ")}
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={6}>
@@ -70,8 +80,14 @@ class Confirmation extends Component {
               <Col md={6}>
                 <FormGroup>
                   <Label>
-                    Time: {moment(this.props.eventForm.startTime, "HH:mm:ss").format("h:mm A")} -{" "}
-                          {moment(this.props.eventForm.endTime, "HH:mm:ss").format("h:mm A")}
+                    Time:{" "}
+                    {moment(this.props.eventForm.startTime, "HH:mm:ss").format(
+                      "h:mm A"
+                    )}{" "}
+                    -{" "}
+                    {moment(this.props.eventForm.endTime, "HH:mm:ss").format(
+                      "h:mm A"
+                    )}
                   </Label>
                 </FormGroup>
               </Col>
@@ -185,7 +201,14 @@ class Confirmation extends Component {
             </FormGroup>
 
             <FormGroup>
-              <Label>Media: <img src={this.props.eventForm.img} alt="Default" style={{width: "200px"}}/> </Label>
+              <Label>
+                Media:{" "}
+                <img
+                  src={this.props.eventForm.img}
+                  alt="Default"
+                  style={{ width: "200px" }}
+                />{" "}
+              </Label>
             </FormGroup>
           </Form>
         </div>

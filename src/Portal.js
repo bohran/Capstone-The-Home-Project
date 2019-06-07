@@ -157,7 +157,7 @@ export class Portal extends Component {
                             </button>
                         </div>
                         <div className="container">
-                            <div class="container" id="orgcontainer">
+                            <div className="container" id="orgcontainer">
                                 <h1>Organizations To Approve</h1>
                                 <table class="table table-hover" id="orgTable">
                                     <thead>
@@ -233,21 +233,18 @@ export class Portal extends Component {
                         </div>
                     </div>
                 </div>
-                <div id="portalAllContainer" style={{ display: 'none' }}>
-                    <div class="alert alert-danger d-none" id="error-alert"></div>
-                    <div>
-
+                <div class="container" id="portalAllContainer" style={{ display: 'none' }}>
+                    <div className="buttons">
+                        <button type="submit" className="btn" onClick={() => this.seeToBeApproved()}>
+                            See Awaiting Approval
+                        </button>
+                        <button type="submit" className="btn" onClick={() => this.handleSignOut()}>
+                            Sign Out
+                        </button>
                     </div>
-                    <div class="container">
-                        <div class="container" id="allEventContainer">
-                            <div className="buttons">
-                                <button type="submit" className="btn" onClick={() => this.seeToBeApproved()}>
-                                    See Awaiting Approval
-                        </button>
-                                <button type="submit" className="btn" onClick={() => this.handleSignOut()}>
-                                    Sign Out
-                        </button>
-                            </div>
+                    <div className="container">
+                        <div className="container" id="allEventContainer">
+
                             <h1>All Events</h1>
                             <table class="table table-hover" id="allEventTable">
                                 <thead>
@@ -266,10 +263,8 @@ export class Portal extends Component {
                                 <PortalRowAll />
                             </table>
                             <button type="submit" class="btn" id="deleteAllEventButton">Delete</button>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="container" id="allOrgContainer">
+
+                            {/* <div class="container" id="allOrgContainer"> */}
                             <h1>All Orgs</h1>
                             <table class="table table-hover" id="allOrgTable">
                                 <thead>
@@ -290,9 +285,10 @@ export class Portal extends Component {
                             <button type="submit" class="btn" id="deleteAllOrgButton">Delete</button>
                         </div>
                     </div>
-
                 </div>
+
             </div>
+            // </div>
 
         );
     }

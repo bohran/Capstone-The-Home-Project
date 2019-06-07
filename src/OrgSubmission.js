@@ -26,16 +26,12 @@ class OrgSubmission extends Component {
             </p>
           </div>
           <div className="formButton">
-            <Link to="/AddEvent">
-              <Button variant="primary" type="submit">
-                Add Event
-              </Button>
-            </Link>
-            <Link to="/Events">
-              <Button variant="primary" type="submit">
-                Back to Calendar
-              </Button>
-            </Link>
+          <Button tag={Link} to="/AddEvent" variant="primary" type="submit">
+              Add An Event
+            </Button>
+            <Button tag={Link} to="/Events" variant="primary" type="submit">
+              Back to Calendar
+            </Button>
           </div>
         </div>
       </section>

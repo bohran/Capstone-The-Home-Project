@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label } from "reactstrap";
 import _ from "lodash";
 
-import "./css/App.css";
+import "./css/confirm.css";
 
 class Confirmation extends Component {
   convertCategoryInput = () => {
@@ -22,11 +22,11 @@ class Confirmation extends Component {
     console.log(this.props.orgForm.city);
     return (
       <section>
-        <h2 className="orgPageTitle">Almost there.</h2>
+        <h2 className="pageTitle">CONFIRM YOUR ORGANIZATION DETAILS</h2>
+        <h6 className="help">Please confirm your information before submitting.</h6>
 
         <div className="addOrg">
           <Form>
-            <h6 className="help">Please confirm your information before submitting.</h6>
             <h5 className="formTitle">Organization Information</h5>
             <FormGroup>
               <Label>Organization Name: {this.props.orgForm.name}</Label>
