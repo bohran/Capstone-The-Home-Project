@@ -111,7 +111,7 @@ body {
   width: 33%;
   padding-right: 30px;
   text-align: center;
-  /* box-shadow: 1px 1px 5px #cfcfcf; */
+  box-shadow: none;
   /* border:1px;
   border-style:solid; 
   border-color:#cfcfcf; */
@@ -142,6 +142,12 @@ body {
   box-shadow: none !important;
   margin: 20px;
   border: none !important;
-  width: 
+  width: 250px;
   /* box-sizing: content-box; */
+}
+
+.card .feature:hover {
+  box-shadow: none !important;
+  cursor: auto !important;
+  transition: none !important;
 }
