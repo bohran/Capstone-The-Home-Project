@@ -523,14 +523,14 @@ class NewEvent extends Component {
                 />
                 </FormGroup>
               </Col>
-              <Col md={4}>
+              <Col md={2}>
                 <FormGroup>
-                  <Label>County</Label>
+                  <Label>State *</Label>
                   <Input
                     type="text"
-                    name="county"
-                    placeholder="e.g. King"
-                    value={this.props.form.county}
+                    name="state"
+                    placeholder="e.g. WA"
+                    value={this.props.form.state}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
@@ -547,14 +547,14 @@ class NewEvent extends Component {
                   />
                 </FormGroup>
               </Col>
-              <Col md={2}>
+              <Col md={4}>
                 <FormGroup>
-                  <Label>State *</Label>
+                  <Label>County</Label>
                   <Input
                     type="text"
-                    name="state"
-                    placeholder="e.g. WA"
-                    value={this.props.form.state}
+                    name="county"
+                    placeholder="e.g. King"
+                    value={this.props.form.county}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
