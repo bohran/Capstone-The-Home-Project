@@ -44,7 +44,9 @@ h4{
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    margin: auto;
+    /* margin: auto; */
+    margin-left: 5%;
+    margin-right: 5%;
     width: 100%;
     padding-bottom: 275px;
 }
