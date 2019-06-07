@@ -912,7 +912,7 @@ export class Events extends Component {
               </p> 
               </p>
               <p className = "header">
-                Event Website: <p className = "subText"><a href={" " + this.state.url + " "}>Visit Site</a>
+                Event Website: <p className = "subText"><a href={" " + this.state.url + " "} target="_blank">Visit Site</a>
               </p>
               </p>
               <p className = "header">
