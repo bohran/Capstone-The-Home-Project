@@ -318,21 +318,7 @@ class NewOrg extends Component {
                 </FormGroup>
               </Col>
 
-              <Col md={2}>
-                <FormGroup>
-                  <Label>State *</Label>
-                  <Input
-                    type="text"
-                    name="state"
-                    placeholder="e.g. WA"
-                    value={this.props.form.state}
-                    onChange={this.props.onChange}
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
 
-            <Row form>
               <Col md={4}>
                 <FormGroup>
                   <Label>City *</Label>
@@ -345,6 +331,21 @@ class NewOrg extends Component {
                     type="text"
                     name="city"
                     value={this.props.form.city}
+                    onChange={this.props.onChange}
+                  />
+                </FormGroup>
+              </Col>
+            </Row>
+
+            <Row form>
+              <Col md={2}>
+                <FormGroup>
+                  <Label>State *</Label>
+                  <Input
+                    type="text"
+                    name="state"
+                    placeholder="e.g. WA"
+                    value={this.props.form.state}
                     onChange={this.props.onChange}
                   />
                 </FormGroup>
