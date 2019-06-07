@@ -38,7 +38,7 @@ const requiredFields = [
 const prettyNames = {
   title: "Title",
   category: "Type",
-  orgs: "Organizations",
+  organizations: "Organizations",
   services: "Services",
   descr: "Description",
   date: "Date",
@@ -50,7 +50,7 @@ const prettyNames = {
   capacity: "Capacity",
   county: "County",
   zip: "Zip Code",
-  state: "State",
+  state: "State"
 };
 
 const defaultImgs = [
@@ -62,7 +62,6 @@ const defaultImgs = [
   "./img/give1.jpg",
   "./img/give2.jpg",
   "./img/give3.jpg",
-  // "./img/give4.jpg",
   "./img/learn1.jpg",
   "./img/learn2.jpg",
   "./img/learn3.jpg",
@@ -70,144 +69,143 @@ const defaultImgs = [
   "./img/learn5.jpg",
   "./img/volunteer1.jpg",
   "./img/volunteer2.jpg",
-  // "./img/volunteer3.jpg",
   "./img/volunteer4.jpg",
   "./img/volunteer5.jpg"
 ];
-const cities = [
-  {
-    value: "Algona",
-    label: "Algona"
-  },
-  {
-    value: "Auburn",
-    label: "Auburn"
-  },
-  {
-    value: "Bellevue",
-    label: "Bellevue"
-  },
-  {
-    value: "Bothell",
-    label: "Bothell"
-  },
-  {
-    value: "Burien",
-    label: "Burien"
-  },
-  {
-    value: "Carnation",
-    label: "Carnation"
-  },
-  {
-    value: "Covington",
-    label: "Covington"
-  },
-  {
-    value: "Des Moines",
-    label: "Des Moines"
-  },
-  {
-    value: "Duvall",
-    label: "Duvall"
-  },
-  {
-    value: "Enumclaw",
-    label: "Enumclaw"
-  },
-  {
-    value: "Federal Way",
-    label: "Federal Way"
-  },
-  {
-    value: "Issaquah",
-    label: "Issaquah"
-  },
-  {
-    value: "Kenmore",
-    label: "Kenmore"
-  },
-  {
-    value: "Kent",
-    label: "Kent"
-  },
-  {
-    value: "Kirkland",
-    label: "Kirkland"
-  },
-  {
-    value: "Lake City",
-    label: "Lake City"
-  },
-  {
-    value: "Lake Forest Park",
-    label: "Lake Forest Park"
-  },
-  {
-    value: "Maple Valley",
-    label: "Maple Valley"
-  },
-  {
-    value: "Medina",
-    label: "Medina"
-  },
-  {
-    value: "Mercer Island",
-    label: "Mercer Island"
-  },
-  {
-    value: "Newcastle",
-    label: "Newcastle"
-  },
-  {
-    value: "Normandy Park",
-    label: "Normandy Park"
-  },
-  {
-    value: "North Bend",
-    label: "North Bend"
-  },
-  {
-    value: "Pacific",
-    label: "Pacific"
-  },
-  {
-    value: "Redmond",
-    label: "Redmond"
-  },
-  {
-    value: "Renton",
-    label: "Renton"
-  },
-  {
-    value: "Sammamish",
-    label: "Sammamish"
-  },
-  {
-    value: "Seatac",
-    label: "Seatac"
-  },
-  {
-    value: "Seattle",
-    label: "Seattle"
-  },
-  {
-    value: "Shoreline",
-    label: "Shoreline"
-  },
-  {
-    value: "Snoqualmie",
-    label: "Snoqualmie"
-  },
-  {
-    value: "Tukwila",
-    label: "Tukwila"
-  },
-  {
-    value: "Woodinville",
-    label: "Woodinville"
-  }
-];
+// const cities = [
+//   {
+//     value: "Algona",
+//     label: "Algona"
+//   },
+//   {
+//     value: "Auburn",
+//     label: "Auburn"
+//   },
+//   {
+//     value: "Bellevue",
+//     label: "Bellevue"
+//   },
+//   {
+//     value: "Bothell",
+//     label: "Bothell"
+//   },
+//   {
+//     value: "Burien",
+//     label: "Burien"
+//   },
+//   {
+//     value: "Carnation",
+//     label: "Carnation"
+//   },
+//   {
+//     value: "Covington",
+//     label: "Covington"
+//   },
+//   {
+//     value: "Des Moines",
+//     label: "Des Moines"
+//   },
+//   {
+//     value: "Duvall",
+//     label: "Duvall"
+//   },
+//   {
+//     value: "Enumclaw",
+//     label: "Enumclaw"
+//   },
+//   {
+//     value: "Federal Way",
+//     label: "Federal Way"
+//   },
+//   {
+//     value: "Issaquah",
+//     label: "Issaquah"
+//   },
+//   {
+//     value: "Kenmore",
+//     label: "Kenmore"
+//   },
+//   {
+//     value: "Kent",
+//     label: "Kent"
+//   },
+//   {
+//     value: "Kirkland",
+//     label: "Kirkland"
+//   },
+//   {
+//     value: "Lake City",
+//     label: "Lake City"
+//   },
+//   {
+//     value: "Lake Forest Park",
+//     label: "Lake Forest Park"
+//   },
+//   {
+//     value: "Maple Valley",
+//     label: "Maple Valley"
+//   },
+//   {
+//     value: "Medina",
+//     label: "Medina"
+//   },
+//   {
+//     value: "Mercer Island",
+//     label: "Mercer Island"
+//   },
+//   {
+//     value: "Newcastle",
+//     label: "Newcastle"
+//   },
+//   {
+//     value: "Normandy Park",
+//     label: "Normandy Park"
+//   },
+//   {
+//     value: "North Bend",
+//     label: "North Bend"
+//   },
+//   {
+//     value: "Pacific",
+//     label: "Pacific"
+//   },
+//   {
+//     value: "Redmond",
+//     label: "Redmond"
+//   },
+//   {
+//     value: "Renton",
+//     label: "Renton"
+//   },
+//   {
+//     value: "Sammamish",
+//     label: "Sammamish"
+//   },
+//   {
+//     value: "Seatac",
+//     label: "Seatac"
+//   },
+//   {
+//     value: "Seattle",
+//     label: "Seattle"
+//   },
+//   {
+//     value: "Shoreline",
+//     label: "Shoreline"
+//   },
+//   {
+//     value: "Snoqualmie",
+//     label: "Snoqualmie"
+//   },
+//   {
+//     value: "Tukwila",
+//     label: "Tukwila"
+//   },
+//   {
+//     value: "Woodinville",
+//     label: "Woodinville"
+//   }
+// ];
 
 const Service = {
   HOUSING: "Housing/Shelter",
@@ -224,7 +222,7 @@ class NewEvent extends Component {
       modal: false
     };
   }
- 
+
   toggle = () => {
     this.setState(prevState => ({
       modal: !prevState.modal
@@ -371,7 +369,7 @@ class NewEvent extends Component {
                   value={Service.HOUSING}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check className="serviceOptions">
+                <Label check className="formText">
                   {Service.HOUSING}
                 </Label>
               </FormGroup>
@@ -383,7 +381,7 @@ class NewEvent extends Component {
                   value={Service.LEGAL}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check className="serviceOptions">
+                <Label check className="formText">
                   {Service.LEGAL}
                 </Label>
               </FormGroup>
@@ -395,7 +393,7 @@ class NewEvent extends Component {
                   value={Service.DAYCENTER}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check className="serviceOptions">
+                <Label check className="formText">
                   {Service.DAYCENTER}
                 </Label>
               </FormGroup>
@@ -407,7 +405,7 @@ class NewEvent extends Component {
                   value={Service.BASIC}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check className="serviceOptions">
+                <Label check className="formText">
                   {Service.BASIC}
                 </Label>
               </FormGroup>
@@ -419,7 +417,7 @@ class NewEvent extends Component {
                   value={Service.HEALTH}
                   onChange={this.props.onUpdate}
                 />{" "}
-                <Label check className="serviceOptions">
+                <Label check className="formText">
                   {Service.HEALTH}
                 </Label>
               </FormGroup>
@@ -517,12 +515,19 @@ class NewEvent extends Component {
               <Col md={4}>
                 <FormGroup>
                   <Label>City *</Label>
-                  <Select
+                  {/* <Select
                   style={{ position: "fixed" }}
                   onChange={this.handleCityChange}
                   options={cities}
                   placeholder="Select..."
-                />
+                /> */}
+                  <Input
+                    type="text"
+                    name="city"
+                    placeholder="e.g. Seattle"
+                    value={this.props.form.city}
+                    onChange={this.props.onChange}
+                  />
                 </FormGroup>
               </Col>
               <Col md={2}>
@@ -752,4 +757,3 @@ NewEvent.propTypes = {
 };
 
 export default NewEvent;
- 

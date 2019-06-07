@@ -17,7 +17,21 @@ class Confirmation extends Component {
     this.props.onConfirm();
   };
 
+  converDate = () => {
+    let startTime = moment(this.props.eventForm.startTime, "HH:mm:ss").format(
+      "h:mm A"
+    );
+    let endTime = "";
+    if (this.props.eventForm.endTime !== "") {
+      endTime =
+        " - " +
+        moment(this.props.eventForm.endTime, "HH:mm:ss").format("h:mm A");
+    }
+    return startTime + endTime;
+  };
+
   render() {
+    console.log(this.props.eventForm.endTime);
     return (
       <section>
         <h2 className="pageTitle">CONFIRM YOUR EVENT DETAILS</h2>
@@ -25,32 +39,41 @@ class Confirmation extends Component {
           Please confirm the following information before submitting. If you
           need to make edits, select the edit button below the form.
         </h6>
-        
+
         <div className="addEvent">
           <Form>
             <h5 className="formTitle">Event Information</h5>
             <FormGroup>
               <Label>
                 Organization:{" "}
-                {_.join(
-                  this.props.eventForm.organizations.map(d => {
-                    return d.value;
-                  }),
-                  ", "
-                )}
+                <p className="formText">
+                  {" "}
+                  {_.join(
+                    this.props.eventForm.organizations.map(d => {
+                      return d.value;
+                    }),
+                    ", "
+                  )}
+                </p>
               </Label>
             </FormGroup>
 
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Event Title: {this.props.eventForm.title}</Label>
+                  <Label>
+                    Event Title:
+                    <p className="formText"> {this.props.eventForm.title}</p>
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={6}>
                 <FormGroup>
                   <Label>
-                    Event Type: {this.props.eventForm.category.value}
+                    Event Type:{" "}
+                    <p className="formText">
+                      {this.props.eventForm.category.value}
+                    </p>
                   </Label>
                 </FormGroup>
               </Col>
@@ -60,13 +83,18 @@ class Confirmation extends Component {
                 <FormGroup>
                   <Label>
                     Area(s) of Service:{" "}
-                    {_.join(this.props.eventForm.services, ", ")}
+                    <p className="formText">
+                      {_.join(this.props.eventForm.services, ", ")}
+                    </p>
                   </Label>
                 </FormGroup>
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Event Description: {this.props.eventForm.descr}</Label>
+                  <Label>
+                    Event Description:{" "}
+                    <p className="formText">{this.props.eventForm.descr}</p>
+                  </Label>
                 </FormGroup>
               </Col>
             </Row>
@@ -74,20 +102,16 @@ class Confirmation extends Component {
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Event Date: {this.props.eventForm.date}</Label>
+                  <Label>
+                    Event Date:{" "}
+                    <p className="formText">{this.props.eventForm.date}</p>
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={6}>
                 <FormGroup>
                   <Label>
-                    Time:{" "}
-                    {moment(this.props.eventForm.startTime, "HH:mm:ss").format(
-                      "h:mm A"
-                    )}{" "}
-                    -{" "}
-                    {moment(this.props.eventForm.endTime, "HH:mm:ss").format(
-                      "h:mm A"
-                    )}
+                    Time: <p className="formText">{this.converDate()}</p>
                   </Label>
                 </FormGroup>
               </Col>
@@ -101,17 +125,26 @@ class Confirmation extends Component {
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Address: {this.props.eventForm.address}</Label>
+                  <Label>
+                    Address:{" "}
+                    <p className="formText">{this.props.eventForm.address}</p>
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Room: {this.props.eventForm.room}</Label>
+                  <Label>
+                    Room:{" "}
+                    <p className="formText">{this.props.eventForm.room}</p>
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Event Capacity: {this.props.eventForm.capacity}</Label>
+                  <Label>
+                    Event Capacity:{" "}
+                    <p className="formText">{this.props.eventForm.capacity}</p>
+                  </Label>
                 </FormGroup>
               </Col>
             </Row>
@@ -119,12 +152,20 @@ class Confirmation extends Component {
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>City: {this.props.eventForm.city.value}</Label>
+                  <Label>
+                    City:{" "}
+                    <p className="formText">
+                      {this.props.eventForm.city}
+                    </p>
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label>County: {this.props.eventForm.county}</Label>
+                  <Label>
+                    County:{" "}
+                    <p className="formText">{this.props.eventForm.county}</p>
+                  </Label>
                 </FormGroup>
               </Col>
             </Row>
@@ -132,12 +173,18 @@ class Confirmation extends Component {
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label>Zip Code: {this.props.eventForm.zip}</Label>
+                  <Label>
+                    Zip Code:{" "}
+                    <p className="formText">{this.props.eventForm.zip}</p>
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={6}>
                 <FormGroup>
-                  <Label>State: {this.props.eventForm.state}</Label>
+                  <Label>
+                    State:{" "}
+                    <p className="formText">{this.props.eventForm.state}</p>
+                  </Label>
                 </FormGroup>
               </Col>
             </Row>
@@ -146,22 +193,42 @@ class Confirmation extends Component {
             <Row form>
               <Col md={3}>
                 <FormGroup>
-                  <Label>First Name: {this.props.eventForm.creatorFName}</Label>
+                  <Label>
+                    First Name:{" "}
+                    <p className="formText">
+                      {this.props.eventForm.creatorFName}
+                    </p>
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Last Name: {this.props.eventForm.creatorLName}</Label>
+                  <Label>
+                    Last Name:{" "}
+                    <p className="formText">
+                      {this.props.eventForm.creatorLName}
+                    </p>
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Email: {this.props.eventForm.creatorEmail}</Label>
+                  <Label>
+                    Email:{" "}
+                    <p className="formText">
+                      {this.props.eventForm.creatorEmail}
+                    </p>
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Phone: {this.props.eventForm.creatorPhone}</Label>
+                  <Label>
+                    Phone:{" "}
+                    <p className="formText">
+                      {this.props.eventForm.creatorPhone}
+                    </p>
+                  </Label>
                 </FormGroup>
               </Col>
             </Row>
@@ -171,25 +238,41 @@ class Confirmation extends Component {
               <Col md={3}>
                 <FormGroup>
                   <Label>
-                    First Name: {this.props.eventForm.coordinatorFName}
+                    First Name:{" "}
+                    <p className="formText">
+                      {this.props.eventForm.coordinatorFName}{" "}
+                    </p>
                   </Label>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
                   <Label>
-                    Last Name: {this.props.eventForm.coordinatorLName}
+                    Last Name:{" "}
+                    <p className="formText">
+                      {this.props.eventForm.coordinatorLName}
+                    </p>
                   </Label>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Email: {this.props.eventForm.coordinatorEmail}</Label>
+                  <Label>
+                    Email:{" "}
+                    <p className="formText">
+                      {this.props.eventForm.coordinatorEmail}
+                    </p>
+                  </Label>
                 </FormGroup>
               </Col>
               <Col md={3}>
                 <FormGroup>
-                  <Label>Phone: {this.props.eventForm.coordinatorPhone}</Label>
+                  <Label>
+                    Phone:{" "}
+                    <p className="formText">
+                      {this.props.eventForm.coordinatorPhone}
+                    </p>
+                  </Label>
                 </FormGroup>
               </Col>
             </Row>
@@ -197,12 +280,15 @@ class Confirmation extends Component {
             <h5 className="formTitle">Additional Event Information</h5>
 
             <FormGroup>
-              <Label>Website: {this.props.eventForm.website}</Label>
+              <Label>
+                Website:{" "}
+                <p className="formText">{this.props.eventForm.website}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
               <Label>
-                Media:{" "}
+                Media: <br />
                 <img
                   src={this.props.eventForm.img}
                   alt="Default"

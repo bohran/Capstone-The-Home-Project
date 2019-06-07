@@ -23,83 +23,141 @@ class Confirmation extends Component {
     return (
       <section>
         <h2 className="pageTitle">CONFIRM YOUR ORGANIZATION DETAILS</h2>
-        <h6 className="help">Please confirm your information before submitting.</h6>
+        <h6 className="help">
+          Please confirm your information before submitting.
+        </h6>
 
         <div className="addOrg">
           <Form>
             <h5 className="formTitle">Organization Information</h5>
             <FormGroup>
-              <Label>Organization Name: {this.props.orgForm.name}</Label>
+              <Label>
+                Organization Name:{" "}
+                <p className="formText"> {this.props.orgForm.name} </p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization Type: {_.join(this.props.orgForm.type.map((d) => {
-                return d.value
-              }), ", ")}</Label>
+              <Label>
+                Organization Type:{" "}
+                <p className="formText">
+                  {" "}
+                  {_.join(
+                    this.props.orgForm.type.map(d => {
+                      return d.value;
+                    }),
+                    ", "
+                  )}{" "}
+                </p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Mission: {this.props.orgForm.mission}</Label>
+              <Label>
+                Mission:{" "}
+                <p className="formText"> {this.props.orgForm.mission}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization Address: {this.props.orgForm.address}</Label>
+              <Label>
+                Organization Address:{" "}
+                <p className="formText"> {this.props.orgForm.address}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization State: {this.props.orgForm.state}</Label>
+              <Label>
+                Organization State:{" "}
+                <p className="formText"> {this.props.orgForm.state}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              {/* <Label>Organization City: {this.props.orgForm.city.value}</Label> */}
-              <Label>Organization City: {this.props.orgForm.city}</Label>
+              <Label>
+                Organization City:{" "}
+                <p className="formText"> {this.props.orgForm.city}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization County: {this.props.orgForm.county}</Label>
+              <Label>
+                Organization County:{" "}
+                <p className="formText"> {this.props.orgForm.county}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Organization Zip Code: {this.props.orgForm.zip}</Label>
+              <Label>
+                Organization Zip Code:{" "}
+                <p className="formText"> {this.props.orgForm.zip}</p>
+              </Label>
             </FormGroup>
 
             <h5 className="formTitle">Organization Contact</h5>
 
             <FormGroup>
-              <Label>First Name: {this.props.orgForm.contactFName}</Label>
+              <Label>
+                First Name:{" "}
+                <p className="formText"> {this.props.orgForm.contactFName}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Last Name: {this.props.orgForm.contactLName}</Label>
+              <Label>
+                Last Name:{" "}
+                <p className="formText"> {this.props.orgForm.contactLName}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Role: {this.props.orgForm.contactRole}</Label>
+              <Label>
+                Role:{" "}
+                <p className="formText"> {this.props.orgForm.contactRole}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Email: {this.props.orgForm.contactEmail}</Label>
+              <Label>
+                Email:{" "}
+                <p className="formText"> {this.props.orgForm.contactEmail}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Phone: {this.props.orgForm.contactPhone}</Label>
+              <Label>
+                Phone:{" "}
+                <p className="formText"> {this.props.orgForm.contactPhone}</p>
+              </Label>
             </FormGroup>
 
             <h5 className="formTitle">Additional Information</h5>
             <FormGroup>
-              <Label>Website: {this.props.orgForm.website}</Label>
+              <Label>
+                Website:{" "}
+                <p className="formText"> {this.props.orgForm.website}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Twitter: {this.props.orgForm.twitter}</Label>
+              <Label>
+                Twitter:{" "}
+                <p className="formText"> {this.props.orgForm.twitter}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Facebook: {this.props.orgForm.facebook}</Label>
+              <Label>
+                Facebook:{" "}
+                <p className="formText"> {this.props.orgForm.facebook}</p>
+              </Label>
             </FormGroup>
 
             <FormGroup>
-              <Label>Instagram: {this.props.orgForm.instgram}</Label>
+              <Label>
+                Instagram:{" "}
+                <p className="formText"> {this.props.orgForm.instgram}</p>
+              </Label>
             </FormGroup>
           </Form>
         </div>

@@ -11,18 +11,12 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
-  NavLink,
-  DropdownMenu,
-  DropdownToggle,
-  UncontrolledDropdown
+  NavbarBrand
 } from "reactstrap";
 
 import "./css/App.css";
 import "typeface-nunito-sans";
 import RegOrganization from "./RegOrganization";
-import EventSubmission from "./EventSubmission";
-// import OrgSubmission from "./OrgSubmission";
 
 class App extends Component {
   constructor(props) {
@@ -57,7 +51,7 @@ class App extends Component {
         >
           <div className="navtitle">
             <NavbarBrand className="title" href="/">
-              HOME PROJECT CALENDAR
+              SEATTLE FOR ALL
             </NavbarBrand>
           </div>
           <NavbarToggler onClick={this.toggle} />
@@ -84,7 +78,6 @@ class App extends Component {
           <Route path="/RegOrganization" component={RegOrganization} />
           <Route path="/Portal" component={Portal} />
           <Route path="/PortalAll" component={PortalAll}/>
-          <Route path="/Submission" component={EventSubmission}/>
 
           {/* <Route path = "/Calendar" component = { Calendar } /> */}
         </Switch>

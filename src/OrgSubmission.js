@@ -21,7 +21,7 @@ class OrgSubmission extends Component {
             <p className="help">
               We've sent your organization information to Pyramid for approval.
               The organization should be approved in the next business day.
-              Please contact us at eropes@uw.edu to make changes to your event
+              Please contact us at info@pyramidcom.com to make changes to your event
               posting or any other inquiries related to your event.
             </p>
           </div>
