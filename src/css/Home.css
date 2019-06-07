@@ -143,6 +143,7 @@ body {
   margin: 20px;
   border: none !important;
   width: 250px;
+  height: 150px;
 }
 
 .homeFeatures  {
@@ -150,4 +151,6 @@ body {
   cursor: pointer !important;
   transition: none !important;
   pointer-events: none;
+  margin: auto;
+  width: 65%;
 }
