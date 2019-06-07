@@ -143,11 +143,11 @@ body {
   margin: 20px;
   border: none !important;
   width: 250px;
-  /* box-sizing: content-box; */
 }
 
-.card .feature:hover {
+.homeFeatures  {
   box-shadow: none !important;
-  cursor: auto !important;
+  cursor: pointer !important;
   transition: none !important;
+  pointer-events: none;
 }
