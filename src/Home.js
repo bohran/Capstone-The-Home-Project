@@ -9,7 +9,16 @@ import {
   faCalendar,
   faHandsHelping
 } from "@fortawesome/free-solid-svg-icons";
-
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardGroup,
+  Row,
+  Col,
+} from "reactstrap";
 export class Home extends Component {
   render() {
     return (
@@ -61,27 +70,27 @@ export class Home extends Component {
         <p className ="homeLiner">
           We can spark this impact with 3 simple steps:
         </p>
-        <div className="homeFeatures">
-          <div className="feature">
-            <FontAwesomeIcon className = "icon" icon={faCalendar}/>
-            <p className="highlightFeature">Share </p> Post events directly on
+        <CardGroup className="homeFeatures">
+          <Card className="feature">
+            <CardTitle><FontAwesomeIcon className = "icon" icon={faCalendar}/></CardTitle>
+            <CardTitle className="highlightFeature">Share </CardTitle> Post events directly on
             the site and increase visibility to other organizations and
             community members
-          </div>
-          <div className="feature">
-          <FontAwesomeIcon className = "icon" icon={faSearch} />
-            <p className="highlightFeature">Discover </p> Search the calendar
+          </Card>
+          <Card className="feature">
+          <CardTitle><FontAwesomeIcon className = "icon" icon={faSearch} /></CardTitle>
+            <CardTitle className="highlightFeature">Discover </CardTitle> Search the calendar
             for opportunities to get involved and work with other organizations
             based on service area and purpose
            
-          </div>
-          <div className="feature">
-          <FontAwesomeIcon className = "icon" icon={faHandsHelping}/>
-            <p className="highlightFeature">Collaborate </p> Align missions and
+          </Card>
+          <Card className="feature">
+          <CardTitle><FontAwesomeIcon className = "icon" icon={faHandsHelping}/></CardTitle>
+            <CardTitle className="highlightFeature">Collaborate </CardTitle> Align missions and
             efforts in order to minimize resource waste and maximize reach and
             impact
-          </div>
-        </div>
+          </Card>
+        </CardGroup>
       </div>
     );
   }
