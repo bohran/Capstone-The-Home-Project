@@ -37,14 +37,10 @@ body {
 .floatSideBar button {
   margin-left: 0px;
   height: 80px;
-  width: 50px;
+  width: 10px;
   background-color: #6e6e70 !important;
   border: none !important;
   font-weight: bold;
-}
-
-.floatSideBar .modal-body {
-  margin: 0xp !important;
 }
 
 .sidebar {
@@ -71,7 +67,6 @@ body {
   
   .floatSideBar {
     display: block;
-    margin-top: 20%;
   }
 
   .events {
