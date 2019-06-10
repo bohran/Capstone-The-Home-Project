@@ -70,27 +70,27 @@ export class Home extends Component {
         <p className ="homeLiner">
           We can spark this impact with 3 simple steps:
         </p>
-        <CardGroup className="homeFeatures">
-          <Card className="feature">
-            <CardTitle><FontAwesomeIcon className = "icon" icon={faCalendar}/></CardTitle>
-            <CardTitle className="highlightFeature">Share </CardTitle> Post events directly on
+        <div className="homeFeatures">
+          <div className="feature">
+            <div><FontAwesomeIcon className = "icon" icon={faCalendar}/></div>
+            <div className="highlightFeature">Share </div> Post events directly on
             the site and increase visibility to other organizations and
             community members
-          </Card>
-          <Card className="feature">
-          <CardTitle><FontAwesomeIcon className = "icon" icon={faSearch} /></CardTitle>
-            <CardTitle className="highlightFeature">Discover </CardTitle> Search the calendar
+          </div>
+          <div className="feature">
+          <div><FontAwesomeIcon className = "icon" icon={faSearch} /></div>
+            <div className="highlightFeature">Discover </div> Search the calendar
             for opportunities to get involved and work with other organizations
             based on service area and purpose
            
-          </Card>
-          <Card className="feature">
-          <CardTitle><FontAwesomeIcon className = "icon" icon={faHandsHelping}/></CardTitle>
-            <CardTitle className="highlightFeature">Collaborate </CardTitle> Align missions and
+          </div>
+          <div className="feature">
+          <div><FontAwesomeIcon className = "icon" icon={faHandsHelping}/></div>
+            <div className="highlightFeature">Collaborate </div> Align missions and
             efforts in order to minimize resource waste and maximize reach and
             impact
-          </Card>
-        </CardGroup>
+          </div>
+        </div>
       </div>
     );
   }
