@@ -161,8 +161,7 @@ export default class PortalRowAll extends React.Component {
                     body.appendChild(coordinatorEmail);
                     body.appendChild(coordinatorPhone);
 
-                    console.log("click row");
-                    console.log(description);
+                
                     modal.style.display = "block";
                 });
 

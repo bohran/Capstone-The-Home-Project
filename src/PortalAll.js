@@ -63,11 +63,11 @@ export class PortalAll extends Component {
                                     <th scope="col">Select</th>
                                     <th scope="col">#</th>
                                     <th scope="col">Organization Name</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Website</th>
-                                    <th scope="col">Street Address</th>
+                                    <th scope="col">Event Title</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Service Area</th>
+                                    <th scope="col">Date</th>
                                     <th scope="col">City</th>
-                                    <th scope="col">State</th>
                                     <th scope="col">Details</th>
                                 </tr>
                             </thead>
@@ -76,6 +76,7 @@ export class PortalAll extends Component {
                         <button type="submit" class="btn" id="deleteAllEventButton">Delete</button>
                     </div>
                 </div>
+                
                 <div>
                     <div class="container" id="allOrgContainer">
                         <h1>All Orgs</h1>

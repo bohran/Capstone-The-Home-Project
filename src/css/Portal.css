@@ -51,3 +51,14 @@ border-color:  #cf0f2e!important;
 h1 {
     margin-top: 30px;
 }
+
+#line {
+    margin-top: 50px;
+    height: 10px;
+    background-color: #177283;
+    width: 100%;
+}
+
+td {
+    text-overflow: ellipsis;
+}

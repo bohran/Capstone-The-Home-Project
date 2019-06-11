@@ -189,7 +189,6 @@ export default class PortalRowOrg extends React.Component {
                     row.appendChild(form);
                     row.appendChild(id);
                     row.appendChild(organization);
-                    row.appendChild(descr);
                     row.appendChild(url);
                     row.appendChild(address);
                     row.appendChild(city);

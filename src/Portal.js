@@ -165,7 +165,6 @@ export class Portal extends Component {
                                             <th scope="col">Select</th>
                                             <th scope="col">#</th>
                                             <th scope="col">Organization Name</th>
-                                            <th scope="col">Description</th>
                                             <th scope="col">Website</th>
                                             <th scope="col">Street Address</th>
                                             <th scope="col">City</th>
@@ -177,7 +176,7 @@ export class Portal extends Component {
                                 </table>
                                 <button type="submit" class="btn" id="approveButton">Approve</button>
                                 <button type="submit" class="btn" id="deleteOrgButton">Deny</button>
-
+                                <div id="line"></div>
                                 <h1>Events To Approve</h1>
                                 <table class="table table-hover" id="table">
                                     <thead>
@@ -252,11 +251,11 @@ export class Portal extends Component {
                                         <th scope="col">Select</th>
                                         <th scope="col">#</th>
                                         <th scope="col">Organization Name</th>
-                                        <th scope="col">Description</th>
-                                        <th scope="col">Website</th>
-                                        <th scope="col">Street Address</th>
+                                        <th scope="col">Event Title</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Service Area</th>
+                                        <th scope="col">Event Date</th>
                                         <th scope="col">City</th>
-                                        <th scope="col">State</th>
                                         <th scope="col">Details</th>
                                     </tr>
                                 </thead>
@@ -265,6 +264,7 @@ export class Portal extends Component {
                             <button type="submit" class="btn" id="deleteAllEventButton">Delete</button>
 
                             {/* <div class="container" id="allOrgContainer"> */}
+                            <div id="line"></div>
                             <h1>All Orgs</h1>
                             <table class="table table-hover" id="allOrgTable">
                                 <thead>
@@ -272,7 +272,6 @@ export class Portal extends Component {
                                         <th scope="col">Select</th>
                                         <th scope="col">#</th>
                                         <th scope="col">Organization Name</th>
-                                        <th scope="col">Description</th>
                                         <th scope="col">Website</th>
                                         <th scope="col">Street Address</th>
                                         <th scope="col">City</th>
