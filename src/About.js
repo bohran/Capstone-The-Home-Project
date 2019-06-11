@@ -14,7 +14,7 @@ export class About extends Component {
             className="aboutTitle"
             // style={{ fontSize: "40px", fontWeight: "bold" }}
           >
-            The Home Project
+            Seattle for All Calendar
           </div>
           <div className="slogan">
             An Engagement and Advocacy Initiative with One Goal: A Home for
@@ -40,18 +40,6 @@ export class About extends Component {
             we can do about it, we can foster unity and community support for
             our shared path forward.
           </div>
-          {/* <div>
-            <div className="learnMore">
-              Learn more about how you can help via our Messaging Toolkits:
-            </div>
-            <Button
-              className="toolkitButton"
-              href="https://drive.google.com/drive/folders/1S2roKWt-aGCMwJwjUvboZDna0C8TG-z0"
-            >
-              Toolkits
-            </Button>
-          </div>
-          <div /> */}
         </div>
         <br/>
         <h2 className="aboutTitle">The Team</h2>
@@ -61,7 +49,6 @@ export class About extends Component {
           <div className="imgContainer">
             <div className="aboutTeamImgs">
               <img
-                // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
                 src="./img/shannonBW2.jpeg"
                 alt="Portrait of Shannon Gatta"
@@ -70,11 +57,9 @@ export class About extends Component {
               <h3>
                 <h6 className="memberTag">Front-End Developer</h6>
               </h3>
-              {/* <p className="email">sgatta@uw.edu</p> */}
             </div>
             <div className="aboutTeamImgs">
               <img
-                // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
                 src="./img/eshaBW2.jpeg"
                 alt="Portrait of Esha More"
@@ -83,11 +68,9 @@ export class About extends Component {
               <h3>
                 <h6 className="memberTag">Front-End Developer</h6>
               </h3>
-              {/* <p className="email">moree@uw.edu</p> */}
             </div>
             <div className="aboutTeamImgs">
               <img
-                // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
                 src="./img/emmaBW2.jpeg"
                 alt="Portrait of Emma Ropes"
@@ -96,11 +79,9 @@ export class About extends Component {
               <h3>
                 <h6 className="memberTag">Back-End Developer</h6>
               </h3>
-              {/* <p className="email">eropes@uw.edu</p> */}
             </div>
             <div className="aboutTeamImgs">
               <img
-                // className="rounded-circle img-fluid d-block mx-auto w-50"
                 className="teamPhotos"
                 src="./img/nicoleBW2.jpeg"
                 alt="Portrait of Nicole Bohra"
@@ -109,7 +90,6 @@ export class About extends Component {
               <h3>
                 <h6 className="memberTag">Front-End Developer</h6>
               </h3>
-              {/* <p className="email">bohran@uw.edu</p> */}
             </div>
           </div>
       </div>

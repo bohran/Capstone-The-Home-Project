@@ -9,7 +9,16 @@ import {
   faCalendar,
   faHandsHelping
 } from "@fortawesome/free-solid-svg-icons";
-
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardGroup,
+  Row,
+  Col,
+} from "reactstrap";
 export class Home extends Component {
   render() {
     return (
@@ -63,21 +72,21 @@ export class Home extends Component {
         </p>
         <div className="homeFeatures">
           <div className="feature">
-            <FontAwesomeIcon className = "icon" icon={faCalendar}/>
-            <p className="highlightFeature">Share </p> Post events directly on
+            <div><FontAwesomeIcon className = "icon" icon={faCalendar}/></div>
+            <div className="highlightFeature">Share </div> Post events directly on
             the site and increase visibility to other organizations and
             community members
           </div>
           <div className="feature">
-          <FontAwesomeIcon className = "icon" icon={faSearch} />
-            <p className="highlightFeature">Discover </p> Search the calendar
+          <div><FontAwesomeIcon className = "icon" icon={faSearch} /></div>
+            <div className="highlightFeature">Discover </div> Search the calendar
             for opportunities to get involved and work with other organizations
             based on service area and purpose
            
           </div>
           <div className="feature">
-          <FontAwesomeIcon className = "icon" icon={faHandsHelping}/>
-            <p className="highlightFeature">Collaborate </p> Align missions and
+          <div><FontAwesomeIcon className = "icon" icon={faHandsHelping}/></div>
+            <div className="highlightFeature">Collaborate </div> Align missions and
             efforts in order to minimize resource waste and maximize reach and
             impact
           </div>

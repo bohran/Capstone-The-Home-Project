@@ -21,21 +21,17 @@ class OrgSubmission extends Component {
             <p className="help">
               We've sent your organization information to Pyramid for approval.
               The organization should be approved in the next business day.
-              Please contact us at eropes@uw.edu to make changes to your event
+              Please contact us at info@pyramidcom.com to make changes to your event
               posting or any other inquiries related to your event.
             </p>
           </div>
           <div className="formButton">
-            <Link to="/AddEvent">
-              <Button variant="primary" type="submit">
-                Add Event
-              </Button>
-            </Link>
-            <Link to="/Events">
-              <Button variant="primary" type="submit">
-                Back to Calendar
-              </Button>
-            </Link>
+          <Button tag={Link} to="/AddEvent" variant="primary" type="submit">
+              Add An Event
+            </Button>
+            <Button tag={Link} to="/Events" variant="primary" type="submit">
+              Back to Calendar
+            </Button>
           </div>
         </div>
       </section>

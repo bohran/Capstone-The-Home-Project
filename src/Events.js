@@ -515,15 +515,6 @@ export class Events extends Component {
     }
     return (
       <div>
-        {/* <Sidebar */}
-        {/* } // open={this.state.sidebarOpen}
-          // onSetOpen={this.onSetSidebarOpen}
-          // styles={{ sidebar: { background: "white" } }}
-          // > */}
-        {/* <button onClick={() => this.onSetSidebarOpen(true)}>
-              Open sidebar
-            </button> */}
-        {/* </Sidebar> */}
         <ScrollUpButton StopPosition={0} ShowAtPosition={150} />
         <div className="search">
           <InputGroup>
@@ -541,9 +532,8 @@ export class Events extends Component {
           <div className="floatSideBar">
             <Button onClick={this.toggleSidebar}>></Button>
             <Modal isOpen={this.state.sidebar} toggle={this.toggleSidebar}>
-              {/* sidebar={ */}
               <ModalBody className="sidebar">
-                <div className="filters">
+                <div className="sidebarFilters">
                   <h5>Areas of Service:</h5>
                   <FormGroup check>
                     <Label className="services" check>
@@ -628,7 +618,7 @@ export class Events extends Component {
                   </div>
                   <br />
                 </div>
-                <div className="categories">
+                <div className="sidebarCategories">
                   <h5>Categories:</h5>
                   <FormGroup check>
                     <Label className="services" check>
@@ -912,7 +902,7 @@ export class Events extends Component {
               </p> 
               </p>
               <p className = "header">
-                Event Website: <p className = "subText"><a href={" " + this.state.url + " "}>Visit Site</a>
+                Event Website: <p className = "subText"><a href={" " + this.state.url + " "} target="_blank">Visit Site</a>
               </p>
               </p>
               <p className = "header">

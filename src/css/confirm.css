@@ -1,3 +1,7 @@
-.formContainer{
-        padding-bottom: 400px;
+.formContainer {
+  padding-bottom: 400px;
+}
+
+.help {
+  text-align: center;
 }

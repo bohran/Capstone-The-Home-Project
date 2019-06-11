@@ -37,14 +37,10 @@ body {
 .floatSideBar button {
   margin-left: 0px;
   height: 80px;
-  width: 50px;
+  width: 10px;
   background-color: #6e6e70 !important;
   border: none !important;
   font-weight: bold;
-}
-
-.floatSideBar .modal-body {
-  margin: 0xp !important;
 }
 
 .sidebar {
@@ -71,7 +67,6 @@ body {
   
   .floatSideBar {
     display: block;
-    margin-top: 20%;
   }
 
   .events {
@@ -258,6 +253,15 @@ body {
   color: #6e6e70;
   display: inline;
   font-weight: 300;
+}
+
+@media only screen and (max-width: 900px) {
+  .search .input-group{
+    width: 100%; 
+    margin-right: 0%;
+    margin-left: 0%;
+    padding-bottom: 3%;
+  }
 }
   /* width: 100%; */
   /* padding-left: 40%;

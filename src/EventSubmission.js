@@ -18,25 +18,23 @@ class EventSubmission extends Component {
       <section>
         <div className="formContainer">
           <div>
-            <h1 className="pageTitle">Your event has been submitted for approval!</h1>
+            <h1 className="pageTitle">
+              Your event has been submitted for approval!
+            </h1>
             <p className="help">
               We've sent your event to Pyramid for approval. The event should be
               approved in the next business day. Please contact us at
-              eropes@uw.edu to make changes to your event posting or any other
+              info@pyramidcom.com to make changes to your event posting or any other
               inquiries related to your event.
             </p>
           </div>
           <div className="formButton">
-          <Link to="/AddEvent">
-              <Button variant="primary" type="submit">
-                Add Another Event
-              </Button>
-            </Link>
-            <Link to="/Events">
-              <Button variant="primary" type="submit">
-                Back to Calendar
-              </Button>
-            </Link>
+            <Button tag={Link} to="/AddEvent" variant="primary" type="submit">
+              Add Another Event
+            </Button>
+            <Button tag={Link} to="/Events" variant="primary" type="submit">
+              Back to Calendar
+            </Button>
           </div>
         </div>
       </section>
